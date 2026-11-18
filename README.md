@@ -20,6 +20,13 @@ An **AI-first**, privacy-first, **$0-to-host** salary and contractor pay calcula
   - 🇳🇿 **New Zealand** (2025/26 PAYE, ACC Levy, KiwiSaver, Student Loan, 15% GST)
   - 🇸🇬 **Singapore** (YA 2026 IRAS brackets, Citizen/PR CPF vs Expat EP, SRS relief)
 - **Contractor vs Full-Time (FTE) Reality Check** — Automatically solves the equivalent FTE salary (or equivalent contractor day rate) factoring in unpaid leave, public holidays, retirement/super, and self-employment taxes, plus a **Monthly Tax Vault** set-aside rule.
+- **Role & Market Intelligence Explorer (`roles.html`)** — Dedicated second page backed by open government benchmarks (**Jobs and Skills Australia (JSA)**, **US BLS OEWS/Projections**, **UK ONS ASHE**, and **O\*NET Pathways**) across 24 roles × 7 countries:
+  - Workforce headcount & annual openings
+  - Full-time salary bands (25th/Median/75th) & contractor day-rate ranges with real localized after-tax take-home
+  - Dual 5-year growth (financial wage growth + headcount/job growth)
+  - Competition & shortage fill-rate meter + root market drivers
+  - Interactive career growth pathways showing exact after-tax net gains + 1-click **"Load in Pay Calculator"** deep links
+  - Optional weekly **\$0 GitHub Actions data refresh** (`scripts/sync_open_data.py` + `.github/workflows/sync-data.yml`): add free `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` repo secrets (`developer.adzuna.com`) to refresh live vacancies and salary pulses automatically without exposing keys in the browser.
 - **100% Free ($0) Architecture**:
   - Works offline out of the box with a fast built-in client-side natural language parser & smart advisor.
   - Optional **BYOK Free Tier AI** modal (supports Google Gemini API Free Tier or Groq/OpenAI-compatible endpoints — API key stays strictly in your browser `localStorage`).

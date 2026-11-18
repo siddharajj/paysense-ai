@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Role &amp; Market Intelligence — PaySense AI</title>
+  <meta name="description" content="Explore open government & market data on job roles: workforce headcount, full-time salaries, contractor day rates, wage & headcount growth, competition, and career growth pathways." />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f46e5'/%3E%3Cstop offset='100%25' stop-color='%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='800' font-size='32'%3E%24%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="brand-group">
+        <a href="./index.html" class="brand brand-link">
+          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <div>
+            <div class="brand-name">PaySense <span class="brand-ai">AI</span></div>
+            <div class="brand-sub">Multi-Country &amp; Contractor Pay Calculator</div>
+          </div>
+        </a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="./index.html" class="nav-tab">⚡ Pay Calculator</a>
+          <a href="./roles.html" class="nav-tab active" aria-current="page">📊 Role &amp; Market Intel</a>
+        </nav>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="ai-mode-pill" id="data-sources-btn" title="View open data sources & optional free GitHub Actions sync">
+          <span class="status-dot local"></span> Open Data · $0
+        </button>
+        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <!-- Top Market Search & Filters -->
+    <section class="card roles-toolbar" aria-label="Filter job roles">
+      <div class="roles-toolbar-top">
+        <div class="roles-headline">
+          <h1 class="page-h1">Role &amp; Career Market Intelligence</h1>
+          <p class="page-sub">Compare workforce size, full-time salaries, contractor day rates, financial &amp; headcount growth, market competition, and after-tax career pathways.</p>
+        </div>
+        <div class="country-pills roles-country-pills" id="roles-country-pills" role="radiogroup" aria-label="Select country"></div>
+      </div>
+
+      <div class="roles-filter-row">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="role-search-input"
+            class="search-input"
+            placeholder="Search roles, skills, or ANZSCO / SOC codes… (e.g. AI, Data Engineer, Nurse, Electrician)"
+            aria-label="Search job roles"
+          />
+        </div>
+        <div class="sort-wrap">
+          <label class="sub-label sr-only" for="role-sort-select">Sort roles</label>
+          <select id="role-sort-select" class="select-input">
+            <option value="fteMedian">Sort: Highest FTE Salary</option>
+            <option value="dayMedian">Sort: Highest Contractor Rate</option>
+            <option value="headcountGrowth5yr">Sort: Fastest Job Growth (5-yr)</option>
+            <option value="wageGrowth5yr">Sort: Fastest Wage Growth (5-yr)</option>
+            <option value="fillRateAsc">Sort: Lowest Competition (Shortage)</option>
+            <option value="workforce">Sort: Largest Workforce</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="category-chips-row" id="role-category-chips"></div>
+    </section>
+
+    <!-- Optional Side-by-Side Role Comparator Drawer -->
+    <div id="role-compare-bar" hidden></div>
+
+    <!-- Master-Detail Workspace -->
+    <div class="roles-workspace">
+      <aside class="roles-list-col" aria-label="Role directory">
+        <div class="roles-count-row">
+          <span id="roles-count-label" class="muted">Loading roles…</span>
+        </div>
+        <div id="roles-list-root" class="roles-list"></div>
+      </aside>
+
+      <section class="role-detail-col" id="role-detail-root" aria-live="polite"></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>PaySense AI · Market Intel</strong> — Grounded in open government benchmarks (JSA, BLS, ONS, O*NET) with optional free GitHub Actions Adzuna sync.
+      </div>
+      <div class="footer-disclaimer">
+        Market benchmarks are indicative estimates compiled from public labour statistics and open market surveys. Actual offers vary by seniority, location, and specialization.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Open Data Sources & Free GitHub Actions Sync Info Modal -->
+  <div id="data-sources-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="ds-modal-title">
+    <div class="modal-card modal-wide">
+      <div class="modal-header">
+        <div>
+          <h2 id="ds-modal-title" class="modal-title">Open Data Sources &amp; Optional Free Live Sync</h2>
+          <p class="modal-sub">Zero API keys required out of the box. Optionally add a free Adzuna key in GitHub Secrets for weekly automated refreshes.</p>
+        </div>
+        <button type="button" class="icon-btn" id="close-ds-btn" aria-label="Close">✕</button>
+      </div>
+      <div id="ds-modal-body" class="ds-modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./js/rolesApp.js"></script>
+</body>
+</html>

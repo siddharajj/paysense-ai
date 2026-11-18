@@ -1,0 +1,5405 @@
+{
+  "schemaVersion": "1.0",
+  "lastUpdated": "2026-04-01",
+  "liveSyncStatus": "open-gov-benchmarks",
+  "sources": [
+    {
+      "name": "Jobs and Skills Australia (JSA)",
+      "coverage": "AU",
+      "metrics": "Occupation Profiles, 5-yr Projections, Occupation Shortage List (OSL)",
+      "url": "https://www.jobsandskills.gov.au/data"
+    },
+    {
+      "name": "US Bureau of Labor Statistics (BLS)",
+      "coverage": "US",
+      "metrics": "OEWS Median Wages, Employment Counts, 10-yr Projections",
+      "url": "https://www.bls.gov/oes/tables.htm"
+    },
+    {
+      "name": "O*NET Resource Center",
+      "coverage": "Global",
+      "metrics": "SOC Taxonomy, Skills, Related Occupations & Career Pathways",
+      "url": "https://www.onetcenter.org/database.html"
+    },
+    {
+      "name": "UK ONS ASHE / Nomis",
+      "coverage": "UK",
+      "metrics": "Annual Survey of Hours & Earnings by SOC code",
+      "url": "https://www.nomisweb.co.uk/"
+    },
+    {
+      "name": "Adzuna Open API (Optional Sync)",
+      "coverage": "AU, US, UK, CA, IN, NZ, SG",
+      "metrics": "Live vacancy counts, advertised salary histograms & contract rates",
+      "url": "https://developer.adzuna.com/"
+    }
+  ],
+  "roles": [
+    {
+      "id": "software-engineer",
+      "title": "Software Engineer",
+      "category": "Engineering & Tech",
+      "codes": {
+        "anzsco": "261313",
+        "soc": "15-1252",
+        "onet": "15-1252.00"
+      },
+      "summary": "Designs, builds, tests, and maintains software applications, APIs, and distributed backend or frontend systems.",
+      "skills": [
+        "TypeScript / Python / Go",
+        "System Design",
+        "Cloud & CI/CD",
+        "SQL & Distributed Data",
+        "AI-Assisted Dev"
+      ],
+      "pathways": [
+        {
+          "targetId": "solutions-architect",
+          "type": "Vertical / Architecture",
+          "upliftPct": 26,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Enterprise Architecture",
+            "Cloud Security",
+            "Stakeholder Discovery"
+          ]
+        },
+        {
+          "targetId": "ai-ml-engineer",
+          "type": "High-Growth Pivot",
+          "upliftPct": 22,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "LLM Evaluation & RAG",
+            "PyTorch / ML Pipelines",
+            "Vector Databases"
+          ]
+        },
+        {
+          "targetId": "engineering-manager",
+          "type": "Leadership Track",
+          "upliftPct": 34,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "People Leadership",
+            "Delivery Strategy",
+            "Hiring & Org Design"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 178000,
+          "annualOpenings": 19500,
+          "fteSalary": {
+            "p25": 108000,
+            "median": 135000,
+            "p75": 167000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 4.2,
+          "wageGrowth5yr": 24.5,
+          "headcountGrowth5yr": 15.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 64,
+            "applicantsPerRole": 42,
+            "driver": "Senior suitability gap (junior market crowded, senior/staff scarce)"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 1692000,
+          "annualOpenings": 140100,
+          "fteSalary": {
+            "p25": 114000,
+            "median": 142000,
+            "p75": 176000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 4.2,
+          "wageGrowth5yr": 24.5,
+          "headcountGrowth5yr": 17.0,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Strong Demand",
+            "fillRatePct": 66,
+            "applicantsPerRole": 55,
+            "driver": "High senior & AI-systems demand; competitive entry-level"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 412000,
+          "annualOpenings": 44000,
+          "fteSalary": {
+            "p25": 54000,
+            "median": 68000,
+            "p75": 84000
+          },
+          "contractorDayRate": {
+            "p25": 450,
+            "median": 550,
+            "p75": 700
+          },
+          "wageGrowthYoY": 4.2,
+          "wageGrowth5yr": 24.5,
+          "headcountGrowth5yr": 12.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 64,
+            "applicantsPerRole": 42,
+            "driver": "Senior suitability gap (junior market crowded, senior/staff scarce)"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 253000,
+          "annualOpenings": 27500,
+          "fteSalary": {
+            "p25": 95000,
+            "median": 119000,
+            "p75": 148000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 4.2,
+          "wageGrowth5yr": 24.5,
+          "headcountGrowth5yr": 15.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 64,
+            "applicantsPerRole": 42,
+            "driver": "Senior suitability gap (junior market crowded, senior/staff scarce)"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 1850000,
+          "annualOpenings": 146000,
+          "fteSalary": {
+            "p25": 1750000,
+            "median": 2200000,
+            "p75": 2750000
+          },
+          "contractorDayRate": {
+            "p25": 13500,
+            "median": 16500,
+            "p75": 20500
+          },
+          "wageGrowthYoY": 8.5,
+          "wageGrowth5yr": 48.0,
+          "headcountGrowth5yr": 22.0,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 64,
+            "applicantsPerRole": 42,
+            "driver": "Senior suitability gap (junior market crowded, senior/staff scarce)"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 37500,
+          "annualOpenings": 4100,
+          "fteSalary": {
+            "p25": 96000,
+            "median": 120000,
+            "p75": 149000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 4.2,
+          "wageGrowth5yr": 24.5,
+          "headcountGrowth5yr": 15.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 64,
+            "applicantsPerRole": 42,
+            "driver": "Senior suitability gap (junior market crowded, senior/staff scarce)"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 64000,
+          "annualOpenings": 6200,
+          "fteSalary": {
+            "p25": 94000,
+            "median": 118000,
+            "p75": 146000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 4.2,
+          "wageGrowth5yr": 24.5,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 64,
+            "applicantsPerRole": 42,
+            "driver": "Senior suitability gap (junior market crowded, senior/staff scarce)"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "ai-ml-engineer",
+      "title": "AI / Machine Learning Engineer",
+      "category": "Data & AI",
+      "codes": {
+        "anzsco": "261399",
+        "soc": "15-2051",
+        "onet": "15-2051.00"
+      },
+      "summary": "Builds, fine-tunes, evaluates, and deploys production machine learning models, LLM agents, and inference platforms.",
+      "skills": [
+        "Python & PyTorch",
+        "LLM Agents & Evals",
+        "MLOps / GPU Infra",
+        "RAG & Retrieval",
+        "Applied Statistics"
+      ],
+      "pathways": [
+        {
+          "targetId": "solutions-architect",
+          "type": "AI Architecture",
+          "upliftPct": 16,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Enterprise AI Governance",
+            "FinOps & Latency Scaling",
+            "Executive Advisory"
+          ]
+        },
+        {
+          "targetId": "engineering-manager",
+          "type": "Head of AI Track",
+          "upliftPct": 24,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "AI Product Strategy",
+            "Team Building",
+            "Compliance & Risk"
+          ]
+        },
+        {
+          "targetId": "data-engineer",
+          "type": "Adjacent Platform",
+          "upliftPct": -6,
+          "years": "1 yr",
+          "bridgeSkills": [
+            "Streaming Pipelines",
+            "Lakehouse Architecture",
+            "dbt / Spark"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 19500,
+          "annualOpenings": 4200,
+          "fteSalary": {
+            "p25": 132000,
+            "median": 165000,
+            "p75": 205000
+          },
+          "contractorDayRate": {
+            "p25": 950,
+            "median": 1150,
+            "p75": 1450
+          },
+          "wageGrowthYoY": 8.4,
+          "wageGrowth5yr": 42.0,
+          "headcountGrowth5yr": 34.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 41,
+            "applicantsPerRole": 19,
+            "driver": "Explosive enterprise GenAI adoption outpacing experienced talent supply"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 215000,
+          "annualOpenings": 26500,
+          "fteSalary": {
+            "p25": 146000,
+            "median": 182000,
+            "p75": 226000
+          },
+          "contractorDayRate": {
+            "p25": 900,
+            "median": 1100,
+            "p75": 1375
+          },
+          "wageGrowthYoY": 8.4,
+          "wageGrowth5yr": 42.0,
+          "headcountGrowth5yr": 36.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 24,
+            "driver": "Production ML & agentic AI deployment talent severely constrained"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 44000,
+          "annualOpenings": 9400,
+          "fteSalary": {
+            "p25": 70000,
+            "median": 88000,
+            "p75": 109000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 8.4,
+          "wageGrowth5yr": 42.0,
+          "headcountGrowth5yr": 31.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 41,
+            "applicantsPerRole": 19,
+            "driver": "Explosive enterprise GenAI adoption outpacing experienced talent supply"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 27500,
+          "annualOpenings": 6000,
+          "fteSalary": {
+            "p25": 116000,
+            "median": 145000,
+            "p75": 180000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 8.4,
+          "wageGrowth5yr": 42.0,
+          "headcountGrowth5yr": 34.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 41,
+            "applicantsPerRole": 19,
+            "driver": "Explosive enterprise GenAI adoption outpacing experienced talent supply"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 195000,
+          "annualOpenings": 31500,
+          "fteSalary": {
+            "p25": 2550000,
+            "median": 3200000,
+            "p75": 3950000
+          },
+          "contractorDayRate": {
+            "p25": 19500,
+            "median": 24000,
+            "p75": 30000
+          },
+          "wageGrowthYoY": 12.5,
+          "wageGrowth5yr": 65.0,
+          "headcountGrowth5yr": 38.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 41,
+            "applicantsPerRole": 19,
+            "driver": "Explosive enterprise GenAI adoption outpacing experienced talent supply"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 4100,
+          "annualOpenings": 900,
+          "fteSalary": {
+            "p25": 118000,
+            "median": 147000,
+            "p75": 182000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1025,
+            "p75": 1275
+          },
+          "wageGrowthYoY": 8.4,
+          "wageGrowth5yr": 42.0,
+          "headcountGrowth5yr": 34.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 41,
+            "applicantsPerRole": 19,
+            "driver": "Explosive enterprise GenAI adoption outpacing experienced talent supply"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 11500,
+          "annualOpenings": 1300,
+          "fteSalary": {
+            "p25": 118000,
+            "median": 148000,
+            "p75": 184000
+          },
+          "contractorDayRate": {
+            "p25": 775,
+            "median": 950,
+            "p75": 1200
+          },
+          "wageGrowthYoY": 8.4,
+          "wageGrowth5yr": 42.0,
+          "headcountGrowth5yr": 32.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 41,
+            "applicantsPerRole": 19,
+            "driver": "Explosive enterprise GenAI adoption outpacing experienced talent supply"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "data-engineer",
+      "title": "Data Engineer",
+      "category": "Data & AI",
+      "codes": {
+        "anzsco": "261399",
+        "soc": "15-1243",
+        "onet": "15-1243.00"
+      },
+      "summary": "Architects and operates scalable data pipelines, cloud warehouses, lakehouses, and real-time analytics infrastructure.",
+      "skills": [
+        "SQL & Python",
+        "Spark / Databricks / Snowflake",
+        "dbt & Orchestration",
+        "Cloud Data Lakes",
+        "Data Governance"
+      ],
+      "pathways": [
+        {
+          "targetId": "ai-ml-engineer",
+          "type": "High-Growth Pivot",
+          "upliftPct": 16,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Feature Stores",
+            "Model Serving & Evals",
+            "LLM Pipelines"
+          ]
+        },
+        {
+          "targetId": "solutions-architect",
+          "type": "Data Architect Track",
+          "upliftPct": 20,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Enterprise Data Modeling",
+            "Cost Optimization",
+            "Security & Privacy"
+          ]
+        },
+        {
+          "targetId": "engineering-manager",
+          "type": "Data Platform Lead",
+          "upliftPct": 28,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Roadmap Ownership",
+            "Cross-Functional Leadership",
+            "Hiring"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 34000,
+          "annualOpenings": 5100,
+          "fteSalary": {
+            "p25": 116000,
+            "median": 145000,
+            "p75": 180000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 31.0,
+          "headcountGrowth5yr": 22.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 385000,
+          "annualOpenings": 34000,
+          "fteSalary": {
+            "p25": 118000,
+            "median": 148000,
+            "p75": 184000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 31.0,
+          "headcountGrowth5yr": 23.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 78000,
+          "annualOpenings": 11500,
+          "fteSalary": {
+            "p25": 59000,
+            "median": 74000,
+            "p75": 92000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 600,
+            "p75": 750
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 31.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 48500,
+          "annualOpenings": 7200,
+          "fteSalary": {
+            "p25": 102000,
+            "median": 128000,
+            "p75": 159000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 31.0,
+          "headcountGrowth5yr": 22.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 340000,
+          "annualOpenings": 38000,
+          "fteSalary": {
+            "p25": 1900000,
+            "median": 2400000,
+            "p75": 3000000
+          },
+          "contractorDayRate": {
+            "p25": 15000,
+            "median": 18000,
+            "p75": 22500
+          },
+          "wageGrowthYoY": 9.2,
+          "wageGrowth5yr": 52.0,
+          "headcountGrowth5yr": 22.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 7200,
+          "annualOpenings": 1100,
+          "fteSalary": {
+            "p25": 103000,
+            "median": 129000,
+            "p75": 160000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 31.0,
+          "headcountGrowth5yr": 22.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 11000,
+          "annualOpenings": 1600,
+          "fteSalary": {
+            "p25": 100000,
+            "median": 125000,
+            "p75": 155000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 31.0,
+          "headcountGrowth5yr": 22.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 52,
+            "applicantsPerRole": 26,
+            "driver": "Organizations modernizing data estates to power AI initiatives"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "cloud-devops-engineer",
+      "title": "Cloud / DevOps / SRE Engineer",
+      "category": "Engineering & Tech",
+      "codes": {
+        "anzsco": "263111",
+        "soc": "15-1244",
+        "onet": "15-1244.00"
+      },
+      "summary": "Automates cloud infrastructure, Kubernetes platforms, reliability engineering, and zero-downtime deployment pipelines.",
+      "skills": [
+        "AWS / GCP / Azure",
+        "Terraform / IaC",
+        "Kubernetes & Docker",
+        "Observability / SRE",
+        "Zero-Trust Security"
+      ],
+      "pathways": [
+        {
+          "targetId": "solutions-architect",
+          "type": "Cloud Architect",
+          "upliftPct": 18,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Multi-Cloud Strategy",
+            "FinOps",
+            "Enterprise Compliance"
+          ]
+        },
+        {
+          "targetId": "cybersecurity-analyst",
+          "type": "Cloud Security (DevSecOps)",
+          "upliftPct": 10,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "IAM & Zero Trust",
+            "Threat Modeling",
+            "CSPM / SIEM"
+          ]
+        },
+        {
+          "targetId": "engineering-manager",
+          "type": "Platform Engineering Lead",
+          "upliftPct": 25,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Developer Experience Strategy",
+            "Incident Leadership",
+            "Budgeting"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 42000,
+          "annualOpenings": 5400,
+          "fteSalary": {
+            "p25": 120000,
+            "median": 150000,
+            "p75": 186000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1025,
+            "p75": 1275
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 19.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 440000,
+          "annualOpenings": 58500,
+          "fteSalary": {
+            "p25": 123000,
+            "median": 154000,
+            "p75": 191000
+          },
+          "contractorDayRate": {
+            "p25": 775,
+            "median": 950,
+            "p75": 1200
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 18.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 94000,
+          "annualOpenings": 12000,
+          "fteSalary": {
+            "p25": 61000,
+            "median": 76000,
+            "p75": 94000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 625,
+            "p75": 775
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 19.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 59500,
+          "annualOpenings": 7700,
+          "fteSalary": {
+            "p25": 106000,
+            "median": 132000,
+            "p75": 164000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 19.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 310000,
+          "annualOpenings": 40500,
+          "fteSalary": {
+            "p25": 2000000,
+            "median": 2500000,
+            "p75": 3100000
+          },
+          "contractorDayRate": {
+            "p25": 15500,
+            "median": 19000,
+            "p75": 24000
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 19.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 8800,
+          "annualOpenings": 1100,
+          "fteSalary": {
+            "p25": 107000,
+            "median": 134000,
+            "p75": 166000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 19.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 13500,
+          "annualOpenings": 1700,
+          "fteSalary": {
+            "p25": 103000,
+            "median": 129000,
+            "p75": 160000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 29.5,
+          "headcountGrowth5yr": 19.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 50,
+            "applicantsPerRole": 23,
+            "driver": "Cloud migrations, FinOps, and platform reliability requirements"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "cybersecurity-analyst",
+      "title": "Cybersecurity Engineer / Analyst",
+      "category": "Engineering & Tech",
+      "codes": {
+        "anzsco": "262112",
+        "soc": "15-1212",
+        "onet": "15-1212.00"
+      },
+      "summary": "Protects cloud infrastructure, enterprise networks, and identities against threats, vulnerabilities, and regulatory risk.",
+      "skills": [
+        "Cloud Security",
+        "SIEM / Threat Hunting",
+        "AppSec & Pen Testing",
+        "ISO 27001 / Essential 8",
+        "Incident Response"
+      ],
+      "pathways": [
+        {
+          "targetId": "solutions-architect",
+          "type": "Security Architect",
+          "upliftPct": 22,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Zero-Trust Architecture",
+            "Board Risk Reporting",
+            "Cloud Landing Zones"
+          ]
+        },
+        {
+          "targetId": "cloud-devops-engineer",
+          "type": "DevSecOps Platform",
+          "upliftPct": 8,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Terraform Automation",
+            "Kubernetes Hardening",
+            "CI/CD Security Gates"
+          ]
+        },
+        {
+          "targetId": "engineering-manager",
+          "type": "CISO / Security Lead",
+          "upliftPct": 35,
+          "years": "4\u20136 yrs",
+          "bridgeSkills": [
+            "Governance & GRC",
+            "Crisis Leadership",
+            "Executive Communication"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 36500,
+          "annualOpenings": 5800,
+          "fteSalary": {
+            "p25": 118000,
+            "median": 148000,
+            "p75": 184000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1050,
+            "p75": 1300
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 27.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 182000,
+          "annualOpenings": 17300,
+          "fteSalary": {
+            "p25": 116000,
+            "median": 145000,
+            "p75": 180000
+          },
+          "contractorDayRate": {
+            "p25": 775,
+            "median": 950,
+            "p75": 1200
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 32.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 68000,
+          "annualOpenings": 13000,
+          "fteSalary": {
+            "p25": 59000,
+            "median": 74000,
+            "p75": 92000
+          },
+          "contractorDayRate": {
+            "p25": 525,
+            "median": 650,
+            "p75": 800
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 25.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 52000,
+          "annualOpenings": 8200,
+          "fteSalary": {
+            "p25": 104000,
+            "median": 130000,
+            "p75": 161000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 27.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 185000,
+          "annualOpenings": 43500,
+          "fteSalary": {
+            "p25": 1900000,
+            "median": 2400000,
+            "p75": 3000000
+          },
+          "contractorDayRate": {
+            "p25": 16000,
+            "median": 19500,
+            "p75": 24500
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 27.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 7700,
+          "annualOpenings": 1200,
+          "fteSalary": {
+            "p25": 106000,
+            "median": 132000,
+            "p75": 164000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 27.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 11500,
+          "annualOpenings": 1900,
+          "fteSalary": {
+            "p25": 102000,
+            "median": 127000,
+            "p75": 157000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 5.8,
+          "wageGrowth5yr": 33.5,
+          "headcountGrowth5yr": 27.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 44,
+            "applicantsPerRole": 21,
+            "driver": "Regulatory compliance mandates and rising AI-assisted cyber threats"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "solutions-architect",
+      "title": "Solutions / Enterprise Architect",
+      "category": "Engineering & Tech",
+      "codes": {
+        "anzsco": "261311",
+        "soc": "15-1299",
+        "onet": "15-1299.08"
+      },
+      "summary": "Translates complex business goals into resilient, cost-effective cloud, integration, and AI system architectures.",
+      "skills": [
+        "Enterprise Cloud Design",
+        "API & Event Architecture",
+        "Executive Alignment",
+        "Security & Governance",
+        "Cost / FinOps"
+      ],
+      "pathways": [
+        {
+          "targetId": "engineering-manager",
+          "type": "VP Engineering / CTO",
+          "upliftPct": 22,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Org Design",
+            "P&L Ownership",
+            "Board Strategy"
+          ]
+        },
+        {
+          "targetId": "ai-ml-engineer",
+          "type": "AI Systems Specialist",
+          "upliftPct": 8,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Foundation Model Ops",
+            "Agent Safety & Evals",
+            "GPU Economics"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Tech Strategy Partner",
+          "upliftPct": 15,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Commercial Business Cases",
+            "M&A Tech Due Diligence",
+            "C-Suite Advisory"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 28500,
+          "annualOpenings": 3400,
+          "fteSalary": {
+            "p25": 140000,
+            "median": 175000,
+            "p75": 217000
+          },
+          "contractorDayRate": {
+            "p25": 975,
+            "median": 1200,
+            "p75": 1500
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 310000,
+          "annualOpenings": 36500,
+          "fteSalary": {
+            "p25": 144000,
+            "median": 180000,
+            "p75": 223000
+          },
+          "contractorDayRate": {
+            "p25": 925,
+            "median": 1125,
+            "p75": 1400
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 64000,
+          "annualOpenings": 7600,
+          "fteSalary": {
+            "p25": 74000,
+            "median": 92000,
+            "p75": 114000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 40500,
+          "annualOpenings": 4800,
+          "fteSalary": {
+            "p25": 123000,
+            "median": 154000,
+            "p75": 191000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1050,
+            "p75": 1300
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 145000,
+          "annualOpenings": 25500,
+          "fteSalary": {
+            "p25": 3050000,
+            "median": 3800000,
+            "p75": 4700000
+          },
+          "contractorDayRate": {
+            "p25": 23000,
+            "median": 28000,
+            "p75": 35000
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 6000,
+          "annualOpenings": 700,
+          "fteSalary": {
+            "p25": 125000,
+            "median": 156000,
+            "p75": 193000
+          },
+          "contractorDayRate": {
+            "p25": 875,
+            "median": 1075,
+            "p75": 1350
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 9100,
+          "annualOpenings": 1100,
+          "fteSalary": {
+            "p25": 120000,
+            "median": 150000,
+            "p75": 186000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1025,
+            "p75": 1275
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 26.5,
+          "headcountGrowth5yr": 16.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 22,
+            "driver": "Requires deep hands-on engineering plus executive communication"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "engineering-manager",
+      "title": "Engineering Manager",
+      "category": "Engineering & Tech",
+      "codes": {
+        "anzsco": "135199",
+        "soc": "11-3021",
+        "onet": "11-3021.00"
+      },
+      "summary": "Leads software and platform engineering teams, balancing technical execution, hiring, career growth, and delivery velocity.",
+      "skills": [
+        "People & Org Leadership",
+        "Technical Strategy",
+        "Delivery & Metrics",
+        "Hiring & Coaching",
+        "Stakeholder Alignment"
+      ],
+      "pathways": [
+        {
+          "targetId": "solutions-architect",
+          "type": "Principal / Distinguished IC",
+          "upliftPct": 5,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "System-Wide Architecture",
+            "RFC Leadership",
+            "Hands-On Prototyping"
+          ]
+        },
+        {
+          "targetId": "product-manager",
+          "type": "VP Product / GM",
+          "upliftPct": 12,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Go-To-Market",
+            "Pricing & Packaging",
+            "P&L Ownership"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Fractional CTO / Advisory",
+          "upliftPct": 18,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Board Governance",
+            "Tech Transformation",
+            "Advisory Sales"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 31000,
+          "annualOpenings": 3100,
+          "fteSalary": {
+            "p25": 154000,
+            "median": 192000,
+            "p75": 238000
+          },
+          "contractorDayRate": {
+            "p25": 1025,
+            "median": 1250,
+            "p75": 1550
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 14.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 595000,
+          "annualOpenings": 48500,
+          "fteSalary": {
+            "p25": 162000,
+            "median": 202000,
+            "p75": 250000
+          },
+          "contractorDayRate": {
+            "p25": 975,
+            "median": 1200,
+            "p75": 1500
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 15.5,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 76000,
+          "annualOpenings": 7000,
+          "fteSalary": {
+            "p25": 78000,
+            "median": 98000,
+            "p75": 122000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 14.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 44000,
+          "annualOpenings": 4400,
+          "fteSalary": {
+            "p25": 135000,
+            "median": 169000,
+            "p75": 210000
+          },
+          "contractorDayRate": {
+            "p25": 900,
+            "median": 1100,
+            "p75": 1375
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 14.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 190000,
+          "annualOpenings": 23000,
+          "fteSalary": {
+            "p25": 3600000,
+            "median": 4500000,
+            "p75": 5600000
+          },
+          "contractorDayRate": {
+            "p25": 26000,
+            "median": 32000,
+            "p75": 40000
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 14.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 6500,
+          "annualOpenings": 700,
+          "fteSalary": {
+            "p25": 137000,
+            "median": 171000,
+            "p75": 212000
+          },
+          "contractorDayRate": {
+            "p25": 900,
+            "median": 1100,
+            "p75": 1375
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 14.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 9900,
+          "annualOpenings": 1000,
+          "fteSalary": {
+            "p25": 132000,
+            "median": 165000,
+            "p75": 205000
+          },
+          "contractorDayRate": {
+            "p25": 875,
+            "median": 1075,
+            "p75": 1350
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 25.0,
+          "headcountGrowth5yr": 14.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 68,
+            "applicantsPerRole": 38,
+            "driver": "Flatter tech orgs increased selectivity for hands-on technical leaders"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "data-scientist",
+      "title": "Data Scientist",
+      "category": "Data & AI",
+      "codes": {
+        "anzsco": "224115",
+        "soc": "15-2051",
+        "onet": "15-2051.00"
+      },
+      "summary": "Applies statistical modeling, experimentation, and machine learning to forecast demand, optimize pricing, and guide product decisions.",
+      "skills": [
+        "Python & SQL",
+        "Causal Inference & A/B",
+        "Predictive Modeling",
+        "Executive Storytelling",
+        "Applied GenAI"
+      ],
+      "pathways": [
+        {
+          "targetId": "ai-ml-engineer",
+          "type": "Production AI Upgrade",
+          "upliftPct": 20,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Software Engineering Rigor",
+            "MLOps & Model Deployment",
+            "LLM Engineering"
+          ]
+        },
+        {
+          "targetId": "product-manager",
+          "type": "AI Product Manager",
+          "upliftPct": 14,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Product Discovery",
+            "Roadmap Prioritization",
+            "Commercial Strategy"
+          ]
+        },
+        {
+          "targetId": "data-engineer",
+          "type": "Data Platform Track",
+          "upliftPct": 6,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Distributed ETL",
+            "dbt / Spark",
+            "Cloud Warehousing"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 22000,
+          "annualOpenings": 3300,
+          "fteSalary": {
+            "p25": 110000,
+            "median": 138000,
+            "p75": 171000
+          },
+          "contractorDayRate": {
+            "p25": 775,
+            "median": 950,
+            "p75": 1200
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 24.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 202900,
+          "annualOpenings": 20800,
+          "fteSalary": {
+            "p25": 115000,
+            "median": 144000,
+            "p75": 179000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 35.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 52000,
+          "annualOpenings": 7400,
+          "fteSalary": {
+            "p25": 54000,
+            "median": 68000,
+            "p75": 84000
+          },
+          "contractorDayRate": {
+            "p25": 475,
+            "median": 575,
+            "p75": 725
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 24.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 31000,
+          "annualOpenings": 4700,
+          "fteSalary": {
+            "p25": 97000,
+            "median": 121000,
+            "p75": 150000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 24.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 225000,
+          "annualOpenings": 25000,
+          "fteSalary": {
+            "p25": 1750000,
+            "median": 2200000,
+            "p75": 2750000
+          },
+          "contractorDayRate": {
+            "p25": 14000,
+            "median": 17000,
+            "p75": 21000
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 24.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 4600,
+          "annualOpenings": 700,
+          "fteSalary": {
+            "p25": 98000,
+            "median": 123000,
+            "p75": 153000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 24.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 7000,
+          "annualOpenings": 1100,
+          "fteSalary": {
+            "p25": 95000,
+            "median": 119000,
+            "p75": 148000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 24.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 71,
+            "applicantsPerRole": 58,
+            "driver": "High graduate supply; employers strongly prefer production ML & business impact"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "business-data-analyst",
+      "title": "Business / Data Analyst",
+      "category": "Data & AI",
+      "codes": {
+        "anzsco": "261111",
+        "soc": "13-1111",
+        "onet": "15-2051.01"
+      },
+      "summary": "Bridges business stakeholders and engineering teams through SQL analytics, BI dashboards, requirements, and process optimization.",
+      "skills": [
+        "SQL & Power BI / Tableau",
+        "Requirements Discovery",
+        "Process Mapping",
+        "Stakeholder Facilitation",
+        "Python Automation"
+      ],
+      "pathways": [
+        {
+          "targetId": "data-engineer",
+          "type": "Technical Step-Up",
+          "upliftPct": 26,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Python & Git",
+            "dbt & Cloud Warehouses",
+            "Pipeline Orchestration"
+          ]
+        },
+        {
+          "targetId": "product-manager",
+          "type": "Product Transition",
+          "upliftPct": 30,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "User Research",
+            "Product Metrics & Strategy",
+            "Agile Prioritization"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Advisory Track",
+          "upliftPct": 24,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Executive Decks",
+            "Financial Modeling",
+            "Operating Model Design"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 92500,
+          "annualOpenings": 11000,
+          "fteSalary": {
+            "p25": 92000,
+            "median": 115000,
+            "p75": 143000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 13.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 875000,
+          "annualOpenings": 121000,
+          "fteSalary": {
+            "p25": 82000,
+            "median": 102000,
+            "p75": 126000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 195000,
+          "annualOpenings": 25000,
+          "fteSalary": {
+            "p25": 43000,
+            "median": 54000,
+            "p75": 67000
+          },
+          "contractorDayRate": {
+            "p25": 400,
+            "median": 500,
+            "p75": 625
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 13.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 131000,
+          "annualOpenings": 16000,
+          "fteSalary": {
+            "p25": 81000,
+            "median": 101000,
+            "p75": 125000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 13.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 640000,
+          "annualOpenings": 84000,
+          "fteSalary": {
+            "p25": 1100000,
+            "median": 1350000,
+            "p75": 1650000
+          },
+          "contractorDayRate": {
+            "p25": 8500,
+            "median": 10500,
+            "p75": 13000
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 13.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 19500,
+          "annualOpenings": 2400,
+          "fteSalary": {
+            "p25": 82000,
+            "median": 102000,
+            "p75": 126000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 13.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 29500,
+          "annualOpenings": 3600,
+          "fteSalary": {
+            "p25": 79000,
+            "median": 99000,
+            "p75": 123000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 3.8,
+          "wageGrowth5yr": 19.5,
+          "headcountGrowth5yr": 13.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 76,
+            "applicantsPerRole": 64,
+            "driver": "Popular entry-to-mid pathway; technical SQL/dbt/AI fluency differentiates"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "product-manager",
+      "title": "Product Manager",
+      "category": "Product & Design",
+      "codes": {
+        "anzsco": "131112",
+        "soc": "11-2021",
+        "onet": "11-2021.00"
+      },
+      "summary": "Owns product vision, customer discovery, roadmap prioritization, and commercial outcomes across engineering and design.",
+      "skills": [
+        "Product Strategy",
+        "Customer Discovery",
+        "SQL & Experimentation",
+        "AI Product Design",
+        "Commercial / GTM"
+      ],
+      "pathways": [
+        {
+          "targetId": "engineering-manager",
+          "type": "VP Product / CPO",
+          "upliftPct": 28,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Multi-Product Portfolio",
+            "P&L Ownership",
+            "Executive Board Strategy"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Strategy & Growth",
+          "upliftPct": 10,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Market Sizing",
+            "Pricing Strategy",
+            "Transformation Advisory"
+          ]
+        },
+        {
+          "targetId": "tech-project-manager",
+          "type": "Program / Delivery Lead",
+          "upliftPct": -4,
+          "years": "1 yr",
+          "bridgeSkills": [
+            "Enterprise Governance",
+            "Vendor Management",
+            "Risk & Dependencies"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 44500,
+          "annualOpenings": 4900,
+          "fteSalary": {
+            "p25": 122000,
+            "median": 152000,
+            "p75": 188000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 410000,
+          "annualOpenings": 53000,
+          "fteSalary": {
+            "p25": 130000,
+            "median": 162000,
+            "p75": 201000
+          },
+          "contractorDayRate": {
+            "p25": 800,
+            "median": 975,
+            "p75": 1225
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 96000,
+          "annualOpenings": 11000,
+          "fteSalary": {
+            "p25": 61000,
+            "median": 76000,
+            "p75": 94000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 600,
+            "p75": 750
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 63000,
+          "annualOpenings": 7000,
+          "fteSalary": {
+            "p25": 107000,
+            "median": 134000,
+            "p75": 166000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 175000,
+          "annualOpenings": 37000,
+          "fteSalary": {
+            "p25": 2250000,
+            "median": 2800000,
+            "p75": 3450000
+          },
+          "contractorDayRate": {
+            "p25": 17000,
+            "median": 21000,
+            "p75": 26000
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 9300,
+          "annualOpenings": 1000,
+          "fteSalary": {
+            "p25": 108000,
+            "median": 135000,
+            "p75": 167000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 14000,
+          "annualOpenings": 1600,
+          "fteSalary": {
+            "p25": 105000,
+            "median": 131000,
+            "p75": 162000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 14.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 74,
+            "applicantsPerRole": 72,
+            "driver": "Very high applicant volume; domain + technical AI PMs stand out"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "ux-product-designer",
+      "title": "UX / Product Designer",
+      "category": "Product & Design",
+      "codes": {
+        "anzsco": "232414",
+        "soc": "15-1255",
+        "onet": "15-1255.00"
+      },
+      "summary": "Crafts intuitive end-to-end digital experiences, design systems, interactive prototypes, and user research insights.",
+      "skills": [
+        "Figma & Design Systems",
+        "User Research & Testing",
+        "Prototyping",
+        "Accessibility (WCAG)",
+        "AI Interaction Patterns"
+      ],
+      "pathways": [
+        {
+          "targetId": "product-manager",
+          "type": "Product Leadership",
+          "upliftPct": 19,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Commercial Metrics",
+            "Business Cases",
+            "Roadmap Prioritization"
+          ]
+        },
+        {
+          "targetId": "software-engineer",
+          "type": "Design Engineer",
+          "upliftPct": 12,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "React / TypeScript",
+            "CSS Architecture",
+            "Component Engineering"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 27000,
+          "annualOpenings": 3100,
+          "fteSalary": {
+            "p25": 102000,
+            "median": 128000,
+            "p75": 159000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 225000,
+          "annualOpenings": 33500,
+          "fteSalary": {
+            "p25": 106000,
+            "median": 132000,
+            "p75": 164000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 15.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 62000,
+          "annualOpenings": 7000,
+          "fteSalary": {
+            "p25": 50000,
+            "median": 62000,
+            "p75": 77000
+          },
+          "contractorDayRate": {
+            "p25": 425,
+            "median": 525,
+            "p75": 650
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 38000,
+          "annualOpenings": 4400,
+          "fteSalary": {
+            "p25": 90000,
+            "median": 113000,
+            "p75": 140000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 120000,
+          "annualOpenings": 23000,
+          "fteSalary": {
+            "p25": 1450000,
+            "median": 1800000,
+            "p75": 2250000
+          },
+          "contractorDayRate": {
+            "p25": 11500,
+            "median": 14000,
+            "p75": 17500
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 5600,
+          "annualOpenings": 700,
+          "fteSalary": {
+            "p25": 91000,
+            "median": 114000,
+            "p75": 141000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 8600,
+          "annualOpenings": 1000,
+          "fteSalary": {
+            "p25": 88000,
+            "median": 110000,
+            "p75": 136000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 3.5,
+          "wageGrowth5yr": 20.5,
+          "headcountGrowth5yr": 13.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 75,
+            "applicantsPerRole": 68,
+            "driver": "Strong portfolio competition; design-system & code-literate designers win"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "tech-project-manager",
+      "title": "Technical Project / Delivery Manager",
+      "category": "Product & Design",
+      "codes": {
+        "anzsco": "135112",
+        "soc": "15-1299",
+        "onet": "15-1299.09"
+      },
+      "summary": "Orchestrates complex IT programs, budgets, vendor dependencies, and agile delivery across multi-disciplinary teams.",
+      "skills": [
+        "Program Governance",
+        "Budget & Risk Control",
+        "Agile / Lean Delivery",
+        "Vendor Management",
+        "Executive Reporting"
+      ],
+      "pathways": [
+        {
+          "targetId": "engineering-manager",
+          "type": "Program Director / Head of Delivery",
+          "upliftPct": 26,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Portfolio Strategy",
+            "C-Suite Governance",
+            "Multi-Million P&L"
+          ]
+        },
+        {
+          "targetId": "product-manager",
+          "type": "Product Owner / PM",
+          "upliftPct": 6,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Outcome Metrics",
+            "Customer Discovery",
+            "Product Strategy"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Transformation Director",
+          "upliftPct": 15,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Operating Model Design",
+            "Change Management",
+            "Client Advisory"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 74000,
+          "annualOpenings": 8100,
+          "fteSalary": {
+            "p25": 118000,
+            "median": 148000,
+            "p75": 184000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 12.6,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 690000,
+          "annualOpenings": 87500,
+          "fteSalary": {
+            "p25": 109000,
+            "median": 136000,
+            "p75": 169000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.5,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 168000,
+          "annualOpenings": 18000,
+          "fteSalary": {
+            "p25": 58000,
+            "median": 72000,
+            "p75": 89000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 600,
+            "p75": 750
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 12.6,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 105000,
+          "annualOpenings": 11500,
+          "fteSalary": {
+            "p25": 104000,
+            "median": 130000,
+            "p75": 161000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 12.6,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 410000,
+          "annualOpenings": 61000,
+          "fteSalary": {
+            "p25": 2100000,
+            "median": 2600000,
+            "p75": 3200000
+          },
+          "contractorDayRate": {
+            "p25": 16000,
+            "median": 19500,
+            "p75": 24500
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 12.6,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 15500,
+          "annualOpenings": 1700,
+          "fteSalary": {
+            "p25": 106000,
+            "median": 132000,
+            "p75": 164000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 12.6,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 23500,
+          "annualOpenings": 2600,
+          "fteSalary": {
+            "p25": 102000,
+            "median": 127000,
+            "p75": 157000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 3.9,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 12.6,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 63,
+            "applicantsPerRole": 45,
+            "driver": "High enterprise digital & ERP modernization demand, especially on contract"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "management-consultant",
+      "title": "Management / Strategy Consultant",
+      "category": "Finance & Consulting",
+      "codes": {
+        "anzsco": "224711",
+        "soc": "13-1111",
+        "onet": "13-1111.00"
+      },
+      "summary": "Advises executives on corporate strategy, operating models, cost transformation, M&A, and AI-enabled productivity.",
+      "skills": [
+        "Strategic Problem Solving",
+        "Financial Modeling",
+        "Executive Persuasion",
+        "Org Transformation",
+        "Market Analysis"
+      ],
+      "pathways": [
+        {
+          "targetId": "product-manager",
+          "type": "Tech Strategy / BizOps",
+          "upliftPct": 10,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Product Analytics",
+            "SaaS Unit Economics",
+            "Cross-Functional Execution"
+          ]
+        },
+        {
+          "targetId": "financial-analyst",
+          "type": "Corporate Development / M&A",
+          "upliftPct": 14,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Valuation & DCF",
+            "Deal Structuring",
+            "Due Diligence"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 98500,
+          "annualOpenings": 11000,
+          "fteSalary": {
+            "p25": 114000,
+            "median": 142000,
+            "p75": 176000
+          },
+          "contractorDayRate": {
+            "p25": 950,
+            "median": 1150,
+            "p75": 1450
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 14.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 1005000,
+          "annualOpenings": 95700,
+          "fteSalary": {
+            "p25": 108000,
+            "median": 135000,
+            "p75": 167000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1050,
+            "p75": 1300
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 11.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 235000,
+          "annualOpenings": 24500,
+          "fteSalary": {
+            "p25": 59000,
+            "median": 74000,
+            "p75": 92000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 14.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 140000,
+          "annualOpenings": 15500,
+          "fteSalary": {
+            "p25": 100000,
+            "median": 125000,
+            "p75": 155000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 14.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 290000,
+          "annualOpenings": 81000,
+          "fteSalary": {
+            "p25": 2000000,
+            "median": 2500000,
+            "p75": 3100000
+          },
+          "contractorDayRate": {
+            "p25": 18000,
+            "median": 22000,
+            "p75": 27500
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 14.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 20500,
+          "annualOpenings": 2300,
+          "fteSalary": {
+            "p25": 101000,
+            "median": 126000,
+            "p75": 156000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1025,
+            "p75": 1275
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 14.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 31500,
+          "annualOpenings": 3500,
+          "fteSalary": {
+            "p25": 98000,
+            "median": 122000,
+            "p75": 151000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 4.0,
+          "wageGrowth5yr": 22.5,
+          "headcountGrowth5yr": 14.2,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 72,
+            "applicantsPerRole": 60,
+            "driver": "Strong independent boutique/contractor market for ex-MBB/Big-4 specialists"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "financial-analyst",
+      "title": "Financial Analyst / FP&A",
+      "category": "Finance & Consulting",
+      "codes": {
+        "anzsco": "222311",
+        "soc": "13-2051",
+        "onet": "13-2051.00"
+      },
+      "summary": "Builds financial forecasts, unit-economics models, board packs, and capital allocation analyses for business leadership.",
+      "skills": [
+        "3-Statement Modeling",
+        "FP&A & Forecasting",
+        "SQL / Power BI",
+        "Commercial Partnering",
+        "Valuation / DCF"
+      ],
+      "pathways": [
+        {
+          "targetId": "chartered-accountant",
+          "type": "Finance Manager / CFO Track",
+          "upliftPct": 22,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "CA / CPA / CFA",
+            "Statutory Reporting",
+            "Treasury & Capital"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Strategy & M&A Advisory",
+          "upliftPct": 18,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Commercial Due Diligence",
+            "Executive Storytelling",
+            "Market Strategy"
+          ]
+        },
+        {
+          "targetId": "actuary-quant",
+          "type": "Quant / Risk Analytics",
+          "upliftPct": 34,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Stochastic Modeling",
+            "Python Quantitative Libs",
+            "Derivatives / Risk"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 51000,
+          "annualOpenings": 5200,
+          "fteSalary": {
+            "p25": 98000,
+            "median": 122000,
+            "p75": 151000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 398000,
+          "annualOpenings": 30700,
+          "fteSalary": {
+            "p25": 90000,
+            "median": 112000,
+            "p75": 139000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 775,
+            "p75": 975
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 9.2,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 128000,
+          "annualOpenings": 11500,
+          "fteSalary": {
+            "p25": 50000,
+            "median": 62000,
+            "p75": 77000
+          },
+          "contractorDayRate": {
+            "p25": 425,
+            "median": 525,
+            "p75": 650
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 72500,
+          "annualOpenings": 7400,
+          "fteSalary": {
+            "p25": 86000,
+            "median": 107000,
+            "p75": 133000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 384000,
+          "annualOpenings": 39000,
+          "fteSalary": {
+            "p25": 1800000,
+            "median": 2250000,
+            "p75": 2800000
+          },
+          "contractorDayRate": {
+            "p25": 12500,
+            "median": 15500,
+            "p75": 19500
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 11000,
+          "annualOpenings": 1100,
+          "fteSalary": {
+            "p25": 87000,
+            "median": 109000,
+            "p75": 135000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 38000,
+          "annualOpenings": 1700,
+          "fteSalary": {
+            "p25": 86000,
+            "median": 108000,
+            "p75": 134000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 21.0,
+          "headcountGrowth5yr": 10.8,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 69,
+            "applicantsPerRole": 48,
+            "driver": "Steady demand for commercially sharp analysts who pair Excel with SQL/BI"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "chartered-accountant",
+      "title": "Chartered Accountant / CPA",
+      "category": "Finance & Consulting",
+      "codes": {
+        "anzsco": "221111",
+        "soc": "13-2011",
+        "onet": "13-2011.00"
+      },
+      "summary": "Manages statutory reporting, tax advisory, audit, financial control, and strategic CFO services across businesses.",
+      "skills": [
+        "IFRS / GAAP Reporting",
+        "Tax & Structuring",
+        "ERP / NetSuite / Xero",
+        "Audit & Controls",
+        "Commercial Advisory"
+      ],
+      "pathways": [
+        {
+          "targetId": "financial-analyst",
+          "type": "Commercial Finance / FP&A",
+          "upliftPct": 14,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Forward Forecasting",
+            "SaaS / Unit Economics",
+            "Board Presentation"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Fractional CFO / Advisory",
+          "upliftPct": 32,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Capital Raising",
+            "M&A Transactions",
+            "Executive Advisory"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 198000,
+          "annualOpenings": 17500,
+          "fteSalary": {
+            "p25": 94000,
+            "median": 118000,
+            "p75": 146000
+          },
+          "contractorDayRate": {
+            "p25": 725,
+            "median": 875,
+            "p75": 1100
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 9.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 1562000,
+          "annualOpenings": 130800,
+          "fteSalary": {
+            "p25": 83000,
+            "median": 104000,
+            "p75": 129000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 775,
+            "p75": 975
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 6.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 395000,
+          "annualOpenings": 39500,
+          "fteSalary": {
+            "p25": 46000,
+            "median": 58000,
+            "p75": 72000
+          },
+          "contractorDayRate": {
+            "p25": 425,
+            "median": 525,
+            "p75": 650
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 9.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 281000,
+          "annualOpenings": 25000,
+          "fteSalary": {
+            "p25": 83000,
+            "median": 104000,
+            "p75": 129000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 775,
+            "p75": 975
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 9.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 410000,
+          "annualOpenings": 131000,
+          "fteSalary": {
+            "p25": 1300000,
+            "median": 1650000,
+            "p75": 2050000
+          },
+          "contractorDayRate": {
+            "p25": 11000,
+            "median": 13500,
+            "p75": 17000
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 9.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 41500,
+          "annualOpenings": 3700,
+          "fteSalary": {
+            "p25": 84000,
+            "median": 105000,
+            "p75": 130000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 775,
+            "p75": 975
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 9.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 63500,
+          "annualOpenings": 5600,
+          "fteSalary": {
+            "p25": 81000,
+            "median": 101000,
+            "p75": 125000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 4.4,
+          "wageGrowth5yr": 22.0,
+          "headcountGrowth5yr": 9.4,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 55,
+            "applicantsPerRole": 24,
+            "driver": "Declining accounting graduate pipeline vs growing compliance & ESG demands"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "actuary-quant",
+      "title": "Actuary / Quantitative Analyst",
+      "category": "Finance & Consulting",
+      "codes": {
+        "anzsco": "224111",
+        "soc": "15-2011",
+        "onet": "15-2011.00"
+      },
+      "summary": "Quantifies complex financial, insurance, climate, and trading risk using advanced probability, pricing models, and code.",
+      "skills": [
+        "Actuarial / Quant Math",
+        "Python / R / C++",
+        "Pricing & Reserving",
+        "Capital & Risk Modeling",
+        "Regulatory Capital"
+      ],
+      "pathways": [
+        {
+          "targetId": "ai-ml-engineer",
+          "type": "Quant AI / Pricing ML",
+          "upliftPct": 14,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Deep Learning / XGBoost",
+            "Production ML Ops",
+            "Real-Time Pricing APIs"
+          ]
+        },
+        {
+          "targetId": "data-scientist",
+          "type": "Chief Risk / Analytics Officer",
+          "upliftPct": 22,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Board Risk Governance",
+            "Enterprise Data Strategy",
+            "Leadership"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 6400,
+          "annualOpenings": 800,
+          "fteSalary": {
+            "p25": 138000,
+            "median": 172000,
+            "p75": 213000
+          },
+          "contractorDayRate": {
+            "p25": 1025,
+            "median": 1250,
+            "p75": 1550
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 33500,
+          "annualOpenings": 2200,
+          "fteSalary": {
+            "p25": 124000,
+            "median": 155000,
+            "p75": 192000
+          },
+          "contractorDayRate": {
+            "p25": 900,
+            "median": 1100,
+            "p75": 1375
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 22.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 21500,
+          "annualOpenings": 1700,
+          "fteSalary": {
+            "p25": 70000,
+            "median": 88000,
+            "p75": 109000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 750,
+            "p75": 950
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 9100,
+          "annualOpenings": 1100,
+          "fteSalary": {
+            "p25": 121000,
+            "median": 151000,
+            "p75": 187000
+          },
+          "contractorDayRate": {
+            "p25": 900,
+            "median": 1100,
+            "p75": 1375
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 48000,
+          "annualOpenings": 5600,
+          "fteSalary": {
+            "p25": 2550000,
+            "median": 3200000,
+            "p75": 3950000
+          },
+          "contractorDayRate": {
+            "p25": 19000,
+            "median": 23000,
+            "p75": 29000
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 1300,
+          "annualOpenings": 200,
+          "fteSalary": {
+            "p25": 122000,
+            "median": 153000,
+            "p75": 190000
+          },
+          "contractorDayRate": {
+            "p25": 900,
+            "median": 1100,
+            "p75": 1375
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 4200,
+          "annualOpenings": 200,
+          "fteSalary": {
+            "p25": 114000,
+            "median": 142000,
+            "p75": 176000
+          },
+          "contractorDayRate": {
+            "p25": 775,
+            "median": 950,
+            "p75": 1200
+          },
+          "wageGrowthYoY": 5.3,
+          "wageGrowth5yr": 28.0,
+          "headcountGrowth5yr": 19.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 46,
+            "applicantsPerRole": 15,
+            "driver": "High fellowship exam barrier creates enduring scarcity and strong pricing power"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "registered-nurse",
+      "title": "Registered Nurse (RN)",
+      "category": "Healthcare & Science",
+      "codes": {
+        "anzsco": "254499",
+        "soc": "29-1141",
+        "onet": "29-1141.00"
+      },
+      "summary": "Delivers clinical patient care across hospitals, ICU, community health, and high-rate agency/travel nursing contracts.",
+      "skills": [
+        "Clinical Assessment",
+        "Acute / ICU Care",
+        "Medication Safety",
+        "EMR Systems",
+        "Patient Advocacy"
+      ],
+      "pathways": [
+        {
+          "targetId": "pharmacist",
+          "type": "Nurse Practitioner (NP)",
+          "upliftPct": 32,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Master of Nursing (NP)",
+            "Prescribing Authority",
+            "Autonomous Diagnostics"
+          ]
+        },
+        {
+          "targetId": "tech-project-manager",
+          "type": "Clinical Informatics / Digital Health",
+          "upliftPct": 28,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "EMR Implementation",
+            "Health Data Standards (FHIR)",
+            "Clinical Change Mgmt"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 342000,
+          "annualOpenings": 34000,
+          "fteSalary": {
+            "p25": 78000,
+            "median": 98000,
+            "p75": 122000
+          },
+          "contractorDayRate": {
+            "p25": 525,
+            "median": 650,
+            "p75": 800
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 14.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 3305000,
+          "annualOpenings": 194500,
+          "fteSalary": {
+            "p25": 75000,
+            "median": 94000,
+            "p75": 117000
+          },
+          "contractorDayRate": {
+            "p25": 550,
+            "median": 675,
+            "p75": 850
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 6.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 745000,
+          "annualOpenings": 76500,
+          "fteSalary": {
+            "p25": 34000,
+            "median": 42000,
+            "p75": 52000
+          },
+          "contractorDayRate": {
+            "p25": 300,
+            "median": 375,
+            "p75": 475
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 11.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 325000,
+          "annualOpenings": 48500,
+          "fteSalary": {
+            "p25": 74000,
+            "median": 92000,
+            "p75": 114000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 625,
+            "p75": 775
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 14.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 2565000,
+          "annualOpenings": 255000,
+          "fteSalary": {
+            "p25": 1450000,
+            "median": 1800000,
+            "p75": 2250000
+          },
+          "contractorDayRate": {
+            "p25": 10000,
+            "median": 12000,
+            "p75": 15000
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 14.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 72000,
+          "annualOpenings": 7100,
+          "fteSalary": {
+            "p25": 70000,
+            "median": 87000,
+            "p75": 108000
+          },
+          "contractorDayRate": {
+            "p25": 475,
+            "median": 575,
+            "p75": 725
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 14.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 109000,
+          "annualOpenings": 11000,
+          "fteSalary": {
+            "p25": 67000,
+            "median": 84000,
+            "p75": 104000
+          },
+          "contractorDayRate": {
+            "p25": 450,
+            "median": 550,
+            "p75": 700
+          },
+          "wageGrowthYoY": 5.2,
+          "wageGrowth5yr": 23.5,
+          "headcountGrowth5yr": 14.6,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 43,
+            "applicantsPerRole": 9,
+            "driver": "Ageing population and retention pressure driving strong agency/travel premiums"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "pharmacist",
+      "title": "Pharmacist",
+      "category": "Healthcare & Science",
+      "codes": {
+        "anzsco": "251513",
+        "soc": "29-1051",
+        "onet": "29-1051.00"
+      },
+      "summary": "Oversees medication management, clinical pharmacy, hospital dispensing, and locum contracting across metro and regional care.",
+      "skills": [
+        "Clinical Therapeutics",
+        "Medication Review",
+        "Regulatory Compliance",
+        "Vaccination / Scope Expansion",
+        "Locum Operations"
+      ],
+      "pathways": [
+        {
+          "targetId": "medical-gp",
+          "type": "Medical Affairs / Pharma Industry",
+          "upliftPct": 35,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Clinical Trials",
+            "Regulatory Affairs (TGA/FDA)",
+            "Medical Science Liaison"
+          ]
+        },
+        {
+          "targetId": "management-consultant",
+          "type": "Pharmacy Owner / Healthcare Ops",
+          "upliftPct": 30,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Retail P&L",
+            "Healthcare Supply Chain",
+            "People Management"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 35000,
+          "annualOpenings": 2900,
+          "fteSalary": {
+            "p25": 85000,
+            "median": 106000,
+            "p75": 131000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 625,
+            "p75": 775
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 9.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 338000,
+          "annualOpenings": 31500,
+          "fteSalary": {
+            "p25": 110000,
+            "median": 138000,
+            "p75": 171000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 5.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 64000,
+          "annualOpenings": 6500,
+          "fteSalary": {
+            "p25": 42000,
+            "median": 52000,
+            "p75": 64000
+          },
+          "contractorDayRate": {
+            "p25": 350,
+            "median": 425,
+            "p75": 525
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 9.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 49500,
+          "annualOpenings": 4100,
+          "fteSalary": {
+            "p25": 74000,
+            "median": 93000,
+            "p75": 115000
+          },
+          "contractorDayRate": {
+            "p25": 450,
+            "median": 550,
+            "p75": 700
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 9.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 261000,
+          "annualOpenings": 22000,
+          "fteSalary": {
+            "p25": 1550000,
+            "median": 1950000,
+            "p75": 2400000
+          },
+          "contractorDayRate": {
+            "p25": 9500,
+            "median": 11500,
+            "p75": 14500
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 9.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 7300,
+          "annualOpenings": 600,
+          "fteSalary": {
+            "p25": 75000,
+            "median": 94000,
+            "p75": 117000
+          },
+          "contractorDayRate": {
+            "p25": 450,
+            "median": 550,
+            "p75": 700
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 9.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 11000,
+          "annualOpenings": 900,
+          "fteSalary": {
+            "p25": 73000,
+            "median": 91000,
+            "p75": 113000
+          },
+          "contractorDayRate": {
+            "p25": 450,
+            "median": 550,
+            "p75": 700
+          },
+          "wageGrowthYoY": 4.1,
+          "wageGrowth5yr": 18.5,
+          "headcountGrowth5yr": 9.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 49,
+            "applicantsPerRole": 11,
+            "driver": "Regional & hospital locum shortages pushing higher hourly locum rates"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "medical-gp",
+      "title": "Medical Practitioner / GP",
+      "category": "Healthcare & Science",
+      "codes": {
+        "anzsco": "253111",
+        "soc": "29-1215",
+        "onet": "29-1215.00"
+      },
+      "summary": "Provides primary care diagnosis, chronic disease management, and telehealth/locum medical services.",
+      "skills": [
+        "Primary Care Medicine",
+        "Preventative Diagnostics",
+        "Telehealth & Digital Care",
+        "Practice Billing",
+        "Minor Procedures"
+      ],
+      "pathways": [
+        {
+          "targetId": "management-consultant",
+          "type": "Medical Director / HealthTech",
+          "upliftPct": 18,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "Clinical Governance",
+            "Digital Health AI",
+            "Practice Ownership"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 41500,
+          "annualOpenings": 3600,
+          "fteSalary": {
+            "p25": 196000,
+            "median": 245000,
+            "p75": 304000
+          },
+          "contractorDayRate": {
+            "p25": 1525,
+            "median": 1850,
+            "p75": 2300
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 415000,
+          "annualOpenings": 39000,
+          "fteSalary": {
+            "p25": 212000,
+            "median": 265000,
+            "p75": 329000
+          },
+          "contractorDayRate": {
+            "p25": 1550,
+            "median": 1900,
+            "p75": 2375
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 8.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 62000,
+          "annualOpenings": 8100,
+          "fteSalary": {
+            "p25": 88000,
+            "median": 110000,
+            "p75": 136000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 49000,
+          "annualOpenings": 5100,
+          "fteSalary": {
+            "p25": 204000,
+            "median": 255000,
+            "p75": 316000
+          },
+          "contractorDayRate": {
+            "p25": 1425,
+            "median": 1750,
+            "p75": 2200
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 311000,
+          "annualOpenings": 27000,
+          "fteSalary": {
+            "p25": 3650000,
+            "median": 4550000,
+            "p75": 5650000
+          },
+          "contractorDayRate": {
+            "p25": 28000,
+            "median": 34000,
+            "p75": 42500
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 8700,
+          "annualOpenings": 800,
+          "fteSalary": {
+            "p25": 174000,
+            "median": 218000,
+            "p75": 270000
+          },
+          "contractorDayRate": {
+            "p25": 1350,
+            "median": 1650,
+            "p75": 2050
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 13500,
+          "annualOpenings": 1200,
+          "fteSalary": {
+            "p25": 169000,
+            "median": 211000,
+            "p75": 262000
+          },
+          "contractorDayRate": {
+            "p25": 1300,
+            "median": 1600,
+            "p75": 2000
+          },
+          "wageGrowthYoY": 4.8,
+          "wageGrowth5yr": 24.0,
+          "headcountGrowth5yr": 13.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 38,
+            "applicantsPerRole": 6,
+            "driver": "Severe regional and outer-metro GP shortage with high locum day rates"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "civil-structural-engineer",
+      "title": "Civil / Structural Engineer",
+      "category": "Trades & Construction",
+      "codes": {
+        "anzsco": "233211",
+        "soc": "17-2051",
+        "onet": "17-2051.00"
+      },
+      "summary": "Designs and delivers transport, renewable energy, water, and structural building infrastructure projects.",
+      "skills": [
+        "Structural Analysis",
+        "BIM / AutoCAD / Civil 3D",
+        "CPEng / PE Chartership",
+        "Infrastructure Standards",
+        "Project Controls"
+      ],
+      "pathways": [
+        {
+          "targetId": "construction-pm",
+          "type": "Infrastructure Project Director",
+          "upliftPct": 28,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Commercial Contracts",
+            "Large-Scale Scheduling",
+            "Client Delivery"
+          ]
+        },
+        {
+          "targetId": "solutions-architect",
+          "type": "Energy Transition / Digital Twin Lead",
+          "upliftPct": 22,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "GIS & Digital Twins",
+            "Grid / Renewables",
+            "Systems Integration"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 64500,
+          "annualOpenings": 6800,
+          "fteSalary": {
+            "p25": 102000,
+            "median": 128000,
+            "p75": 159000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 16.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 342000,
+          "annualOpenings": 22900,
+          "fteSalary": {
+            "p25": 85000,
+            "median": 106000,
+            "p75": 131000
+          },
+          "contractorDayRate": {
+            "p25": 625,
+            "median": 775,
+            "p75": 975
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 6.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 115000,
+          "annualOpenings": 15500,
+          "fteSalary": {
+            "p25": 43000,
+            "median": 54000,
+            "p75": 67000
+          },
+          "contractorDayRate": {
+            "p25": 400,
+            "median": 500,
+            "p75": 625
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 16.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 91500,
+          "annualOpenings": 9700,
+          "fteSalary": {
+            "p25": 90000,
+            "median": 113000,
+            "p75": 140000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 16.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 484000,
+          "annualOpenings": 51000,
+          "fteSalary": {
+            "p25": 1900000,
+            "median": 2350000,
+            "p75": 2900000
+          },
+          "contractorDayRate": {
+            "p25": 14000,
+            "median": 17000,
+            "p75": 21000
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 16.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 13500,
+          "annualOpenings": 1400,
+          "fteSalary": {
+            "p25": 91000,
+            "median": 114000,
+            "p75": 141000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 16.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 20500,
+          "annualOpenings": 2200,
+          "fteSalary": {
+            "p25": 88000,
+            "median": 110000,
+            "p75": 136000
+          },
+          "contractorDayRate": {
+            "p25": 650,
+            "median": 800,
+            "p75": 1000
+          },
+          "wageGrowthYoY": 4.9,
+          "wageGrowth5yr": 26.0,
+          "headcountGrowth5yr": 16.5,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 47,
+            "applicantsPerRole": 17,
+            "driver": "Multi-decade renewable energy, housing, and public transport pipeline"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "electrician",
+      "title": "Licensed Electrician",
+      "category": "Trades & Construction",
+      "codes": {
+        "anzsco": "341111",
+        "soc": "47-2111",
+        "onet": "47-2111.00"
+      },
+      "summary": "Installs, commissions, and maintains residential, commercial, industrial, solar/battery, and data-center electrical systems.",
+      "skills": [
+        "HV / Industrial Switching",
+        "Solar, EV & Battery Storage",
+        "Data Center Power",
+        "PLC & Automation",
+        "Electrical Compliance"
+      ],
+      "pathways": [
+        {
+          "targetId": "construction-pm",
+          "type": "Electrical Contractor / Business Owner",
+          "upliftPct": 38,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Contractor Licensing",
+            "Quoting & Estimation",
+            "Crew Management"
+          ]
+        },
+        {
+          "targetId": "civil-structural-engineer",
+          "type": "Power & Automation Specialist",
+          "upliftPct": 24,
+          "years": "2\u20134 yrs",
+          "bridgeSkills": [
+            "PLC / SCADA",
+            "HV Engineering",
+            "Renewable Microgrids"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 174000,
+          "annualOpenings": 17000,
+          "fteSalary": {
+            "p25": 90000,
+            "median": 112000,
+            "p75": 139000
+          },
+          "contractorDayRate": {
+            "p25": 675,
+            "median": 825,
+            "p75": 1025
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 15.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 798000,
+          "annualOpenings": 80200,
+          "fteSalary": {
+            "p25": 59000,
+            "median": 74000,
+            "p75": 92000
+          },
+          "contractorDayRate": {
+            "p25": 500,
+            "median": 600,
+            "p75": 750
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 11.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 255000,
+          "annualOpenings": 38500,
+          "fteSalary": {
+            "p25": 37000,
+            "median": 46000,
+            "p75": 57000
+          },
+          "contractorDayRate": {
+            "p25": 300,
+            "median": 375,
+            "p75": 475
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 15.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 247000,
+          "annualOpenings": 24500,
+          "fteSalary": {
+            "p25": 79000,
+            "median": 99000,
+            "p75": 123000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 15.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 1305000,
+          "annualOpenings": 129000,
+          "fteSalary": {
+            "p25": 1650000,
+            "median": 2050000,
+            "p75": 2550000
+          },
+          "contractorDayRate": {
+            "p25": 12500,
+            "median": 15500,
+            "p75": 19500
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 15.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 31000,
+          "annualOpenings": 3600,
+          "fteSalary": {
+            "p25": 74000,
+            "median": 92000,
+            "p75": 114000
+          },
+          "contractorDayRate": {
+            "p25": 550,
+            "median": 675,
+            "p75": 850
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 15.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 55500,
+          "annualOpenings": 5500,
+          "fteSalary": {
+            "p25": 77000,
+            "median": 96000,
+            "p75": 119000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 5.6,
+          "wageGrowth5yr": 29.0,
+          "headcountGrowth5yr": 15.2,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "Acute Shortage",
+            "fillRatePct": 42,
+            "applicantsPerRole": 10,
+            "driver": "Electrification, renewables, and AI data-center buildouts surging demand"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "construction-pm",
+      "title": "Construction Project Manager",
+      "category": "Trades & Construction",
+      "codes": {
+        "anzsco": "133111",
+        "soc": "11-9021",
+        "onet": "11-9021.00"
+      },
+      "summary": "Leads commercial, civil, and residential builds from tender to handover, managing subcontractors, safety, and margins.",
+      "skills": [
+        "Contract Administration",
+        "Cost Control & Margins",
+        "Program Scheduling",
+        "WHS / Safety Compliance",
+        "Subcontractor Negotiation"
+      ],
+      "pathways": [
+        {
+          "targetId": "management-consultant",
+          "type": "Development Director / Principal",
+          "upliftPct": 30,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Feasibility & Finance",
+            "Land Acquisition",
+            "Joint Ventures"
+          ]
+        },
+        {
+          "targetId": "civil-structural-engineer",
+          "type": "Commercial / Client-Side PM",
+          "upliftPct": 12,
+          "years": "2\u20133 yrs",
+          "bridgeSkills": [
+            "Asset Advisory",
+            "Procurement Strategy",
+            "Government Tenders"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 118000,
+          "annualOpenings": 11000,
+          "fteSalary": {
+            "p25": 130000,
+            "median": 162000,
+            "p75": 201000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1050,
+            "p75": 1300
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 12.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 524000,
+          "annualOpenings": 45600,
+          "fteSalary": {
+            "p25": 94000,
+            "median": 118000,
+            "p75": 146000
+          },
+          "contractorDayRate": {
+            "p25": 700,
+            "median": 850,
+            "p75": 1050
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 9.0,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 192000,
+          "annualOpenings": 24500,
+          "fteSalary": {
+            "p25": 54000,
+            "median": 68000,
+            "p75": 84000
+          },
+          "contractorDayRate": {
+            "p25": 450,
+            "median": 550,
+            "p75": 700
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 12.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 168000,
+          "annualOpenings": 15500,
+          "fteSalary": {
+            "p25": 114000,
+            "median": 143000,
+            "p75": 177000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 12.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 889000,
+          "annualOpenings": 82000,
+          "fteSalary": {
+            "p25": 2400000,
+            "median": 3000000,
+            "p75": 3700000
+          },
+          "contractorDayRate": {
+            "p25": 16000,
+            "median": 19500,
+            "p75": 24500
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 12.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 25000,
+          "annualOpenings": 2300,
+          "fteSalary": {
+            "p25": 115000,
+            "median": 144000,
+            "p75": 179000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 925,
+            "p75": 1150
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 12.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 38000,
+          "annualOpenings": 3500,
+          "fteSalary": {
+            "p25": 111000,
+            "median": 139000,
+            "p75": 172000
+          },
+          "contractorDayRate": {
+            "p25": 750,
+            "median": 900,
+            "p75": 1125
+          },
+          "wageGrowthYoY": 5.1,
+          "wageGrowth5yr": 27.5,
+          "headcountGrowth5yr": 12.8,
+          "competition": {
+            "level": "Low",
+            "shortageStatus": "National Shortage",
+            "fillRatePct": 48,
+            "applicantsPerRole": 18,
+            "driver": "Infrastructure & housing delivery crunch driving strong senior PM packages"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "corporate-lawyer",
+      "title": "Corporate / Tech Lawyer",
+      "category": "Finance & Consulting",
+      "codes": {
+        "anzsco": "271311",
+        "soc": "23-1011",
+        "onet": "23-1011.00"
+      },
+      "summary": "Advises on commercial contracts, M&A, privacy/AI regulation, employment law, and high-rate fractional General Counsel work.",
+      "skills": [
+        "Commercial Contracting",
+        "Privacy & AI Governance",
+        "M&A / Corporate Law",
+        "Negotiation",
+        "Regulatory Risk"
+      ],
+      "pathways": [
+        {
+          "targetId": "management-consultant",
+          "type": "General Counsel / Fractional GC",
+          "upliftPct": 36,
+          "years": "3\u20135 yrs",
+          "bridgeSkills": [
+            "Board Advisory",
+            "Enterprise Risk",
+            "Commercial Strategy"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 86500,
+          "annualOpenings": 7400,
+          "fteSalary": {
+            "p25": 116000,
+            "median": 145000,
+            "p75": 180000
+          },
+          "contractorDayRate": {
+            "p25": 950,
+            "median": 1150,
+            "p75": 1450
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 11.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 859000,
+          "annualOpenings": 35600,
+          "fteSalary": {
+            "p25": 131000,
+            "median": 164000,
+            "p75": 203000
+          },
+          "contractorDayRate": {
+            "p25": 1025,
+            "median": 1250,
+            "p75": 1550
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 5.2,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 184000,
+          "annualOpenings": 16500,
+          "fteSalary": {
+            "p25": 69000,
+            "median": 86000,
+            "p75": 107000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 11.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 123000,
+          "annualOpenings": 10500,
+          "fteSalary": {
+            "p25": 102000,
+            "median": 128000,
+            "p75": 159000
+          },
+          "contractorDayRate": {
+            "p25": 825,
+            "median": 1000,
+            "p75": 1250
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 11.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 648000,
+          "annualOpenings": 55500,
+          "fteSalary": {
+            "p25": 2150000,
+            "median": 2700000,
+            "p75": 3350000
+          },
+          "contractorDayRate": {
+            "p25": 17500,
+            "median": 21500,
+            "p75": 27000
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 11.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 18000,
+          "annualOpenings": 1600,
+          "fteSalary": {
+            "p25": 103000,
+            "median": 129000,
+            "p75": 160000
+          },
+          "contractorDayRate": {
+            "p25": 850,
+            "median": 1025,
+            "p75": 1275
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 11.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 14500,
+          "annualOpenings": 2400,
+          "fteSalary": {
+            "p25": 116000,
+            "median": 145000,
+            "p75": 180000
+          },
+          "contractorDayRate": {
+            "p25": 800,
+            "median": 975,
+            "p75": 1225
+          },
+          "wageGrowthYoY": 4.3,
+          "wageGrowth5yr": 23.0,
+          "headcountGrowth5yr": 11.4,
+          "competition": {
+            "level": "Moderate",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 65,
+            "applicantsPerRole": 44,
+            "driver": "Competitive graduate entry; 4\u20138 PQE commercial/tech lawyers in strong demand"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    },
+    {
+      "id": "growth-marketing-lead",
+      "title": "Digital Marketing / Growth Lead",
+      "category": "Product & Design",
+      "codes": {
+        "anzsco": "225113",
+        "soc": "13-1161",
+        "onet": "13-1161.00"
+      },
+      "summary": "Drives customer acquisition, lifecycle retention, attribution analytics, and AI-automated growth loops.",
+      "skills": [
+        "Paid Acquisition & SEO",
+        "Conversion & Funnel Analytics",
+        "Lifecycle / CRM",
+        "AI Content & Automation",
+        "Attribution Modeling"
+      ],
+      "pathways": [
+        {
+          "targetId": "product-manager",
+          "type": "Growth Product Manager",
+          "upliftPct": 25,
+          "years": "1\u20133 yrs",
+          "bridgeSkills": [
+            "A/B Experimentation",
+            "SQL & Cohort Analysis",
+            "Activation Flows"
+          ]
+        },
+        {
+          "targetId": "business-data-analyst",
+          "type": "Marketing Analytics / RevOps",
+          "upliftPct": 12,
+          "years": "1\u20132 yrs",
+          "bridgeSkills": [
+            "Attribution Modeling",
+            "CRM Architecture",
+            "SQL / BI"
+          ]
+        }
+      ],
+      "markets": {
+        "AU": {
+          "workforceCount": 78000,
+          "annualOpenings": 8200,
+          "fteSalary": {
+            "p25": 94000,
+            "median": 118000,
+            "p75": 146000
+          },
+          "contractorDayRate": {
+            "p25": 650,
+            "median": 800,
+            "p75": 1000
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "Jobs and Skills Australia (JSA) & OSL 2025"
+        },
+        "US": {
+          "workforceCount": 904000,
+          "annualOpenings": 88500,
+          "fteSalary": {
+            "p25": 86000,
+            "median": 108000,
+            "p75": 134000
+          },
+          "contractorDayRate": {
+            "p25": 600,
+            "median": 725,
+            "p75": 900
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 8.0,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "US Bureau of Labor Statistics (BLS OEWS & Projections)"
+        },
+        "UK": {
+          "workforceCount": 195000,
+          "annualOpenings": 18500,
+          "fteSalary": {
+            "p25": 45000,
+            "median": 56000,
+            "p75": 69000
+          },
+          "contractorDayRate": {
+            "p25": 400,
+            "median": 475,
+            "p75": 600
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "UK ONS ASHE & Nomis Labour Market Data"
+        },
+        "CA": {
+          "workforceCount": 111000,
+          "annualOpenings": 11500,
+          "fteSalary": {
+            "p25": 83000,
+            "median": 104000,
+            "p75": 129000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "Statistics Canada & Job Bank Wage Benchmarks"
+        },
+        "IN": {
+          "workforceCount": 586000,
+          "annualOpenings": 61500,
+          "fteSalary": {
+            "p25": 1750000,
+            "median": 2200000,
+            "p75": 2750000
+          },
+          "contractorDayRate": {
+            "p25": 12500,
+            "median": 15000,
+            "p75": 19000
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "PLFS / NASSCOM & Open Market Benchmarks"
+        },
+        "NZ": {
+          "workforceCount": 16500,
+          "annualOpenings": 1700,
+          "fteSalary": {
+            "p25": 84000,
+            "median": 105000,
+            "p75": 130000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "Stats NZ & MBIE Occupation Outlook"
+        },
+        "SG": {
+          "workforceCount": 25000,
+          "annualOpenings": 2600,
+          "fteSalary": {
+            "p25": 81000,
+            "median": 101000,
+            "p75": 125000
+          },
+          "contractorDayRate": {
+            "p25": 575,
+            "median": 700,
+            "p75": 875
+          },
+          "wageGrowthYoY": 3.4,
+          "wageGrowth5yr": 18.0,
+          "headcountGrowth5yr": 11.5,
+          "competition": {
+            "level": "High",
+            "shortageStatus": "Balanced",
+            "fillRatePct": 78,
+            "applicantsPerRole": 76,
+            "driver": "High competition for generalists; data-driven B2B & PLG growth leads command premiums"
+          },
+          "source": "Singapore MOM Occupational Wage Survey"
+        }
+      }
+    }
+  ]
+}

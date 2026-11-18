@@ -1229,3 +1229,640 @@ html, body {
   .kbd-hint { display: none; }
   .brand-sub { display: none; }
 }
+
+
+/* ==========================================================================
+   Shared Primary Navigation Tabs & Role Market Intelligence Page (roles.html)
+   ========================================================================== */
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.nav-tab {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 9px;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.nav-tab:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.nav-tab.active {
+  background: var(--surface);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Roles Toolbar */
+.roles-toolbar {
+  margin-bottom: 18px;
+}
+
+.roles-toolbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.page-h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.page-sub {
+  margin: 4px 0 0;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+}
+
+.roles-country-pills {
+  min-width: 320px;
+}
+
+.roles-filter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface);
+}
+.search-box:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 9px 0;
+}
+
+.category-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.prompt-chip.chip-active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* Roles Master-Detail Layout */
+.roles-workspace {
+  display: grid;
+  grid-template-columns: 350px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.roles-list-col {
+  position: sticky;
+  top: 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.roles-count-row {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.role-list-item {
+  width: 100%;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 12px 13px;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.role-list-item:hover {
+  border-color: var(--primary);
+  background: var(--surface-hover);
+}
+
+.role-list-item.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.rli-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.rli-title {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.rli-metrics {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 7px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.rli-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  flex-wrap: wrap;
+}
+
+.growth-mini {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cmp-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  padding: 1px 7px;
+}
+
+.comp-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.comp-low {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.comp-mod {
+  background: rgba(245, 158, 11, 0.14);
+  color: #d97706;
+}
+[data-theme="dark"] .comp-mod { color: #fbbf24; }
+.comp-high {
+  background: rgba(244, 63, 94, 0.14);
+  color: #e11d48;
+}
+[data-theme="dark"] .comp-high { color: #fb7185; }
+
+/* Role Detail Column */
+.role-detail-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.role-hero-card {
+  background: linear-gradient(180deg, var(--surface) 0%, color-mix(in srgb, var(--primary-soft) 30%, var(--surface)) 100%);
+}
+
+.role-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.role-hero-title {
+  margin: 6px 0 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.role-hero-summary {
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+}
+
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.skill-chip {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.calc-launch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.calc-launch-btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-secondary {
+  background: var(--accent);
+  color: #06281c;
+  border: none;
+  border-radius: 11px;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter 0.15s ease;
+}
+.btn-secondary:hover { filter: brightness(1.06); }
+
+/* Role KPI Grid */
+.role-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.role-kpi-card {
+  padding: 16px;
+}
+
+.role-kpi-big {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-top: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.role-kpi-big .unit {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.live-pulse-tag {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.dual-growth-vals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.growth-pill {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 2px 9px;
+  border-radius: 8px;
+  margin-right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.growth-pill.pay { background: var(--accent-soft); color: var(--accent); }
+.growth-pill.jobs { background: var(--primary-soft); color: var(--primary); }
+
+/* Pay Range Bars */
+.pay-bands-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.range-track {
+  position: relative;
+  height: 12px;
+  background: var(--surface-muted);
+  border-radius: 999px;
+  margin-top: 6px;
+}
+
+.range-span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  opacity: 0.85;
+}
+.range-span.band-fte { background: var(--primary); }
+.range-span.band-con { background: var(--accent); }
+
+.range-median-dot {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 2.5px solid var(--surface);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.range-median-dot.band-fte { background: var(--primary); }
+.range-median-dot.band-con { background: var(--accent); }
+
+.reality-strip {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 11px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  font-size: 0.83rem;
+}
+
+/* Competition & Growth Bars */
+.comp-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.comp-stat {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.comp-stat-val {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+.fill-rate-box {
+  margin-bottom: 12px;
+}
+
+.bracket-fill.fill-low { background: var(--accent); }
+.bracket-fill.fill-moderate { background: #f59e0b; }
+.bracket-fill.fill-high { background: var(--chart-tax); }
+.bracket-fill.jobs-bar { background: linear-gradient(90deg, var(--primary), #8b5cf6); }
+.bracket-track.tall { height: 12px; }
+
+.driver-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--surface-muted);
+  border-left: 3px solid var(--primary);
+  padding: 9px 11px;
+  border-radius: 8px;
+}
+
+.growth-bars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Career Growth Pathways */
+.pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pathway-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+}
+
+.pathway-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+}
+
+.pathway-type {
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pathway-time {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.pathway-title {
+  font-size: 0.96rem;
+  font-weight: 800;
+}
+
+.pathway-pay-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.pathway-gross {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.pathway-uplift.pos { color: var(--accent); font-size: 0.78rem; font-weight: 700; }
+.pathway-uplift.neg { color: var(--text-muted); font-size: 0.78rem; font-weight: 600; }
+
+.pathway-net-impact {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.pathway-net-impact.pos { background: var(--accent-soft); color: var(--accent); }
+.pathway-net-impact.neg { background: var(--surface); color: var(--text-muted); }
+
+.pathway-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.mini-skill {
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.pathway-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 6px;
+  flex-wrap: wrap;
+}
+.pathway-actions a { text-decoration: none; }
+
+.compare-roles-card {
+  margin-bottom: 18px;
+  border-color: var(--primary);
+}
+
+.empty-state {
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+/* Data Sources Modal */
+.modal-wide { max-width: 600px; }
+.ds-list { display: flex; flex-direction: column; gap: 10px; }
+.ds-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+}
+.ds-item-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 3px; }
+.ds-link { font-size: 0.75rem; color: var(--primary); text-decoration: none; display: inline-block; margin-top: 4px; }
+.ds-link:hover { text-decoration: underline; }
+.ds-sync-guide {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 11px;
+  background: var(--primary-soft);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.ds-sync-guide ol { margin: 6px 0 0; padding-left: 18px; }
+.ds-sync-guide li { margin-bottom: 4px; }
+.ds-sync-guide code {
+  background: var(--surface);
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1120px) {
+  .role-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pathways-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .roles-workspace { grid-template-columns: 300px minmax(0, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .roles-workspace { grid-template-columns: 1fr; }
+  .roles-list-col { position: static; }
+  .roles-list { max-height: 300px; }
+  .roles-filter-row { grid-template-columns: 1fr; }
+  .growth-bars-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .pathways-grid { grid-template-columns: 1fr; }
+  .brand-group { gap: 10px; }
+  .nav-tab { font-size: 0.76rem; padding: 5px 9px; }
+  .roles-country-pills { min-width: 100%; }
+}
