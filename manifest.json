@@ -1,0 +1,9 @@
+{
+  "name": "PaySense AI — Multi-Country & Contractor Pay Calculator",
+  "short_name": "PaySense AI",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "description": "AI-first multi-country salary and contractor pay calculator. Free, private, and offline-ready."
+}
