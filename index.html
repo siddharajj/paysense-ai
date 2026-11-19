@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PaySense AI — Multi-Country & Contractor Pay Calculator</title>
-  <meta name="description" content="AI-first multi-country salary and contractor pay calculator. Compare AU, US, UK, CA, IN, NZ & SG take-home pay, day rates vs permanent offers, and tax brackets — 100% free & client-side." />
+  <title>PaySense — Clear, Confident Pay &amp; Contractor Calculator</title>
+  <meta name="description" content="A simple, warm, easy-to-read salary and contractor pay calculator across Australia, US, UK, Canada, India, New Zealand & Singapore. 100% free & private." />
   <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f46e5'/%3E%3Cstop offset='100%25' stop-color='%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='800' font-size='32'%3E%24%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231E563F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF7F2' font-family='Georgia,serif' font-weight='700' font-size='34'%3E%24%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
@@ -14,65 +14,73 @@
     <div class="container top-bar-inner">
       <div class="brand-group">
         <a href="./index.html" class="brand brand-link">
-          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <div class="brand-mark" aria-hidden="true">$</div>
           <div>
-            <div class="brand-name">PaySense <span class="brand-ai">AI</span></div>
-            <div class="brand-sub">Multi-Country &amp; Contractor Pay Calculator</div>
+            <div class="brand-name">PaySense</div>
+            <div class="brand-sub">Clear, everyday pay &amp; career guide</div>
           </div>
         </a>
         <nav class="main-nav" aria-label="Primary navigation">
-          <a href="./index.html" class="nav-tab active" aria-current="page">⚡ Pay Calculator</a>
-          <a href="./roles.html" class="nav-tab">📊 Role &amp; Market Intel</a>
+          <a href="./index.html" class="nav-tab active" aria-current="page">Pay Calculator</a>
+          <a href="./roles.html" class="nav-tab">Job Roles &amp; Market Pay</a>
         </nav>
       </div>
 
       <div class="header-actions">
-        <button type="button" class="ai-mode-pill" id="ai-mode-pill" title="Configure built-in $0 AI or optional free BYOK API key">
-          <span class="status-dot local"></span> Local AI · $0
+        <button type="button" class="ai-mode-pill" id="ai-mode-pill" title="Works 100% free offline. Click for optional AI key settings.">
+          <span class="status-dot local"></span> Local AI · Free
         </button>
-        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle warm dark or light paper theme" title="Switch theme">🌙</button>
       </div>
     </div>
   </header>
 
   <main class="container main-content">
-    <!-- AI-First Natural Language Command Bar -->
-    <section class="ai-bar-section" aria-label="Natural language pay assistant">
-      <form id="ai-prompt-form" class="ai-prompt-shell" autocomplete="off">
-        <span class="ai-sparkle" aria-hidden="true">✨</span>
-        <input
-          type="text"
-          id="ai-prompt-input"
-          class="ai-prompt-input"
-          placeholder='Describe your pay in plain English… e.g. "AU contractor $950/day, 220 days, incl super vs $165k FTE"'
-          aria-label="Describe your pay scenario in natural language"
-        />
-        <kbd class="kbd-hint" aria-hidden="true">⌘K</kbd>
-        <button type="submit" class="btn-primary ai-submit-btn" id="ai-submit-btn">Apply AI</button>
-      </form>
-
-      <div class="ai-chips-row">
-        <span class="chips-label">Try:</span>
-        <div id="ai-example-chips" class="ai-chips-scroll"></div>
+    <!-- Friendly Intro & Plain-English Input -->
+    <section class="intro-hero" aria-label="Plain-English pay helper">
+      <div class="intro-header">
+        <h1 class="intro-title">Understand your real take-home pay, simply.</h1>
+        <p class="intro-lead">Whether you’re comparing a full-time salary, working out a contractor day rate, or checking tax across countries — get a clear answer in plain English.</p>
       </div>
 
-      <div id="ai-feedback" class="ai-feedback" hidden></div>
+      <div class="plain-english-card">
+        <label class="plain-english-label" for="ai-prompt-input">
+          Describe your situation in everyday words <span class="muted-normal">(or use the step-by-step form in Section 01 below)</span>
+        </label>
+        <form id="ai-prompt-form" class="ai-prompt-shell" autocomplete="off">
+          <input
+            type="text"
+            id="ai-prompt-input"
+            class="ai-prompt-input"
+            placeholder='e.g. "Australia contractor at $950/day for 220 days vs $165k full-time"'
+            aria-label="Describe your pay scenario in plain English"
+          />
+          <button type="submit" class="btn-primary ai-submit-btn" id="ai-submit-btn">Work It Out</button>
+        </form>
+
+        <div class="ai-chips-row">
+          <span class="chips-label">Common questions:</span>
+          <div id="ai-example-chips" class="ai-chips-scroll"></div>
+        </div>
+
+        <div id="ai-feedback" class="ai-feedback" hidden></div>
+      </div>
     </section>
 
-    <!-- Main 2-Column Workspace: Tactile Form (Left) + Live Dashboard (Right) -->
-    <div class="workspace-grid">
-      <aside class="form-column" id="form-root" aria-label="Pay calculator form"></aside>
-      <div class="results-column" id="results-root" aria-live="polite"></div>
+    <!-- Divided, Spacious Single-Flow Sections -->
+    <div class="editorial-flow">
+      <div id="form-root" aria-label="Section 1: Your setup"></div>
+      <div id="results-root" aria-live="polite"></div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <strong>PaySense AI</strong> — 100% client-side, privacy-first, $0 static app built for GitHub Pages.
+        <strong>PaySense</strong> — Built to make pay and tax simple. 100% private in your browser, \$0 to use.
       </div>
       <div class="footer-disclaimer">
-        Estimates only (2025/26 tax rules). Verify with a qualified tax advisor or local tax authority before making financial decisions.
+        Figures are helpful estimates based on 2025/26 tax rules. Check with an accountant or your local tax office for personal tax advice.
       </div>
     </div>
   </footer>
@@ -82,42 +90,42 @@
     <div class="modal-card">
       <div class="modal-header">
         <div>
-          <h2 id="ai-modal-title" class="modal-title">AI Engine Settings ($0 Mode)</h2>
-          <p class="modal-sub">Works 100% free offline by default. Optionally add your own free-tier API key (stored only in your browser).</p>
+          <h2 id="ai-modal-title" class="modal-title">Smart Helper Settings (100% Free)</h2>
+          <p class="modal-sub">PaySense works offline for free by default. Optionally connect your own free Gemini or Groq API key (stored only in your browser).</p>
         </div>
         <button type="button" class="icon-btn" id="close-settings-btn" aria-label="Close">✕</button>
       </div>
 
       <form id="ai-settings-form" class="modal-form">
         <div class="sub-field">
-          <label class="sub-label" for="llm-provider-select">AI Provider</label>
+          <label class="sub-label" for="llm-provider-select">Helper Mode</label>
           <select id="llm-provider-select" class="select-input">
-            <option value="local">Built-in Local AI (Default · Instant · $0 · Offline)</option>
-            <option value="gemini">Google Gemini API — Free Tier BYOK</option>
-            <option value="openai-compatible">OpenAI-Compatible (Groq / OpenRouter / Ollama)</option>
+            <option value="local">Built-in Instant Helper (Default · $0 · No key needed)</option>
+            <option value="gemini">Google Gemini API (Free Tier Key)</option>
+            <option value="openai-compatible">OpenAI-Compatible (Groq / OpenRouter / Local)</option>
           </select>
         </div>
 
         <div id="llm-key-group" hidden>
           <div class="sub-field">
-            <label class="sub-label" for="llm-api-key">API Key (saved only in browser localStorage)</label>
-            <input type="password" id="llm-api-key" class="text-input" placeholder="Paste your free-tier API key…" />
+            <label class="sub-label" for="llm-api-key">Your API Key (kept privately in your browser)</label>
+            <input type="password" id="llm-api-key" class="text-input" placeholder="Paste your free API key…" />
           </div>
           <div class="sub-field mt-sm">
-            <label class="sub-label" for="llm-model-input">Model</label>
+            <label class="sub-label" for="llm-model-input">Model Name</label>
             <input type="text" id="llm-model-input" class="text-input" placeholder="gemini-2.5-flash" />
           </div>
         </div>
 
         <div id="llm-url-group" hidden>
           <div class="sub-field">
-            <label class="sub-label" for="llm-base-url">Base URL</label>
+            <label class="sub-label" for="llm-base-url">Endpoint URL</label>
             <input type="url" id="llm-base-url" class="text-input" placeholder="https://api.groq.com/openai/v1" />
           </div>
         </div>
 
         <div class="modal-actions">
-          <button type="submit" class="btn-primary">Save AI Settings</button>
+          <button type="submit" class="btn-primary">Save Preference</button>
         </div>
       </form>
     </div>

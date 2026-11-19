@@ -1,8 +1,7 @@
 /**
- * PaySense AI — Role & Market Intelligence Explorer (roles.html)
- * Loads static open-data benchmarks from ./data/roles.json, computes real
- * localized after-tax take-home for FTE, Contractor, and Career Pathways,
- * and deep-links straight into the Pay Calculator (./index.html#s=...).
+ * PaySense — Warm, Section-Divided Job Roles & Market Pay Guide (roles.html)
+ * Designed with generous negative space, plain-English explanations, and
+ * real localized after-tax take-home calculations.
  */
 
 import { COUNTRIES, COUNTRY_LIST } from './tax/countries.js';
@@ -59,7 +58,7 @@ function applyTheme(theme) {
   saveTheme(theme);
   if (els.themeBtn) {
     els.themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-    els.themeBtn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    els.themeBtn.title = theme === 'dark' ? 'Switch to warm paper light mode' : 'Switch to warm dark mode';
   }
 }
 
@@ -68,12 +67,9 @@ function showToast(msg) {
   els.toast.textContent = msg;
   els.toast.classList.add('visible');
   clearTimeout(showToast._t);
-  showToast._t = setTimeout(() => els.toast.classList.remove('visible'), 2500);
+  showToast._t = setTimeout(() => els.toast.classList.remove('visible'), 2600);
 }
 
-/**
- * Build a real PaySense AI calculator input for any role's FTE or Contractor median.
- */
 function buildCalcInput(countryCode, mode, amount, compareVal = 0) {
   const c = COUNTRIES[countryCode] || COUNTRIES.AU;
   const countryOptions = { [countryCode]: getCountryDefaultOptions(countryCode) };
@@ -121,8 +117,8 @@ async function init() {
   } catch (err) {
     els.detailRoot.innerHTML = `
       <div class="card">
-        <h2 class="card-title">Unable to load open market dataset</h2>
-        <p class="muted">Could not fetch <code>./data/roles.json</code> (${escapeHtml(err.message)}). If viewing locally, run <code>python3 -m http.server 8080</code>.</p>
+        <h2 class="card-title">Unable to load job market guide</h2>
+        <p class="muted">Could not fetch <code>./data/roles.json</code> (${escapeHtml(err.message)}). Run <code>python3 -m http.server 8080</code> locally to preview.</p>
       </div>
     `;
   }
@@ -144,16 +140,16 @@ function updateDataSourcePill() {
   if (!els.dataSourcesBtn || !dataset) return;
   const isLive = dataset.liveSyncStatus === 'adzuna-live-synced';
   els.dataSourcesBtn.innerHTML = isLive
-    ? `<span class="status-dot live"></span> Live Synced · ${escapeHtml(dataset.lastUpdated)}`
-    : `<span class="status-dot local"></span> Open Gov Data · $0`;
+    ? `<span class="status-dot live"></span> Live Market Sync · ${escapeHtml(dataset.lastUpdated)}`
+    : `<span class="status-dot local"></span> Public Data · Free`;
 }
 
 function renderCountryPills() {
   els.countryPills.innerHTML = COUNTRY_LIST.map(
     (c) => `
-    <button type="button" class="country-pill ${c.code === uiState.country ? 'active' : ''}" data-country="${c.code}" title="${escapeHtml(c.name)} (${escapeHtml(c.currency)})">
+    <button type="button" class="country-pill ${c.code === uiState.country ? 'active' : ''}" data-country="${c.code}">
       <span class="pill-flag">${c.flag}</span>
-      <span class="pill-code">${c.code}</span>
+      <span class="pill-name">${escapeHtml(c.name)}</span>
     </button>
   `
   ).join('');
@@ -165,7 +161,7 @@ function renderCategoryChips() {
     .map(
       (cat) => `
     <button type="button" class="prompt-chip ${cat === uiState.category ? 'chip-active' : ''}" data-category="${escapeHtml(cat)}">
-      ${escapeHtml(cat)}
+      ${cat === 'All' ? 'All Fields' : escapeHtml(cat)}
     </button>
   `
     )
@@ -222,6 +218,12 @@ function competitionTone(level) {
   return 'comp-mod';
 }
 
+function friendlyCompetitionLabel(level, shortageStatus) {
+  if (level === 'Low') return `${shortageStatus} · Easier to get hired`;
+  if (level === 'High') return `${shortageStatus} · High competition`;
+  return `${shortageStatus} · Steady demand`;
+}
+
 function renderAll() {
   const roles = getFilteredRoles();
   const country = COUNTRIES[uiState.country];
@@ -231,11 +233,11 @@ function renderAll() {
     uiState.selectedRoleId = roles[0].id;
   }
 
-  els.countLabel.textContent = `${roles.length} of ${dataset.roles.length} roles in ${country.flag} ${country.name}`;
+  els.countLabel.textContent = `Showing ${roles.length} of ${dataset.roles.length} roles in ${country.name}`;
 
   if (!roles.length) {
-    els.listRoot.innerHTML = `<div class="empty-state">No roles match “${escapeHtml(uiState.search)}”. Try clearing filters.</div>`;
-    els.detailRoot.innerHTML = `<div class="card"><p class="muted">Select a role to view full market intelligence.</p></div>`;
+    els.listRoot.innerHTML = `<div class="empty-state">No roles match “${escapeHtml(uiState.search)}”. Try clearing your search or switching category.</div>`;
+    els.detailRoot.innerHTML = '';
     renderCompareBar();
     return;
   }
@@ -249,16 +251,15 @@ function renderAll() {
         <button type="button" class="role-list-item ${active ? 'active' : ''}" data-role-id="${r.id}">
           <div class="rli-top">
             <span class="rli-title">${escapeHtml(r.title)}</span>
-            <span class="comp-pill ${competitionTone(m.competition.level)}">${escapeHtml(m.competition.shortageStatus)}</span>
+            ${isCompared ? '<span class="cmp-tag">Saved to Compare</span>' : `<span class="comp-pill ${competitionTone(m.competition.level)}">${escapeHtml(m.competition.shortageStatus)}</span>`}
           </div>
           <div class="rli-metrics">
-            <span>💼 ${fmt(m.fteSalary.median)}/yr</span>
-            <span>🛠 ${fmt(m.contractorDayRate.median)}/day</span>
+            <span>Full-Time: <strong>${fmt(m.fteSalary.median)}/yr</strong></span>
+            <span>Contract: <strong>${fmt(m.contractorDayRate.median)}/day</strong></span>
           </div>
           <div class="rli-footer">
-            <span class="muted">👥 ${formatNumberCompact(m.workforceCount)} people</span>
-            <span class="growth-mini">+${m.headcountGrowth5yr}% jobs · +${m.wageGrowth5yr}% pay (5y)</span>
-            ${isCompared ? '<span class="cmp-tag">Comparing</span>' : ''}
+            <span class="muted">${formatNumberCompact(m.workforceCount)} employed</span>
+            <span class="growth-mini">+${m.headcountGrowth5yr}% jobs (5yr)</span>
           </div>
         </button>
       `;
@@ -276,7 +277,6 @@ function renderRoleDetail(role) {
   const m = role.markets[cCode];
   const fmt = (n) => formatCurrency(n, country.currency, country.locale);
 
-  // Compute live after-tax take-home for FTE median and Contractor median!
   const fteCalc = calculatePay(buildCalcInput(cCode, 'employee', m.fteSalary.median, m.contractorDayRate.median));
   const conCalc = calculatePay(buildCalcInput(cCode, 'contractor', m.contractorDayRate.median, m.fteSalary.median));
   const contractorAnnualMedian = m.contractorDayRate.median * country.defaultBillableDays;
@@ -287,219 +287,203 @@ function renderRoleDetail(role) {
   const conLink = buildCalculatorDeepLink(cCode, 'contractor', m.contractorDayRate.median, m.fteSalary.median);
 
   const isCompareTarget = uiState.compareRoleId === role.id;
-
-  // Compute max scale for SVG pay range comparison
   const maxPayScale = Math.max(m.fteSalary.p75, contractorAnnualP75, 1);
 
   els.detailRoot.innerHTML = `
-    <!-- Role Hero Card -->
-    <section class="card role-hero-card">
-      <div class="role-hero-top">
-        <div>
-          <div class="hero-eyebrow">
-            <span>${country.flag} ${escapeHtml(country.name)}</span>
-            <span class="dot-sep">·</span>
-            <span>${escapeHtml(role.category)}</span>
-            <span class="dot-sep">·</span>
-            <span title="Official occupation classification codes">ANZSCO ${escapeHtml(role.codes.anzsco)} · SOC ${escapeHtml(role.codes.soc)}</span>
-          </div>
-          <h2 class="role-hero-title">${escapeHtml(role.title)}</h2>
-          <p class="role-hero-summary">${escapeHtml(role.summary)}</p>
+    <!-- SECTION 02: THE ROLE AT A GLANCE & PAY -->
+    <section class="editorial-section">
+      <div class="section-divider">
+        <span class="section-num">02</span>
+        <div class="section-divider-text">
+          <h2 class="section-heading">${escapeHtml(role.title)} — Pay &amp; Workforce Snapshot</h2>
+          <p class="section-sub">How many people do this job in ${escapeHtml(country.name)}, and what full-time vs contracting pays.</p>
         </div>
-        <div class="role-hero-actions">
-          <button type="button" class="btn-ghost btn-sm" id="toggle-compare-role-btn" data-role-id="${role.id}">
-            ${isCompareTarget ? '✓ Comparing' : '⚖️ Compare Role'}
-          </button>
+        <button type="button" class="btn-ghost btn-sm" id="toggle-compare-role-btn" data-role-id="${role.id}">
+          ${isCompareTarget ? '✓ Pinned for Comparison' : 'Compare With Another Role'}
+        </button>
+      </div>
+
+      <div class="card role-hero-card">
+        <div class="hero-eyebrow">
+          <span>${country.flag} ${escapeHtml(country.name)}</span>
+          <span class="dot-sep">·</span>
+          <span>${escapeHtml(role.category)}</span>
+          <span class="dot-sep">·</span>
+          <span>Official Code: ANZSCO ${escapeHtml(role.codes.anzsco)} / SOC ${escapeHtml(role.codes.soc)}</span>
         </div>
-      </div>
 
-      <div class="skills-row">
-        ${(role.skills || []).map((s) => `<span class="skill-chip">${escapeHtml(s)}</span>`).join('')}
-      </div>
+        <p class="plain-english-summary" style="margin-top:12px;">
+          Around <strong>${m.workforceCount.toLocaleString()} people</strong> work as a <strong>${escapeHtml(role.title)}</strong> in <strong>${escapeHtml(country.name)}</strong>, with roughly <strong>${m.annualOpenings.toLocaleString()} job openings</strong> each year. A typical full-time salary is <strong>${fmt(m.fteSalary.median)}/year</strong> (taking home <strong>${fmt(fteCalc.periods.net.monthly)}/month</strong> after tax), while contractors average <strong>${fmt(m.contractorDayRate.median)}/day</strong>.
+        </p>
 
-      <div class="calc-launch-row">
-        <a href="${fteLink}" class="btn-primary calc-launch-btn">
-          💼 Load FTE (${fmt(m.fteSalary.median)}/yr) in Pay Calculator →
-        </a>
-        <a href="${conLink}" class="btn-secondary calc-launch-btn">
-          🛠 Load Contractor (${fmt(m.contractorDayRate.median)}/day) in Calculator →
-        </a>
-      </div>
-    </section>
+        <p class="role-hero-summary">${escapeHtml(role.summary)}</p>
 
-    <!-- 4 Core Market KPIs -->
-    <section class="role-kpi-grid">
-      <div class="card role-kpi-card">
-        <div class="kpi-label">👥 People in This Role</div>
-        <div class="role-kpi-big">${formatNumberCompact(m.workforceCount)}</div>
-        <div class="kpi-meta">~${formatNumberCompact(m.annualOpenings)} openings / yr in ${escapeHtml(country.name)}</div>
-        ${m.liveVacancies ? `<div class="live-pulse-tag">🟢 ${m.liveVacancies.toLocaleString()} live Adzuna ads</div>` : ''}
-      </div>
+        <div class="skills-row">
+          <span class="chips-label">Core skills:</span>
+          ${(role.skills || []).map((s) => `<span class="skill-chip">${escapeHtml(s)}</span>`).join('')}
+        </div>
 
-      <div class="card role-kpi-card">
-        <div class="kpi-label">💼 Median Full-Time Pay</div>
-        <div class="role-kpi-big">${fmt(m.fteSalary.median)}<span class="unit">/yr</span></div>
-        <div class="kpi-meta">Est. take-home: <strong class="net-col">${fmt(fteCalc.periods.net.monthly)}/mo</strong></div>
-        <div class="kpi-meta">Range: ${fmt(m.fteSalary.p25)} – ${fmt(m.fteSalary.p75)}</div>
-      </div>
-
-      <div class="card role-kpi-card">
-        <div class="kpi-label">🛠 Median Contractor Rate</div>
-        <div class="role-kpi-big">${fmt(m.contractorDayRate.median)}<span class="unit">/day</span></div>
-        <div class="kpi-meta">Est. take-home: <strong class="net-col">${fmt(conCalc.periods.net.monthly)}/mo</strong> (${country.defaultBillableDays}d)</div>
-        <div class="kpi-meta">Range: ${fmt(m.contractorDayRate.p25)} – ${fmt(m.contractorDayRate.p75)} / day</div>
-      </div>
-
-      <div class="card role-kpi-card">
-        <div class="kpi-label">📈 5-Year Dual Growth</div>
-        <div class="dual-growth-vals">
-          <div>
-            <span class="growth-pill pay">+${m.wageGrowth5yr}%</span>
-            <span class="kpi-meta">Pay (+${m.wageGrowthYoY}% YoY)</span>
+        <!-- Two Clear Side-by-Side Pay Cards: Full-Time vs Contractor -->
+        <div class="pay-comparison-boxes">
+          <div class="pay-mode-box">
+            <div class="pay-mode-tag">Full-Time Employee</div>
+            <div class="pay-mode-main">${fmt(m.fteSalary.median)} <span class="unit">per year</span></div>
+            <div class="pay-mode-takehome">
+              Real take-home: <strong>${fmt(fteCalc.periods.net.monthly)} / month</strong> (${fmt(fteCalc.netIncome)}/yr after tax)
+            </div>
+            <div class="pay-mode-range">
+              Typical range: <strong>${fmt(m.fteSalary.p25)}</strong> (entry/mid) to <strong>${fmt(m.fteSalary.p75)}</strong> (senior)
+            </div>
+            <a href="${fteLink}" class="btn-primary btn-sm pay-mode-cta">
+              Open Full-Time Pay in Calculator →
+            </a>
           </div>
-          <div>
-            <span class="growth-pill jobs">+${m.headcountGrowth5yr}%</span>
-            <span class="kpi-meta">Headcount</span>
+
+          <div class="pay-mode-box contractor-box">
+            <div class="pay-mode-tag">Contractor / Freelancer</div>
+            <div class="pay-mode-main">${fmt(m.contractorDayRate.median)} <span class="unit">per day</span></div>
+            <div class="pay-mode-takehome">
+              Real take-home: <strong>${fmt(conCalc.periods.net.monthly)} / month</strong> (assuming ${country.defaultBillableDays} billable days/yr)
+            </div>
+            <div class="pay-mode-range">
+              Typical range: <strong>${fmt(m.contractorDayRate.p25)}/day</strong> to <strong>${fmt(m.contractorDayRate.p75)}/day</strong>
+            </div>
+            <a href="${conLink}" class="btn-secondary btn-sm pay-mode-cta">
+              Open Contractor Rate in Calculator →
+            </a>
           </div>
+        </div>
+
+        <div class="pay-bands-wrap" style="margin-top:22px;">
+          ${renderPayRangeBar('Full-Time Salary Range (25th to 75th percentile)', m.fteSalary.p25, m.fteSalary.median, m.fteSalary.p75, maxPayScale, fmt, 'band-fte')}
+          ${renderPayRangeBar(`Annualized Contractor Billing (${country.defaultBillableDays} days/yr)`, contractorAnnualP25, contractorAnnualMedian, contractorAnnualP75, maxPayScale, fmt, 'band-con')}
         </div>
       </div>
     </section>
 
-    <!-- Pay Distribution + Competition & Market Tightness -->
-    <section class="two-col-cards">
+    <!-- SECTION 03: GROWTH & COMPETITION -->
+    <section class="editorial-section">
+      <div class="section-divider">
+        <span class="section-num">03</span>
+        <div class="section-divider-text">
+          <h2 class="section-heading">Job Growth &amp; How Competitive Is Hiring?</h2>
+          <p class="section-sub">How pay and job numbers are moving over 5 years, and how hard employers find it to hire.</p>
+        </div>
+      </div>
+
+      <div class="two-col-cards">
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom:14px;">5-Year Growth (Pay vs Number of People)</h3>
+
+          <div class="growth-bar-block">
+            <div class="bracket-meta">
+              <span class="bracket-label">Financial / Pay Growth (5-Year Trend)</span>
+              <strong class="net-col">+${m.wageGrowth5yr}% <span class="muted">(+${m.wageGrowthYoY}% per year)</span></strong>
+            </div>
+            <div class="bracket-track tall">
+              <div class="bracket-fill" style="width:${Math.min(100, Math.round(m.wageGrowth5yr * 1.45))}%"></div>
+            </div>
+            <div class="field-hint">At this pace, median full-time pay reaches ~<strong>${fmt(m.fteSalary.median * (1 + m.wageGrowth5yr / 100))}/yr</strong> over 5 years.</div>
+          </div>
+
+          <div class="growth-bar-block" style="margin-top:18px;">
+            <div class="bracket-meta">
+              <span class="bracket-label">Workforce / People Growth (5-Year Projection)</span>
+              <strong class="retire-color">+${m.headcountGrowth5yr}% <span class="muted">(+${formatNumberCompact(m.workforceCount * (m.headcountGrowth5yr / 100))} new jobs)</span></strong>
+            </div>
+            <div class="bracket-track tall">
+              <div class="bracket-fill jobs-bar" style="width:${Math.min(100, Math.round(m.headcountGrowth5yr * 2.4))}%"></div>
+            </div>
+            <div class="field-hint">Workforce projected to grow from <strong>${formatNumberCompact(m.workforceCount)}</strong> to ~<strong>${formatNumberCompact(m.workforceCount * (1 + m.headcountGrowth5yr / 100))} people</strong>.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title-row">
+            <h3 class="card-title">Competition &amp; Hiring Demand</h3>
+            <span class="comp-pill ${competitionTone(m.competition.level)}">${escapeHtml(friendlyCompetitionLabel(m.competition.level, m.competition.shortageStatus))}</span>
+          </div>
+
+          <div class="comp-stats-grid">
+            <div class="comp-stat">
+              <div class="kpi-label">People Working in Role</div>
+              <div class="comp-stat-val">${m.workforceCount.toLocaleString()}</div>
+            </div>
+            <div class="comp-stat">
+              <div class="kpi-label">Typical Applicants per Job Ad</div>
+              <div class="comp-stat-val">~${m.competition.applicantsPerRole} people</div>
+            </div>
+          </div>
+
+          <div class="fill-rate-box">
+            <div class="bracket-meta">
+              <span class="bracket-label">Share of Job Openings Employers Fill Easily</span>
+              <strong>${m.competition.fillRatePct}% filled</strong>
+            </div>
+            <div class="bracket-track tall">
+              <div class="bracket-fill fill-${m.competition.level.toLowerCase()}" style="width:${m.competition.fillRatePct}%"></div>
+            </div>
+            <div class="field-hint">When employers fill fewer than 65% of openings, qualified candidates have stronger bargaining power on pay and rates.</div>
+          </div>
+
+          <div class="driver-note">
+            <strong>What’s happening in the market:</strong> ${escapeHtml(m.competition.driver)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: CAREER GROWTH PATHWAYS -->
+    <section class="editorial-section">
+      <div class="section-divider">
+        <span class="section-num">04</span>
+        <div class="section-divider-text">
+          <h2 class="section-heading">Where Can You Grow Next? (Career Pathways)</h2>
+          <p class="section-sub">Common next steps from ${escapeHtml(role.title)}, showing how much extra take-home pay you actually keep after tax.</p>
+        </div>
+      </div>
+
       <div class="card">
-        <div class="card-title-row">
-          <h3 class="card-title">FTE vs Contractor Annualized Pay Bands</h3>
-          <span class="card-badge">25th · Median · 75th</span>
-        </div>
+        <div class="pathways-grid">
+          ${(role.pathways || [])
+            .map((pw) => {
+              const targetRole = roleMap.get(pw.targetId);
+              const targetTitle = targetRole ? targetRole.title : pw.targetId;
+              const targetSalary = Math.round(m.fteSalary.median * (1 + pw.upliftPct / 100));
+              const targetCalc = calculatePay(buildCalcInput(cCode, 'employee', targetSalary));
+              const netDeltaYr = targetCalc.netIncome - fteCalc.netIncome;
+              const targetCalcUrl = buildCalculatorDeepLink(cCode, 'employee', targetSalary);
+              const positive = netDeltaYr >= 0;
 
-        <div class="pay-bands-wrap">
-          ${renderPayRangeBar('Full-Time Salary (Gross)', m.fteSalary.p25, m.fteSalary.median, m.fteSalary.p75, maxPayScale, fmt, 'band-fte')}
-          ${renderPayRangeBar(`Contractor (${country.defaultBillableDays}d Gross)`, contractorAnnualP25, contractorAnnualMedian, contractorAnnualP75, maxPayScale, fmt, 'band-con')}
-        </div>
-
-        <div class="reality-strip">
-          <div>
-            <span class="muted">Contractor Net Premium vs FTE:</span>
-            <strong class="${conCalc.netIncome >= fteCalc.netIncome ? 'net-col' : 'tax-color'}">
-              ${conCalc.netIncome >= fteCalc.netIncome ? '+' : '−'}${fmt(Math.abs(conCalc.netIncome - fteCalc.netIncome))}/yr cash
-            </strong>
-          </div>
-          <div class="muted" style="font-size:0.74rem; margin-top:4px;">
-            Contractor day rate equals ~${fmt(conCalc.fteComparison.equivalentFteBase)} + ${country.retirementLabel} permanent package.
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-title-row">
-          <h3 class="card-title">Competition &amp; Talent Shortage</h3>
-          <span class="comp-pill ${competitionTone(m.competition.level)}">${escapeHtml(m.competition.level)} Competition</span>
-        </div>
-
-        <div class="comp-stats-grid">
-          <div class="comp-stat">
-            <div class="kpi-label">Market Rating</div>
-            <div class="comp-stat-val">${escapeHtml(m.competition.shortageStatus)}</div>
-          </div>
-          <div class="comp-stat">
-            <div class="kpi-label">Avg Applicants / Role</div>
-            <div class="comp-stat-val">~${m.competition.applicantsPerRole}</div>
-          </div>
-        </div>
-
-        <div class="fill-rate-box">
-          <div class="bracket-meta">
-            <span class="bracket-label">Employer Vacancy Fill Rate</span>
-            <strong>${m.competition.fillRatePct}% filled</strong>
-          </div>
-          <div class="bracket-track">
-            <div class="bracket-fill fill-${m.competition.level.toLowerCase()}" style="width:${m.competition.fillRatePct}%"></div>
-          </div>
-          <div class="field-hint">Lower fill rate = harder for employers to hire = stronger pay negotiation leverage.</div>
-        </div>
-
-        <div class="driver-note">
-          <strong>Key Market Driver:</strong> ${escapeHtml(m.competition.driver)}
-        </div>
-      </div>
-    </section>
-
-    <!-- Dual Growth Visual (Financial vs People Growth) -->
-    <section class="card">
-      <div class="card-title-row">
-        <h3 class="card-title">📊 Growth Trajectory — Financial vs Workforce Size</h3>
-        <span class="card-badge">5-Year Outlook</span>
-      </div>
-      <div class="growth-bars-grid">
-        <div class="growth-bar-block">
-          <div class="bracket-meta">
-            <span class="bracket-label">💰 Financial / Wage Growth (5-yr cumulative)</span>
-            <strong class="net-col">+${m.wageGrowth5yr}% <span class="muted">(+${m.wageGrowthYoY}% YoY)</span></strong>
-          </div>
-          <div class="bracket-track tall">
-            <div class="bracket-fill" style="width:${Math.min(100, Math.round(m.wageGrowth5yr * 1.45))}%"></div>
-          </div>
-          <div class="field-hint">Projected median FTE pay in 5 yrs at current trend: <strong>${fmt(m.fteSalary.median * (1 + m.wageGrowth5yr / 100))}</strong></div>
-        </div>
-
-        <div class="growth-bar-block">
-          <div class="bracket-meta">
-            <span class="bracket-label">👥 Workforce / Headcount Growth (5-yr projection)</span>
-            <strong class="retire-color">+${m.headcountGrowth5yr}% <span class="muted">(+${formatNumberCompact(m.workforceCount * (m.headcountGrowth5yr / 100))} net new jobs)</span></strong>
-          </div>
-          <div class="bracket-track tall">
-            <div class="bracket-fill jobs-bar" style="width:${Math.min(100, Math.round(m.headcountGrowth5yr * 2.4))}%"></div>
-          </div>
-          <div class="field-hint">Projected national headcount in 5 yrs: <strong>${formatNumberCompact(m.workforceCount * (1 + m.headcountGrowth5yr / 100))}</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Career Growth Pathways -->
-    <section class="card">
-      <div class="card-title-row">
-        <h3 class="card-title">🚀 Career Growth Pathways (After-Tax Impact)</h3>
-        <span class="card-badge">O*NET &amp; JSA Mobility</span>
-      </div>
-      <div class="pathways-grid">
-        ${(role.pathways || [])
-          .map((pw) => {
-            const targetRole = roleMap.get(pw.targetId);
-            const targetTitle = targetRole ? targetRole.title : pw.targetId;
-            const targetSalary = Math.round(m.fteSalary.median * (1 + pw.upliftPct / 100));
-            const targetCalc = calculatePay(buildCalcInput(cCode, 'employee', targetSalary));
-            const netDeltaYr = targetCalc.netIncome - fteCalc.netIncome;
-            const targetCalcUrl = buildCalculatorDeepLink(cCode, 'employee', targetSalary);
-            const positive = netDeltaYr >= 0;
-
-            return `
-              <div class="pathway-card">
-                <div class="pathway-top">
-                  <span class="pathway-type">${escapeHtml(pw.type)}</span>
-                  <span class="pathway-time">${escapeHtml(pw.years)}</span>
+              return `
+                <div class="pathway-card">
+                  <div class="pathway-top">
+                    <span class="pathway-type">${escapeHtml(pw.type)}</span>
+                    <span class="pathway-time">Typical step: ${escapeHtml(pw.years)}</span>
+                  </div>
+                  <div class="pathway-title">${escapeHtml(targetTitle)}</div>
+                  <div class="pathway-pay-row">
+                    <span class="pathway-gross">${fmt(targetSalary)}/yr</span>
+                    <span class="pathway-uplift ${pw.upliftPct >= 0 ? 'pos' : 'neg'}">${pw.upliftPct >= 0 ? '+' : ''}${pw.upliftPct}% gross pay</span>
+                  </div>
+                  <div class="pathway-net-impact ${positive ? 'pos' : 'neg'}">
+                    ${positive ? 'Extra take-home: +' : 'Take-home change: −'}${fmt(Math.abs(netDeltaYr / 12))}/month (${positive ? '+' : '−'}${fmt(Math.abs(netDeltaYr))}/yr after tax)
+                  </div>
+                  <div class="pathway-skills-label">Skills to build for this step:</div>
+                  <div class="pathway-skills">
+                    ${(pw.bridgeSkills || []).map((sk) => `<span class="mini-skill">${escapeHtml(sk)}</span>`).join('')}
+                  </div>
+                  <div class="pathway-actions">
+                    ${targetRole ? `<button type="button" class="btn-ghost btn-xs explore-pathway-btn" data-role-id="${targetRole.id}">Read Role Guide</button>` : ''}
+                    <a href="${targetCalcUrl}" class="btn-primary btn-xs">Try in Calculator →</a>
+                  </div>
                 </div>
-                <div class="pathway-title">${escapeHtml(targetTitle)}</div>
-                <div class="pathway-pay-row">
-                  <span class="pathway-gross">${fmt(targetSalary)}/yr</span>
-                  <span class="pathway-uplift ${pw.upliftPct >= 0 ? 'pos' : 'neg'}">${pw.upliftPct >= 0 ? '+' : ''}${pw.upliftPct}% gross</span>
-                </div>
-                <div class="pathway-net-impact ${positive ? 'pos' : 'neg'}">
-                  ${positive ? '+' : '−'}${fmt(Math.abs(netDeltaYr))}/yr after-tax (${positive ? '+' : '−'}${fmt(Math.abs(netDeltaYr / 12))}/mo)
-                </div>
-                <div class="pathway-skills">
-                  ${(pw.bridgeSkills || []).map((sk) => `<span class="mini-skill">${escapeHtml(sk)}</span>`).join('')}
-                </div>
-                <div class="pathway-actions">
-                  ${targetRole ? `<button type="button" class="btn-ghost btn-xs explore-pathway-btn" data-role-id="${targetRole.id}">Explore Role</button>` : ''}
-                  <a href="${targetCalcUrl}" class="btn-primary btn-xs">Test in Calculator →</a>
-                </div>
-              </div>
-            `;
-          })
-          .join('')}
+              `;
+            })
+            .join('')}
+        </div>
+        <div class="form-footnote mt-sm">Data source for ${escapeHtml(country.name)}: ${escapeHtml(m.source)} · Updated ${escapeHtml(dataset.lastUpdated)}.</div>
       </div>
-      <div class="form-footnote mt-sm">Primary benchmark source for ${escapeHtml(country.name)}: ${escapeHtml(m.source)} · Dataset updated ${escapeHtml(dataset.lastUpdated)}.</div>
     </section>
   `;
 }
@@ -513,9 +497,9 @@ function renderPayRangeBar(label, p25, median, p75, maxScale, fmt, cls) {
       <div class="bracket-meta">
         <span class="bracket-label">${escapeHtml(label)}</span>
         <span class="bracket-nums">
-          <span class="muted">${fmt(p25)}</span>
-          <strong>${fmt(median)}</strong>
-          <span class="muted">${fmt(p75)}</span>
+          <span class="muted">25%: ${fmt(p25)}</span>
+          <strong>Median: ${fmt(median)}</strong>
+          <span class="muted">75%: ${fmt(p75)}</span>
         </span>
       </div>
       <div class="range-track">
@@ -550,28 +534,30 @@ function renderCompareBar() {
 
   els.compareBar.hidden = false;
   els.compareBar.innerHTML = `
-    <section class="card compare-roles-card">
-      <div class="card-title-row">
-        <h3 class="card-title">⚖️ Role vs Role Comparison (${country.flag} ${escapeHtml(country.name)})</h3>
-        <button type="button" class="btn-ghost btn-xs" id="clear-role-compare-btn">Close Comparison</button>
-      </div>
-      <div class="table-scroll">
-        <table class="freq-table">
-          <thead>
-            <tr>
-              <th>Metric</th>
-              <th>${escapeHtml(roleA.title)}</th>
-              <th>${escapeHtml(roleB.title)}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Workforce Size</td><td>${formatNumberCompact(mA.workforceCount)}</td><td>${formatNumberCompact(mB.workforceCount)}</td></tr>
-            <tr><td>FTE Median (Gross / Net)</td><td>${fmt(mA.fteSalary.median)} · <span class="net-col">${fmt(netA)}</span></td><td>${fmt(mB.fteSalary.median)} · <span class="net-col">${fmt(netB)}</span></td></tr>
-            <tr><td>Contractor Median Day Rate</td><td>${fmt(mA.contractorDayRate.median)}/day</td><td>${fmt(mB.contractorDayRate.median)}/day</td></tr>
-            <tr><td>5-Yr Wage / Job Growth</td><td>+${mA.wageGrowth5yr}% pay · +${mA.headcountGrowth5yr}% jobs</td><td>+${mB.wageGrowth5yr}% pay · +${mB.headcountGrowth5yr}% jobs</td></tr>
-            <tr><td>Competition / Fill Rate</td><td>${escapeHtml(mA.competition.level)} (${mA.competition.fillRatePct}% filled)</td><td>${escapeHtml(mB.competition.level)} (${mB.competition.fillRatePct}% filled)</td></tr>
-          </tbody>
-        </table>
+    <section class="editorial-section">
+      <div class="card compare-roles-card">
+        <div class="card-title-row">
+          <h3 class="card-title">Side-by-Side Role Comparison (${country.flag} ${escapeHtml(country.name)})</h3>
+          <button type="button" class="btn-ghost btn-xs" id="clear-role-compare-btn">Close Comparison</button>
+        </div>
+        <div class="table-scroll">
+          <table class="freq-table">
+            <thead>
+              <tr>
+                <th>What We’re Comparing</th>
+                <th>${escapeHtml(roleA.title)}</th>
+                <th>${escapeHtml(roleB.title)}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>People Employed Nationally</td><td>${mA.workforceCount.toLocaleString()}</td><td>${mB.workforceCount.toLocaleString()}</td></tr>
+              <tr><td>Full-Time Salary (Gross / Take-Home)</td><td>${fmt(mA.fteSalary.median)} · <span class="net-col">${fmt(netA)} net</span></td><td>${fmt(mB.fteSalary.median)} · <span class="net-col">${fmt(netB)} net</span></td></tr>
+              <tr><td>Contractor Median Day Rate</td><td>${fmt(mA.contractorDayRate.median)}/day</td><td>${fmt(mB.contractorDayRate.median)}/day</td></tr>
+              <tr><td>5-Year Pay / Job Growth</td><td>+${mA.wageGrowth5yr}% pay · +${mA.headcountGrowth5yr}% jobs</td><td>+${mB.wageGrowth5yr}% pay · +${mB.headcountGrowth5yr}% jobs</td></tr>
+              <tr><td>Hiring Demand &amp; Fill Rate</td><td>${escapeHtml(mA.competition.shortageStatus)} (${mA.competition.fillRatePct}% filled)</td><td>${escapeHtml(mB.competition.shortageStatus)} (${mB.competition.fillRatePct}% filled)</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   `;
@@ -589,7 +575,7 @@ function renderDataSourcesModal() {
             <strong>${escapeHtml(s.name)}</strong>
             <span class="tax-year-pill">${escapeHtml(s.coverage)}</span>
           </div>
-          <div class="muted" style="font-size:0.8rem;">${escapeHtml(s.metrics)}</div>
+          <div class="muted" style="font-size:0.84rem;">${escapeHtml(s.metrics)}</div>
           <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer" class="ds-link">${escapeHtml(s.url)} ↗</a>
         </div>
       `
@@ -597,11 +583,11 @@ function renderDataSourcesModal() {
         .join('')}
     </div>
     <div class="ds-sync-guide">
-      <strong>🔄 Enable Optional Free Weekly Live Refresh (GitHub Actions):</strong>
+      <strong>Optional Free Weekly Live Refresh (GitHub Actions):</strong>
       <ol>
-        <li>Register a free developer key at <code>developer.adzuna.com</code> (no credit card, 2,500 calls/mo free).</li>
+        <li>Register a free key at <code>developer.adzuna.com</code> (no credit card, 2,500 calls/mo free).</li>
         <li>In your GitHub repo → <strong>Settings → Secrets and variables → Actions</strong>, add <code>ADZUNA_APP_ID</code> and <code>ADZUNA_APP_KEY</code>.</li>
-        <li>The included <code>.github/workflows/sync-data.yml</code> runs weekly (or manually via <strong>Actions → Sync Open Market Data</strong>) to refresh live vacancies and salary pulses directly into <code>data/roles.json</code> — keeping keys 100% hidden and hosting at $0!</li>
+        <li>The included <code>.github/workflows/sync-data.yml</code> runs weekly to refresh live vacancy counts and salary averages into <code>data/roles.json</code> — keeping keys private and hosting at $0.</li>
       </ol>
     </div>
   `;
@@ -652,10 +638,10 @@ function bindEvents() {
       const id = cmpBtn.dataset.roleId;
       if (uiState.compareRoleId === id) {
         uiState.compareRoleId = null;
-        showToast('Comparison cleared');
+        showToast('Comparison closed');
       } else {
         uiState.compareRoleId = id;
-        showToast('Pinned! Now click another role on the left to compare side-by-side.');
+        showToast('Pinned! Now click any other role in Section 01 to compare side-by-side.');
       }
       renderAll();
       return;
@@ -669,7 +655,7 @@ function bindEvents() {
       if (els.searchInput) els.searchInput.value = '';
       renderCategoryChips();
       renderAll();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      els.detailRoot.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
 

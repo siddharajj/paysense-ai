@@ -1,89 +1,77 @@
 /**
- * Lightweight zero-dependency SVG charts for instant visual clarity.
+ * Warm, easy-to-read visual components for everyday confidence:
+ * 1) Horizontal Money Split Bar (clearer than a complex donut!)
+ * 2) Donut Chart (available if needed)
+ * 3) Progressive Tax Bracket Visualizer with plain-English explanation.
  */
 
 import { formatCurrency, formatPercent } from '../tax/brackets.js';
 
 /**
- * Renders a crisp multi-segment SVG Donut Chart showing how Gross Pay splits
- * across Net Take-Home, Income Tax, Levies/Social, Retirement, and Expenses.
+ * Renders a single, crystal-clear horizontal Money Split Bar + legend tiles
+ * so anyone can see at a glance where every dollar goes.
  */
-export function renderDonutChart(calc) {
+export function renderMoneySplitBar(calc) {
   const { country } = calc;
   const fmt = (n) => formatCurrency(n, country.currency, country.locale);
 
   const segments = [
-    { label: 'Take-Home', value: Math.max(0, calc.netIncome), color: 'var(--chart-net)' },
-    { label: 'Income Tax', value: Math.max(0, calc.incomeTax), color: 'var(--chart-tax)' },
-    { label: 'Levies / Social', value: Math.max(0, calc.leviesAndSocial + calc.studentLoan), color: 'var(--chart-levy)' },
-    { label: country.retirementLabel, value: Math.max(0, calc.employeeRetirement), color: 'var(--chart-retire)' },
-    { label: 'Expenses', value: Math.max(0, calc.businessExpenses), color: 'var(--chart-expense)' },
+    { key: 'net', label: 'Yours to Keep (Take-Home)', value: Math.max(0, calc.netIncome), color: 'var(--chart-net)' },
+    { key: 'tax', label: 'Income Tax', value: Math.max(0, calc.incomeTax), color: 'var(--chart-tax)' },
+    { key: 'levy', label: 'Social / Medicare / Levies', value: Math.max(0, calc.leviesAndSocial + calc.studentLoan), color: 'var(--chart-levy)' },
+    { key: 'retire', label: `Your ${country.retirementLabel}`, value: Math.max(0, calc.employeeRetirement), color: 'var(--chart-retire)' },
+    { key: 'expense', label: 'Business Expenses', value: Math.max(0, calc.businessExpenses), color: 'var(--chart-expense)' },
   ].filter((s) => s.value > 0.5);
 
   const total = segments.reduce((sum, s) => sum + s.value, 0) || 1;
-  const keepRatio = calc.netIncome / total;
 
-  const size = 188;
-  const stroke = 22;
-  const radius = (size - stroke) / 2;
-  const circumference = 2 * Math.PI * radius;
-
-  let offset = 0;
-  const circles = segments
-    .map((seg) => {
-      const fraction = seg.value / total;
-      const dash = fraction * circumference;
-      const gap = circumference - dash;
-      const el = `<circle
-        cx="${size / 2}" cy="${size / 2}" r="${radius}"
-        fill="none"
-        stroke="${seg.color}"
-        stroke-width="${stroke}"
-        stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}"
-        stroke-dashoffset="${(-offset).toFixed(2)}"
-        stroke-linecap="butt"
-      ><title>${seg.label}: ${fmt(seg.value)} (${formatPercent(fraction, 1)})</title></circle>`;
-      offset += dash;
-      return el;
+  const barSegments = segments
+    .map((s) => {
+      const pct = Math.max(1.5, (s.value / total) * 100);
+      return `<div class="split-segment seg-${s.key}" style="width:${pct.toFixed(2)}%; background:${s.color}" title="${s.label}: ${fmt(s.value)} (${formatPercent(s.value / total, 1)})"></div>`;
     })
     .join('');
 
-  const legend = segments
-    .map((seg) => {
-      const pct = formatPercent(seg.value / total, 1);
+  const legendCards = segments
+    .map((s) => {
+      const pct = formatPercent(s.value / total, 0);
       return `
-        <div class="donut-legend-item">
-          <span class="legend-dot" style="background:${seg.color}"></span>
-          <span class="legend-label">${seg.label}</span>
-          <span class="legend-pct">${pct}</span>
-          <span class="legend-val">${fmt(seg.value)}</span>
+        <div class="split-legend-card">
+          <div class="split-legend-top">
+            <span class="legend-dot" style="background:${s.color}"></span>
+            <span class="split-legend-name">${s.label}</span>
+          </div>
+          <div class="split-legend-bottom">
+            <strong class="split-legend-val">${fmt(s.value)}<span class="unit">/yr</span></strong>
+            <span class="split-legend-pct">${pct}</span>
+          </div>
         </div>
       `;
     })
     .join('');
 
   return `
-    <div class="donut-wrap">
-      <div class="donut-svg-box">
-        <svg viewBox="0 0 ${size} ${size}" class="donut-svg" role="img" aria-label="Pay breakdown donut chart">
-          <circle cx="${size / 2}" cy="${size / 2}" r="${radius}" fill="none" stroke="var(--border-subtle)" stroke-width="${stroke}" />
-          <g transform="rotate(-90 ${size / 2} ${size / 2})">
-            ${circles}
-          </g>
-        </svg>
-        <div class="donut-center">
-          <div class="donut-center-val">${formatPercent(keepRatio, 0)}</div>
-          <div class="donut-center-sub">Take-Home</div>
-        </div>
+    <div class="money-split-wrap">
+      <div class="money-split-label-row">
+        <span>How your annual pay is divided</span>
+        <span class="muted">Keep <strong>${formatPercent(calc.netIncome / total, 0)}</strong> of gross</span>
       </div>
-      <div class="donut-legend">${legend}</div>
+      <div class="money-split-bar" role="img" aria-label="Horizontal breakdown of gross pay">
+        ${barSegments}
+      </div>
+      <div class="split-legend-grid">
+        ${legendCards}
+      </div>
     </div>
   `;
 }
 
+export function renderDonutChart(calc) {
+  return renderMoneySplitBar(calc);
+}
+
 /**
- * Renders a visual progressive tax bracket waterfall so users can see
- * exactly how much income sits in each bracket (not flat tax!).
+ * Renders a visual progressive tax bracket waterfall with reassuring explanation.
  */
 export function renderTaxBracketsChart(calc) {
   const { country, brackets } = calc;
@@ -96,15 +84,15 @@ export function renderTaxBracketsChart(calc) {
 
   const rows = displayBrackets
     .map((b) => {
-      const widthPct = Math.max(4, Math.round((b.taxableAmount / maxTaxable) * 100));
+      const widthPct = Math.max(5, Math.round((b.taxableAmount / maxTaxable) * 100));
       const ratePct = formatPercent(b.rate, b.rate * 100 % 1 !== 0 ? 1 : 0);
       return `
         <div class="bracket-row">
           <div class="bracket-meta">
             <span class="bracket-label">${b.label}</span>
             <span class="bracket-nums">
-              <span class="muted">${fmt(b.taxableAmount)} taxed</span>
-              <strong>${fmt(b.tax)}</strong>
+              <span class="muted">${fmt(b.taxableAmount)} in this slice</span>
+              <strong>Tax: ${fmt(b.tax)}</strong>
             </span>
           </div>
           <div class="bracket-track">
@@ -115,5 +103,10 @@ export function renderTaxBracketsChart(calc) {
     })
     .join('');
 
-  return `<div class="brackets-list">${rows}</div>`;
+  return `
+    <p class="reassure-note">
+      <strong>How tax brackets work:</strong> Moving into a higher tax bracket never taxes your whole income at that rate — only the slice of dollars inside each bracket is taxed at that bracket’s percentage.
+    </p>
+    <div class="brackets-list">${rows}</div>
+  `;
 }

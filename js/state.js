@@ -62,7 +62,8 @@ export function loadTheme() {
   } catch {
     // ignore
   }
-  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  // Default to the warm, confidence-building paper theme
+  return 'light';
 }
 
 export function saveTheme(theme) {

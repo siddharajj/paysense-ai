@@ -220,7 +220,7 @@ async function handleAiPrompt(rawText) {
       showToast(err.message || 'External LLM unavailable — used built-in Local AI.');
     } finally {
       els.aiSubmitBtn.disabled = false;
-      els.aiSubmitBtn.textContent = 'Apply AI';
+      els.aiSubmitBtn.textContent = 'Work It Out';
     }
   }
 
@@ -420,6 +420,12 @@ function bindGlobalEvents() {
   });
 
   // Delegated Form Events (keeps cursor focus smooth!)
+  els.formRoot.addEventListener('toggle', (e) => {
+    if (e.target.id === 'optional-tax-drawer') {
+      state.drawerOpen = e.target.open;
+    }
+  }, true);
+
   els.formRoot.addEventListener('click', (e) => {
     const countryBtn = e.target.closest('[data-country]');
     if (countryBtn) {
@@ -516,6 +522,12 @@ function bindGlobalEvents() {
     const periodBtn = e.target.closest('[data-display-period]');
     if (periodBtn) {
       state.displayPeriod = periodBtn.dataset.displayPeriod;
+      renderResultsOnly();
+      return;
+    }
+    const tabBtn = e.target.closest('[data-detail-tab]');
+    if (tabBtn) {
+      state.detailTab = tabBtn.dataset.detailTab;
       renderResultsOnly();
       return;
     }

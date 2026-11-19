@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Role &amp; Market Intelligence — PaySense AI</title>
-  <meta name="description" content="Explore open government & market data on job roles: workforce headcount, full-time salaries, contractor day rates, wage & headcount growth, competition, and career growth pathways." />
+  <title>Job Roles &amp; Market Pay Guide — PaySense</title>
+  <meta name="description" content="A simple, warm guide to job roles, how many people do the job, average full-time salary, contractor day rates, pay growth, competition, and career pathways." />
   <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%234f46e5'/%3E%3Cstop offset='100%25' stop-color='%2310b981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='system-ui,sans-serif' font-weight='800' font-size='32'%3E%24%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231E563F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF7F2' font-family='Georgia,serif' font-weight='700' font-size='34'%3E%24%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
@@ -14,99 +14,109 @@
     <div class="container top-bar-inner">
       <div class="brand-group">
         <a href="./index.html" class="brand brand-link">
-          <div class="brand-mark" aria-hidden="true">⚡</div>
+          <div class="brand-mark" aria-hidden="true">$</div>
           <div>
-            <div class="brand-name">PaySense <span class="brand-ai">AI</span></div>
-            <div class="brand-sub">Multi-Country &amp; Contractor Pay Calculator</div>
+            <div class="brand-name">PaySense</div>
+            <div class="brand-sub">Clear, everyday pay &amp; career guide</div>
           </div>
         </a>
         <nav class="main-nav" aria-label="Primary navigation">
-          <a href="./index.html" class="nav-tab">⚡ Pay Calculator</a>
-          <a href="./roles.html" class="nav-tab active" aria-current="page">📊 Role &amp; Market Intel</a>
+          <a href="./index.html" class="nav-tab">Pay Calculator</a>
+          <a href="./roles.html" class="nav-tab active" aria-current="page">Job Roles &amp; Market Pay</a>
         </nav>
       </div>
 
       <div class="header-actions">
-        <button type="button" class="ai-mode-pill" id="data-sources-btn" title="View open data sources & optional free GitHub Actions sync">
-          <span class="status-dot local"></span> Open Data · $0
+        <button type="button" class="ai-mode-pill" id="data-sources-btn" title="View public data sources & optional free GitHub Actions refresh">
+          <span class="status-dot local"></span> Public Data · Free
         </button>
-        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle warm dark or light paper theme" title="Switch theme">🌙</button>
       </div>
     </div>
   </header>
 
   <main class="container main-content">
-    <!-- Top Market Search & Filters -->
-    <section class="card roles-toolbar" aria-label="Filter job roles">
-      <div class="roles-toolbar-top">
-        <div class="roles-headline">
-          <h1 class="page-h1">Role &amp; Career Market Intelligence</h1>
-          <p class="page-sub">Compare workforce size, full-time salaries, contractor day rates, financial &amp; headcount growth, market competition, and after-tax career pathways.</p>
-        </div>
-        <div class="country-pills roles-country-pills" id="roles-country-pills" role="radiogroup" aria-label="Select country"></div>
+    <section class="intro-hero">
+      <div class="intro-header">
+        <h1 class="intro-title">Explore real job pay, demand, and career steps.</h1>
+        <p class="intro-lead">See how many people work in a role, what full-time vs contracting really pays after tax, how competitive hiring is, and which career moves pay off next.</p>
       </div>
-
-      <div class="roles-filter-row">
-        <div class="search-box">
-          <span class="search-icon" aria-hidden="true">🔍</span>
-          <input
-            type="search"
-            id="role-search-input"
-            class="search-input"
-            placeholder="Search roles, skills, or ANZSCO / SOC codes… (e.g. AI, Data Engineer, Nurse, Electrician)"
-            aria-label="Search job roles"
-          />
-        </div>
-        <div class="sort-wrap">
-          <label class="sub-label sr-only" for="role-sort-select">Sort roles</label>
-          <select id="role-sort-select" class="select-input">
-            <option value="fteMedian">Sort: Highest FTE Salary</option>
-            <option value="dayMedian">Sort: Highest Contractor Rate</option>
-            <option value="headcountGrowth5yr">Sort: Fastest Job Growth (5-yr)</option>
-            <option value="wageGrowth5yr">Sort: Fastest Wage Growth (5-yr)</option>
-            <option value="fillRateAsc">Sort: Lowest Competition (Shortage)</option>
-            <option value="workforce">Sort: Largest Workforce</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="category-chips-row" id="role-category-chips"></div>
     </section>
 
-    <!-- Optional Side-by-Side Role Comparator Drawer -->
-    <div id="role-compare-bar" hidden></div>
-
-    <!-- Master-Detail Workspace -->
-    <div class="roles-workspace">
-      <aside class="roles-list-col" aria-label="Role directory">
-        <div class="roles-count-row">
-          <span id="roles-count-label" class="muted">Loading roles…</span>
+    <div class="editorial-flow">
+      <!-- SECTION 01: CHOOSE COUNTRY & ROLE -->
+      <section class="editorial-section" aria-label="Section 1: Pick a country and job role">
+        <div class="section-divider">
+          <span class="section-num">01</span>
+          <div class="section-divider-text">
+            <h2 class="section-heading">Pick a Country &amp; Job Role</h2>
+            <p class="section-sub">Filter by field or search any job title, then click a role below to inspect its full guide.</p>
+          </div>
+          <span id="roles-count-label" class="tax-year-pill">Loading roles…</span>
         </div>
-        <div id="roles-list-root" class="roles-list"></div>
-      </aside>
 
-      <section class="role-detail-col" id="role-detail-root" aria-live="polite"></section>
+        <div class="card roles-picker-card">
+          <div class="setup-block">
+            <label class="field-label">1. Which country’s job market?</label>
+            <div class="country-pills warm-country-pills" id="roles-country-pills" role="radiogroup" aria-label="Select country"></div>
+          </div>
+
+          <div class="roles-filter-row">
+            <div class="search-box">
+              <span class="search-icon" aria-hidden="true">🔍</span>
+              <input
+                type="search"
+                id="role-search-input"
+                class="search-input"
+                placeholder="Search by job title or skill… (e.g. Software Engineer, Nurse, Electrician, Data, Lawyer)"
+                aria-label="Search job roles"
+              />
+            </div>
+            <div class="sort-wrap">
+              <label class="sub-label sr-only" for="role-sort-select">Sort roles</label>
+              <select id="role-sort-select" class="select-input">
+                <option value="fteMedian">Sort by: Highest Full-Time Salary</option>
+                <option value="dayMedian">Sort by: Highest Contractor Day Rate</option>
+                <option value="headcountGrowth5yr">Sort by: Fastest Growing Jobs</option>
+                <option value="wageGrowth5yr">Sort by: Fastest Growing Pay</option>
+                <option value="fillRateAsc">Sort by: Easiest to Get Hired (Shortage)</option>
+                <option value="workforce">Sort by: Most People Employed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="category-chips-row" id="role-category-chips"></div>
+
+          <div id="roles-list-root" class="roles-picker-grid"></div>
+        </div>
+      </section>
+
+      <!-- Optional Role vs Role Comparison Table -->
+      <div id="role-compare-bar" hidden></div>
+
+      <!-- SECTIONS 02, 03 & 04: SELECTED ROLE GUIDE -->
+      <div id="role-detail-root" aria-live="polite"></div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <strong>PaySense AI · Market Intel</strong> — Grounded in open government benchmarks (JSA, BLS, ONS, O*NET) with optional free GitHub Actions Adzuna sync.
+        <strong>PaySense · Job Roles &amp; Market Guide</strong> — Grounded in public labour statistics (JSA, BLS, ONS, O*NET).
       </div>
       <div class="footer-disclaimer">
-        Market benchmarks are indicative estimates compiled from public labour statistics and open market surveys. Actual offers vary by seniority, location, and specialization.
+        Benchmarks are indicative estimates compiled from public labour statistics and market surveys. Actual offers vary by experience, city, and industry.
       </div>
     </div>
   </footer>
 
-  <!-- Open Data Sources & Free GitHub Actions Sync Info Modal -->
+  <!-- Open Data Sources Modal -->
   <div id="data-sources-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="ds-modal-title">
     <div class="modal-card modal-wide">
       <div class="modal-header">
         <div>
-          <h2 id="ds-modal-title" class="modal-title">Open Data Sources &amp; Optional Free Live Sync</h2>
-          <p class="modal-sub">Zero API keys required out of the box. Optionally add a free Adzuna key in GitHub Secrets for weekly automated refreshes.</p>
+          <h2 id="ds-modal-title" class="modal-title">Public Data Sources &amp; Optional Live Refresh</h2>
+          <p class="modal-sub">No API keys required. Optionally add a free Adzuna key in GitHub Secrets for weekly automated updates.</p>
         </div>
         <button type="button" class="icon-btn" id="close-ds-btn" aria-label="Close">✕</button>
       </div>
