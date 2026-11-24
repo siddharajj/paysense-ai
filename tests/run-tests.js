@@ -224,3 +224,47 @@ import {
 }
 
 print(`All Property & Tax Forecaster assertions passed! Total assertions: ${passed} passed, ${failed} failed.`);
+
+// 11. Life & Money Decisions (Novated Lease, EV vs Petrol, Rent vs Buy, Smart What-Ifs) tests
+import {
+  defaultDecisionsState,
+  calculateCarDecision,
+  calculateRentVsBuy,
+  calculateWhatIfScenarios,
+} from '../js/tax/decisionsEngine.js';
+
+{
+  // Australia EV Novated Lease (FBT-exempt under $91,387) vs Petrol Novated Lease vs Loan
+  const decAu = defaultDecisionsState('AU');
+  const carRes = calculateCarDecision(decAu);
+  assert(carRes.evEligibleFbtExempt === true, 'AU $62k EV is eligible for 100% FBT exemption');
+  assert(carRes.options.evNovated.totalTaxAndGstSaved > 15000, 'AU EV novated lease saves >$15k in tax & GST over 4 yrs');
+  assert(
+    carRes.options.evNovated.totalCostToOwnAfterTerm < carRes.options.petrolNovated.totalCostToOwnAfterTerm,
+    'AU FBT-exempt EV novated lease has lower 4-yr net cost than petrol novated lease'
+  );
+  assert(carRes.energyComparison.annualFuelSavings > 1000, 'EV home charging saves >$1,000/yr vs petrol fuel');
+
+  // Verify HECS Reportable Fringe Benefit add-back on FBT-exempt EV novated lease
+  const carHecs = calculateCarDecision({ ...decAu, car: { ...decAu.car, hasHecs: true } });
+  assert(carHecs.extraHecsFromRfba > 0, 'AU EV novated lease models ATO RFBA HECS-HELP repayment impact');
+
+  // Rent vs Buy Home decision over 10 years
+  const rbRes = calculateRentVsBuy(decAu);
+  assert(rbRes.timeline.length === 10, 'Rent vs Buy simulates 10-year timeline');
+  assert(rbRes.finalBuyerNetWealth > 300000 && rbRes.finalRenterNetWealth > 300000, 'Rent vs Buy computes both homeowner equity and renter after-CGT ETF portfolio');
+
+  // Smart What-If Playbooks: Extra $1,000/mo allocation & 4-Day Work Week cushion
+  const wiRes = calculateWhatIfScenarios(decAu);
+  assert(
+    wiRes.surplusAllocation.superSacrifice.finalValue > wiRes.surplusAllocation.offset.finalValue,
+    'Pre-tax Super sacrifice compounds higher than mortgage offset due to upfront tax arbitrage'
+  );
+  const fourDay = wiRes.partTimeCushion.find((r) => r.days === 4);
+  assert(fourDay.grossRatioPct === 80 && fourDay.netRatioPct > 80, '4-day work week (80% gross) keeps >80% of net take-home pay due to progressive tax cushion');
+}
+
+print(`All Life & Money Decisions assertions passed! Final total: ${passed} passed, ${failed} failed.`);
+if (failed > 0) {
+  throw new Error(`${failed} test(s) failed`);
+}

@@ -1979,3 +1979,73 @@ body {
     page-break-inside: avoid;
   }
 }
+
+
+/* ==========================================================================
+   Life & Money Decisions Page (decisions.html)
+   ========================================================================== */
+
+.decision-tool-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.decision-tool-card {
+  text-align: left;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.decision-tool-card:hover {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+
+.decision-tool-card.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.dtc-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.dtc-sub {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.car-options-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+@media (max-width: 960px) {
+  .decision-tool-tabs {
+    grid-template-columns: 1fr;
+  }
+  .car-options-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .car-options-grid {
+    grid-template-columns: 1fr;
+  }
+}

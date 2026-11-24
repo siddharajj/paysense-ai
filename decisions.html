@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life &amp; Money Decisions (Novated Lease, EV vs Petrol, Rent vs Buy) — PaySense</title>
+  <meta name="description" content="100% client-side calculators for Novated Lease & EV vs Petrol, Rent vs Buy Home decisions, Mortgage Offset vs Super vs ETFs, and 4-Day Work Week tax impact." />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231E563F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF7F2' font-family='Georgia,serif' font-weight='700' font-size='34'%3E%24%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="brand-group">
+        <a href="./index.html" class="brand brand-link">
+          <div class="brand-mark" aria-hidden="true">$</div>
+          <div>
+            <div class="brand-name">PaySense</div>
+            <div class="brand-sub">Clear, everyday pay &amp; decision guide</div>
+          </div>
+        </a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="./index.html" class="nav-tab">Pay Calculator</a>
+          <a href="./property.html" class="nav-tab">Rental Property &amp; Tax</a>
+          <a href="./decisions.html" class="nav-tab active" aria-current="page">Life &amp; Money Decisions</a>
+          <a href="./roles.html" class="nav-tab">Job Roles &amp; Market Pay</a>
+        </nav>
+      </div>
+
+      <div class="header-actions">
+        <span class="ai-mode-pill" title="Runs 100% in your browser with zero server calls">
+          <span class="status-dot local"></span> Client-Side AI · Free
+        </span>
+        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle warm dark or light paper theme" title="Switch theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro-hero">
+      <div class="intro-header">
+        <h1 class="intro-title">Everyday money decisions, worked out clearly.</h1>
+        <p class="intro-lead">Compare an EV novated lease against petrol or cash, test whether to buy a home or rent and invest in ETFs, or see what happens if you invest extra savings or move to a 4-day work week.</p>
+      </div>
+
+      <div class="plain-english-card">
+        <label class="plain-english-label" for="dec-ai-input">
+          Ask a “What-If” question in plain words <span class="muted-normal">(100% client-side in your browser)</span>
+        </label>
+        <form id="dec-ai-form" class="ai-prompt-shell" autocomplete="off">
+          <input
+            type="text"
+            id="dec-ai-input"
+            class="ai-prompt-input"
+            placeholder='e.g. "AU $145k salary, $62k EV novated lease over 4 years vs $52k petrol car"'
+            aria-label="Describe your decision scenario in plain English"
+          />
+          <button type="submit" class="btn-primary">Compare Options</button>
+        </form>
+
+        <div class="ai-chips-row">
+          <span class="chips-label">Try a scenario:</span>
+          <div id="dec-example-chips" class="ai-chips-scroll"></div>
+        </div>
+
+        <div id="dec-ai-feedback" class="ai-feedback" hidden></div>
+      </div>
+    </section>
+
+    <div class="editorial-flow">
+      <div id="dec-form-root" aria-label="Section 1: Decision setup"></div>
+      <div id="dec-results-root" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>PaySense · Life &amp; Money Decisions</strong> — 100% client-side, zero tokens, $0 to host on GitHub Pages.
+      </div>
+      <div class="footer-disclaimer">
+        Figures are general educational estimates based on 2025/26 tax rules (including ATO FBT EV exemption thresholds). Confirm specific lease quotes and financial decisions with a licensed advisor.
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./js/decisionsApp.js"></script>
+</body>
+</html>
