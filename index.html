@@ -10,58 +10,32 @@
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
-  <header class="top-bar">
-    <div class="container top-bar-inner">
-      <div class="brand-group">
-        <a href="./index.html" class="brand brand-link">
-          <div class="brand-mark" aria-hidden="true">$</div>
-          <div>
-            <div class="brand-name">PaySense</div>
-            <div class="brand-sub">Clear, everyday pay &amp; career guide</div>
-          </div>
-        </a>
-        <nav class="main-nav" aria-label="Primary navigation">
-          <a href="./index.html" class="nav-tab active" aria-current="page">Pay Calculator</a>
-          <a href="./property.html" class="nav-tab">Rental Property &amp; Tax</a>
-          <a href="./decisions.html" class="nav-tab">Life &amp; Money Decisions</a>
-          <a href="./roles.html" class="nav-tab">Job Roles &amp; Market Pay</a>
-        </nav>
-      </div>
-
-      <div class="header-actions">
-        <button type="button" class="ai-mode-pill" id="ai-mode-pill" title="Works 100% free offline. Click for optional AI key settings.">
-          <span class="status-dot local"></span> Local AI · Free
-        </button>
-        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle warm dark or light paper theme" title="Switch theme">🌙</button>
-      </div>
-    </div>
-  </header>
+  <header class="top-bar"></header>
 
   <main class="container main-content">
-    <!-- Friendly Intro & Plain-English Input -->
-    <section class="intro-hero" aria-label="Plain-English pay helper">
-      <div class="intro-header">
-        <h1 class="intro-title">Understand your real take-home pay, simply.</h1>
-        <p class="intro-lead">Whether you’re comparing a full-time salary, working out a contractor day rate, or checking tax across countries — get a clear answer in plain English.</p>
+    <!-- Compact Top Bar + Plain-English Input -->
+    <section class="compact-top-hero" aria-label="Plain-English pay helper">
+      <div class="compact-hero-row">
+        <div>
+          <h1 class="compact-page-title">Take-Home Pay &amp; Contractor Calculator</h1>
+          <p class="compact-page-sub">Type in plain words below or adjust your numbers on the left — switch tabs on the right without long scrolling.</p>
+        </div>
       </div>
 
-      <div class="plain-english-card">
-        <label class="plain-english-label" for="ai-prompt-input">
-          Describe your situation in everyday words <span class="muted-normal">(or use the step-by-step form in Section 01 below)</span>
-        </label>
+      <div class="plain-english-card compact-ai-card">
         <form id="ai-prompt-form" class="ai-prompt-shell" autocomplete="off">
           <input
             type="text"
             id="ai-prompt-input"
             class="ai-prompt-input"
-            placeholder='e.g. "Australia contractor at $950/day for 220 days vs $165k full-time"'
+            placeholder='Describe your pay… e.g. "Contractor at $950/day for 220 days vs $165k full-time"'
             aria-label="Describe your pay scenario in plain English"
           />
           <button type="submit" class="btn-primary ai-submit-btn" id="ai-submit-btn">Work It Out</button>
         </form>
 
         <div class="ai-chips-row">
-          <span class="chips-label">Common questions:</span>
+          <span class="chips-label">Try:</span>
           <div id="ai-example-chips" class="ai-chips-scroll"></div>
         </div>
 
@@ -69,27 +43,23 @@
       </div>
     </section>
 
-    <!-- Divided, Spacious Single-Flow Sections -->
-    <div class="editorial-flow">
-      <div id="form-root" aria-label="Section 1: Your setup"></div>
-      <div id="results-root" aria-live="polite"></div>
+    <!-- Compact Viewport-Fitted Split Workspace (Zero Long Scroll!) -->
+    <div class="compact-workspace">
+      <aside id="form-root" aria-label="Section 1: Your setup"></aside>
+      <section id="results-root" aria-live="polite"></section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div>
-        <strong>PaySense</strong> — Built to make pay and tax simple. 100% private in your browser, \$0 to use.
-      </div>
-      <div class="footer-disclaimer">
-        Figures are helpful estimates based on 2025/26 tax rules. Check with an accountant or your local tax office for personal tax advice.
-      </div>
+      <div><strong>PaySense</strong> — Built to make pay and tax simple. 100% private in your browser, $0 to use.</div>
+      <div class="footer-disclaimer">Figures are helpful estimates based on 2025/26 tax rules. Check with an accountant for personal tax advice.</div>
     </div>
   </footer>
 
   <!-- Optional BYOK ($0 Free Tier) AI Settings Modal -->
   <div id="ai-settings-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="ai-modal-title">
-    <div class="modal-card">
+    <div class="modal-card animate-pop">
       <div class="modal-header">
         <div>
           <h2 id="ai-modal-title" class="modal-title">Smart Helper Settings (100% Free)</h2>

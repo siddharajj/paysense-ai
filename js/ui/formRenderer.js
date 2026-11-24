@@ -1,10 +1,9 @@
 /**
- * Section 01 — Warm, Simple, Step-by-Step Form Renderer.
- * Shows the 3 essential questions upfront and tucks advanced tax tweaks into
- * an easy expandable drawer so everyday users never feel overwhelmed.
+ * Compact Left-Column Setup Card + Pop-Up Tax Options Modal for Pay Calculator (index.html).
+ * Country is controlled globally in the top bar — no repeated country buttons here!
  */
 
-import { COUNTRIES, COUNTRY_LIST } from '../tax/countries.js';
+import { COUNTRIES } from '../tax/countries.js';
 import { US_STATES } from '../tax/us.js';
 import { CA_PROVINCES } from '../tax/ca.js';
 
@@ -18,7 +17,6 @@ function escapeHtml(str) {
 
 export function renderCalculatorForm(container, state) {
   const country = COUNTRIES[state.country] || COUNTRIES.AU;
-  const opts = state.countryOptions[state.country] || {};
   const isContractor = state.mode === 'contractor';
 
   const periodOptions = isContractor
@@ -38,195 +36,149 @@ export function renderCalculatorForm(container, state) {
       ];
 
   container.innerHTML = `
-    <section class="editorial-section">
-      <div class="section-divider">
+    <div class="card compact-form-card">
+      <div class="compact-form-header">
         <span class="section-num">01</span>
-        <div class="section-divider-text">
-          <h2 class="section-heading">Your Work &amp; Pay Setup</h2>
-          <p class="section-sub">Choose your country, how you work, and your pay rate.</p>
+        <div>
+          <h2 class="compact-form-title">Your Pay Setup</h2>
+          <div class="muted" style="font-size:0.78rem;" id="global-tax-year-badge">${country.flag} ${escapeHtml(country.name)} · ${escapeHtml(country.taxYear)}</div>
         </div>
-        <span class="tax-year-pill">${escapeHtml(country.name)} · ${escapeHtml(country.taxYear)}</span>
       </div>
 
-      <div class="card setup-card">
-        <!-- Step 1: Country -->
-        <div class="setup-block">
-          <label class="field-label">1. Where do you pay tax?</label>
-          <div class="country-pills warm-country-pills" role="radiogroup" aria-label="Select country">
-            ${COUNTRY_LIST.map(
-              (c) => `
-              <button type="button" class="country-pill ${c.code === state.country ? 'active' : ''}" data-country="${c.code}">
-                <span class="pill-flag">${c.flag}</span>
-                <span class="pill-name">${escapeHtml(c.name)}</span>
-              </button>
-            `
-            ).join('')}
-          </div>
+      <div class="setup-block">
+        <label class="field-label">Work Style</label>
+        <div class="segmented-control" role="tablist">
+          <button type="button" class="seg-btn ${!isContractor ? 'active' : ''}" data-mode="employee" role="tab" aria-selected="${!isContractor}">
+            Full-Time
+          </button>
+          <button type="button" class="seg-btn ${isContractor ? 'active' : ''}" data-mode="contractor" role="tab" aria-selected="${isContractor}">
+            Contractor
+          </button>
         </div>
+      </div>
 
-        <!-- Step 2 & 3: Work Arrangement + Pay Amount side-by-side on desktop -->
-        <div class="setup-two-col">
-          <div class="setup-block">
-            <label class="field-label">2. How are you employed?</label>
-            <div class="segmented-control" role="tablist">
-              <button type="button" class="seg-btn ${!isContractor ? 'active' : ''}" data-mode="employee" role="tab" aria-selected="${!isContractor}">
-                Full-Time Employee
-              </button>
-              <button type="button" class="seg-btn ${isContractor ? 'active' : ''}" data-mode="contractor" role="tab" aria-selected="${isContractor}">
-                Contractor / Freelancer
-              </button>
-            </div>
-            <div class="field-hint">
-              ${
-                isContractor
-                  ? 'You invoice for your days or hours and handle your own tax & leave.'
-                  : 'Your employer deducts tax for you and provides paid leave.'
-              }
-            </div>
-          </div>
-
-          <div class="setup-block">
-            <div class="section-header-row">
-              <label class="field-label" for="amount-input">
-                3. ${isContractor ? 'What is your contracting rate?' : 'What is your gross pay?'}
-              </label>
-              <button type="button" class="text-action-btn ${state.reverseGoalActive ? 'active' : ''}" id="toggle-reverse-btn">
-                ${state.reverseGoalActive ? '← Enter gross pay instead' : 'Work backwards from target take-home'}
-              </button>
-            </div>
-
-            ${
-              state.reverseGoalActive
-                ? `
-              <div class="reverse-goal-box">
-                <div class="reverse-goal-hint">Enter the net take-home pay you want in your pocket — we’ll find the gross pay needed:</div>
-                <div class="input-combo">
-                  <span class="input-prefix">${escapeHtml(country.symbol)}</span>
-                  <input type="number" id="target-net-input" class="num-input" min="0" step="100" value="${state.targetNetDisplay}" />
-                  <select id="target-net-period" class="combo-select">
-                    <option value="monthly" ${state.targetNetPeriod === 'monthly' ? 'selected' : ''}>/ month take-home</option>
-                    <option value="annual" ${state.targetNetPeriod === 'annual' ? 'selected' : ''}>/ year take-home</option>
-                    <option value="fortnightly" ${state.targetNetPeriod === 'fortnightly' ? 'selected' : ''}>/ fortnight take-home</option>
-                    <option value="weekly" ${state.targetNetPeriod === 'weekly' ? 'selected' : ''}>/ week take-home</option>
-                  </select>
-                </div>
-                <button type="button" class="btn-primary btn-sm" id="apply-reverse-btn">Find Required ${isContractor ? 'Rate' : 'Gross Salary'}</button>
-              </div>
-            `
-                : `
-              <div class="input-combo large-combo">
-                <span class="input-prefix">${escapeHtml(country.symbol)}</span>
-                <input type="number" id="amount-input" class="num-input" min="0" step="${isContractor ? '25' : '1000'}" value="${state.amount}" placeholder="0" />
-                <select id="rate-period-select" class="combo-select" aria-label="Pay frequency">
-                  ${periodOptions
-                    .map((p) => `<option value="${p.val}" ${state.ratePeriod === p.val ? 'selected' : ''}>${p.label}</option>`)
-                    .join('')}
-                </select>
-              </div>
-            `
-            }
-          </div>
+      <div class="setup-block">
+        <div class="section-header-row">
+          <label class="field-label" for="amount-input">
+            ${isContractor ? 'Contracting Rate' : 'Gross Pay'}
+          </label>
+          <button type="button" class="text-action-btn" id="toggle-reverse-btn">
+            ${state.reverseGoalActive ? '← Enter gross' : 'Target take-home'}
+          </button>
         </div>
 
         ${
-          isContractor
+          state.reverseGoalActive
             ? `
-          <div class="contractor-essentials">
-            <div class="sub-field">
-              <div class="slider-label-row">
-                <label class="sub-label" for="billable-days-slider">Working days you’ll bill per year</label>
-                <span class="slider-val" id="billable-days-val">${state.billableDays} days</span>
-              </div>
-              <input type="range" id="billable-days-slider" class="range-slider" min="50" max="260" step="5" value="${state.billableDays}" />
-              <div class="field-hint">A full year has 260 weekdays — subtracting 4 weeks holiday, public holidays &amp; sick days leaves ~220 billable days.</div>
+          <div class="reverse-goal-box">
+            <div class="reverse-goal-hint">Enter the take-home pay you want:</div>
+            <div class="input-combo compact">
+              <span class="input-prefix">${escapeHtml(country.symbol)}</span>
+              <input type="number" id="target-net-input" class="num-input" min="0" step="100" value="${state.targetNetDisplay}" />
+              <select id="target-net-period" class="combo-select">
+                <option value="monthly" ${state.targetNetPeriod === 'monthly' ? 'selected' : ''}>/ mo net</option>
+                <option value="annual" ${state.targetNetPeriod === 'annual' ? 'selected' : ''}>/ yr net</option>
+                <option value="fortnightly" ${state.targetNetPeriod === 'fortnightly' ? 'selected' : ''}>/ fn net</option>
+                <option value="weekly" ${state.targetNetPeriod === 'weekly' ? 'selected' : ''}>/ wk net</option>
+              </select>
             </div>
-            <div class="sub-field">
-              <label class="sub-label" for="expenses-input">Annual business expenses (deductible)</label>
-              <div class="input-combo compact">
-                <span class="input-prefix">${escapeHtml(country.symbol)}</span>
-                <input type="number" id="expenses-input" class="num-input" min="0" step="500" value="${state.businessExpenses}" />
-              </div>
-              <div class="field-hint">Equipment, software, insurance, accountant fees.</div>
-            </div>
-            ${
-              state.ratePeriod === 'hourly'
-                ? `
-              <div class="sub-field">
-                <label class="sub-label" for="hours-day-input">Billable hours per day</label>
-                <input type="number" id="hours-day-input" class="text-input" min="1" max="16" step="0.5" value="${state.hoursPerDay}" />
-              </div>
-            `
-                : ''
-            }
+            <button type="button" class="btn-primary btn-sm" id="apply-reverse-btn">Solve Required Gross</button>
           </div>
         `
-            : ''
+            : `
+          <div class="input-combo">
+            <span class="input-prefix">${escapeHtml(country.symbol)}</span>
+            <input type="number" id="amount-input" class="num-input" min="0" step="${isContractor ? '25' : '1000'}" value="${state.amount}" placeholder="0" />
+            <select id="rate-period-select" class="combo-select" aria-label="Pay frequency">
+              ${periodOptions
+                .map((p) => `<option value="${p.val}" ${state.ratePeriod === p.val ? 'selected' : ''}>${p.label}</option>`)
+                .join('')}
+            </select>
+          </div>
+        `
         }
+      </div>
 
-        <!-- Progressive Disclosure: Optional Tax & Comparison Details -->
-        <details class="optional-drawer" id="optional-tax-drawer" ${state.drawerOpen ? 'open' : ''}>
-          <summary class="optional-summary">
-            <span>Fine-tune ${escapeHtml(country.name)} tax details &amp; compare offers <span class="muted-normal">(Optional — sensible defaults already applied)</span></span>
-            <span class="summary-chevron" aria-hidden="true">▾</span>
-          </summary>
+      ${
+        isContractor
+          ? `
+        <div class="setup-block">
+          <div class="slider-label-row">
+            <label class="sub-label" for="billable-days-slider">Billable Days / Year</label>
+            <span class="slider-val" id="billable-days-val">${state.billableDays} days</span>
+          </div>
+          <input type="range" id="billable-days-slider" class="range-slider" min="50" max="260" step="5" value="${state.billableDays}" />
+        </div>
+        <div class="setup-block">
+          <label class="sub-label" for="expenses-input">Annual Business Expenses</label>
+          <div class="input-combo compact">
+            <span class="input-prefix">${escapeHtml(country.symbol)}</span>
+            <input type="number" id="expenses-input" class="num-input" min="0" step="500" value="${state.businessExpenses}" />
+          </div>
+        </div>
+      `
+          : ''
+      }
 
-          <div class="optional-body">
-            <div class="optional-grid">
-              <div>
-                <h3 class="mini-section-title">${escapeHtml(country.name)} Tax &amp; ${escapeHtml(country.retirementLabel)} Settings</h3>
-                <div class="country-specific-fields">
-                  ${renderCountryOptionsHtml(state.country, opts, isContractor, country)}
-                </div>
-                ${
-                  !isContractor
-                    ? `
-                  <div class="two-col-fields mt-sm">
-                    <div class="sub-field">
-                      <label class="sub-label" for="bonus-input">Annual Bonus (Optional)</label>
-                      <div class="input-combo compact">
-                        <span class="input-prefix">${escapeHtml(country.symbol)}</span>
-                        <input type="number" id="bonus-input" class="num-input" min="0" step="1000" value="${state.bonus}" />
-                      </div>
-                    </div>
-                    <div class="sub-field">
-                      <label class="sub-label" for="hours-week-input">Hours per Week</label>
-                      <input type="number" id="hours-week-input" class="text-input" min="1" max="80" step="0.5" value="${state.hoursPerWeek}" />
-                    </div>
-                  </div>
-                `
-                    : ''
-                }
-              </div>
+      <div class="setup-block">
+        <label class="sub-label" for="compare-input">
+          ${isContractor ? 'Compare vs Full-Time Offer (/yr)' : 'Compare vs Contractor Rate (/day)'}
+        </label>
+        <div class="input-combo compact">
+          <span class="input-prefix">${escapeHtml(country.symbol)}</span>
+          <input
+            type="number"
+            id="compare-input"
+            class="num-input"
+            min="0"
+            step="${isContractor ? '5000' : '25'}"
+            value="${isContractor ? state.compareSalary || '' : state.compareDayRate || ''}"
+            placeholder="${isContractor ? 'e.g. 165000' : 'e.g. 900'}"
+          />
+          <span class="input-suffix">${isContractor ? '/ yr FTE' : '/ day'}</span>
+        </div>
+      </div>
 
-              <div>
-                <h3 class="mini-section-title">${isContractor ? 'Compare Against a Full-Time Salary Offer' : 'Compare Against a Contractor Day Rate'}</h3>
-                <p class="field-hint" style="margin-bottom:10px;">
-                  ${
-                    isContractor
-                      ? 'Weighing up a permanent job offer? Enter the annual base salary below to see which leaves you better off after tax, super/retirement, and paid leave.'
-                      : 'Thinking of contracting? Enter a daily contractor rate below to see how it stacks up against your current full-time package.'
-                  }
-                </p>
-                <div class="input-combo compact">
-                  <span class="input-prefix">${escapeHtml(country.symbol)}</span>
-                  <input
-                    type="number"
-                    id="compare-input"
-                    class="num-input"
-                    min="0"
-                    step="${isContractor ? '5000' : '25'}"
-                    value="${isContractor ? state.compareSalary || '' : state.compareDayRate || ''}"
-                    placeholder="${isContractor ? 'e.g. 165000' : 'e.g. 900'}"
-                  />
-                  <span class="input-suffix">${isContractor ? 'per year (full-time)' : 'per day (contractor)'}</span>
-                </div>
-                <div class="form-footnote">${escapeHtml(country.notes)}</div>
-              </div>
+      <!-- Pop-Up Trigger for Tax & Retirement Settings -->
+      <button type="button" class="btn-ghost btn-sm full-width-btn" id="open-tax-options-popup">
+        ⚙️ Fine-Tune ${escapeHtml(country.name)} Tax &amp; ${escapeHtml(country.retirementLabel)}
+      </button>
+    </div>
+  `;
+}
+
+export function renderTaxOptionsModalHtml(state) {
+  const country = COUNTRIES[state.country] || COUNTRIES.AU;
+  const opts = state.countryOptions[state.country] || {};
+  const isContractor = state.mode === 'contractor';
+
+  return `
+    <div id="tax-modal-controls" class="modal-form">
+      ${renderCountryOptionsHtml(state.country, opts, isContractor)}
+      ${
+        !isContractor
+          ? `
+        <div class="two-col-fields mt-sm">
+          <div class="sub-field">
+            <label class="sub-label" for="bonus-input">Annual Bonus</label>
+            <div class="input-combo compact">
+              <span class="input-prefix">${escapeHtml(country.symbol)}</span>
+              <input type="number" id="bonus-input" class="num-input" min="0" step="1000" value="${state.bonus}" />
             </div>
           </div>
-        </details>
+          <div class="sub-field">
+            <label class="sub-label" for="hours-week-input">Hours per Week</label>
+            <input type="number" id="hours-week-input" class="text-input" min="1" max="80" step="0.5" value="${state.hoursPerWeek}" />
+          </div>
+        </div>
+      `
+          : ''
+      }
+      <div class="form-footnote">${escapeHtml(country.notes)}</div>
+      <div class="modal-actions">
+        <button type="button" class="btn-primary" data-close-popup>Done</button>
       </div>
-    </section>
+    </div>
   `;
 }
 
@@ -266,7 +218,7 @@ function renderCountryOptionsHtml(code, opts, isContractor) {
           </label>
           <label class="toggle-row">
             <input type="checkbox" data-opt="hasPrivateHealth" data-type="boolean" ${opts.hasPrivateHealth ? 'checked' : ''} />
-            <span>I have private hospital insurance (avoids surcharge)</span>
+            <span>I have private hospital insurance (avoids MLS)</span>
           </label>
           ${
             isContractor

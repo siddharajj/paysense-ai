@@ -1,5 +1,6 @@
 /**
- * PaySense AI — Main Application Bootstrap & Event Orchestration
+ * PaySense — Main Application Bootstrap & Event Orchestration (index.html)
+ * Uses Global Country Selector in top header + Compact Animated Stage + Pop-Up Tax Options Modal.
  */
 
 import { COUNTRIES } from './tax/countries.js';
@@ -11,37 +12,45 @@ import {
   createInitialState,
   decodeStateFromHash,
   encodeStateToHash,
-  loadTheme,
-  saveTheme,
   savePinnedScenarios,
 } from './state.js';
-import { renderCalculatorForm } from './ui/formRenderer.js';
+import { renderCalculatorForm, renderTaxOptionsModalHtml } from './ui/formRenderer.js';
 import { renderResultsDashboard } from './ui/resultsRenderer.js';
+import {
+  initGlobalHeader,
+  getGlobalCountry,
+  setGlobalCountry,
+  openPopupModal,
+} from './ui/globalHeader.js';
 
 const EXAMPLE_PROMPTS = [
   {
-    label: '🇦🇺 AU $950/day contractor vs $165k FTE',
+    label: '🇦🇺 $950/day contractor vs $165k FTE',
     prompt: 'AU contractor $950/day, 220 days, incl super, compare with $165k FTE',
   },
   {
-    label: '🇺🇸 US $150k CA, married, 6% 401k',
+    label: '🇺🇸 $150k California, married, 6% 401k',
     prompt: 'US $150k salary in California, married, 6% 401k',
   },
   {
-    label: '🇬🇧 UK £600/day Outside IR35',
+    label: '🇬🇧 £600/day Outside IR35',
     prompt: 'UK £600/day contractor outside IR35, 220 days, 10% pension',
   },
   {
-    label: '🇮🇳 India ₹36L freelancer 44ADA',
+    label: '🇮🇳 ₹36L freelancer 44ADA',
     prompt: 'India 36L freelancer under 44ADA vs 32L salary',
   },
   {
-    label: '🎯 Target $10k/mo take-home in AU',
-    prompt: 'How much do I need to earn in Australia to take home $10,000/month?',
+    label: '🎯 Target $10k/mo take-home',
+    prompt: 'How much do I need to earn to take home $10,000/month?',
   },
 ];
 
-let state = decodeStateFromHash(window.location.hash, createInitialState());
+let baseInit = createInitialState();
+baseInit.country = getGlobalCountry();
+let state = decodeStateFromHash(window.location.hash, baseInit);
+setGlobalCountry(state.country);
+
 let llmConfig = loadLlmConfig();
 let currentCalc = calculatePay(state);
 
@@ -53,8 +62,6 @@ const els = {
   aiSubmitBtn: document.getElementById('ai-submit-btn'),
   aiChips: document.getElementById('ai-example-chips'),
   aiFeedback: document.getElementById('ai-feedback'),
-  aiModePill: document.getElementById('ai-mode-pill'),
-  themeToggleBtn: document.getElementById('theme-toggle-btn'),
   settingsModal: document.getElementById('ai-settings-modal'),
   settingsCloseBtn: document.getElementById('close-settings-btn'),
   settingsForm: document.getElementById('ai-settings-form'),
@@ -62,20 +69,26 @@ const els = {
 };
 
 function init() {
-  applyTheme(loadTheme());
+  initGlobalHeader({
+    activePage: 'pay',
+    onCountryChange: (newCode) => switchCountry(newCode),
+    extraActionHtml: `<button type="button" class="ai-mode-pill" id="ai-mode-pill" title="Optional free AI key settings"></button>`,
+  });
+  els.aiModePill = document.getElementById('ai-mode-pill');
+  els.themeToggleBtn = document.getElementById('theme-toggle-btn');
+
+  // If country in state didn't come from URL hash, sync defaults to global country
+  if (!window.location.hash && state.country !== 'AU') {
+    const c = COUNTRIES[state.country];
+    state.amount = state.mode === 'contractor' ? c.defaultDayRate : c.defaultSalary;
+    state.compareSalary = Math.round(c.defaultSalary * 1.15);
+    state.compareDayRate = c.defaultDayRate;
+  }
+
   renderExampleChips();
   updateAiModeBadge();
   renderAll();
   bindGlobalEvents();
-}
-
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  saveTheme(theme);
-  if (els.themeToggleBtn) {
-    els.themeToggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-    els.themeToggleBtn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
-  }
 }
 
 function showToast(msg) {
@@ -96,10 +109,10 @@ function renderExampleChips() {
 function updateAiModeBadge() {
   if (!els.aiModePill) return;
   if (isExternalLlmActive(llmConfig)) {
-    const label = llmConfig.provider === 'gemini' ? 'Gemini API (BYOK)' : 'Custom LLM (BYOK)';
+    const label = llmConfig.provider === 'gemini' ? 'Gemini AI' : 'Custom AI';
     els.aiModePill.innerHTML = `<span class="status-dot live"></span> ${label}`;
   } else {
-    els.aiModePill.innerHTML = `<span class="status-dot local"></span> Local AI · $0`;
+    els.aiModePill.innerHTML = `<span class="status-dot local"></span> Local AI`;
   }
 }
 
@@ -118,10 +131,10 @@ function renderAiFeedback() {
 
   els.aiFeedback.hidden = false;
   els.aiFeedback.innerHTML = `
-    <div class="ai-feedback-inner">
+    <div class="ai-feedback-inner animate-stage">
       <div class="ai-feedback-top">
-        <span class="ai-source-badge">${res.source === 'llm' ? '✨ Live AI' : '⚡ Instant Local AI'}</span>
-        <div class="parsed-tags-wrap">${tagsHtml || '<span class="muted">Scenario updated</span>'}</div>
+        <span class="ai-source-badge">${res.source === 'llm' ? 'Live AI' : 'Instant Helper'}</span>
+        <div class="parsed-tags-wrap">${tagsHtml || '<span class="muted">Updated</span>'}</div>
         <button type="button" class="icon-btn" id="dismiss-ai-feedback" title="Dismiss">✕</button>
       </div>
       ${res.reply ? `<div class="ai-reply-text">${escapeHtml(res.reply)}</div>` : ''}
@@ -149,7 +162,7 @@ function syncUrlHash() {
     try {
       history.replaceState(null, '', hash);
     } catch {
-      // ignore sandbox history restriction
+      // ignore
     }
   }
 }
@@ -158,12 +171,18 @@ function switchCountry(newCode) {
   if (!COUNTRIES[newCode] || newCode === state.country) return;
   const c = COUNTRIES[newCode];
   state.country = newCode;
+  setGlobalCountry(newCode);
   state.hoursPerDay = c.standardHoursPerDay;
   state.hoursPerWeek = c.standardHoursPerWeek;
   state.billableDays = c.defaultBillableDays;
-  state.amount = state.mode === 'contractor'
-    ? (state.ratePeriod === 'hourly' ? c.defaultHourlyRate : state.ratePeriod === 'daily' ? c.defaultDayRate : c.defaultSalary)
-    : c.defaultSalary;
+  state.amount =
+    state.mode === 'contractor'
+      ? state.ratePeriod === 'hourly'
+        ? c.defaultHourlyRate
+        : state.ratePeriod === 'daily'
+          ? c.defaultDayRate
+          : c.defaultSalary
+      : c.defaultSalary;
   if (state.mode === 'employee') state.ratePeriod = 'annual';
   state.businessExpenses = state.mode === 'contractor' ? Math.round(c.defaultSalary * 0.04) : 0;
   state.compareSalary = Math.round(c.defaultSalary * 1.15);
@@ -194,7 +213,6 @@ async function handleAiPrompt(rawText) {
   const text = (rawText || '').trim();
   if (!text) return;
 
-  // Always run instant local parser first (zero latency, $0, 100% reliable)
   const localParsed = parseNaturalLanguage(text, state);
   let appliedSource = 'local';
   let llmReply = '';
@@ -203,7 +221,6 @@ async function handleAiPrompt(rawText) {
   let targetNetAnnual = localParsed?.targetNetAnnual || null;
   let tags = localParsed?.tags || [];
 
-  // Optional BYOK live LLM upgrade if user explicitly configured a free key
   if (isExternalLlmActive(llmConfig)) {
     els.aiSubmitBtn.disabled = true;
     els.aiSubmitBtn.textContent = 'Thinking…';
@@ -230,10 +247,10 @@ async function handleAiPrompt(rawText) {
 
   if (countryChanged) {
     state.country = targetCountry;
+    setGlobalCountry(targetCountry);
     state.hoursPerDay = countryMeta.standardHoursPerDay;
     state.hoursPerWeek = countryMeta.standardHoursPerWeek;
     state.billableDays = patch.billableDays ?? countryMeta.defaultBillableDays;
-    // Reset default amount if prompt switched country without stating a new amount or target net
     if (patch.amount === undefined && !targetNetAnnual) {
       const nextMode = patch.mode || state.mode;
       state.amount = nextMode === 'contractor' ? countryMeta.defaultDayRate : countryMeta.defaultSalary;
@@ -253,7 +270,6 @@ async function handleAiPrompt(rawText) {
   if (patch.compareSalary !== undefined) state.compareSalary = patch.compareSalary;
   if (patch.compareDayRate !== undefined) state.compareDayRate = patch.compareDayRate;
 
-  // Apply country-specific option patches
   if (Object.keys(countryOptionPatch).length > 0) {
     state.countryOptions[state.country] = {
       ...state.countryOptions[state.country],
@@ -261,7 +277,6 @@ async function handleAiPrompt(rawText) {
     };
   }
 
-  // Handle reverse goal calculation ("How much to earn to take home $10k/month?")
   if (targetNetAnnual && targetNetAnnual > 0) {
     const solved = solveGrossForTargetNet(targetNetAnnual, state);
     state.amount = Math.round(solved);
@@ -271,12 +286,11 @@ async function handleAiPrompt(rawText) {
       llmReply = `To take home ${fmt(targetNetAnnual / 12)}/month (${fmt(targetNetAnnual)}/yr) in ${countryMeta.name}, you need a gross ${state.mode === 'contractor' ? 'rate' : 'salary'} of roughly ${fmt(state.amount)}${periodLabel}.`;
     }
   } else if (!localParsed?.matched && !llmReply) {
-    llmReply = `Try including a country, rate, or tweak — e.g. "US $145k in Texas, 6% 401k", "drop to 200 days", or "15% raise".`;
+    llmReply = `Try including a rate or tweak — e.g. "US $145k in Texas, 6% 401k", "drop to 200 days", or "15% raise".`;
   } else if (!llmReply) {
-    // Generate crisp automatic summary from updated calc
     const previewCalc = calculatePay(state);
     const fmt = (n) => formatCurrency(n, countryMeta.currency, countryMeta.locale);
-    llmReply = `Updated to ${countryMeta.name} (${state.mode === 'contractor' ? 'Contractor' : 'Full-Time'}): estimated take-home is ${fmt(previewCalc.periods.net.monthly)}/mo (${fmt(previewCalc.netIncome)}/yr) with a ${(previewCalc.effectiveTaxRate * 100).toFixed(1)}% effective tax rate.`;
+    llmReply = `Updated to ${countryMeta.name} (${state.mode === 'contractor' ? 'Contractor' : 'Full-Time'}): estimated take-home is ${fmt(previewCalc.periods.net.monthly)}/mo (${fmt(previewCalc.netIncome)}/yr) with a ${(previewCalc.effectiveTaxRate * 100).toFixed(1)}% overall tax rate.`;
   }
 
   state.lastAiResult = {
@@ -287,6 +301,48 @@ async function handleAiPrompt(rawText) {
   };
 
   renderAll();
+}
+
+function openTaxOptionsPopup() {
+  const c = COUNTRIES[state.country];
+  const modal = openPopupModal({
+    title: `${c.flag} ${c.name} Tax & ${c.retirementLabel} Settings`,
+    subtitle: `Customize residency, student loans, ${c.retirementLabel}, and deductions for ${c.taxYear}.`,
+    bodyHtml: renderTaxOptionsModalHtml(state),
+    wide: false,
+  });
+
+  const controls = modal.querySelector('#tax-modal-controls');
+  controls?.addEventListener('input', (e) => {
+    const t = e.target;
+    if (t.id === 'bonus-input') {
+      state.bonus = Math.max(0, Number(t.value) || 0);
+      renderResultsOnly();
+    } else if (t.id === 'hours-week-input') {
+      state.hoursPerWeek = Math.max(1, Number(t.value) || 38);
+      renderResultsOnly();
+    } else if (t.dataset.opt && t.type === 'number') {
+      state.countryOptions[state.country][t.dataset.opt] = Math.max(0, Number(t.value) || 0);
+      renderResultsOnly();
+    }
+  });
+
+  controls?.addEventListener('change', (e) => {
+    const t = e.target;
+    if (!t.dataset.opt) return;
+    const key = t.dataset.opt;
+    if (t.dataset.type === 'boolean') {
+      state.countryOptions[state.country][key] = t.checked;
+    } else if (t.dataset.type === 'number') {
+      state.countryOptions[state.country][key] = Number(t.value) || 0;
+    } else {
+      state.countryOptions[state.country][key] = t.value;
+    }
+    if (state.country === 'IN' && key === 'regime') {
+      openTaxOptionsPopup();
+    }
+    renderResultsOnly();
+  });
 }
 
 function pinCurrentScenario() {
@@ -303,15 +359,16 @@ function pinCurrentScenario() {
     effectiveTaxRate: currentCalc.effectiveTaxRate,
   };
   state.pinnedScenarios = [entry, ...(state.pinnedScenarios || [])].slice(0, 4);
+  state.stageView = 'saved';
   savePinnedScenarios(state.pinnedScenarios);
   renderResultsOnly();
-  showToast('Scenario pinned for comparison!');
+  showToast('Scenario saved to Saved tab!');
 }
 
 function exportCsv() {
   const c = currentCalc.country;
   const rows = [
-    ['PaySense AI Pay Breakdown'],
+    ['PaySense Pay Breakdown'],
     ['Country', `${c.name} (${c.taxYear})`],
     ['Mode', currentCalc.mode === 'contractor' ? 'Contractor' : 'Full-Time Employee'],
     ['Currency', c.currency],
@@ -334,17 +391,15 @@ function exportCsv() {
   a.download = `paysense-${c.code.toLowerCase()}-${currentCalc.mode}.csv`;
   a.click();
   URL.revokeObjectURL(url);
-  showToast('CSV exported!');
+  showToast('CSV downloaded!');
 }
 
 function bindGlobalEvents() {
-  // AI prompt submit
   els.aiForm.addEventListener('submit', (e) => {
     e.preventDefault();
     handleAiPrompt(els.aiInput.value);
   });
 
-  // Example prompt chips
   els.aiChips.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-example-idx]');
     if (!btn) return;
@@ -354,7 +409,6 @@ function bindGlobalEvents() {
     handleAiPrompt(ex.prompt);
   });
 
-  // Dismiss AI feedback
   els.aiFeedback.addEventListener('click', (e) => {
     if (e.target.closest('#dismiss-ai-feedback')) {
       state.lastAiResult = null;
@@ -362,26 +416,7 @@ function bindGlobalEvents() {
     }
   });
 
-  // Keyboard shortcut Cmd/Ctrl + K to focus AI bar
-  document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-      e.preventDefault();
-      els.aiInput.focus();
-      els.aiInput.select();
-    }
-    if (e.key === 'Escape' && !els.settingsModal.hidden) {
-      els.settingsModal.hidden = true;
-    }
-  });
-
-  // Theme toggle
-  els.themeToggleBtn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme');
-    applyTheme(cur === 'dark' ? 'light' : 'dark');
-  });
-
-  // Open / close BYOK AI settings modal
-  els.aiModePill.addEventListener('click', () => {
+  els.aiModePill?.addEventListener('click', () => {
     const prov = document.getElementById('llm-provider-select');
     const key = document.getElementById('llm-api-key');
     const model = document.getElementById('llm-model-input');
@@ -394,18 +429,17 @@ function bindGlobalEvents() {
     els.settingsModal.hidden = false;
   });
 
-  els.settingsCloseBtn.addEventListener('click', () => {
+  els.settingsCloseBtn?.addEventListener('click', () => {
     els.settingsModal.hidden = true;
   });
 
-  els.settingsModal.addEventListener('click', (e) => {
+  els.settingsModal?.addEventListener('click', (e) => {
     if (e.target === els.settingsModal) els.settingsModal.hidden = true;
   });
 
-  const providerSel = document.getElementById('llm-provider-select');
-  providerSel?.addEventListener('change', toggleSettingsFields);
+  document.getElementById('llm-provider-select')?.addEventListener('change', toggleSettingsFields);
 
-  els.settingsForm.addEventListener('submit', (e) => {
+  els.settingsForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     llmConfig = {
       provider: document.getElementById('llm-provider-select').value,
@@ -416,25 +450,17 @@ function bindGlobalEvents() {
     saveLlmConfig(llmConfig);
     updateAiModeBadge();
     els.settingsModal.hidden = true;
-    showToast(isExternalLlmActive(llmConfig) ? 'BYOK AI enabled (stored locally in browser)' : 'Switched to built-in $0 Local AI');
+    showToast(isExternalLlmActive(llmConfig) ? 'BYOK AI enabled' : 'Using built-in $0 Local AI');
   });
 
-  // Delegated Form Events (keeps cursor focus smooth!)
-  els.formRoot.addEventListener('toggle', (e) => {
-    if (e.target.id === 'optional-tax-drawer') {
-      state.drawerOpen = e.target.open;
-    }
-  }, true);
-
   els.formRoot.addEventListener('click', (e) => {
-    const countryBtn = e.target.closest('[data-country]');
-    if (countryBtn) {
-      switchCountry(countryBtn.dataset.country);
-      return;
-    }
     const modeBtn = e.target.closest('[data-mode]');
     if (modeBtn) {
       switchMode(modeBtn.dataset.mode);
+      return;
+    }
+    if (e.target.closest('#open-tax-options-popup')) {
+      openTaxOptionsPopup();
       return;
     }
     if (e.target.closest('#toggle-reverse-btn')) {
@@ -453,7 +479,7 @@ function bindGlobalEvents() {
       state.amount = Math.round(solved);
       state.reverseGoalActive = false;
       const c = COUNTRIES[state.country];
-      showToast(`Solved! Required gross: ${formatCurrency(state.amount, c.currency, c.locale)}`);
+      showToast(`Required gross: ${formatCurrency(state.amount, c.currency, c.locale)}`);
       renderAll();
     }
   });
@@ -466,68 +492,36 @@ function bindGlobalEvents() {
     } else if (target.id === 'billable-days-slider') {
       state.billableDays = Number(target.value) || 220;
       const badge = document.getElementById('billable-days-val');
-      if (badge) badge.textContent = `${state.billableDays}d`;
+      if (badge) badge.textContent = `${state.billableDays} days`;
       renderResultsOnly();
     } else if (target.id === 'expenses-input') {
       state.businessExpenses = Math.max(0, Number(target.value) || 0);
-      renderResultsOnly();
-    } else if (target.id === 'bonus-input') {
-      state.bonus = Math.max(0, Number(target.value) || 0);
-      renderResultsOnly();
-    } else if (target.id === 'hours-week-input') {
-      state.hoursPerWeek = Math.max(1, Number(target.value) || 38);
-      renderResultsOnly();
-    } else if (target.id === 'hours-day-input') {
-      state.hoursPerDay = Math.max(1, Number(target.value) || 8);
       renderResultsOnly();
     } else if (target.id === 'compare-input') {
       const val = Math.max(0, Number(target.value) || 0);
       if (state.mode === 'contractor') state.compareSalary = val;
       else state.compareDayRate = val;
       renderResultsOnly();
-    } else if (target.dataset.opt && target.type === 'number') {
-      state.countryOptions[state.country][target.dataset.opt] = Math.max(0, Number(target.value) || 0);
-      renderResultsOnly();
     }
   });
 
   els.formRoot.addEventListener('change', (e) => {
-    const target = e.target;
-    if (target.id === 'rate-period-select') {
-      state.ratePeriod = target.value;
-      // Re-render form so hourly shows hours/day field cleanly
+    if (e.target.id === 'rate-period-select') {
+      state.ratePeriod = e.target.value;
       renderAll();
-      return;
-    }
-    if (target.dataset.opt) {
-      const key = target.dataset.opt;
-      if (target.dataset.type === 'boolean') {
-        state.countryOptions[state.country][key] = target.checked;
-      } else if (target.dataset.type === 'number') {
-        state.countryOptions[state.country][key] = Number(target.value) || 0;
-      } else {
-        state.countryOptions[state.country][key] = target.value;
-      }
-      // India regime switch toggles extra Old Regime deductions input
-      if (state.country === 'IN' && key === 'regime') {
-        renderAll();
-      } else {
-        renderResultsOnly();
-      }
     }
   });
 
-  // Delegated Results Dashboard Events
   els.resultsRoot.addEventListener('click', (e) => {
-    const periodBtn = e.target.closest('[data-display-period]');
-    if (periodBtn) {
-      state.displayPeriod = periodBtn.dataset.displayPeriod;
+    const stageBtn = e.target.closest('[data-stage-view]');
+    if (stageBtn) {
+      state.stageView = stageBtn.dataset.stageView;
       renderResultsOnly();
       return;
     }
-    const tabBtn = e.target.closest('[data-detail-tab]');
-    if (tabBtn) {
-      state.detailTab = tabBtn.dataset.detailTab;
+    const periodBtn = e.target.closest('[data-display-period]');
+    if (periodBtn) {
+      state.displayPeriod = periodBtn.dataset.displayPeriod;
       renderResultsOnly();
       return;
     }
@@ -539,9 +533,9 @@ function bindGlobalEvents() {
       syncUrlHash();
       const shareUrl = window.location.href;
       if (navigator.clipboard?.writeText) {
-        navigator.clipboard.writeText(shareUrl).then(() => showToast('Share link copied to clipboard!')).catch(() => showToast('URL updated — copy from address bar!'));
+        navigator.clipboard.writeText(shareUrl).then(() => showToast('Link copied!')).catch(() => showToast('URL updated in address bar!'));
       } else {
-        showToast('URL updated — copy from address bar!');
+        showToast('URL updated in address bar!');
       }
       return;
     }
@@ -551,6 +545,7 @@ function bindGlobalEvents() {
     }
     if (e.target.closest('#clear-pins-btn')) {
       state.pinnedScenarios = [];
+      state.stageView = 'overview';
       savePinnedScenarios([]);
       renderResultsOnly();
       return;
@@ -559,6 +554,7 @@ function bindGlobalEvents() {
     if (rmBtn) {
       const idx = Number(rmBtn.dataset.pinIdx);
       state.pinnedScenarios.splice(idx, 1);
+      if (!state.pinnedScenarios.length) state.stageView = 'overview';
       savePinnedScenarios(state.pinnedScenarios);
       renderResultsOnly();
     }
@@ -576,12 +572,8 @@ function toggleSettingsFields() {
   const provider = document.getElementById('llm-provider-select')?.value;
   const keyGroup = document.getElementById('llm-key-group');
   const urlGroup = document.getElementById('llm-url-group');
-  const modelInput = document.getElementById('llm-model-input');
   if (keyGroup) keyGroup.hidden = provider === 'local';
   if (urlGroup) urlGroup.hidden = provider !== 'openai-compatible';
-  if (modelInput && provider === 'gemini' && !modelInput.value) {
-    modelInput.value = 'gemini-2.5-flash';
-  }
 }
 
 function escapeHtml(str) {

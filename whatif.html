@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home (Rent vs Buy) &amp; Smart What-If Playbooks — PaySense</title>
+  <meta name="description" content="Compare buying a home vs renting and investing in ETFs, test where to put extra monthly savings (Mortgage Offset vs Super vs ETFs), or model a 4-day work week." />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231E563F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF7F2' font-family='Georgia,serif' font-weight='700' font-size='34'%3E%24%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="top-bar"></header>
+
+  <main class="container main-content">
+    <section class="compact-top-hero">
+      <div class="compact-hero-row">
+        <div>
+          <h1 class="compact-page-title">Home (Rent vs Buy) &amp; Smart “What-If” Playbooks</h1>
+          <p class="compact-page-sub">Compare buying a home vs renting &amp; investing in ETFs, test where your extra monthly savings grow fastest, or see the real take-home impact of a 4-day work week.</p>
+        </div>
+      </div>
+
+      <div class="plain-english-card compact-ai-card">
+        <form id="wi-ai-form" class="ai-prompt-shell" autocomplete="off">
+          <input
+            type="text"
+            id="wi-ai-input"
+            class="ai-prompt-input"
+            placeholder='Ask a what-if… e.g. "Buy $850k home with $170k deposit at 6.1% vs rent for $720/wk"'
+            aria-label="Describe your home or what-if scenario in plain English"
+          />
+          <button type="submit" class="btn-primary">Run Scenario</button>
+        </form>
+
+        <div class="ai-chips-row">
+          <span class="chips-label">Try:</span>
+          <div id="wi-example-chips" class="ai-chips-scroll"></div>
+        </div>
+
+        <div id="wi-ai-feedback" class="ai-feedback" hidden></div>
+      </div>
+    </section>
+
+    <div class="compact-workspace">
+      <aside id="wi-form-root" aria-label="Section 1: Scenario setup"></aside>
+      <section id="wi-results-root" aria-live="polite"></section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>PaySense · Home &amp; What-If Playbooks</strong> — 100% client-side, zero tokens, $0 to host.</div>
+      <div class="footer-disclaimer">General educational estimates based on 2025/26 tax rules (including Main Residence 0% CGT exemption).</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./js/whatifApp.js"></script>
+</body>
+</html>
