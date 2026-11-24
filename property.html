@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rental Property, Negative Gearing &amp; Depreciation Forecaster — PaySense</title>
+  <meta name="description" content="See how an investment property affects your take-home pay and tax across Australia, US, UK, Canada, India, NZ & Singapore. Includes a free DIY Depreciation Schedule generator and 10-year Capital Gains forecaster." />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231E563F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF7F2' font-family='Georgia,serif' font-weight='700' font-size='34'%3E%24%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="brand-group">
+        <a href="./index.html" class="brand brand-link">
+          <div class="brand-mark" aria-hidden="true">$</div>
+          <div>
+            <div class="brand-name">PaySense</div>
+            <div class="brand-sub">Clear, everyday pay &amp; investment guide</div>
+          </div>
+        </a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="./index.html" class="nav-tab">Pay Calculator</a>
+          <a href="./property.html" class="nav-tab active" aria-current="page">Rental Property &amp; Tax</a>
+          <a href="./roles.html" class="nav-tab">Job Roles &amp; Market Pay</a>
+        </nav>
+      </div>
+
+      <div class="header-actions">
+        <span class="ai-mode-pill" title="100% free & private in your browser">
+          <span class="status-dot local"></span> Local Tax Rules · Free
+        </span>
+        <button type="button" class="icon-circle-btn" id="theme-toggle-btn" aria-label="Toggle warm dark or light paper theme" title="Switch theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="intro-hero">
+      <div class="intro-header">
+        <h1 class="intro-title">See how a rental property affects your pay, tax, and long-term wealth.</h1>
+        <p class="intro-lead">Whether you already own an investment property or are thinking of buying one — model negative gearing, generate a free depreciation schedule, and forecast 10-year capital gains under your country’s exact tax laws.</p>
+      </div>
+
+      <div class="plain-english-card">
+        <label class="plain-english-label" for="prop-ai-input">
+          Describe your property &amp; salary in plain words <span class="muted-normal">(or adjust the form in Section 01 below)</span>
+        </label>
+        <form id="prop-ai-form" class="ai-prompt-shell" autocomplete="off">
+          <input
+            type="text"
+            id="prop-ai-input"
+            class="ai-prompt-input"
+            placeholder='e.g. "Australia $145k salary buying a $780k apartment built in 2022, $624k loan at 6.2%, $680/wk rent"'
+            aria-label="Describe your rental property scenario in plain English"
+          />
+          <button type="submit" class="btn-primary">Calculate Impact</button>
+        </form>
+
+        <div class="ai-chips-row">
+          <span class="chips-label">Try an example:</span>
+          <div id="prop-example-chips" class="ai-chips-scroll"></div>
+        </div>
+
+        <div id="prop-ai-feedback" class="ai-feedback" hidden></div>
+      </div>
+    </section>
+
+    <div class="editorial-flow">
+      <div id="prop-form-root" aria-label="Section 1: Salary and property setup"></div>
+      <div id="prop-results-root" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>PaySense · Rental Property &amp; Tax Forecaster</strong> — Models local negative gearing, depreciation, and CGT laws across 7 countries.
+      </div>
+      <div class="footer-disclaimer">
+        Estimates are for educational planning only (2025/26 tax rules). For official ATO Division 43 construction cost sign-off or personal tax returns, consult a registered tax agent or quantity surveyor.
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./js/propertyApp.js"></script>
+</body>
+</html>

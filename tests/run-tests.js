@@ -178,3 +178,49 @@ print(`\nPaySense AI Test Summary: ${passed} passed, ${failed} failed.`);
 if (failed > 0) {
   throw new Error(`${failed} test(s) failed`);
 }
+
+// 10. Rental Property, Negative Gearing, Depreciation Schedule & CGT Forecaster tests
+import {
+  defaultPropertyState,
+  generateDepreciationSchedule,
+  calculatePropertyImpact,
+} from '../js/tax/propertyEngine.js';
+
+{
+  // Australia: Negatively geared property with Div 43 & Div 40 depreciation + 50% CGT discount
+  const auState = defaultPropertyState('AU');
+  const auImpact = calculatePropertyImpact(auState);
+  assert(auImpact.year1.preTaxCashflow < 0, 'AU default property is cashflow negative before tax');
+  assert(auImpact.depSchedule.year1Total > 8000, 'AU Div 43 + Div 40 generates >$8k Year-1 depreciation');
+  assert(auImpact.year1.taxSavedOrPaid > 3000, 'AU negative gearing + depreciation generates tax refund');
+  assert(auImpact.year1.afterTaxPropertyCashflow > auImpact.year1.preTaxCashflow, 'AU tax refund improves property cashflow');
+  assert(auImpact.exitCgt.costBaseAdjustmentOrRecapture > 0, 'AU CGT exit adjusts cost base for Div 43 capital works claimed');
+  assert(auImpact.exitCgt.estimatedCgtAndRecaptureTax > 0, 'AU CGT exit computes 50% discounted CGT');
+
+  // AU Brand-new vs Established Div 40 plant difference (2017 legislative rule)
+  const auNew = generateDepreciationSchedule({ ...auState, isBrandNewBuild: true });
+  const auEst = generateDepreciationSchedule({ ...auState, isBrandNewBuild: false });
+  assert(auNew.year1Total > auEst.year1Total, 'AU brand-new property gets higher Div 40 plant depreciation than established');
+
+  // US: 27.5-yr MACRS depreciation + $100k-$150k passive loss phase-out + 25% Sec 1250 recapture
+  const usHighEarner = calculatePropertyImpact({ ...defaultPropertyState('US'), salary: 160000 });
+  assert(usHighEarner.year1.carriedForwardLoss > 0, 'US $160k earner has passive rental loss suspended above $150k MAGI');
+  const usMidEarner = calculatePropertyImpact({ ...defaultPropertyState('US'), salary: 95000 });
+  assert(usMidEarner.year1.deductibleLossAgainstSalary > 0 && usMidEarner.year1.taxSavedOrPaid > 0, 'US $95k earner deducts up to $25k passive rental loss');
+
+  // UK: Section 24 mortgage interest restriction (20% basic rate tax credit)
+  const ukImpact = calculatePropertyImpact(defaultPropertyState('UK'));
+  assert(ukImpact.year1.lawTitle.includes('Section 24'), 'UK applies Section 24 mortgage interest restriction');
+
+  // Canada: CCA cannot create or increase a rental loss
+  const caImpact = calculatePropertyImpact(defaultPropertyState('CA'));
+  assert(caImpact.year1.claimedTotalDep === 0, 'CA prevents CCA from increasing a cash rental loss');
+
+  // New Zealand & Singapore: 0% CGT on long-term exit
+  const nzImpact = calculatePropertyImpact(defaultPropertyState('NZ'));
+  const sgImpact = calculatePropertyImpact(defaultPropertyState('SG'));
+  assert(nzImpact.exitCgt.estimatedCgtAndRecaptureTax === 0, 'NZ 10-yr hold has $0 CGT (past 2-yr Bright-Line)');
+  assert(sgImpact.exitCgt.estimatedCgtAndRecaptureTax === 0, 'SG 10-yr hold has $0 CGT');
+}
+
+print(`All Property & Tax Forecaster assertions passed! Total assertions: ${passed} passed, ${failed} failed.`);
