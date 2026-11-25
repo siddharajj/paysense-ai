@@ -1,0 +1,489 @@
+{
+  "country": "UK",
+  "lastUpdated": "2026-04",
+  "cityBenchmark5yr": 19.5,
+  "cityBenchmark10yr": 44.0,
+  "areas": [
+    {
+      "suburb": "Manchester (Salford / M5)",
+      "state": "Greater Manchester",
+      "postcode": "M5",
+      "city": "Manchester",
+      "lat": 53.477,
+      "lon": -2.275,
+      "houseMedian": 295000,
+      "houseRentWk": 370,
+      "unitMedian": 225000,
+      "unitRentWk": 325,
+      "growth5yrPct": 28.5,
+      "growth10yrPct": 68.0,
+      "unitGrowth5yrPct": 21.0,
+      "medianHouseholdIncome": 46000,
+      "ownerOccupierPct": 52,
+      "vacancyPct": 1.8,
+      "landShareHouse": 0.45,
+      "landShareUnit": 0.25,
+      "typicalBuildYear": 2018,
+      "zoning": "Residential / MediaCity Regeneration",
+      "riskFlags": [
+        "Remember HMRC Section 24 restricts personal mortgage interest to a 20% credit",
+        "Verify EWS1 cladding & service charge on apartments"
+      ],
+      "highlights": "Top UK northern powerhouse rental yield hub (6.5%\u20137.5% gross) anchored by MediaCityUK and universities.",
+      "sampleSales": [],
+      "houseYieldPct": 6.52,
+      "unitYieldPct": 7.51,
+      "rentToIncomePct": 36.7,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 175595
+        },
+        {
+          "year": 2018,
+          "price": 196106
+        },
+        {
+          "year": 2020,
+          "price": 212299
+        },
+        {
+          "year": 2021,
+          "price": 229572
+        },
+        {
+          "year": 2023,
+          "price": 258360
+        },
+        {
+          "year": 2025,
+          "price": 285840
+        },
+        {
+          "year": 2026,
+          "price": 295000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 156033
+        },
+        {
+          "year": 2018,
+          "price": 167401
+        },
+        {
+          "year": 2020,
+          "price": 176377
+        },
+        {
+          "year": 2021,
+          "price": 185950
+        },
+        {
+          "year": 2023,
+          "price": 203132
+        },
+        {
+          "year": 2025,
+          "price": 219533
+        },
+        {
+          "year": 2026,
+          "price": 225000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 196667
+        },
+        {
+          "year": 2018,
+          "price": 211989
+        },
+        {
+          "year": 2020,
+          "price": 224085
+        },
+        {
+          "year": 2021,
+          "price": 236987
+        },
+        {
+          "year": 2023,
+          "price": 257321
+        },
+        {
+          "year": 2025,
+          "price": 276730
+        },
+        {
+          "year": 2026,
+          "price": 283200
+        }
+      ]
+    },
+    {
+      "suburb": "Walthamstow (E17)",
+      "state": "London",
+      "postcode": "E17",
+      "city": "London",
+      "lat": 51.5886,
+      "lon": -0.0196,
+      "houseMedian": 645000,
+      "houseRentWk": 560,
+      "unitMedian": 435000,
+      "unitRentWk": 440,
+      "growth5yrPct": 16.0,
+      "growth10yrPct": 49.0,
+      "unitGrowth5yrPct": 10.5,
+      "medianHouseholdIncome": 68000,
+      "ownerOccupierPct": 58,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.55,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2014,
+      "zoning": "London Zone 3 Residential",
+      "riskFlags": [
+        "Check remaining years on leasehold flats (>90 yrs preferred) and EPC C+ rating readiness"
+      ],
+      "highlights": "Fast Victoria Line Tube access to Central London with strong young-professional tenant demand.",
+      "sampleSales": [],
+      "houseYieldPct": 4.51,
+      "unitYieldPct": 5.26,
+      "rentToIncomePct": 33.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 432886
+        },
+        {
+          "year": 2018,
+          "price": 479682
+        },
+        {
+          "year": 2020,
+          "price": 516627
+        },
+        {
+          "year": 2021,
+          "price": 556034
+        },
+        {
+          "year": 2023,
+          "price": 595179
+        },
+        {
+          "year": 2025,
+          "price": 632545
+        },
+        {
+          "year": 2026,
+          "price": 645000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 329795
+        },
+        {
+          "year": 2018,
+          "price": 354066
+        },
+        {
+          "year": 2020,
+          "price": 373227
+        },
+        {
+          "year": 2021,
+          "price": 393665
+        },
+        {
+          "year": 2023,
+          "price": 411852
+        },
+        {
+          "year": 2025,
+          "price": 429213
+        },
+        {
+          "year": 2026,
+          "price": 435000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 430000
+        },
+        {
+          "year": 2018,
+          "price": 463500
+        },
+        {
+          "year": 2020,
+          "price": 489948
+        },
+        {
+          "year": 2021,
+          "price": 518159
+        },
+        {
+          "year": 2023,
+          "price": 562617
+        },
+        {
+          "year": 2025,
+          "price": 605054
+        },
+        {
+          "year": 2026,
+          "price": 619200
+        }
+      ]
+    },
+    {
+      "suburb": "Birmingham (Jewellery Quarter)",
+      "state": "West Midlands",
+      "postcode": "B1",
+      "city": "Birmingham",
+      "lat": 52.4862,
+      "lon": -1.908,
+      "houseMedian": 285000,
+      "houseRentWk": 345,
+      "unitMedian": 215000,
+      "unitRentWk": 295,
+      "growth5yrPct": 24.0,
+      "growth10yrPct": 59.0,
+      "unitGrowth5yrPct": 18.0,
+      "medianHouseholdIncome": 44000,
+      "ownerOccupierPct": 49,
+      "vacancyPct": 1.9,
+      "landShareHouse": 0.44,
+      "landShareUnit": 0.25,
+      "typicalBuildYear": 2019,
+      "zoning": "Conservation & Mixed Residential",
+      "riskFlags": [
+        "Compare service charges carefully on warehouse conversions"
+      ],
+      "highlights": "Character conservation precinct with strong ~7% gross yields and HS2 connectivity upside.",
+      "sampleSales": [],
+      "houseYieldPct": 6.29,
+      "unitYieldPct": 7.13,
+      "rentToIncomePct": 34.9,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 179245
+        },
+        {
+          "year": 2018,
+          "price": 198471
+        },
+        {
+          "year": 2020,
+          "price": 213649
+        },
+        {
+          "year": 2021,
+          "price": 229839
+        },
+        {
+          "year": 2023,
+          "price": 254110
+        },
+        {
+          "year": 2025,
+          "price": 277277
+        },
+        {
+          "year": 2026,
+          "price": 285000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 155347
+        },
+        {
+          "year": 2018,
+          "price": 165552
+        },
+        {
+          "year": 2020,
+          "price": 173609
+        },
+        {
+          "year": 2021,
+          "price": 182203
+        },
+        {
+          "year": 2023,
+          "price": 196634
+        },
+        {
+          "year": 2025,
+          "price": 210408
+        },
+        {
+          "year": 2026,
+          "price": 215000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 190000
+        },
+        {
+          "year": 2018,
+          "price": 204803
+        },
+        {
+          "year": 2020,
+          "price": 216489
+        },
+        {
+          "year": 2021,
+          "price": 228954
+        },
+        {
+          "year": 2023,
+          "price": 248598
+        },
+        {
+          "year": 2025,
+          "price": 267350
+        },
+        {
+          "year": 2026,
+          "price": 273600
+        }
+      ]
+    },
+    {
+      "suburb": "Edinburgh (Leith / EH6)",
+      "state": "Scotland",
+      "postcode": "EH6",
+      "city": "Edinburgh",
+      "lat": 55.9755,
+      "lon": -3.1695,
+      "houseMedian": 365000,
+      "houseRentWk": 410,
+      "unitMedian": 255000,
+      "unitRentWk": 335,
+      "growth5yrPct": 23.0,
+      "growth10yrPct": 56.0,
+      "unitGrowth5yrPct": 20.5,
+      "medianHouseholdIncome": 52000,
+      "ownerOccupierPct": 59,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.48,
+      "landShareUnit": 0.28,
+      "typicalBuildYear": 2015,
+      "zoning": "Edinburgh Tram Corridor",
+      "riskFlags": [
+        "Scotland applies Additional Dwelling Supplement (ADS) stamp duty on buy-to-lets"
+      ],
+      "highlights": "New tram extension to Newhaven, vibrant waterfront tech/finance workforce, and tight rental supply.",
+      "sampleSales": [],
+      "houseYieldPct": 5.84,
+      "unitYieldPct": 6.83,
+      "rentToIncomePct": 33.5,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 233974
+        },
+        {
+          "year": 2018,
+          "price": 257828
+        },
+        {
+          "year": 2020,
+          "price": 276660
+        },
+        {
+          "year": 2021,
+          "price": 296748
+        },
+        {
+          "year": 2023,
+          "price": 326779
+        },
+        {
+          "year": 2025,
+          "price": 355445
+        },
+        {
+          "year": 2026,
+          "price": 365000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 186950
+        },
+        {
+          "year": 2018,
+          "price": 196324
+        },
+        {
+          "year": 2020,
+          "price": 203724
+        },
+        {
+          "year": 2021,
+          "price": 211618
+        },
+        {
+          "year": 2023,
+          "price": 230706
+        },
+        {
+          "year": 2025,
+          "price": 248927
+        },
+        {
+          "year": 2026,
+          "price": 255000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 243333
+        },
+        {
+          "year": 2018,
+          "price": 262291
+        },
+        {
+          "year": 2020,
+          "price": 277258
+        },
+        {
+          "year": 2021,
+          "price": 293222
+        },
+        {
+          "year": 2023,
+          "price": 318380
+        },
+        {
+          "year": 2025,
+          "price": 342395
+        },
+        {
+          "year": 2026,
+          "price": 350400
+        }
+      ]
+    }
+  ]
+}

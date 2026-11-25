@@ -1,12 +1,18 @@
 /**
- * PaySense — Rental Property, Negative Gearing, DIY Depreciation Schedule &
- * 10-Year Capital Gains Forecaster (property.html)
- * Uses Global Country Header + Compact Split Stage + Pop-Up Schedule Modals.
+ * PaySense — Property Address Intelligence, Suburb Matchmaker, Negative Gearing,
+ * DIY Depreciation Schedule & 10-Year CGT Forecaster (property.html)
  */
 
 import { COUNTRIES } from './tax/countries.js';
 import { formatCurrency, formatPercent } from './tax/brackets.js';
 import { defaultPropertyState, calculatePropertyImpact } from './tax/propertyEngine.js';
+import {
+  loadAreaShard,
+  autocompleteAddress,
+  enrichPropertyByAddress,
+  getBackendWorkerUrl,
+  setBackendWorkerUrl,
+} from './data/propertyIntelClient.js';
 import {
   initGlobalHeader,
   getGlobalCountry,
@@ -14,38 +20,63 @@ import {
   openPopupModal,
 } from './ui/globalHeader.js';
 
-const EXAMPLE_PROMPTS = [
-  {
-    label: '🇦🇺 $145k salary · $780k unit (neg. geared)',
-    prompt: 'Australia $145k salary buying a $780k apartment built in 2021, $624k loan at 6.2%, $680/wk rent',
-  },
-  {
-    label: '🇦🇺 $180k salary · Brand-new $920k townhouse',
-    prompt: 'AU $180k salary buying a brand new $920k house built in 2026, $736k loan at 6.1%, $780/wk rent',
-  },
-  {
-    label: '🇺🇸 $155k salary · $520k rental (27.5yr MACRS)',
-    prompt: 'US $155k salary buying a $520k rental house, $416k loan at 6.5%, $3100/mo rent',
-  },
-  {
-    label: '🇬🇧 £85k salary · £360k Buy-to-Let (Sec 24)',
-    prompt: 'UK £85k salary with a £360k buy-to-let, £270k loan at 5.2%, £1750/mo rent',
-  },
-];
+const SAMPLE_ADDRESSES_BY_COUNTRY = {
+  AU: [
+    { label: '🏢 14/42 Hassall St, Parramatta NSW (2-Bed Unit)', address: '14/42 Hassall St, Parramatta NSW 2150', type: 'unit', beds: 2 },
+    { label: '🏡 19 Kildare Rd, Blacktown NSW (4-Bed House)', address: '19 Kildare Rd, Blacktown NSW 2148', type: 'house', beds: 4 },
+    { label: '🏢 204/88 Albert St, Brunswick VIC (2-Bed Unit)', address: '204/88 Albert St, Brunswick VIC 3056', type: 'unit', beds: 2 },
+    { label: '🏡 24 View St, Chermside QLD (3-Bed House)', address: '24 View St, Chermside QLD 4032', type: 'house', beds: 3 },
+    { label: '🏡 15 King William St, Bayswater WA (3-Bed House)', address: '15 King William St, Bayswater WA 6053', type: 'house', beds: 3 },
+  ],
+  UK: [
+    { label: '🏢 14 Clippers Quay, Salford Manchester M5', address: '14 Clippers Quay, Manchester M5', type: 'unit', beds: 2 },
+    { label: '🏡 28 Hoe St, Walthamstow London E17', address: '28 Hoe St, Walthamstow E17', type: 'house', beds: 3 },
+  ],
+  US: [
+    { label: '🏡 412 Maynard Rd, Cary Raleigh NC 27513', address: '412 Maynard Rd, Raleigh NC 27513', type: 'house', beds: 3 },
+    { label: '🏡 11804 Burnet Rd, Austin TX 78758', address: '11804 Burnet Rd, Austin TX 78758', type: 'house', beds: 3 },
+  ],
+  SG: [
+    { label: '🏢 Blk 402 Tampines St 41, Singapore', address: '402 Tampines Street 41, Tampines 520402', type: 'unit', beds: 3 },
+    { label: '🏢 88 Dawson Rd, Queenstown, Singapore', address: '88 Dawson Road, Queenstown 140088', type: 'unit', beds: 2 },
+  ],
+  NZ: [
+    { label: '🏡 45 Dominion Rd, Mount Eden, Auckland', address: '45 Dominion Rd, Mount Eden 1024', type: 'house', beds: 3 },
+    { label: '🏢 18 Lincoln Rd, Addington, Christchurch', address: '18 Lincoln Rd, Addington 8024', type: 'unit', beds: 2 },
+  ],
+  CA: [
+    { label: '🏢 1020 12 Ave SW, Beltline, Calgary AB', address: '1020 12 Ave SW, Calgary T2R', type: 'unit', beds: 2 },
+    { label: '🏡 48 Boulton Ave, Leslieville, Toronto ON', address: '48 Boulton Ave, Toronto M4M', type: 'house', beds: 3 },
+  ],
+  IN: [
+    { label: '🏢 ITPL Main Rd, Whitefield, Bengaluru', address: 'ITPL Main Rd, Whitefield 560066', type: 'unit', beds: 3 },
+    { label: '🏢 Financial District, Gachibowli, Hyderabad', address: 'Gachibowli 500032', type: 'unit', beds: 3 },
+  ],
+};
 
 let propState = {
   ...defaultPropertyState(getGlobalCountry()),
-  stageView: 'impact', // 'impact' | 'depreciation' | 'forecast'
+  stageView: 'insights', // 'insights' | 'matchmaker' | 'impact' | 'depreciation' | 'forecast'
+  addressIntel: null,
+  areaShard: null,
+  matchFilterType: 'unit', // 'unit' | 'house'
+  matchFilterCity: 'All',
   lastParsed: null,
 };
 
 let currentImpact = calculatePropertyImpact(propState);
+let autocompleteItems = [];
+let selectedCandidate = null;
 
 const els = {
   formRoot: document.getElementById('prop-form-root'),
   resultsRoot: document.getElementById('prop-results-root'),
-  aiForm: document.getElementById('prop-ai-form'),
-  aiInput: document.getElementById('prop-ai-input'),
+  lookupForm: document.getElementById('address-lookup-form'),
+  lookupInput: document.getElementById('address-lookup-input'),
+  lookupBtn: document.getElementById('address-lookup-btn'),
+  lookupType: document.getElementById('lookup-prop-type'),
+  lookupBeds: document.getElementById('lookup-beds'),
+  autocompleteBox: document.getElementById('address-autocomplete-list'),
   aiChips: document.getElementById('prop-example-chips'),
   aiFeedback: document.getElementById('prop-ai-feedback'),
   toast: document.getElementById('toast'),
@@ -67,167 +98,97 @@ function showToast(msg) {
   showToast._t = setTimeout(() => els.toast.classList.remove('visible'), 2600);
 }
 
-function parseMoney(numStr, suf = '') {
-  const n = Number(String(numStr).replace(/,/g, ''));
-  if (!Number.isFinite(n)) return null;
-  const s = (suf || '').toLowerCase();
-  if (s === 'k') return n * 1_000;
-  if (s === 'm') return n * 1_000_000;
-  if (s === 'l' || s === 'lakh' || s === 'lakhs' || s === 'lpa') return n * 100_000;
-  if (s === 'cr' || s === 'crore') return n * 10_000_000;
-  return n;
-}
-
-function switchCountry(newCode) {
+async function switchCountry(newCode) {
   if (!COUNTRIES[newCode] || newCode === propState.country) return;
   setGlobalCountry(newCode);
   propState = {
     ...defaultPropertyState(newCode),
     stageView: propState.stageView,
+    addressIntel: null,
+    areaShard: null,
+    matchFilterType: 'unit',
+    matchFilterCity: 'All',
   };
-  renderAll();
+  renderSampleChips();
+  await loadCountryAreasAndDefaultLookup();
 }
 
-function parsePropertyPrompt(rawText) {
-  const text = (rawText || '').trim();
-  if (!text) return;
-
-  const tags = [];
-  let newCountry = propState.country;
-
-  const countryPatterns = [
-    ['AU', /\b(australia|au|aud|sydney|melbourne|brisbane|perth|ato)\b/i],
-    ['US', /\b(united states|usa|us|usd|california|texas|new york|irs|macrs)\b/i],
-    ['UK', /\b(uk|united kingdom|gbp|britain|london|buy[- ]?to[- ]?let|btl|£)\b/i],
-    ['CA', /\b(canada|ca|cad|toronto|vancouver|ontario|cca)\b/i],
-    ['IN', /\b(india|in|inr|₹|lakh|lpa|cr|crore|mumbai|bengaluru)\b/i],
-    ['NZ', /\b(new zealand|nz|nzd|auckland|bright[- ]?line)\b/i],
-    ['SG', /\b(singapore|sg|sgd|s\$|iras)\b/i],
-  ];
-
-  for (const [code, re] of countryPatterns) {
-    if (re.test(text)) {
-      newCountry = code;
-      break;
-    }
-  }
-
-  if (newCountry !== propState.country) {
-    setGlobalCountry(newCountry);
-    propState = {
-      ...defaultPropertyState(newCountry),
-      stageView: propState.stageView,
-    };
-  }
-  const c = COUNTRIES[propState.country];
-  const fmt = (n) => formatCurrency(n, c.currency, c.locale);
-  tags.push(`${c.flag} ${c.name}`);
-
-  if (/\b(brand[- ]?new|new build|off[- ]?the[- ]?plan)\b/i.test(text)) {
-    propState.isBrandNewBuild = true;
-    tags.push('Brand-New Build');
-  } else if (/\b(established|second[- ]?hand)\b/i.test(text)) {
-    propState.isBrandNewBuild = false;
-    tags.push('Established Property');
-  }
-
-  const yrMatch = text.match(/built\s+in\s+(19\d\d|20\d\d)/i);
-  if (yrMatch) {
-    propState.buildYear = Number(yrMatch[1]);
-    tags.push(`Built ${propState.buildYear}`);
-  }
-
-  const rateMatch = text.match(/(\d+(?:\.\d+)?)\s*%\s*(?:interest|rate|loan|mortgage)?|(?:at|@)\s*(\d+(?:\.\d+)?)\s*%/i);
-  if (rateMatch) {
-    const r = Number(rateMatch[1] || rateMatch[2]);
-    if (r > 0 && r < 25) {
-      propState.interestRatePct = r;
-      tags.push(`${r}% Interest`);
-    }
-  }
-
-  const salMatch = text.match(/(?:[$£₹]|s\$)?\s*([\d,]+(?:\.\d+)?)\s*(k|m|l|lakh|lpa|cr)?\s*(?:salary|income|pay|wage)|(?:salary|earning|income)\s*(?:of\s*)?(?:[$£₹]|s\$)?\s*([\d,]+(?:\.\d+)?)\s*(k|m|l|lakh|lpa|cr)?/i);
-  if (salMatch) {
-    const val = parseMoney(salMatch[1] || salMatch[3], salMatch[2] || salMatch[4]);
-    if (val && val > 0) {
-      propState.salary = val;
-      tags.push(`Salary: ${fmt(val)}`);
-    }
-  }
-
-  const propMatch = text.match(/(?:[$£₹]|s\$)?\s*([\d,]+(?:\.\d+)?)\s*(k|m|l|lakh|cr|crore)?\s*(?:new\s+)?(?:apartment|unit|house|townhouse|property|flat|condo|buy[- ]?to[- ]?let|rental)/i);
-  if (propMatch) {
-    const val = parseMoney(propMatch[1], propMatch[2]);
-    if (val && val > 20000) {
-      propState.propertyValue = val;
-      propState.buildingStructureCost = Math.round(val * 0.42);
-      propState.loanAmount = Math.round(val * 0.8);
-      tags.push(`Property: ${fmt(val)}`);
-    }
-  }
-
-  const loanMatch = text.match(/(?:[$£₹]|s\$)?\s*([\d,]+(?:\.\d+)?)\s*(k|m|l|lakh|cr|crore)?\s*(?:loan|mortgage)/i);
-  if (loanMatch) {
-    const val = parseMoney(loanMatch[1], loanMatch[2]);
-    if (val && val > 10000) {
-      propState.loanAmount = val;
-      tags.push(`Loan: ${fmt(val)}`);
-    }
-  }
-
-  const rentMatch = text.match(/(?:[$£₹]|s\$)?\s*([\d,]+(?:\.\d+)?)\s*(k)?\s*(?:\/\s*|per\s+)(wk|week|weekly|mo|month|monthly)\s*(?:rent)?/i);
-  if (rentMatch) {
-    const val = parseMoney(rentMatch[1], rentMatch[2]);
-    const unit = rentMatch[3].toLowerCase();
-    if (val && val > 0) {
-      propState.weeklyRent = unit.startsWith('m') ? Math.round((val * 12) / 52) : Math.round(val);
-      tags.push(`Rent: ${fmt(propState.weeklyRent)}/wk`);
-    }
-  }
-
-  currentImpact = calculatePropertyImpact(propState);
-  const yr1 = currentImpact.year1;
-  propState.lastParsed = {
-    tags,
-    summary: `Updated ${c.name} property model: ${yr1.gearingStatus} with ${fmt(currentImpact.depSchedule.year1Total)}/yr depreciation and a ${yr1.taxSavedOrPaid >= 0 ? `${fmt(yr1.taxSavedOrPaid)}/yr tax refund` : `${fmt(Math.abs(yr1.taxSavedOrPaid))}/yr tax bill`}.`,
-  };
-
-  renderAll();
+function renderSampleChips() {
+  const samples = SAMPLE_ADDRESSES_BY_COUNTRY[propState.country] || SAMPLE_ADDRESSES_BY_COUNTRY.AU;
+  els.aiChips.innerHTML = samples
+    .map((s, idx) => `<button type="button" class="prompt-chip" data-sample-idx="${idx}">${escapeHtml(s.label)}</button>`)
+    .join('');
 }
 
-function renderExampleChips() {
-  els.aiChips.innerHTML = EXAMPLE_PROMPTS.map(
-    (ex, idx) => `<button type="button" class="prompt-chip" data-example-idx="${idx}">${escapeHtml(ex.label)}</button>`
-  ).join('');
+async function loadCountryAreasAndDefaultLookup() {
+  try {
+    propState.areaShard = await loadAreaShard(propState.country);
+  } catch {
+    propState.areaShard = { areas: [] };
+  }
+  const samples = SAMPLE_ADDRESSES_BY_COUNTRY[propState.country] || SAMPLE_ADDRESSES_BY_COUNTRY.AU;
+  if (samples[0]) {
+    els.lookupInput.value = samples[0].address;
+    els.lookupType.value = samples[0].type;
+    els.lookupBeds.value = String(samples[0].beds);
+    await runAddressLookup(samples[0].address, samples[0].type, samples[0].beds, null, true);
+  } else {
+    renderAll();
+  }
 }
 
-function renderAiFeedback() {
-  if (!propState.lastParsed) {
-    els.aiFeedback.hidden = true;
-    els.aiFeedback.innerHTML = '';
-    return;
+async function runAddressLookup(addressText, propType, beds, candidate = null, silent = false) {
+  const addr = (addressText || '').trim();
+  if (!addr) return;
+
+  els.lookupBtn.disabled = true;
+  els.lookupBtn.textContent = 'Scanning…';
+  els.autocompleteBox.hidden = true;
+
+  try {
+    const intel = await enrichPropertyByAddress({
+      address: addr,
+      country: propState.country,
+      propertyType: propType,
+      bedrooms: Number(beds) || 2,
+      selectedCandidate: candidate,
+    });
+
+    propState.addressIntel = intel;
+    // Auto-populate the Property Tax, Negative Gearing & Depreciation model!
+    propState.propertyValue = intel.estimatedValue;
+    propState.loanAmount = Math.round(intel.estimatedValue * 0.8);
+    propState.weeklyRent = intel.estimatedWeeklyRent;
+    propState.buildingStructureCost = intel.estimatedBuildingValue;
+    propState.plantAndEquipmentValue = intel.estimatedFixturesValue;
+    propState.newUpgradesInstalled = Math.round(intel.estimatedFixturesValue * 0.35);
+    propState.buildYear = intel.typicalBuildYear;
+    propState.isBrandNewBuild = intel.typicalBuildYear >= 2024;
+    propState.annualExpenses = Math.round(
+      intel.estimatedValue * (propType === 'unit' ? 0.0105 : 0.0075)
+    );
+    // Calibrate realistic annual capital growth from suburb 5-yr history
+    const impliedAnnualGrowth = (Math.pow(1 + intel.growth5yrPct / 100, 1 / 5) - 1) * 100;
+    propState.capitalGrowthPct = Number(Math.min(8.5, Math.max(3.0, impliedAnnualGrowth)).toFixed(1));
+
+    if (!silent) {
+      propState.stageView = 'insights';
+      showToast(`Loaded blended insights & tax model for ${intel.area.suburb}!`);
+    }
+    renderAll();
+  } catch (err) {
+    if (!silent) showToast(`Could not enrich address: ${err.message}`);
+    renderAll();
+  } finally {
+    els.lookupBtn.disabled = false;
+    els.lookupBtn.textContent = 'Inspect Address';
   }
-  const { tags, summary } = propState.lastParsed;
-  els.aiFeedback.hidden = false;
-  els.aiFeedback.innerHTML = `
-    <div class="ai-feedback-inner animate-stage">
-      <div class="ai-feedback-top">
-        <span class="ai-source-badge">Updated Property Scenario</span>
-        <div class="parsed-tags-wrap">
-          ${tags.map((t) => `<span class="parsed-tag">${escapeHtml(t)}</span>`).join('')}
-        </div>
-        <button type="button" class="icon-btn" id="dismiss-prop-feedback" title="Dismiss">✕</button>
-      </div>
-      <div class="ai-reply-text">${escapeHtml(summary)}</div>
-    </div>
-  `;
 }
 
 function renderAll() {
   currentImpact = calculatePropertyImpact(propState);
   renderPropertyForm();
   renderPropertyResults();
-  renderAiFeedback();
 }
 
 function renderResultsOnly() {
@@ -243,7 +204,7 @@ function renderPropertyForm() {
       <div class="compact-form-header">
         <span class="section-num">01</span>
         <div>
-          <h2 class="compact-form-title">Property &amp; Pay Setup</h2>
+          <h2 class="compact-form-title">Your Pay &amp; Property</h2>
           <div class="muted" style="font-size:0.78rem;" id="global-tax-year-badge">${c.flag} ${escapeHtml(c.name)} · ${escapeHtml(c.taxYear)}</div>
         </div>
       </div>
@@ -258,7 +219,7 @@ function renderPropertyForm() {
       </div>
 
       <div class="setup-block">
-        <label class="sub-label" for="prop-value-input">Property Value / Purchase Price</label>
+        <label class="sub-label" for="prop-value-input">Property Price / Est. Value</label>
         <div class="input-combo compact">
           <span class="input-prefix">${escapeHtml(c.symbol)}</span>
           <input type="number" id="prop-value-input" class="num-input" min="0" step="10000" value="${propState.propertyValue}" />
@@ -274,7 +235,7 @@ function renderPropertyForm() {
           </div>
         </div>
         <div class="sub-field">
-          <label class="sub-label" for="prop-rate-input">Interest Rate (%)</label>
+          <label class="sub-label" for="prop-rate-input">Interest (%)</label>
           <input type="number" id="prop-rate-input" class="text-input" min="0" max="20" step="0.1" value="${propState.interestRatePct}" />
         </div>
       </div>
@@ -288,7 +249,7 @@ function renderPropertyForm() {
           </div>
         </div>
         <div class="sub-field">
-          <label class="sub-label" for="prop-expenses-input">Running Costs / Yr</label>
+          <label class="sub-label" for="prop-expenses-input">Costs / Yr</label>
           <div class="input-combo compact">
             <span class="input-prefix">${escapeHtml(c.symbol)}</span>
             <input type="number" id="prop-expenses-input" class="num-input" min="0" step="500" value="${propState.annualExpenses}" />
@@ -297,15 +258,15 @@ function renderPropertyForm() {
       </div>
 
       <div class="setup-block">
-        <label class="sub-label" for="prop-build-type">Property Build Type</label>
+        <label class="sub-label" for="prop-build-type">Build Era &amp; Depreciation Basis</label>
         <select id="prop-build-type" class="select-input">
-          <option value="established" ${!propState.isBrandNewBuild ? 'selected' : ''}>Established / Second-Hand (${propState.buildYear})</option>
+          <option value="established" ${!propState.isBrandNewBuild ? 'selected' : ''}>Established (${propState.buildYear})</option>
           <option value="new" ${propState.isBrandNewBuild ? 'selected' : ''}>Brand-New Build (${propState.buildYear})</option>
         </select>
       </div>
 
       <button type="button" class="btn-ghost btn-sm full-width-btn" id="open-prop-settings-popup">
-        ⚙️ Fine-Tune Building &amp; 10-Yr Growth
+        ⚙️ Building Cost, Growth &amp; DB Settings
       </button>
     </div>
   `;
@@ -314,7 +275,7 @@ function renderPropertyForm() {
 function renderPropertyResults() {
   const { country, year1, withoutPropertyCalc, depSchedule, exitCgt } = currentImpact;
   const fmt = (n) => formatCurrency(n, country.currency, country.locale);
-  const stageView = propState.stageView || 'impact';
+  const stageView = propState.stageView || 'insights';
 
   const isRefund = year1.taxSavedOrPaid >= 0;
   const isPositiveAfterTax = year1.afterTaxPropertyCashflow >= 0;
@@ -322,23 +283,333 @@ function renderPropertyResults() {
   els.resultsRoot.innerHTML = `
     <div class="stage-nav-bar">
       <div class="stage-tabs" role="tablist">
+        <button type="button" class="stage-tab ${stageView === 'insights' ? 'active' : ''}" data-stage-view="insights">
+          01 · Address &amp; Area Insights
+        </button>
+        <button type="button" class="stage-tab ${stageView === 'matchmaker' ? 'active' : ''}" data-stage-view="matchmaker">
+          02 · Suburb Matchmaker
+        </button>
         <button type="button" class="stage-tab ${stageView === 'impact' ? 'active' : ''}" data-stage-view="impact">
-          02 · Year-1 Pay &amp; Tax Impact
+          03 · Pay &amp; Negative Gearing
         </button>
         <button type="button" class="stage-tab ${stageView === 'depreciation' ? 'active' : ''}" data-stage-view="depreciation">
-          03 · Depreciation Schedule
+          04 · Depreciation Schedule
         </button>
         <button type="button" class="stage-tab ${stageView === 'forecast' ? 'active' : ''}" data-stage-view="forecast">
-          04 · ${exitCgt.holdingYears}-Yr Forecast &amp; CGT
+          05 · ${exitCgt.holdingYears}-Yr CGT Forecast
         </button>
       </div>
-      <span class="comp-pill ${isRefund ? 'comp-low' : 'comp-mod'}">${escapeHtml(year1.gearingStatus)}</span>
     </div>
 
     <div class="card stage-card animate-stage">
+      ${stageView === 'insights' ? renderAddressInsightsStage(fmt, year1, withoutPropertyCalc) : ''}
+      ${stageView === 'matchmaker' ? renderSuburbMatchmakerStage(fmt) : ''}
       ${stageView === 'impact' ? renderImpactStage(year1, withoutPropertyCalc, fmt, isRefund, isPositiveAfterTax) : ''}
       ${stageView === 'depreciation' ? renderDepreciationStage(country, year1, depSchedule, withoutPropertyCalc, fmt) : ''}
       ${stageView === 'forecast' ? renderForecastStage(country, exitCgt, fmt) : ''}
+    </div>
+  `;
+}
+
+/**
+ * STAGE 01: BLENDED ADDRESS INSIGHTS, HISTORICAL GROWTH SVG CHART & LIVE 1KM WALKABILITY
+ */
+function renderAddressInsightsStage(fmt, year1, withoutPropertyCalc) {
+  const intel = propState.addressIntel;
+  if (!intel) {
+    return `<p class="muted">Enter any street address or click a sample address above to inspect property metadata, suburb fundamentals, and historical growth.</p>`;
+  }
+
+  const { area, amenities } = intel;
+  const weeklyCost = year1.weeklyAfterTaxImpact;
+  const isPos = weeklyCost >= 0;
+  const netWeeklySalary = withoutPropertyCalc.netIncome / 52;
+  const pocketSharePct = netWeeklySalary > 0 ? Math.abs(weeklyCost / netWeeklySalary) * 100 : 0;
+
+  return `
+    <!-- Top Resolved Address & Blended Score Header -->
+    <div class="intel-header-row">
+      <div>
+        <div class="hero-eyebrow">
+          <span>📍 ${escapeHtml(intel.matchKind)}</span>
+          <span class="dot-sep">·</span>
+          <span>${escapeHtml(area.city)}, ${escapeHtml(area.state)} ${escapeHtml(area.postcode)}</span>
+          <span class="dot-sep">·</span>
+          <span>${intel.bedrooms}-Bed ${intel.propertyType === 'house' ? 'House / Townhouse' : 'Unit / Apartment'}</span>
+        </div>
+        <h3 class="intel-address-title">${escapeHtml(intel.resolvedAddress)}</h3>
+        <p class="muted" style="margin:4px 0 0; font-size:0.88rem;">${escapeHtml(area.highlights)}</p>
+      </div>
+
+      <div class="intel-score-badge" title="Blended 5-pillar score: Growth, Yield, Tenant Affordability, Owner-Occupier Stability & Transit">
+        <div class="score-num">${intel.totalScore}<span>/100</span></div>
+        <div class="score-lbl">Area Quality</div>
+      </div>
+    </div>
+
+    <!-- Personal Salary Fit Verdict Banner -->
+    <div class="personal-fit-banner">
+      <div>
+        <div class="fit-eyebrow">Your Personal Pay Fit (on ${fmt(propState.salary)}/yr salary)</div>
+        <div class="fit-headline">
+          ${
+            isPos
+              ? `Adds <strong>+${fmt(weeklyCost)}/week</strong> after tax to your pocket`
+              : `Costs <strong>${fmt(Math.abs(weeklyCost))}/week</strong> out-of-pocket after your <strong>${fmt(Math.max(0, year1.taxSavedOrPaid))}/yr</strong> tax refund`
+          }
+          <span class="muted">(${pocketSharePct.toFixed(1)}% of your take-home pay — ${pocketSharePct <= 8 || isPos ? 'Comfortable' : pocketSharePct <= 15 ? 'Moderate stretch' : 'High commitment'})</span>
+        </div>
+      </div>
+      <button type="button" class="btn-primary btn-xs" data-stage-view="impact">See Full Tax Breakdown →</button>
+    </div>
+
+    <!-- 4 Blended Property & Land Metadata Tiles -->
+    <div class="kpi-grid" style="margin-top:16px;">
+      <div class="kpi-tile">
+        <div class="kpi-label">Est. Market Value</div>
+        <div class="kpi-val">${fmt(intel.estimatedValue)}</div>
+        <div class="kpi-meta">Range: ${fmt(intel.estimatedLow)} – ${fmt(intel.estimatedHigh)}</div>
+      </div>
+      <div class="kpi-tile">
+        <div class="kpi-label">Est. Rent &amp; Gross Yield</div>
+        <div class="kpi-val net-col">${fmt(intel.estimatedWeeklyRent)}<span class="unit">/wk</span></div>
+        <div class="kpi-meta">${intel.grossYieldPct}% yield · ${area.vacancyPct}% suburb vacancy</div>
+      </div>
+      <div class="kpi-tile">
+        <div class="kpi-label">Land vs Building Split</div>
+        <div class="kpi-val retire-color">${Math.round((intel.estimatedBuildingValue / intel.estimatedValue) * 100)}% <span class="unit">bldg</span></div>
+        <div class="kpi-meta">Land ~${fmt(intel.estimatedLandValue)} · Bldg ~${fmt(intel.estimatedBuildingValue)}</div>
+      </div>
+      <div class="kpi-tile">
+        <div class="kpi-label">Suburb Tenant Health</div>
+        <div class="kpi-val">${area.rentToIncomePct}% <span class="unit">rent/inc</span></div>
+        <div class="kpi-meta">${area.ownerOccupierPct}% owner-occupied · Inc ${fmt(area.medianHouseholdIncome)}</div>
+      </div>
+    </div>
+
+    <!-- Two-Column: 10-Yr Historical Growth SVG Chart + Live 1km Walkability & Risk Flags -->
+    <div class="two-col-cards" style="margin-top:18px;">
+      <div class="sub-panel-box">
+        <div class="card-title-row" style="margin-bottom:8px;">
+          <h4 class="mini-section-title" style="margin:0;">10-Year Price Trajectory vs ${escapeHtml(area.city)}</h4>
+          <span class="comp-pill comp-low">+${intel.growth5yrPct}% (5-Yr)</span>
+        </div>
+        ${renderGrowthTimelineSvg(intel.historySeries, intel.cityHistorySeries, fmt, area.suburb, area.city)}
+        ${
+          intel.recentSales.length
+            ? `
+          <div class="recent-sales-mini">
+            <div class="sub-label" style="margin-bottom:4px;">Recorded Area &amp; Comparable Sales:</div>
+            ${intel.recentSales
+              .slice(0, 2)
+              .map(
+                (s) => `
+              <div class="sale-mini-row">
+                <span>${escapeHtml(s.address)} <span class="muted">(${escapeHtml(s.type)})</span></span>
+                <strong>${fmt(s.soldPrice)} <span class="muted">${escapeHtml(s.soldDate)}</span></strong>
+              </div>
+            `
+              )
+              .join('')}
+          </div>
+        `
+            : ''
+        }
+      </div>
+
+      <div class="sub-panel-box">
+        <div class="card-title-row" style="margin-bottom:8px;">
+          <h4 class="mini-section-title" style="margin:0;">1km Walkability &amp; Due-Diligence Risks</h4>
+          <span class="tax-year-pill">${amenities.isLive ? '🟢 Live OSM Scan' : 'Suburb Baseline'}</span>
+        </div>
+
+        <div class="amenity-pills-grid">
+          <div class="amenity-pill">🚆 <strong>${amenities.transit}</strong> Transit stops</div>
+          <div class="amenity-pill">🏫 <strong>${amenities.schools}</strong> Schools</div>
+          <div class="amenity-pill">🛒 <strong>${amenities.supermarkets}</strong> Supermarkets</div>
+          <div class="amenity-pill">🌳 <strong>${amenities.parks}</strong> Parks &amp; reserves</div>
+        </div>
+
+        ${
+          amenities.namedHighlights?.length
+            ? `<div class="muted" style="font-size:0.78rem; margin-top:8px;">Nearby: ${amenities.namedHighlights.map(escapeHtml).join(' · ')}</div>`
+            : ''
+        }
+
+        <div class="risk-flags-list">
+          <div class="sub-label" style="margin:10px 0 4px;">Zoning (${escapeHtml(area.zoning)}) &amp; Local Checks:</div>
+          ${(area.riskFlags || [])
+            .map((rf) => `<div class="risk-flag-item">⚠️ ${escapeHtml(rf)}</div>`)
+            .join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="sources-footer-strip">
+      <span><strong>Blended Sources:</strong> ${intel.sourcesUsed.map(escapeHtml).join(' · ')}</span>
+    </div>
+  `;
+}
+
+function renderGrowthTimelineSvg(suburbSeries = [], citySeries = [], fmt, suburbName, cityName) {
+  if (!suburbSeries.length) return '';
+  const w = 420;
+  const h = 148;
+  const padL = 12;
+  const padR = 12;
+  const padT = 16;
+  const padB = 26;
+
+  const allVals = [...suburbSeries.map((d) => d.price), ...(citySeries || []).map((d) => d.price)];
+  const minV = Math.min(...allVals) * 0.92;
+  const maxV = Math.max(...allVals) * 1.05;
+  const span = Math.max(1, maxV - minV);
+
+  const toX = (i, total) => padL + (i / Math.max(1, total - 1)) * (w - padL - padR);
+  const toY = (val) => padT + (1 - (val - minV) / span) * (h - padT - padB);
+
+  const subPts = suburbSeries.map((d, i) => `${toX(i, suburbSeries.length).toFixed(1)},${toY(d.price).toFixed(1)}`).join(' ');
+  const cityPts = (citySeries || [])
+    .map((d, i) => `${toX(i, citySeries.length).toFixed(1)},${toY(d.price).toFixed(1)}`)
+    .join(' ');
+
+  const dots = suburbSeries
+    .map((d, i) => {
+      const cx = toX(i, suburbSeries.length).toFixed(1);
+      const cy = toY(d.price).toFixed(1);
+      return `<circle cx="${cx}" cy="${cy}" r="3.5" fill="var(--primary)"><title>${d.year}: ${fmt(d.price)}</title></circle>`;
+    })
+    .join('');
+
+  const yearLabels = suburbSeries
+    .filter((_, i) => i === 0 || i === 3 || i === suburbSeries.length - 1)
+    .map((d) => {
+      const idx = suburbSeries.indexOf(d);
+      const x = toX(idx, suburbSeries.length).toFixed(1);
+      return `<text x="${x}" y="${h - 6}" font-size="10" fill="var(--text-muted)" text-anchor="${idx === 0 ? 'start' : idx === suburbSeries.length - 1 ? 'end' : 'middle'}">${d.year} (${fmt(d.price)})</text>`;
+    })
+    .join('');
+
+  return `
+    <svg viewBox="0 0 ${w} ${h}" class="growth-svg" role="img" aria-label="10-year historical price trend">
+      ${cityPts ? `<polyline fill="none" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 3" points="${cityPts}" />` : ''}
+      <polyline fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${suburbPts}" />
+      ${dots}
+      ${yearLabels}
+    </svg>
+    <div class="svg-legend-mini">
+      <span><span class="legend-dot" style="display:inline-block;background:var(--primary)"></span> ${escapeHtml(suburbName)}</span>
+      <span class="muted">--- ${escapeHtml(cityName)} Benchmark</span>
+    </div>
+  `;
+}
+
+/**
+ * STAGE 02: SUBURB MATCHMAKER (RANKS AREAS BY WEEKLY AFTER-TAX COST ON USER'S SALARY!)
+ */
+function renderSuburbMatchmakerStage(fmt) {
+  const areas = propState.areaShard?.areas || [];
+  if (!areas.length) {
+    return `<p class="muted">Loading suburb profiles…</p>`;
+  }
+
+  const cities = ['All', ...new Set(areas.map((a) => a.city))];
+  const isHouse = propState.matchFilterType === 'house';
+
+  const ranked = areas
+    .filter((a) => propState.matchFilterCity === 'All' || a.city === propState.matchFilterCity)
+    .map((a) => {
+      const price = isHouse ? a.houseMedian : a.unitMedian;
+      const rentWk = isHouse ? a.houseRentWk : a.unitRentWk;
+      const yieldPct = isHouse ? a.houseYieldPct : a.unitYieldPct;
+      const growth5y = isHouse ? a.growth5yrPct : a.unitGrowth5yrPct;
+      const landShare = isHouse ? a.landShareHouse : a.landShareUnit;
+
+      // Compute exact Year-1 weekly after-tax holding cost for THIS user's salary!
+      const sim = calculatePropertyImpact({
+        ...propState,
+        propertyValue: price,
+        loanAmount: Math.round(price * 0.8),
+        weeklyRent: rentWk,
+        buildingStructureCost: Math.round(price * (1 - landShare) * 0.88),
+        plantAndEquipmentValue: Math.round(price * 0.04),
+        newUpgradesInstalled: Math.round(price * 0.015),
+        buildYear: a.typicalBuildYear || 2016,
+        annualExpenses: Math.round(price * (isHouse ? 0.0075 : 0.0105)),
+      });
+
+      return {
+        area: a,
+        price,
+        rentWk,
+        yieldPct,
+        growth5y,
+        weeklyAfterTax: Math.round(sim.year1.weeklyAfterTaxImpact),
+        annualTaxRefund: Math.round(sim.year1.taxSavedOrPaid),
+      };
+    })
+    .sort((x, y) => y.weeklyAfterTax - x.weeklyAfterTax); // Best cashflow / lowest weekly cost first!
+
+  return `
+    <div class="dep-controls-bar">
+      <div>
+        <h3 class="mini-section-title" style="margin:0;">Suburb Matchmaker (Ranked for Your ${fmt(propState.salary)} Salary)</h3>
+        <div class="muted" style="font-size:0.82rem;">Ranked from best weekly after-tax cashflow (assuming 20% deposit at ${propState.interestRatePct}% interest).</div>
+      </div>
+
+      <div class="matchmaker-filters">
+        <select id="mm-city-select" class="lookup-inline-select">
+          ${cities
+            .map((ct) => `<option value="${escapeHtml(ct)}" ${ct === propState.matchFilterCity ? 'selected' : ''}>${ct === 'All' ? 'All Cities' : escapeHtml(ct)}</option>`)
+            .join('')}
+        </select>
+        <div class="segmented-control" style="min-width:190px;">
+          <button type="button" class="seg-btn ${!isHouse ? 'active' : ''}" data-mm-type="unit">Units</button>
+          <button type="button" class="seg-btn ${isHouse ? 'active' : ''}" data-mm-type="house">Houses</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-scroll" style="margin-top:12px;">
+      <table class="freq-table">
+        <thead>
+          <tr>
+            <th>Suburb / Area</th>
+            <th>Median Price</th>
+            <th>Rent (Gross Yield)</th>
+            <th>5-Yr Growth</th>
+            <th>Your Tax Refund</th>
+            <th>Your Weekly Net Cost</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          ${ranked
+            .map(
+              (r) => `
+            <tr>
+              <td>
+                <strong>${escapeHtml(r.area.suburb)}</strong>
+                <div class="pin-meta">${escapeHtml(r.area.city)}, ${escapeHtml(r.area.state)} · ${r.area.vacancyPct}% vac · ${r.area.ownerOccupierPct}% owner</div>
+              </td>
+              <td><strong>${fmt(r.price)}</strong></td>
+              <td>${fmt(r.rentWk)}/wk <span class="muted">(${r.yieldPct}%)</span></td>
+              <td class="net-col">+${r.growth5y}%</td>
+              <td class="${r.annualTaxRefund >= 0 ? 'net-col' : 'tax-color'}">${r.annualTaxRefund >= 0 ? '+' : '−'}${fmt(Math.abs(r.annualTaxRefund))}/yr</td>
+              <td class="${r.weeklyAfterTax >= 0 ? 'net-col' : ''}">
+                <strong>${r.weeklyAfterTax >= 0 ? '+' : '−'}${fmt(Math.abs(r.weeklyAfterTax))}/wk</strong>
+              </td>
+              <td>
+                <button type="button" class="btn-primary btn-xs load-suburb-btn" data-suburb="${escapeHtml(r.area.suburb)}" data-postcode="${escapeHtml(r.area.postcode)}">
+                  Model →
+                </button>
+              </td>
+            </tr>
+          `
+            )
+            .join('')}
+        </tbody>
+      </table>
     </div>
   `;
 }
@@ -380,29 +651,6 @@ function renderImpactStage(year1, withoutPropertyCalc, fmt, isRefund, isPositive
         <div class="pay-mode-range">
           Net Property Impact: <strong>${year1.afterTaxPropertyCashflow >= 0 ? '+' : '−'}${fmt(Math.abs(year1.afterTaxPropertyCashflow))}/yr</strong>
         </div>
-      </div>
-    </div>
-
-    <div class="kpi-grid">
-      <div class="kpi-tile">
-        <div class="kpi-label">1. Pre-Tax Cashflow</div>
-        <div class="kpi-val ${year1.preTaxCashflow < 0 ? 'tax-color' : 'net-col'}">${year1.preTaxCashflow >= 0 ? '+' : '−'}${fmt(Math.abs(year1.preTaxCashflow))}</div>
-        <div class="kpi-meta">${year1.preTaxCashflow >= 0 ? '+' : '−'}${fmt(Math.abs(year1.preTaxCashflow / 52))}/wk</div>
-      </div>
-      <div class="kpi-tile">
-        <div class="kpi-label">2. Non-Cash Depreciation</div>
-        <div class="kpi-val retire-color">${fmt(year1.claimedTotalDep)}</div>
-        <div class="kpi-meta">Paper deduction ($0 cash)</div>
-      </div>
-      <div class="kpi-tile">
-        <div class="kpi-label">3. ${isRefund ? 'Tax Refund / Saved' : 'Extra Tax Owed'}</div>
-        <div class="kpi-val ${isRefund ? 'net-col' : 'tax-color'}">${isRefund ? '+' : '−'}${fmt(Math.abs(year1.taxSavedOrPaid))}</div>
-        <div class="kpi-meta">${isRefund ? '+' : '−'}${fmt(Math.abs(year1.taxSavedOrPaid / 52))}/wk tax effect</div>
-      </div>
-      <div class="kpi-tile">
-        <div class="kpi-label">4. After-Tax Cashflow</div>
-        <div class="kpi-val ${isPositiveAfterTax ? 'net-col' : ''}">${isPositiveAfterTax ? '+' : '−'}${fmt(Math.abs(year1.afterTaxPropertyCashflow))}</div>
-        <div class="kpi-meta">${isPositiveAfterTax ? '+' : '−'}${fmt(Math.abs(year1.weeklyAfterTaxImpact))}/wk net</div>
       </div>
     </div>
 
@@ -522,9 +770,10 @@ function renderForecastStage(country, exitCgt, fmt) {
 
 function openPropertySettingsPopup() {
   const c = COUNTRIES[propState.country];
+  const workerUrl = getBackendWorkerUrl();
   const modal = openPopupModal({
-    title: 'Building Depreciation & 10-Year Growth Settings',
-    subtitle: 'Fine-tune construction cost, fixtures value, and capital growth assumptions.',
+    title: 'Building Depreciation, Growth & Edge DB Settings',
+    subtitle: 'Fine-tune construction cost, growth rates, or connect your optional Cloudflare Worker + D1 property database.',
     wide: false,
     bodyHtml: `
       <div id="prop-modal-controls" class="modal-form">
@@ -560,8 +809,15 @@ function openPropertySettingsPopup() {
             <input type="number" id="prop-rentgrowth-input" class="text-input" min="-5" max="15" step="0.5" value="${propState.rentGrowthPct}" />
           </div>
         </div>
+
+        <div class="sub-field" style="padding-top:10px; border-top:1px solid var(--border-subtle);">
+          <label class="sub-label" for="prop-worker-url">Optional Cloudflare Worker + D1 API Endpoint</label>
+          <input type="url" id="prop-worker-url" class="text-input" placeholder="https://paysense-property-api.<your-subdomain>.workers.dev" value="${escapeHtml(workerUrl)}" />
+          <div class="field-hint">Leave blank to use built-in sharded suburb data + live OpenStreetMap / HDB APIs. Deploy <code>backend/cloudflare-worker/</code> for millions of cached D1 sales records.</div>
+        </div>
+
         <div class="modal-actions">
-          <button type="button" class="btn-primary" data-close-popup>Done</button>
+          <button type="button" class="btn-primary" id="save-prop-modal-btn" data-close-popup>Save &amp; Close</button>
         </div>
       </div>
     `,
@@ -569,6 +825,10 @@ function openPropertySettingsPopup() {
 
   modal.querySelector('#prop-modal-controls')?.addEventListener('input', (e) => {
     const t = e.target;
+    if (t.id === 'prop-worker-url') {
+      setBackendWorkerUrl(t.value);
+      return;
+    }
     const val = Math.max(0, Number(t.value) || 0);
     if (t.id === 'prop-buildyear-input') propState.buildYear = val || 2020;
     else if (t.id === 'prop-struct-input') propState.buildingStructureCost = val;
@@ -668,6 +928,7 @@ function exportDepreciationCsv() {
   const { country, depSchedule, withoutPropertyCalc } = currentImpact;
   const rows = [
     ['PaySense — Property Depreciation Schedule'],
+    ['Address', propState.addressIntel?.resolvedAddress || 'Custom Property'],
     ['Country', `${country.name} (${country.taxYear})`],
     ['Property Value', propState.propertyValue],
     ['Year Built', propState.buildYear],
@@ -695,25 +956,80 @@ function exportDepreciationCsv() {
 }
 
 function bindEvents() {
-  els.aiForm.addEventListener('submit', (e) => {
+  // Debounced live street-address autocomplete
+  let acTimer = null;
+  els.lookupInput.addEventListener('input', () => {
+    selectedCandidate = null;
+    clearTimeout(acTimer);
+    const val = els.lookupInput.value.trim();
+    if (val.length < 2) {
+      els.autocompleteBox.hidden = true;
+      return;
+    }
+    acTimer = setTimeout(async () => {
+      autocompleteItems = await autocompleteAddress(val, propState.country);
+      if (!autocompleteItems.length) {
+        els.autocompleteBox.hidden = true;
+        return;
+      }
+      els.autocompleteBox.innerHTML = autocompleteItems
+        .map(
+          (item, i) => `
+          <button type="button" class="ac-option" data-ac-idx="${i}">
+            <span class="ac-label">📍 ${escapeHtml(item.label)}</span>
+            <span class="ac-source">${escapeHtml(item.source)}</span>
+          </button>
+        `
+        )
+        .join('');
+      els.autocompleteBox.hidden = false;
+    }, 240);
+  });
+
+  els.autocompleteBox.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-ac-idx]');
+    if (!btn) return;
+    const picked = autocompleteItems[Number(btn.dataset.acIdx)];
+    if (!picked) return;
+    selectedCandidate = picked;
+    els.lookupInput.value = picked.label;
+    els.autocompleteBox.hidden = true;
+    runAddressLookup(picked.label, els.lookupType.value, els.lookupBeds.value, picked);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.address-input-wrap')) {
+      els.autocompleteBox.hidden = true;
+    }
+  });
+
+  els.lookupForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    parsePropertyPrompt(els.aiInput.value);
+    runAddressLookup(els.lookupInput.value, els.lookupType.value, els.lookupBeds.value, selectedCandidate);
+  });
+
+  els.lookupType.addEventListener('change', () => {
+    if (els.lookupInput.value.trim()) {
+      runAddressLookup(els.lookupInput.value, els.lookupType.value, els.lookupBeds.value, selectedCandidate);
+    }
+  });
+
+  els.lookupBeds.addEventListener('change', () => {
+    if (els.lookupInput.value.trim()) {
+      runAddressLookup(els.lookupInput.value, els.lookupType.value, els.lookupBeds.value, selectedCandidate);
+    }
   });
 
   els.aiChips.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-example-idx]');
+    const btn = e.target.closest('[data-sample-idx]');
     if (!btn) return;
-    const ex = EXAMPLE_PROMPTS[Number(btn.dataset.exampleIdx)];
-    if (!ex) return;
-    els.aiInput.value = ex.prompt;
-    parsePropertyPrompt(ex.prompt);
-  });
-
-  els.aiFeedback.addEventListener('click', (e) => {
-    if (e.target.closest('#dismiss-prop-feedback')) {
-      propState.lastParsed = null;
-      renderAiFeedback();
-    }
+    const samples = SAMPLE_ADDRESSES_BY_COUNTRY[propState.country] || SAMPLE_ADDRESSES_BY_COUNTRY.AU;
+    const s = samples[Number(btn.dataset.sampleIdx)];
+    if (!s) return;
+    els.lookupInput.value = s.address;
+    els.lookupType.value = s.type;
+    els.lookupBeds.value = String(s.beds);
+    runAddressLookup(s.address, s.type, s.beds, null);
   });
 
   els.formRoot.addEventListener('click', (e) => {
@@ -748,6 +1064,24 @@ function bindEvents() {
       renderResultsOnly();
       return;
     }
+    const mmTypeBtn = e.target.closest('[data-mm-type]');
+    if (mmTypeBtn) {
+      propState.matchFilterType = mmTypeBtn.dataset.mmType;
+      renderResultsOnly();
+      return;
+    }
+    const loadSubBtn = e.target.closest('.load-suburb-btn');
+    if (loadSubBtn) {
+      const sub = loadSubBtn.dataset.suburb;
+      const pc = loadSubBtn.dataset.postcode;
+      const t = propState.matchFilterType;
+      const b = t === 'house' ? 3 : 2;
+      els.lookupInput.value = `12 Main St, ${sub} ${pc}`;
+      els.lookupType.value = t;
+      els.lookupBeds.value = String(b);
+      runAddressLookup(`12 Main St, ${sub} ${pc}`, t, b, null);
+      return;
+    }
     const depBtn = e.target.closest('[data-dep-method]');
     if (depBtn) {
       propState.depreciationMethod = depBtn.dataset.depMethod;
@@ -770,16 +1104,23 @@ function bindEvents() {
       window.print();
     }
   });
+
+  els.resultsRoot.addEventListener('change', (e) => {
+    if (e.target.id === 'mm-city-select') {
+      propState.matchFilterCity = e.target.value;
+      renderResultsOnly();
+    }
+  });
 }
 
-function init() {
+async function init() {
   initGlobalHeader({
     activePage: 'property',
     onCountryChange: (newCode) => switchCountry(newCode),
   });
-  renderExampleChips();
-  renderAll();
+  renderSampleChips();
   bindEvents();
+  await loadCountryAreasAndDefaultLookup();
 }
 
 init();

@@ -1,0 +1,488 @@
+{
+  "country": "US",
+  "lastUpdated": "2026-04",
+  "cityBenchmark5yr": 34.0,
+  "cityBenchmark10yr": 76.0,
+  "areas": [
+    {
+      "suburb": "Raleigh-Cary (27513)",
+      "state": "NC",
+      "postcode": "27513",
+      "city": "Raleigh",
+      "lat": 35.7915,
+      "lon": -78.7811,
+      "houseMedian": 535000,
+      "houseRentWk": 590,
+      "unitMedian": 365000,
+      "unitRentWk": 450,
+      "growth5yrPct": 42.0,
+      "growth10yrPct": 92.0,
+      "unitGrowth5yrPct": 34.0,
+      "medianHouseholdIncome": 118000,
+      "ownerOccupierPct": 68,
+      "vacancyPct": 3.4,
+      "landShareHouse": 0.28,
+      "landShareUnit": 0.18,
+      "typicalBuildYear": 2017,
+      "zoning": "Single-Family / Research Triangle",
+      "riskFlags": [
+        "Verify HOA rental caps on townhomes"
+      ],
+      "highlights": "Research Triangle tech/biotech hub with low NC property taxes (~0.85%) and high 72% depreciable building ratio for 27.5-yr MACRS.",
+      "sampleSales": [],
+      "houseYieldPct": 5.73,
+      "unitYieldPct": 6.41,
+      "rentToIncomePct": 19.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 278646
+        },
+        {
+          "year": 2018,
+          "price": 315930
+        },
+        {
+          "year": 2020,
+          "price": 345364
+        },
+        {
+          "year": 2021,
+          "price": 376761
+        },
+        {
+          "year": 2023,
+          "price": 446386
+        },
+        {
+          "year": 2025,
+          "price": 512847
+        },
+        {
+          "year": 2026,
+          "price": 535000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 228411
+        },
+        {
+          "year": 2018,
+          "price": 245122
+        },
+        {
+          "year": 2020,
+          "price": 258315
+        },
+        {
+          "year": 2021,
+          "price": 272388
+        },
+        {
+          "year": 2023,
+          "price": 313137
+        },
+        {
+          "year": 2025,
+          "price": 352034
+        },
+        {
+          "year": 2026,
+          "price": 365000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 291818
+        },
+        {
+          "year": 2018,
+          "price": 326575
+        },
+        {
+          "year": 2020,
+          "price": 354015
+        },
+        {
+          "year": 2021,
+          "price": 383284
+        },
+        {
+          "year": 2023,
+          "price": 440623
+        },
+        {
+          "year": 2025,
+          "price": 495356
+        },
+        {
+          "year": 2026,
+          "price": 513600
+        }
+      ]
+    },
+    {
+      "suburb": "Austin (North / 78758)",
+      "state": "TX",
+      "postcode": "78758",
+      "city": "Austin",
+      "lat": 30.3885,
+      "lon": -97.7115,
+      "houseMedian": 510000,
+      "houseRentWk": 575,
+      "unitMedian": 330000,
+      "unitRentWk": 420,
+      "growth5yrPct": 21.0,
+      "growth10yrPct": 78.0,
+      "unitGrowth5yrPct": 12.0,
+      "medianHouseholdIncome": 102000,
+      "ownerOccupierPct": 54,
+      "vacancyPct": 5.2,
+      "landShareHouse": 0.32,
+      "landShareUnit": 0.2,
+      "typicalBuildYear": 2016,
+      "zoning": "SF-3 / Domain Tech Corridor",
+      "riskFlags": [
+        "Texas property tax (~1.8%\u20132.1%/yr) is higher than national average \u2014 budget ~$9,500/yr in expenses"
+      ],
+      "highlights": "Adjacent to The Domain tech campus (Apple, Amazon, Meta) after healthy post-2022 price reset.",
+      "sampleSales": [],
+      "houseYieldPct": 5.86,
+      "unitYieldPct": 6.62,
+      "rentToIncomePct": 21.4,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 286517
+        },
+        {
+          "year": 2018,
+          "price": 337806
+        },
+        {
+          "year": 2020,
+          "price": 378297
+        },
+        {
+          "year": 2021,
+          "price": 421488
+        },
+        {
+          "year": 2023,
+          "price": 460433
+        },
+        {
+          "year": 2025,
+          "price": 497608
+        },
+        {
+          "year": 2026,
+          "price": 510000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 218978
+        },
+        {
+          "year": 2018,
+          "price": 247731
+        },
+        {
+          "year": 2020,
+          "price": 270430
+        },
+        {
+          "year": 2021,
+          "price": 294643
+        },
+        {
+          "year": 2023,
+          "price": 310200
+        },
+        {
+          "year": 2025,
+          "price": 325050
+        },
+        {
+          "year": 2026,
+          "price": 330000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 278182
+        },
+        {
+          "year": 2018,
+          "price": 311315
+        },
+        {
+          "year": 2020,
+          "price": 337472
+        },
+        {
+          "year": 2021,
+          "price": 365373
+        },
+        {
+          "year": 2023,
+          "price": 420033
+        },
+        {
+          "year": 2025,
+          "price": 472208
+        },
+        {
+          "year": 2026,
+          "price": 489600
+        }
+      ]
+    },
+    {
+      "suburb": "Atlanta (Midtown / Decatur 30030)",
+      "state": "GA",
+      "postcode": "30030",
+      "city": "Atlanta",
+      "lat": 33.7748,
+      "lon": -84.2963,
+      "houseMedian": 495000,
+      "houseRentWk": 610,
+      "unitMedian": 340000,
+      "unitRentWk": 470,
+      "growth5yrPct": 39.0,
+      "growth10yrPct": 89.0,
+      "unitGrowth5yrPct": 28.0,
+      "medianHouseholdIncome": 106000,
+      "ownerOccupierPct": 61,
+      "vacancyPct": 3.8,
+      "landShareHouse": 0.3,
+      "landShareUnit": 0.2,
+      "typicalBuildYear": 2015,
+      "zoning": "R-60 / MARTA Transit",
+      "riskFlags": [
+        "Check condo HOA reserve studies and rental permit quotas"
+      ],
+      "highlights": "Strong cashflow-to-price balance (~6.4% gross yield) near Emory, CDC, and MARTA rail.",
+      "sampleSales": [],
+      "houseYieldPct": 6.41,
+      "unitYieldPct": 7.19,
+      "rentToIncomePct": 23.1,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 261905
+        },
+        {
+          "year": 2018,
+          "price": 297705
+        },
+        {
+          "year": 2020,
+          "price": 325968
+        },
+        {
+          "year": 2021,
+          "price": 356115
+        },
+        {
+          "year": 2023,
+          "price": 417224
+        },
+        {
+          "year": 2025,
+          "price": 475556
+        },
+        {
+          "year": 2026,
+          "price": 495000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 215326
+        },
+        {
+          "year": 2018,
+          "price": 234440
+        },
+        {
+          "year": 2020,
+          "price": 249529
+        },
+        {
+          "year": 2021,
+          "price": 265625
+        },
+        {
+          "year": 2023,
+          "price": 298350
+        },
+        {
+          "year": 2025,
+          "price": 329588
+        },
+        {
+          "year": 2026,
+          "price": 340000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 270000
+        },
+        {
+          "year": 2018,
+          "price": 302158
+        },
+        {
+          "year": 2020,
+          "price": 327546
+        },
+        {
+          "year": 2021,
+          "price": 354627
+        },
+        {
+          "year": 2023,
+          "price": 407679
+        },
+        {
+          "year": 2025,
+          "price": 458320
+        },
+        {
+          "year": 2026,
+          "price": 475200
+        }
+      ]
+    },
+    {
+      "suburb": "San Diego (North Park / 92104)",
+      "state": "CA",
+      "postcode": "92104",
+      "city": "San Diego",
+      "lat": 32.7457,
+      "lon": -117.1294,
+      "houseMedian": 985000,
+      "houseRentWk": 960,
+      "unitMedian": 640000,
+      "unitRentWk": 710,
+      "growth5yrPct": 41.0,
+      "growth10yrPct": 96.0,
+      "unitGrowth5yrPct": 35.0,
+      "medianHouseholdIncome": 124000,
+      "ownerOccupierPct": 49,
+      "vacancyPct": 2.4,
+      "landShareHouse": 0.55,
+      "landShareUnit": 0.35,
+      "typicalBuildYear": 2014,
+      "zoning": "CA ADU-Friendly Residential",
+      "riskFlags": [
+        "CA Prop 13 locks property tax growth at 2%/yr, but high purchase price requires strong equity or ADU strategy"
+      ],
+      "highlights": "Supply-constrained coastal metro with California ADU (accessory dwelling unit) yield boost potential.",
+      "sampleSales": [],
+      "houseYieldPct": 5.07,
+      "unitYieldPct": 5.77,
+      "rentToIncomePct": 29.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 502551
+        },
+        {
+          "year": 2018,
+          "price": 577043
+        },
+        {
+          "year": 2020,
+          "price": 635852
+        },
+        {
+          "year": 2021,
+          "price": 698582
+        },
+        {
+          "year": 2023,
+          "price": 824606
+        },
+        {
+          "year": 2025,
+          "price": 944901
+        },
+        {
+          "year": 2026,
+          "price": 985000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 394089
+        },
+        {
+          "year": 2018,
+          "price": 424483
+        },
+        {
+          "year": 2020,
+          "price": 448479
+        },
+        {
+          "year": 2021,
+          "price": 474074
+        },
+        {
+          "year": 2023,
+          "price": 547081
+        },
+        {
+          "year": 2025,
+          "price": 616770
+        },
+        {
+          "year": 2026,
+          "price": 640000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 537273
+        },
+        {
+          "year": 2018,
+          "price": 601265
+        },
+        {
+          "year": 2020,
+          "price": 651784
+        },
+        {
+          "year": 2021,
+          "price": 705672
+        },
+        {
+          "year": 2023,
+          "price": 811240
+        },
+        {
+          "year": 2025,
+          "price": 912010
+        },
+        {
+          "year": 2026,
+          "price": 945600
+        }
+      ]
+    }
+  ]
+}

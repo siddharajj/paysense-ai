@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rental Property, Negative Gearing &amp; Depreciation Forecaster — PaySense</title>
-  <meta name="description" content="See how an investment property affects your take-home pay and tax across Australia, US, UK, Canada, India, NZ & Singapore. Includes a free DIY Depreciation Schedule generator and 10-year Capital Gains forecaster." />
+  <title>Property Address Lookup, Suburb Matchmaker &amp; Tax Forecaster — PaySense</title>
+  <meta name="description" content="Enter any property address to get blended property insights, historical growth, live 1km walkability, suburb matchmaker rankings, negative gearing, and a free DIY depreciation schedule." />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231E563F'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FAF7F2' font-family='Georgia,serif' font-weight='700' font-size='34'%3E%24%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="./css/styles.css" />
@@ -16,25 +16,43 @@
     <section class="compact-top-hero">
       <div class="compact-hero-row">
         <div>
-          <h1 class="compact-page-title">Rental Property, Negative Gearing &amp; Depreciation Forecaster</h1>
-          <p class="compact-page-sub">Model how an existing or future rental property affects your weekly pay, tax refund, depreciation schedule, and 10-year Capital Gains Tax.</p>
+          <h1 class="compact-page-title">Property Address Insights, Suburb Matchmaker &amp; Tax Forecaster</h1>
+          <p class="compact-page-sub">Enter any street address or suburb below to pull blended valuation, rent, land-vs-building split, live 1km transit/schools, and auto-fill your negative gearing &amp; depreciation model.</p>
         </div>
       </div>
 
-      <div class="plain-english-card compact-ai-card">
-        <form id="prop-ai-form" class="ai-prompt-shell" autocomplete="off">
-          <input
-            type="text"
-            id="prop-ai-input"
-            class="ai-prompt-input"
-            placeholder='Describe your property… e.g. "$145k salary buying a $780k apartment built in 2022, $624k loan at 6.2%, $680/wk rent"'
-            aria-label="Describe your rental property scenario in plain English"
-          />
-          <button type="submit" class="btn-primary">Calculate Impact</button>
+      <!-- Unified Address Lookup + Plain-English Search Card -->
+      <div class="plain-english-card compact-ai-card address-lookup-card">
+        <form id="address-lookup-form" class="address-lookup-shell" autocomplete="off">
+          <div class="address-input-wrap">
+            <span class="search-icon" aria-hidden="true">📍</span>
+            <input
+              type="text"
+              id="address-lookup-input"
+              class="ai-prompt-input"
+              placeholder="Enter street address or suburb… e.g. 14/42 Hassall St, Parramatta NSW 2150"
+              aria-label="Enter street address or suburb"
+            />
+            <div id="address-autocomplete-list" class="autocomplete-dropdown" hidden></div>
+          </div>
+
+          <select id="lookup-prop-type" class="lookup-inline-select" aria-label="Property type">
+            <option value="unit">Unit / Apartment</option>
+            <option value="house">House / Townhouse</option>
+          </select>
+
+          <select id="lookup-beds" class="lookup-inline-select" aria-label="Bedrooms">
+            <option value="1">1 Bed</option>
+            <option value="2" selected>2 Beds</option>
+            <option value="3">3 Beds</option>
+            <option value="4">4+ Beds</option>
+          </select>
+
+          <button type="submit" class="btn-primary" id="address-lookup-btn">Inspect Address</button>
         </form>
 
         <div class="ai-chips-row">
-          <span class="chips-label">Try:</span>
+          <span class="chips-label">Instant sample addresses:</span>
           <div id="prop-example-chips" class="ai-chips-scroll"></div>
         </div>
 
@@ -50,8 +68,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div><strong>PaySense · Rental Property &amp; Tax Forecaster</strong> — Models local negative gearing, depreciation, and CGT laws.</div>
-      <div class="footer-disclaimer">Estimates are for educational planning only (2025/26 tax rules). Consult a registered tax agent or quantity surveyor for official filings.</div>
+      <div><strong>PaySense · Property &amp; Area Intelligence</strong> — Blended open registries (ABS, NSW PSI, DataVic, ONS, Zillow, HDB, OpenStreetMap) + local tax engines.</div>
+      <div class="footer-disclaimer">Valuations, yields, and tax projections are indicative estimates for educational research. Always verify contracts, council overlays, and tax filings with licensed professionals.</div>
     </div>
   </footer>
 

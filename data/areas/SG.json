@@ -1,0 +1,248 @@
+{
+  "country": "SG",
+  "lastUpdated": "2026-04",
+  "cityBenchmark5yr": 31.0,
+  "cityBenchmark10yr": 54.0,
+  "areas": [
+    {
+      "suburb": "Tampines",
+      "state": "East Region",
+      "postcode": "520402",
+      "city": "Singapore",
+      "lat": 1.3526,
+      "lon": 103.9446,
+      "houseMedian": 1580000,
+      "houseRentWk": 1020,
+      "unitMedian": 720000,
+      "unitRentWk": 780,
+      "growth5yrPct": 34.0,
+      "growth10yrPct": 58.0,
+      "unitGrowth5yrPct": 36.0,
+      "medianHouseholdIncome": 138000,
+      "ownerOccupierPct": 86,
+      "vacancyPct": 1.9,
+      "landShareHouse": 0.45,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2016,
+      "zoning": "Regional Centre (MRT EW/DT)",
+      "riskFlags": [
+        "Check ABSD (Additional Buyer's Stamp Duty) rates for 2nd+ properties and HDB Minimum Occupation Period (MOP)"
+      ],
+      "highlights": "Major East Regional Centre near Changi Business Park & Airport with dual MRT lines and ~5.6% HDB/EC yields.",
+      "sampleSales": [],
+      "houseYieldPct": 3.36,
+      "unitYieldPct": 5.63,
+      "rentToIncomePct": 29.4,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1000000
+        },
+        {
+          "year": 2018,
+          "price": 1068060
+        },
+        {
+          "year": 2020,
+          "price": 1121791
+        },
+        {
+          "year": 2021,
+          "price": 1179104
+        },
+        {
+          "year": 2023,
+          "price": 1355498
+        },
+        {
+          "year": 2025,
+          "price": 1523875
+        },
+        {
+          "year": 2026,
+          "price": 1580000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 522876
+        },
+        {
+          "year": 2018,
+          "price": 525360
+        },
+        {
+          "year": 2020,
+          "price": 527320
+        },
+        {
+          "year": 2021,
+          "price": 529412
+        },
+        {
+          "year": 2023,
+          "price": 613271
+        },
+        {
+          "year": 2025,
+          "price": 693318
+        },
+        {
+          "year": 2026,
+          "price": 720000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 984935
+        },
+        {
+          "year": 2018,
+          "price": 1050648
+        },
+        {
+          "year": 2020,
+          "price": 1102526
+        },
+        {
+          "year": 2021,
+          "price": 1157863
+        },
+        {
+          "year": 2023,
+          "price": 1315795
+        },
+        {
+          "year": 2025,
+          "price": 1466549
+        },
+        {
+          "year": 2026,
+          "price": 1516800
+        }
+      ]
+    },
+    {
+      "suburb": "Queenstown",
+      "state": "Central Region",
+      "postcode": "140088",
+      "city": "Singapore",
+      "lat": 1.2942,
+      "lon": 103.7861,
+      "houseMedian": 2150000,
+      "houseRentWk": 1250,
+      "unitMedian": 960000,
+      "unitRentWk": 920,
+      "growth5yrPct": 32.5,
+      "growth10yrPct": 62.0,
+      "unitGrowth5yrPct": 34.0,
+      "medianHouseholdIncome": 156000,
+      "ownerOccupierPct": 82,
+      "vacancyPct": 1.7,
+      "landShareHouse": 0.5,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2018,
+      "zoning": "City Fringe RCR",
+      "riskFlags": [
+        "Verify remaining 99-year lease balance (>75 yrs recommended for financing & resale)"
+      ],
+      "highlights": "City-fringe RCR hotspot next to one-north biotech/tech park, NUS, and NUH.",
+      "sampleSales": [],
+      "houseYieldPct": 3.02,
+      "unitYieldPct": 4.98,
+      "rentToIncomePct": 30.7,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1327160
+        },
+        {
+          "year": 2018,
+          "price": 1439443
+        },
+        {
+          "year": 2020,
+          "price": 1528088
+        },
+        {
+          "year": 2021,
+          "price": 1622642
+        },
+        {
+          "year": 2023,
+          "price": 1854680
+        },
+        {
+          "year": 2025,
+          "price": 2076170
+        },
+        {
+          "year": 2026,
+          "price": 2150000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 684248
+        },
+        {
+          "year": 2018,
+          "price": 696473
+        },
+        {
+          "year": 2020,
+          "price": 706124
+        },
+        {
+          "year": 2021,
+          "price": 716418
+        },
+        {
+          "year": 2023,
+          "price": 823594
+        },
+        {
+          "year": 2025,
+          "price": 925899
+        },
+        {
+          "year": 2026,
+          "price": 960000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1340260
+        },
+        {
+          "year": 2018,
+          "price": 1429679
+        },
+        {
+          "year": 2020,
+          "price": 1500273
+        },
+        {
+          "year": 2021,
+          "price": 1575573
+        },
+        {
+          "year": 2023,
+          "price": 1790481
+        },
+        {
+          "year": 2025,
+          "price": 1995620
+        },
+        {
+          "year": 2026,
+          "price": 2064000
+        }
+      ]
+    }
+  ]
+}

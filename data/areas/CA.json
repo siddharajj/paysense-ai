@@ -1,0 +1,248 @@
+{
+  "country": "CA",
+  "lastUpdated": "2026-04",
+  "cityBenchmark5yr": 22.0,
+  "cityBenchmark10yr": 64.0,
+  "areas": [
+    {
+      "suburb": "Calgary (Beltline / NW)",
+      "state": "AB",
+      "postcode": "T2R",
+      "city": "Calgary",
+      "lat": 51.0407,
+      "lon": -114.0722,
+      "houseMedian": 685000,
+      "houseRentWk": 620,
+      "unitMedian": 375000,
+      "unitRentWk": 465,
+      "growth5yrPct": 41.0,
+      "growth10yrPct": 58.0,
+      "unitGrowth5yrPct": 36.0,
+      "medianHouseholdIncome": 116000,
+      "ownerOccupierPct": 63,
+      "vacancyPct": 2.1,
+      "landShareHouse": 0.42,
+      "landShareUnit": 0.24,
+      "typicalBuildYear": 2017,
+      "zoning": "R-CG / Transit-Oriented",
+      "riskFlags": [
+        "Alberta has no provincial rent-control cap, creating higher yield flexibility"
+      ],
+      "highlights": "Fastest interprovincial migration growth in Canada with 5%\u20136.4% gross yields and no land transfer tax.",
+      "sampleSales": [],
+      "houseYieldPct": 4.71,
+      "unitYieldPct": 6.45,
+      "rentToIncomePct": 20.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 433544
+        },
+        {
+          "year": 2018,
+          "price": 453407
+        },
+        {
+          "year": 2020,
+          "price": 469089
+        },
+        {
+          "year": 2021,
+          "price": 485816
+        },
+        {
+          "year": 2023,
+          "price": 573457
+        },
+        {
+          "year": 2025,
+          "price": 657114
+        },
+        {
+          "year": 2026,
+          "price": 685000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 272331
+        },
+        {
+          "year": 2018,
+          "price": 273625
+        },
+        {
+          "year": 2020,
+          "price": 274646
+        },
+        {
+          "year": 2021,
+          "price": 275735
+        },
+        {
+          "year": 2023,
+          "price": 319412
+        },
+        {
+          "year": 2025,
+          "price": 361103
+        },
+        {
+          "year": 2026,
+          "price": 375000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 400976
+        },
+        {
+          "year": 2018,
+          "price": 453431
+        },
+        {
+          "year": 2020,
+          "price": 494843
+        },
+        {
+          "year": 2021,
+          "price": 539016
+        },
+        {
+          "year": 2023,
+          "price": 591193
+        },
+        {
+          "year": 2025,
+          "price": 640998
+        },
+        {
+          "year": 2026,
+          "price": 657600
+        }
+      ]
+    },
+    {
+      "suburb": "Toronto (Leslieville / M4M)",
+      "state": "ON",
+      "postcode": "M4M",
+      "city": "Toronto",
+      "lat": 43.6626,
+      "lon": -79.3359,
+      "houseMedian": 1240000,
+      "houseRentWk": 860,
+      "unitMedian": 685000,
+      "unitRentWk": 610,
+      "growth5yrPct": 14.0,
+      "growth10yrPct": 68.0,
+      "unitGrowth5yrPct": 8.5,
+      "medianHouseholdIncome": 128000,
+      "ownerOccupierPct": 57,
+      "vacancyPct": 2.4,
+      "landShareHouse": 0.56,
+      "landShareUnit": 0.28,
+      "typicalBuildYear": 2016,
+      "zoning": "Ontario Line Transit Precinct",
+      "riskFlags": [
+        "Toronto charges double Land Transfer Tax (Municipal + Ontario Provincial)"
+      ],
+      "highlights": "Future Ontario Line subway hub just east of Downtown Toronto with basement suite yield potential.",
+      "sampleSales": [],
+      "houseYieldPct": 3.61,
+      "unitYieldPct": 4.63,
+      "rentToIncomePct": 24.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 738095
+        },
+        {
+          "year": 2018,
+          "price": 870952
+        },
+        {
+          "year": 2020,
+          "price": 975839
+        },
+        {
+          "year": 2021,
+          "price": 1087719
+        },
+        {
+          "year": 2023,
+          "price": 1154723
+        },
+        {
+          "year": 2025,
+          "price": 1218681
+        },
+        {
+          "year": 2026,
+          "price": 1240000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 475035
+        },
+        {
+          "year": 2018,
+          "price": 534429
+        },
+        {
+          "year": 2020,
+          "price": 581320
+        },
+        {
+          "year": 2021,
+          "price": 631336
+        },
+        {
+          "year": 2023,
+          "price": 654948
+        },
+        {
+          "year": 2025,
+          "price": 677487
+        },
+        {
+          "year": 2026,
+          "price": 685000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 725854
+        },
+        {
+          "year": 2018,
+          "price": 820810
+        },
+        {
+          "year": 2020,
+          "price": 895775
+        },
+        {
+          "year": 2021,
+          "price": 975738
+        },
+        {
+          "year": 2023,
+          "price": 1070189
+        },
+        {
+          "year": 2025,
+          "price": 1160347
+        },
+        {
+          "year": 2026,
+          "price": 1190400
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "country": "NZ",
+  "lastUpdated": "2026-04",
+  "cityBenchmark5yr": 12.0,
+  "cityBenchmark10yr": 52.0,
+  "areas": [
+    {
+      "suburb": "Mount Eden",
+      "state": "Auckland",
+      "postcode": "1024",
+      "city": "Auckland",
+      "lat": -36.8772,
+      "lon": 174.7606,
+      "houseMedian": 1450000,
+      "houseRentWk": 860,
+      "unitMedian": 725000,
+      "unitRentWk": 610,
+      "growth5yrPct": 9.5,
+      "growth10yrPct": 48.0,
+      "unitGrowth5yrPct": 8.0,
+      "medianHouseholdIncome": 134000,
+      "ownerOccupierPct": 61,
+      "vacancyPct": 1.8,
+      "landShareHouse": 0.66,
+      "landShareUnit": 0.34,
+      "typicalBuildYear": 2016,
+      "zoning": "Terrace Housing & Apartment (CRL)",
+      "riskFlags": [
+        "100% interest deductibility restored for 2025/26, though net losses remain ring-fenced"
+      ],
+      "highlights": "Double Grammar school zone & major City Rail Link (Maungawhau) station unlocking faster CBD commute.",
+      "sampleSales": [],
+      "houseYieldPct": 3.08,
+      "unitYieldPct": 4.38,
+      "rentToIncomePct": 23.7,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 979730
+        },
+        {
+          "year": 2018,
+          "price": 1110629
+        },
+        {
+          "year": 2020,
+          "price": 1213970
+        },
+        {
+          "year": 2021,
+          "price": 1324201
+        },
+        {
+          "year": 2023,
+          "price": 1379553
+        },
+        {
+          "year": 2025,
+          "price": 1432388
+        },
+        {
+          "year": 2026,
+          "price": 1450000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 552591
+        },
+        {
+          "year": 2018,
+          "price": 597699
+        },
+        {
+          "year": 2020,
+          "price": 633310
+        },
+        {
+          "year": 2021,
+          "price": 671296
+        },
+        {
+          "year": 2023,
+          "price": 694926
+        },
+        {
+          "year": 2025,
+          "price": 717481
+        },
+        {
+          "year": 2026,
+          "price": 725000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 915789
+        },
+        {
+          "year": 2018,
+          "price": 1040075
+        },
+        {
+          "year": 2020,
+          "price": 1138195
+        },
+        {
+          "year": 2021,
+          "price": 1242857
+        },
+        {
+          "year": 2023,
+          "price": 1308480
+        },
+        {
+          "year": 2025,
+          "price": 1371120
+        },
+        {
+          "year": 2026,
+          "price": 1392000
+        }
+      ]
+    },
+    {
+      "suburb": "Addington / Riccarton",
+      "state": "Canterbury",
+      "postcode": "8024",
+      "city": "Christchurch",
+      "lat": -43.5419,
+      "lon": 172.6131,
+      "houseMedian": 715000,
+      "houseRentWk": 595,
+      "unitMedian": 565000,
+      "unitRentWk": 520,
+      "growth5yrPct": 34.0,
+      "growth10yrPct": 66.0,
+      "unitGrowth5yrPct": 28.0,
+      "medianHouseholdIncome": 102000,
+      "ownerOccupierPct": 58,
+      "vacancyPct": 1.5,
+      "landShareHouse": 0.48,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2020,
+      "zoning": "Medium Density Residential",
+      "riskFlags": [
+        "Check TC2/TC3 land category & post-2012 building code documentation"
+      ],
+      "highlights": "New Zealand's best capital-city affordability-to-yield balance (~4.8% yield, 0% CGT past 2-yr Bright-Line).",
+      "sampleSales": [],
+      "houseYieldPct": 4.33,
+      "unitYieldPct": 4.79,
+      "rentToIncomePct": 26.5,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 430723
+        },
+        {
+          "year": 2018,
+          "price": 469809
+        },
+        {
+          "year": 2020,
+          "price": 500667
+        },
+        {
+          "year": 2021,
+          "price": 533582
+        },
+        {
+          "year": 2023,
+          "price": 613406
+        },
+        {
+          "year": 2025,
+          "price": 689601
+        },
+        {
+          "year": 2026,
+          "price": 715000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 395381
+        },
+        {
+          "year": 2018,
+          "price": 412870
+        },
+        {
+          "year": 2020,
+          "price": 426678
+        },
+        {
+          "year": 2021,
+          "price": 441406
+        },
+        {
+          "year": 2023,
+          "price": 495787
+        },
+        {
+          "year": 2025,
+          "price": 547697
+        },
+        {
+          "year": 2026,
+          "price": 565000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 451579
+        },
+        {
+          "year": 2018,
+          "price": 512865
+        },
+        {
+          "year": 2020,
+          "price": 561248
+        },
+        {
+          "year": 2021,
+          "price": 612857
+        },
+        {
+          "year": 2023,
+          "price": 645216
+        },
+        {
+          "year": 2025,
+          "price": 676104
+        },
+        {
+          "year": 2026,
+          "price": 686400
+        }
+      ]
+    }
+  ]
+}

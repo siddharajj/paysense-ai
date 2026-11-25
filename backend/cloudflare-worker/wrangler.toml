@@ -1,0 +1,11 @@
+name = "paysense-property-api"
+main = "worker.js"
+compatibility_date = "2025-04-01"
+
+# Create your free 5GB D1 database with:
+#   npx wrangler d1 create paysense-property-db
+# Then paste the returned database_id below:
+[[d1_databases]]
+binding = "DB"
+database_name = "paysense-property-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"

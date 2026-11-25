@@ -2425,3 +2425,216 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   Property Address Lookup, Autocomplete, Growth SVG & Suburb Matchmaker
+   ========================================================================== */
+
+.address-lookup-shell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.address-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.address-input-wrap:focus-within {
+  border-color: var(--primary);
+  background: var(--surface);
+}
+
+.lookup-inline-select {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--surface);
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.ac-option {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  text-align: left;
+  cursor: pointer;
+}
+.ac-option:last-child { border-bottom: none; }
+.ac-option:hover { background: var(--primary-soft); }
+.ac-label { font-weight: 600; }
+.ac-source {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.intel-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.intel-address-title {
+  font-family: var(--font-serif);
+  font-size: 1.38rem;
+  margin: 4px 0 0;
+}
+
+.intel-score-badge {
+  background: var(--primary-soft);
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.score-num {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.1;
+}
+.score-num span { font-size: 0.82rem; font-weight: 600; opacity: 0.75; }
+.score-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); }
+
+.personal-fit-banner {
+  margin-top: 14px;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.fit-eyebrow {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.fit-headline {
+  font-size: 0.94rem;
+  margin-top: 2px;
+}
+
+.sub-panel-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.growth-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.svg-legend-mini {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  margin-top: 4px;
+}
+
+.recent-sales-mini {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  font-size: 0.8rem;
+}
+
+.sale-mini-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+}
+
+.amenity-pills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.amenity-pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 0.82rem;
+}
+
+.risk-flags-list {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.risk-flag-item {
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+.sources-footer-strip {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.matchmaker-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
