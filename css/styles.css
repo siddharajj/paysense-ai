@@ -2638,3 +2638,52 @@ body {
   gap: 10px;
   flex-wrap: wrap;
 }
+
+
+/* ==========================================================================
+   Grid Overflow Prevention & Public Transport (PT) Stop Detail Lines
+   ========================================================================== */
+
+.compact-workspace {
+  grid-template-columns: 355px minmax(0, 1fr);
+}
+
+.compact-workspace > *,
+.two-col-fields > *,
+.sub-field,
+.setup-block {
+  min-width: 0;
+}
+
+.two-col-fields {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.input-combo {
+  width: 100%;
+  min-width: 0;
+}
+
+.input-combo .num-input {
+  width: 100%;
+  min-width: 0;
+  font-size: 1.05rem;
+}
+
+.pt-stops-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 9px;
+  padding: 8px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.pt-stop-line {
+  line-height: 1.4;
+}

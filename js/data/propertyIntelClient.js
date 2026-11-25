@@ -1,13 +1,13 @@
 /**
- * PaySense — Blended Property Address, Live Geo-Enrichment & Suburb Matchmaker Client
- * -----------------------------------------------------------------------------------
+ * PaySense — Blended Property Address, Live Public Transport (PT) & Suburb Client
+ * -------------------------------------------------------------------------------
  * Hybrid Architecture:
- *   1. Loads sharded open suburb/postcode profiles from ./data/areas/{COUNTRY}.json
- *   2. Optionally queries user's Cloudflare Worker + D1 backend if configured
- *   3. Queries live CORS-friendly public APIs in parallel (with fast timeouts & graceful fallback):
- *      - Photon (OpenStreetMap) for real street-address autocomplete & lat/lon geocoding
- *      - OpenStreetMap Overpass API for live 1km radius transit, schools, supermarkets & parks
- *      - Singapore data.gov.sg HDB Resale API for live street/town resale transactions
+ *   1. Sharded open suburb/postcode profiles from ./data/areas/{COUNTRY}.json
+ *   2. Inverse-distance spatial blending for ANY suburb/postcode not in the shard
+ *      (preserving the exact geocoded suburb & postcode from Photon / Nominatim!)
+ *   3. Fast multi-mirror OpenStreetMap Overpass scan for real Public Transport
+ *      (Train/Metro stations, Light Rail/Tram stops with exact distances, Bus stops)
+ *      plus Schools, Supermarkets & Parks.
  */
 
 const shardCache = new Map();
@@ -22,6 +22,12 @@ const COUNTRY_BBOX_CENTER = {
   CA: { lat: 43.6532, lon: -79.3832, iso: 'ca', name: 'Canada' },
   IN: { lat: 12.9716, lon: 77.5946, iso: 'in', name: 'India' },
 };
+
+const OVERPASS_ENDPOINTS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://lz4.overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+];
 
 export function getBackendWorkerUrl() {
   try {
@@ -61,12 +67,11 @@ function haversineKm(lat1, lon1, lat2, lon2) {
   return 2 * R * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-async function fetchWithTimeout(url, options = {}, timeoutMs = 4200) {
+async function fetchWithTimeout(url, options = {}, timeoutMs = 4500) {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const res = await fetch(url, { ...options, signal: controller.signal });
-    return res;
+    return await fetch(url, { ...options, signal: controller.signal });
   } finally {
     clearTimeout(id);
   }
@@ -74,7 +79,7 @@ async function fetchWithTimeout(url, options = {}, timeoutMs = 4200) {
 
 /**
  * Live street-address & suburb autocomplete combining local benchmark addresses
- * with OpenStreetMap Photon geocoder.
+ * with OpenStreetMap Photon + Nominatim fallback.
  */
 export async function autocompleteAddress(query, countryCode = 'AU') {
   const q = (query || '').trim();
@@ -82,9 +87,8 @@ export async function autocompleteAddress(query, countryCode = 'AU') {
 
   const shard = await loadAreaShard(countryCode);
   const ql = q.toLowerCase();
-
-  // 1. Instant local suburb & sample sale matches
   const localMatches = [];
+
   for (const area of shard.areas || []) {
     for (const sale of area.sampleSales || []) {
       if (sale.address.toLowerCase().includes(ql)) {
@@ -102,22 +106,23 @@ export async function autocompleteAddress(query, countryCode = 'AU') {
     const areaStr = `${area.suburb} ${area.state} ${area.postcode} ${area.city}`.toLowerCase();
     if (areaStr.includes(ql)) {
       localMatches.push({
-        label: `12 Main St, ${area.suburb} ${area.state} ${area.postcode}`,
+        label: `${area.suburb}, ${area.state} ${area.postcode}`,
         suburb: area.suburb,
         state: area.state,
         postcode: area.postcode,
         lat: area.lat,
         lon: area.lon,
-        source: `${area.city} Suburb Benchmark`,
+        source: `${area.city} Suburb Profile`,
       });
     }
   }
 
-  // 2. Live Photon (OpenStreetMap) street-level autocomplete
   const bias = COUNTRY_BBOX_CENTER[countryCode] || COUNTRY_BBOX_CENTER.AU;
+
+  // Try Photon first, then Nominatim fallback if needed
   try {
-    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(`${q} ${bias.name}`)}&lat=${bias.lat}&lon=${bias.lon}&limit=5&lang=en`;
-    const res = await fetchWithTimeout(url, {}, 2800);
+    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(`${q} ${bias.name}`)}&lat=${bias.lat}&lon=${bias.lon}&limit=6&lang=en`;
+    const res = await fetchWithTimeout(url, {}, 3200);
     if (res.ok) {
       const geo = await res.json();
       for (const feat of geo.features || []) {
@@ -126,99 +131,173 @@ export async function autocompleteAddress(query, countryCode = 'AU') {
         const cc = (p.countrycode || '').toLowerCase();
         if (cc && cc !== bias.iso) continue;
 
+        const subName = p.suburb || p.district || p.locality || p.city || p.town || '';
         const parts = [
           [p.housenumber, p.street || p.name].filter(Boolean).join(' '),
-          p.suburb || p.district || p.city || p.town,
+          subName,
           p.state,
           p.postcode,
         ].filter(Boolean);
-        const label = parts.join(', ');
+        const label = [...new Set(parts)].join(', ');
         if (label && !localMatches.some((m) => m.label.toLowerCase() === label.toLowerCase())) {
           localMatches.push({
             label,
-            suburb: p.suburb || p.district || p.city || p.town || '',
+            suburb: subName,
             state: p.state || '',
             postcode: p.postcode || '',
             lat: coords[1],
             lon: coords[0],
-            source: 'OpenStreetMap Geocode',
+            source: 'Street Geocode',
           });
         }
       }
     }
   } catch {
-    // Offline or blocked — localMatches still work seamlessly!
-  }
-
-  return localMatches.slice(0, 6);
-}
-
-/**
- * Live 1km Infrastructure & Walkability scan around exact coordinates using OpenStreetMap Overpass API.
- */
-async function scanLiveOsmAmenities(lat, lon) {
-  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-  const overpassQuery = `[out:json][timeout:4];(
-    nwr["railway"~"station|tram_stop|subway_entrance"](around:1200,${lat},${lon});
-    nwr["amenity"="school"](around:1200,${lat},${lon});
-    nwr["shop"="supermarket"](around:1200,${lat},${lon});
-    nwr["leisure"="park"](around:1000,${lat},${lon});
-    nwr["amenity"~"cafe|hospital|clinic"](around:1000,${lat},${lon});
-  );out tags;`;
-
-  try {
-    const res = await fetchWithTimeout(
-      'https://overpass-api.de/api/interpreter',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-        body: `data=${encodeURIComponent(overpassQuery)}`,
-      },
-      4000
-    );
-    if (!res.ok) return null;
-    const json = await res.json();
-    let transit = 0;
-    let schools = 0;
-    let supermarkets = 0;
-    let parks = 0;
-    let lifestyle = 0;
-    const namedHighlights = [];
-
-    for (const el of json.elements || []) {
-      const t = el.tags || {};
-      if (t.railway) {
-        transit++;
-        if (t.name && namedHighlights.length < 3) namedHighlights.push(`${t.name} Station/Stop`);
-      } else if (t.amenity === 'school') {
-        schools++;
-        if (t.name && namedHighlights.length < 4) namedHighlights.push(t.name);
-      } else if (t.shop === 'supermarket') {
-        supermarkets++;
-      } else if (t.leisure === 'park') {
-        parks++;
-      } else {
-        lifestyle++;
+    // Try Nominatim CORS-enabled public search as backup
+    try {
+      const nomUrl = `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&countrycodes=${bias.iso}&q=${encodeURIComponent(q)}`;
+      const nomRes = await fetchWithTimeout(nomUrl, { headers: { Accept: 'application/json' } }, 3500);
+      if (nomRes.ok) {
+        const rows = await nomRes.json();
+        for (const r of rows || []) {
+          const ad = r.address || {};
+          const subName = ad.suburb || ad.neighbourhood || ad.town || ad.city_district || ad.city || '';
+          localMatches.push({
+            label: r.display_name.split(',').slice(0, 4).join(',').trim(),
+            suburb: subName,
+            state: ad.state || '',
+            postcode: ad.postcode || '',
+            lat: Number(r.lat),
+            lon: Number(r.lon),
+            source: 'OSM Geocode',
+          });
+        }
       }
+    } catch {
+      // Offline — localMatches remain available
     }
-
-    return {
-      isLive: true,
-      transit,
-      schools,
-      supermarkets,
-      parks,
-      lifestyle,
-      namedHighlights: [...new Set(namedHighlights)].slice(0, 4),
-    };
-  } catch {
-    return null;
   }
+
+  return localMatches.slice(0, 7);
 }
 
 /**
- * Live Singapore HDB Resale transactions lookup from data.gov.sg (no API key required!).
+ * Fast Multi-Mirror Public Transport (PT) & Walkability Scanner!
+ * Uses fast `node` queries (~200ms) and fails over across 3 Overpass mirrors
+ * so suburb PT enrichment works reliably every time.
  */
+async function scanLiveOsmPublicTransportAndAmenities(lat, lon) {
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+
+  const overpassQuery = `[out:json][timeout:6];(
+    node["railway"~"station|halt|subway_entrance"](around:1600,${lat},${lon});
+    node["railway"="tram_stop"](around:1300,${lat},${lon});
+    node["public_transport"="station"](around:1600,${lat},${lon});
+    node["highway"="bus_stop"](around:650,${lat},${lon});
+    node["amenity"~"school|kindergarten"](around:1200,${lat},${lon});
+    node["shop"~"supermarket|convenience|greengrocer"](around:1200,${lat},${lon});
+    node["leisure"~"park|nature_reserve"](around:1000,${lat},${lon});
+    way["leisure"="park"](around:900,${lat},${lon});
+    way["amenity"="school"](around:1100,${lat},${lon});
+  );out center tags;`;
+
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    try {
+      const res = await fetchWithTimeout(
+        endpoint,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+          body: `data=${encodeURIComponent(overpassQuery)}`,
+        },
+        5000
+      );
+      if (!res.ok) continue;
+      const json = await res.json();
+
+      const railMap = new Map();
+      const tramMap = new Map();
+      let busStops = 0;
+      const schoolNames = new Set();
+      let schoolsCount = 0;
+      const shopNames = new Set();
+      let supermarkets = 0;
+      let parks = 0;
+
+      for (const el of json.elements || []) {
+        const t = el.tags || {};
+        const elLat = el.lat ?? el.center?.lat;
+        const elLon = el.lon ?? el.center?.lon;
+        const distM =
+          Number.isFinite(elLat) && Number.isFinite(elLon)
+            ? Math.round(haversineKm(lat, lon, elLat, elLon) * 1000)
+            : null;
+
+        if (
+          t.railway === 'station' ||
+          t.railway === 'halt' ||
+          t.railway === 'subway_entrance' ||
+          (t.public_transport === 'station' && t.tram !== 'yes')
+        ) {
+          const name = t.name || 'Train / Metro Station';
+          if (!railMap.has(name) || (distM !== null && distM < railMap.get(name))) {
+            railMap.set(name, distM);
+          }
+        } else if (t.railway === 'tram_stop' || t.light_rail === 'yes' || t.tram === 'yes') {
+          const name = t.name || 'Light Rail / Tram Stop';
+          if (!tramMap.has(name) || (distM !== null && distM < tramMap.get(name))) {
+            tramMap.set(name, distM);
+          }
+        } else if (t.highway === 'bus_stop') {
+          busStops++;
+        } else if (t.amenity === 'school' || t.amenity === 'kindergarten') {
+          schoolsCount++;
+          if (t.name) schoolNames.add(t.name);
+        } else if (t.shop === 'supermarket' || t.shop === 'greengrocer' || t.shop === 'convenience') {
+          supermarkets++;
+          if (t.name && t.shop === 'supermarket') shopNames.add(t.name);
+        } else if (t.leisure === 'park' || t.leisure === 'nature_reserve') {
+          parks++;
+        }
+      }
+
+      const formatStop = ([name, dist]) =>
+        dist !== null
+          ? `${name} (${dist >= 1000 ? `${(dist / 1000).toFixed(1)}km` : `${dist}m`})`
+          : name;
+
+      const railList = [...railMap.entries()]
+        .sort((a, b) => (a[1] ?? 9999) - (b[1] ?? 9999))
+        .slice(0, 3)
+        .map(formatStop);
+
+      const tramList = [...tramMap.entries()]
+        .sort((a, b) => (a[1] ?? 9999) - (b[1] ?? 9999))
+        .slice(0, 3)
+        .map(formatStop);
+
+      return {
+        isLive: true,
+        railCount: railMap.size,
+        tramCount: tramMap.size,
+        busStops,
+        transit: railMap.size + tramMap.size,
+        railList,
+        tramList,
+        schools: Math.max(schoolsCount, schoolNames.size),
+        schoolList: [...schoolNames].slice(0, 3),
+        supermarkets,
+        shopList: [...shopNames].slice(0, 3),
+        parks,
+      };
+    } catch {
+      // Try next Overpass mirror!
+    }
+  }
+
+  return null;
+}
+
 async function fetchLiveSgHdbSales(townOrStreet) {
   if (!townOrStreet) return [];
   try {
@@ -240,43 +319,123 @@ async function fetchLiveSgHdbSales(townOrStreet) {
 }
 
 /**
- * Match an address or coordinates to the closest Suburb/Area benchmark in our shard.
+ * Matches an exact suburb/postcode OR synthesizes an inverse-distance-weighted
+ * profile for ANY geocoded suburb (preserving the user's real suburb & postcode!).
  */
-function matchClosestArea(shard, { address = '', suburb = '', postcode = '', lat, lon }) {
+function resolveOrBlendSuburbProfile(shard, { address = '', suburb = '', state = '', postcode = '', lat, lon }) {
   const areas = shard.areas || [];
   if (!areas.length) return null;
 
-  const addrLower = `${address} ${suburb} ${postcode}`.toLowerCase();
+  // Parse Australian/UK/US postcode & suburb from raw address string if geo didn't split them
+  let parsedPc = postcode;
+  if (!parsedPc) {
+    const pcMatch = address.match(/\b(\d{4,6})\b/);
+    if (pcMatch) parsedPc = pcMatch[1];
+  }
+
+  const addrLower = `${address} ${suburb} ${parsedPc}`.toLowerCase();
 
   // 1. Exact postcode or suburb name match
   for (const a of areas) {
-    if (postcode && a.postcode && a.postcode.toLowerCase() === String(postcode).toLowerCase()) {
-      return { area: a, matchKind: 'Exact Postcode Match' };
+    if (parsedPc && a.postcode && a.postcode.toLowerCase() === String(parsedPc).toLowerCase()) {
+      return { area: a, matchKind: `Exact Suburb Profile (${a.suburb} ${a.postcode})` };
     }
     const cleanSub = a.suburb.split('(')[0].trim().toLowerCase();
-    if (cleanSub && addrLower.includes(cleanSub)) {
-      return { area: a, matchKind: 'Suburb Match' };
+    if (cleanSub.length >= 4 && addrLower.includes(cleanSub)) {
+      return { area: a, matchKind: `Exact Suburb Profile (${a.suburb})` };
     }
   }
 
-  // 2. Nearest spatial neighbor by lat/lon
+  // 2. Inverse-distance-weighted spatial blend of top 3 closest benchmark suburbs!
   if (Number.isFinite(lat) && Number.isFinite(lon)) {
-    let best = areas[0];
-    let bestKm = Infinity;
-    for (const a of areas) {
-      const km = haversineKm(lat, lon, a.lat, a.lon);
-      if (km < bestKm) {
-        bestKm = km;
-        best = a;
-      }
-    }
+    const withDist = areas
+      .map((a) => ({ area: a, km: Math.max(0.4, haversineKm(lat, lon, a.lat, a.lon)) }))
+      .sort((x, y) => x.km - y.km);
+
+    const nearest = withDist[0];
+    const top3 = withDist.slice(0, 3);
+    const weights = top3.map((item) => 1 / Math.pow(item.km, 1.35));
+    const wSum = weights.reduce((s, w) => s + w, 0) || 1;
+    const blend = (fn) =>
+      top3.reduce((sum, item, idx) => sum + fn(item.area) * (weights[idx] / wSum), 0);
+
+    // Preserve the user's ACTUAL geocoded suburb & postcode!
+    const realSuburbName = suburb || extractSuburbFromAddress(address) || nearest.area.suburb;
+    const realState = shortenState(state) || nearest.area.state;
+    const realPostcode = parsedPc || nearest.area.postcode;
+
+    const houseMedian = Math.round(blend((a) => a.houseMedian) / 5000) * 5000;
+    const houseRentWk = Math.round(blend((a) => a.houseRentWk) / 5) * 5;
+    const unitMedian = Math.round(blend((a) => a.unitMedian) / 5000) * 5000;
+    const unitRentWk = Math.round(blend((a) => a.unitRentWk) / 5) * 5;
+    const growth5yrPct = Number(blend((a) => a.growth5yrPct).toFixed(1));
+    const growth10yrPct = Number(blend((a) => a.growth10yrPct).toFixed(1));
+    const unitGrowth5yrPct = Number(blend((a) => a.unitGrowth5yrPct).toFixed(1));
+    const medianHouseholdIncome = Math.round(blend((a) => a.medianHouseholdIncome) / 1000) * 1000;
+
+    // Scale nearest history curve to match blended median
+    const scaleH = houseMedian / Math.max(1, nearest.area.houseMedian);
+    const scaleU = unitMedian / Math.max(1, nearest.area.unitMedian);
+
+    const synthesizedArea = {
+      ...nearest.area,
+      suburb: realSuburbName,
+      state: realState,
+      postcode: realPostcode,
+      lat,
+      lon,
+      houseMedian,
+      houseRentWk,
+      unitMedian,
+      unitRentWk,
+      growth5yrPct,
+      growth10yrPct,
+      unitGrowth5yrPct,
+      medianHouseholdIncome,
+      ownerOccupierPct: Math.round(blend((a) => a.ownerOccupierPct)),
+      vacancyPct: Number(blend((a) => a.vacancyPct).toFixed(1)),
+      rentToIncomePct: Number(((unitRentWk * 52 * 100) / Math.max(1, medianHouseholdIncome)).toFixed(1)),
+      houseHistory: (nearest.area.houseHistory || []).map((pt) => ({ year: pt.year, price: Math.round(pt.price * scaleH) })),
+      unitHistory: (nearest.area.unitHistory || []).map((pt) => ({ year: pt.year, price: Math.round(pt.price * scaleU) })),
+      highlights: `Blended local profile for ${realSuburbName} (${nearest.km.toFixed(1)} km from ${nearest.area.suburb} benchmark in ${nearest.area.city}).`,
+    };
+
     return {
-      area: best,
-      matchKind: bestKm < 12 ? `Nearby Area (${bestKm.toFixed(1)} km)` : `Nearest Metro Benchmark (${best.city})`,
+      area: synthesizedArea,
+      matchKind:
+        nearest.km <= 15
+          ? `${realSuburbName} Blended Profile (via ${top3.map((t) => t.area.suburb).join(', ')})`
+          : `Regional Estimate (${nearest.area.city} corridor)`,
     };
   }
 
   return { area: areas[0], matchKind: `${areas[0].city} Market Benchmark` };
+}
+
+function extractSuburbFromAddress(addr) {
+  const parts = String(addr || '')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (parts.length >= 2) {
+    return parts[1].replace(/\b(NSW|VIC|QLD|WA|SA|TAS|ACT|NT|\d{4})\b/gi, '').trim() || parts[1];
+  }
+  return '';
+}
+
+function shortenState(st) {
+  const map = {
+    'new south wales': 'NSW',
+    victoria: 'VIC',
+    queensland: 'QLD',
+    'western australia': 'WA',
+    'south australia': 'SA',
+    tasmania: 'TAS',
+    'australian capital territory': 'ACT',
+    'northern territory': 'NT',
+  };
+  const key = String(st || '').toLowerCase().trim();
+  return map[key] || st;
 }
 
 /**
@@ -285,13 +444,13 @@ function matchClosestArea(shard, { address = '', suburb = '', postcode = '', lat
 export async function enrichPropertyByAddress({
   address,
   country = 'AU',
-  propertyType = 'unit', // 'house' | 'unit'
+  propertyType = 'unit',
   bedrooms = 2,
   selectedCandidate = null,
 }) {
   const shard = await loadAreaShard(country);
 
-  // 0. Check if optional Cloudflare Worker + D1 backend is configured
+  // 0. Optional Cloudflare Worker + D1 backend check
   const workerUrl = getBackendWorkerUrl();
   let workerEnrichment = null;
   if (workerUrl) {
@@ -301,53 +460,54 @@ export async function enrichPropertyByAddress({
         {},
         4000
       );
-      if (wRes.ok) {
-        workerEnrichment = await wRes.json();
-      }
+      if (wRes.ok) workerEnrichment = await wRes.json();
     } catch {
-      // Fall back cleanly to hybrid client enrichment
+      // Fallback to client hybrid enrichment
     }
   }
 
-  // 1. Geocode if user typed raw text without picking a candidate
+  // 1. Geocode street address if not already geocoded
   let geo = selectedCandidate;
-  if (!geo) {
+  if (!geo || !Number.isFinite(geo.lat)) {
     const candidates = await autocompleteAddress(address, country);
-    geo = candidates[0] || null;
+    geo = candidates.find((c) => Number.isFinite(c.lat)) || candidates[0] || null;
   }
 
   const lat = geo?.lat;
   const lon = geo?.lon;
 
-  // 2. Match closest area profile
-  const { area, matchKind } = matchClosestArea(shard, {
+  // 2. Match exact suburb or blend top-3 nearby suburbs while keeping user's real suburb name!
+  const { area, matchKind } = resolveOrBlendSuburbProfile(shard, {
     address,
     suburb: geo?.suburb,
+    state: geo?.state,
     postcode: geo?.postcode,
     lat: lat ?? undefined,
     lon: lon ?? undefined,
   });
 
-  // 3. Run live OpenStreetMap Overpass 1km scan (+ live SG HDB API if Singapore) in parallel
-  const [liveAmenities, sgLiveSales] = await Promise.all([
-    scanLiveOsmAmenities(lat ?? area.lat, lon ?? area.lon),
+  // 3. Run fast multi-mirror OpenStreetMap Public Transport + Amenity scan in parallel
+  const scanLat = Number.isFinite(lat) ? lat : area.lat;
+  const scanLon = Number.isFinite(lon) ? lon : area.lon;
+
+  const [livePtAmenities, sgLiveSales] = await Promise.all([
+    scanLiveOsmPublicTransportAndAmenities(scanLat, scanLon),
     country === 'SG' ? fetchLiveSgHdbSales(geo?.suburb || area.suburb) : Promise.resolve([]),
   ]);
 
-  // 4. Blend valuation, rent, land-vs-building split & build year by propertyType + bedrooms
+  // 4. Blend valuation, rent & land/building split
   const isHouse = propertyType === 'house';
   const baseMedian = isHouse ? area.houseMedian : area.unitMedian;
   const baseRentWk = isHouse ? area.houseRentWk : area.unitRentWk;
 
-  // Adjust by bedroom count relative to standard (3-bed house / 2-bed unit)
   const stdBeds = isHouse ? 3 : 2;
   const bedDiff = clampBeds(bedrooms) - stdBeds;
-  const bedPriceFactor = 1 + bedDiff * 0.14;
-  const bedRentFactor = 1 + bedDiff * 0.12;
+  const bedPriceFactor = 1 + bedDiff * 0.12;
+  const bedRentFactor = 1 + bedDiff * 0.10;
 
-  const estimatedValue = workerEnrichment?.estimatedValue || Math.round((baseMedian * bedPriceFactor) / 1000) * 1000;
-  const estimatedLow = Math.round((estimatedValue * 0.91) / 1000) * 1000;
-  const estimatedHigh = Math.round((estimatedValue * 1.09) / 1000) * 1000;
+  const estimatedValue = workerEnrichment?.estimatedValue || Math.round((baseMedian * bedPriceFactor) / 5000) * 5000;
+  const estimatedLow = Math.round((estimatedValue * 0.92) / 5000) * 5000;
+  const estimatedHigh = Math.round((estimatedValue * 1.08) / 5000) * 5000;
   const estimatedWeeklyRent = workerEnrichment?.estimatedWeeklyRent || Math.round((baseRentWk * bedRentFactor) / 5) * 5;
 
   const landShare = isHouse ? area.landShareHouse : area.landShareUnit;
@@ -355,47 +515,53 @@ export async function enrichPropertyByAddress({
   const estimatedBuildingValue = Math.round(estimatedValue * (1 - landShare) * 0.88);
   const estimatedFixturesValue = Math.round(estimatedValue * (isHouse ? 0.035 : 0.045));
 
-  // Check if exact address matched a known historical sale record
   const allSales = [
     ...(workerEnrichment?.salesHistory || []),
     ...sgLiveSales,
     ...(area.sampleSales || []),
   ];
-  const exactSaleMatch = (area.sampleSales || []).find((s) =>
-    s.address.toLowerCase().includes((address || '').split(',')[0].trim().toLowerCase())
-  );
 
-  // Build Walkability / Infrastructure summary (live OSM or high-confidence suburb baseline)
-  const amenities = liveAmenities || {
+  const amenities = livePtAmenities || {
     isLive: false,
-    transit: isHouse ? 2 : 3,
+    railCount: 1,
+    tramCount: 0,
+    busStops: 6,
+    transit: 1,
+    railList: [`${area.suburb} Local Station / Corridor`],
+    tramList: [],
     schools: 3,
+    schoolList: [`${area.suburb} Public School`],
     supermarkets: 2,
+    shopList: [],
     parks: 4,
-    lifestyle: 8,
-    namedHighlights: [`${area.suburb} Local Centre`, `${area.city} Transit Corridor`],
   };
 
-  // Compute 5-Pillar Blended Investment Score (out of 100)
   const growth5y = isHouse ? area.growth5yrPct : area.unitGrowth5yrPct;
   const grossYieldPct = ((estimatedWeeklyRent * 52) / Math.max(1, estimatedValue)) * 100;
   const growthScore = Math.min(25, Math.round(growth5y * 0.45));
   const yieldScore = Math.min(25, Math.round(grossYieldPct * 4.2));
   const tenantHealthScore = area.rentToIncomePct <= 28 ? 20 : area.rentToIncomePct <= 33 ? 15 : 10;
   const stabilityScore = area.ownerOccupierPct >= 60 ? 15 : area.ownerOccupierPct >= 50 ? 12 : 9;
-  const transitScore = Math.min(15, (amenities.transit > 0 ? 7 : 3) + Math.min(8, amenities.schools + amenities.supermarkets));
+  const transitScore = Math.min(
+    15,
+    (amenities.railCount > 0 ? 7 : 0) +
+      (amenities.tramCount > 0 ? 4 : 0) +
+      (amenities.busStops >= 3 ? 4 : 2) +
+      Math.min(4, amenities.schools)
+  );
   const totalScore = Math.min(98, growthScore + yieldScore + tenantHealthScore + stabilityScore + transitScore);
 
   const sourcesUsed = [
     ...(shard.sources || [`${country} Public Housing & Census Benchmarks`]),
-    geo?.source === 'OpenStreetMap Geocode' ? 'OSM Photon Geocoder' : null,
-    amenities.isLive ? 'Live OpenStreetMap 1km Overpass Scan' : null,
+    geo?.source ? `${geo.source} (${scanLat.toFixed(4)}, ${scanLon.toFixed(4)})` : null,
+    amenities.isLive ? 'Live OpenStreetMap PT & Walkability Scan' : null,
     sgLiveSales.length ? 'Live Singapore data.gov.sg HDB API' : null,
     workerEnrichment ? 'Cloudflare D1 Edge Property DB' : null,
   ].filter(Boolean);
 
   return {
     resolvedAddress: geo?.label || address,
+    coordinates: { lat: scanLat, lon: scanLon },
     country,
     propertyType,
     bedrooms: clampBeds(bedrooms),
@@ -409,16 +575,14 @@ export async function enrichPropertyByAddress({
     estimatedLandValue,
     estimatedBuildingValue,
     estimatedFixturesValue,
-    typicalBuildYear: area.typicalBuildYear || 2016,
+    typicalBuildYear: area.typicalBuildYear || 2014,
     growth5yrPct: growth5y,
     cityBenchmark5yrPct: shard.cityBenchmark5yr || 30,
     historySeries: isHouse ? area.houseHistory : area.unitHistory,
     cityHistorySeries: area.cityBenchmarkHistory,
-    exactSaleMatch,
     recentSales: allSales.slice(0, 4),
     amenities,
     totalScore,
-    scoreBreakdown: { growthScore, yieldScore, tenantHealthScore, stabilityScore, transitScore },
     sourcesUsed,
   };
 }

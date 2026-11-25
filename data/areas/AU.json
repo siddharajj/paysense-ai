@@ -5,11 +5,2562 @@
     "ABS Census SAL/POA",
     "NSW Valuer General PSI",
     "DataVic VPSR & Homes Victoria",
-    "OpenStreetMap"
+    "OpenStreetMap Public Transport & Amenities"
   ],
   "cityBenchmark5yr": 38.0,
   "cityBenchmark10yr": 78.0,
   "areas": [
+    {
+      "suburb": "Summer Hill",
+      "state": "NSW",
+      "postcode": "2130",
+      "city": "Sydney",
+      "lat": -33.8913,
+      "lon": 151.1384,
+      "houseMedian": 2260000,
+      "houseRentWk": 1120,
+      "unitMedian": 895000,
+      "unitRentWk": 680,
+      "growth5yrPct": 32.5,
+      "growth10yrPct": 84.0,
+      "unitGrowth5yrPct": 19.5,
+      "medianHouseholdIncome": 146000,
+      "ownerOccupierPct": 61,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.76,
+      "landShareUnit": 0.36,
+      "typicalBuildYear": 1995,
+      "zoning": "R2 / Heritage Conservation",
+      "riskFlags": [
+        "Strong Heritage Conservation overlays \u2014 check external renovation limits",
+        "Older Federation/brick buildings need renovation history check for Div 43"
+      ],
+      "highlights": "Leafy, tightly held Inner West village with both T2 Heavy Rail (Summer Hill Station) and L1 Dulwich Hill Light Rail, sought-after Summer Hill Public catchment, and 1.0% vacancy.",
+      "sampleSales": [
+        {
+          "address": "8 Morris St, Summer Hill NSW 2130",
+          "type": "House (3 bed)",
+          "soldDate": "2025-11",
+          "soldPrice": 2215000
+        },
+        {
+          "address": "4/26 Kensington Rd, Summer Hill NSW 2130",
+          "type": "Unit (2 bed)",
+          "soldDate": "2025-10",
+          "soldPrice": 910000
+        }
+      ],
+      "houseYieldPct": 2.58,
+      "unitYieldPct": 3.95,
+      "rentToIncomePct": 24.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1228261
+        },
+        {
+          "year": 2018,
+          "price": 1409673
+        },
+        {
+          "year": 2020,
+          "price": 1552892
+        },
+        {
+          "year": 2021,
+          "price": 1705660
+        },
+        {
+          "year": 2023,
+          "price": 1949570
+        },
+        {
+          "year": 2025,
+          "price": 2182392
+        },
+        {
+          "year": 2026,
+          "price": 2260000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 578913
+        },
+        {
+          "year": 2018,
+          "price": 643529
+        },
+        {
+          "year": 2020,
+          "price": 694541
+        },
+        {
+          "year": 2021,
+          "price": 748954
+        },
+        {
+          "year": 2023,
+          "price": 813214
+        },
+        {
+          "year": 2025,
+          "price": 874554
+        },
+        {
+          "year": 2026,
+          "price": 895000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1218876
+        },
+        {
+          "year": 2018,
+          "price": 1353129
+        },
+        {
+          "year": 2020,
+          "price": 1459119
+        },
+        {
+          "year": 2021,
+          "price": 1572174
+        },
+        {
+          "year": 2023,
+          "price": 1835041
+        },
+        {
+          "year": 2025,
+          "price": 2085960
+        },
+        {
+          "year": 2026,
+          "price": 2169600
+        }
+      ]
+    },
+    {
+      "suburb": "Ashfield",
+      "state": "NSW",
+      "postcode": "2131",
+      "city": "Sydney",
+      "lat": -33.8887,
+      "lon": 151.1251,
+      "houseMedian": 1980000,
+      "houseRentWk": 980,
+      "unitMedian": 760000,
+      "unitRentWk": 640,
+      "growth5yrPct": 29.0,
+      "growth10yrPct": 76.0,
+      "unitGrowth5yrPct": 15.5,
+      "medianHouseholdIncome": 118000,
+      "ownerOccupierPct": 52,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.74,
+      "landShareUnit": 0.34,
+      "typicalBuildYear": 2008,
+      "zoning": "R3 / Town Centre",
+      "riskFlags": [
+        "Compare older red-brick walk-ups (lower strata) vs newer Liverpool Rd high-rises"
+      ],
+      "highlights": "Express T2 train hub (14 mins to Central) with vibrant dining strip and strong Inner West rental demand.",
+      "sampleSales": [],
+      "houseYieldPct": 2.57,
+      "unitYieldPct": 4.38,
+      "rentToIncomePct": 28.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1125000
+        },
+        {
+          "year": 2018,
+          "price": 1280756
+        },
+        {
+          "year": 2020,
+          "price": 1403721
+        },
+        {
+          "year": 2021,
+          "price": 1534884
+        },
+        {
+          "year": 2023,
+          "price": 1730735
+        },
+        {
+          "year": 2025,
+          "price": 1917684
+        },
+        {
+          "year": 2026,
+          "price": 1980000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 508701
+        },
+        {
+          "year": 2018,
+          "price": 565438
+        },
+        {
+          "year": 2020,
+          "price": 610230
+        },
+        {
+          "year": 2021,
+          "price": 658009
+        },
+        {
+          "year": 2023,
+          "price": 702885
+        },
+        {
+          "year": 2025,
+          "price": 745721
+        },
+        {
+          "year": 2026,
+          "price": 760000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1067865
+        },
+        {
+          "year": 2018,
+          "price": 1185485
+        },
+        {
+          "year": 2020,
+          "price": 1278343
+        },
+        {
+          "year": 2021,
+          "price": 1377391
+        },
+        {
+          "year": 2023,
+          "price": 1607691
+        },
+        {
+          "year": 2025,
+          "price": 1827523
+        },
+        {
+          "year": 2026,
+          "price": 1900800
+        }
+      ]
+    },
+    {
+      "suburb": "Marrickville",
+      "state": "NSW",
+      "postcode": "2204",
+      "city": "Sydney",
+      "lat": -33.9111,
+      "lon": 151.1553,
+      "houseMedian": 2080000,
+      "houseRentWk": 1050,
+      "unitMedian": 865000,
+      "unitRentWk": 690,
+      "growth5yrPct": 34.0,
+      "growth10yrPct": 86.0,
+      "unitGrowth5yrPct": 18.5,
+      "medianHouseholdIncome": 138000,
+      "ownerOccupierPct": 56,
+      "vacancyPct": 1.1,
+      "landShareHouse": 0.76,
+      "landShareUnit": 0.36,
+      "typicalBuildYear": 2002,
+      "zoning": "R2 / Sydney Metro Corridor",
+      "riskFlags": [
+        "Check aircraft ANEF contours on select pockets"
+      ],
+      "highlights": "Upgraded to turn-up-and-go Sydney Metro M1 with ultra-low 1.1% vacancy and thriving lifestyle precinct.",
+      "sampleSales": [],
+      "houseYieldPct": 2.62,
+      "unitYieldPct": 4.15,
+      "rentToIncomePct": 26.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1118280
+        },
+        {
+          "year": 2018,
+          "price": 1283184
+        },
+        {
+          "year": 2020,
+          "price": 1413372
+        },
+        {
+          "year": 2021,
+          "price": 1552239
+        },
+        {
+          "year": 2023,
+          "price": 1784454
+        },
+        {
+          "year": 2025,
+          "price": 2006113
+        },
+        {
+          "year": 2026,
+          "price": 2080000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 554843
+        },
+        {
+          "year": 2018,
+          "price": 621387
+        },
+        {
+          "year": 2020,
+          "price": 673921
+        },
+        {
+          "year": 2021,
+          "price": 729958
+        },
+        {
+          "year": 2023,
+          "price": 789376
+        },
+        {
+          "year": 2025,
+          "price": 846094
+        },
+        {
+          "year": 2026,
+          "price": 865000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1121798
+        },
+        {
+          "year": 2018,
+          "price": 1245358
+        },
+        {
+          "year": 2020,
+          "price": 1342906
+        },
+        {
+          "year": 2021,
+          "price": 1446957
+        },
+        {
+          "year": 2023,
+          "price": 1688888
+        },
+        {
+          "year": 2025,
+          "price": 1919822
+        },
+        {
+          "year": 2026,
+          "price": 1996800
+        }
+      ]
+    },
+    {
+      "suburb": "Newtown",
+      "state": "NSW",
+      "postcode": "2042",
+      "city": "Sydney",
+      "lat": -33.8978,
+      "lon": 151.179,
+      "houseMedian": 1950000,
+      "houseRentWk": 1020,
+      "unitMedian": 815000,
+      "unitRentWk": 680,
+      "growth5yrPct": 28.5,
+      "growth10yrPct": 79.0,
+      "unitGrowth5yrPct": 16.0,
+      "medianHouseholdIncome": 141000,
+      "ownerOccupierPct": 49,
+      "vacancyPct": 0.9,
+      "landShareHouse": 0.77,
+      "landShareUnit": 0.36,
+      "typicalBuildYear": 1992,
+      "zoning": "R1 General Residential",
+      "riskFlags": [
+        "Victorian terraces often pre-1987 unless substantially renovated"
+      ],
+      "highlights": "Walkable King St hub next to RPA Hospital and University of Sydney with sub-1% rental vacancy.",
+      "sampleSales": [],
+      "houseYieldPct": 2.72,
+      "unitYieldPct": 4.34,
+      "rentToIncomePct": 25.1,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1089385
+        },
+        {
+          "year": 2018,
+          "price": 1252072
+        },
+        {
+          "year": 2020,
+          "price": 1380510
+        },
+        {
+          "year": 2021,
+          "price": 1517510
+        },
+        {
+          "year": 2023,
+          "price": 1707806
+        },
+        {
+          "year": 2025,
+          "price": 1889451
+        },
+        {
+          "year": 2026,
+          "price": 1950000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 538309
+        },
+        {
+          "year": 2018,
+          "price": 600734
+        },
+        {
+          "year": 2020,
+          "price": 650017
+        },
+        {
+          "year": 2021,
+          "price": 702586
+        },
+        {
+          "year": 2023,
+          "price": 752048
+        },
+        {
+          "year": 2025,
+          "price": 799262
+        },
+        {
+          "year": 2026,
+          "price": 815000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1051685
+        },
+        {
+          "year": 2018,
+          "price": 1167523
+        },
+        {
+          "year": 2020,
+          "price": 1258974
+        },
+        {
+          "year": 2021,
+          "price": 1356522
+        },
+        {
+          "year": 2023,
+          "price": 1583332
+        },
+        {
+          "year": 2025,
+          "price": 1799833
+        },
+        {
+          "year": 2026,
+          "price": 1872000
+        }
+      ]
+    },
+    {
+      "suburb": "Leichhardt",
+      "state": "NSW",
+      "postcode": "2040",
+      "city": "Sydney",
+      "lat": -33.8845,
+      "lon": 151.157,
+      "houseMedian": 2050000,
+      "houseRentWk": 1040,
+      "unitMedian": 880000,
+      "unitRentWk": 700,
+      "growth5yrPct": 31.0,
+      "growth10yrPct": 82.0,
+      "unitGrowth5yrPct": 19.0,
+      "medianHouseholdIncome": 148000,
+      "ownerOccupierPct": 58,
+      "vacancyPct": 1.1,
+      "landShareHouse": 0.75,
+      "landShareUnit": 0.35,
+      "typicalBuildYear": 2004,
+      "zoning": "R1 / Light Rail Precinct",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Norton St caf\u00e9 precinct served by L1 Light Rail, buses, and rapid City West Link access.",
+      "sampleSales": [],
+      "houseYieldPct": 2.64,
+      "unitYieldPct": 4.14,
+      "rentToIncomePct": 24.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1126374
+        },
+        {
+          "year": 2018,
+          "price": 1293008
+        },
+        {
+          "year": 2020,
+          "price": 1424561
+        },
+        {
+          "year": 2021,
+          "price": 1564885
+        },
+        {
+          "year": 2023,
+          "price": 1778336
+        },
+        {
+          "year": 2025,
+          "price": 1982084
+        },
+        {
+          "year": 2026,
+          "price": 2050000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 574038
+        },
+        {
+          "year": 2018,
+          "price": 636912
+        },
+        {
+          "year": 2020,
+          "price": 686549
+        },
+        {
+          "year": 2021,
+          "price": 739496
+        },
+        {
+          "year": 2023,
+          "price": 801318
+        },
+        {
+          "year": 2025,
+          "price": 860329
+        },
+        {
+          "year": 2026,
+          "price": 880000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1105618
+        },
+        {
+          "year": 2018,
+          "price": 1227396
+        },
+        {
+          "year": 2020,
+          "price": 1323537
+        },
+        {
+          "year": 2021,
+          "price": 1426087
+        },
+        {
+          "year": 2023,
+          "price": 1664529
+        },
+        {
+          "year": 2025,
+          "price": 1892132
+        },
+        {
+          "year": 2026,
+          "price": 1968000
+        }
+      ]
+    },
+    {
+      "suburb": "Burwood",
+      "state": "NSW",
+      "postcode": "2134",
+      "city": "Sydney",
+      "lat": -33.8774,
+      "lon": 151.1037,
+      "houseMedian": 2450000,
+      "houseRentWk": 1080,
+      "unitMedian": 845000,
+      "unitRentWk": 720,
+      "growth5yrPct": 36.0,
+      "growth10yrPct": 88.0,
+      "unitGrowth5yrPct": 18.0,
+      "medianHouseholdIncome": 115000,
+      "ownerOccupierPct": 48,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.76,
+      "landShareUnit": 0.28,
+      "typicalBuildYear": 2017,
+      "zoning": "R4 / Burwood North Metro",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Major retail, express rail, and future Sydney Metro West interchange hub.",
+      "sampleSales": [],
+      "houseYieldPct": 2.29,
+      "unitYieldPct": 4.43,
+      "rentToIncomePct": 32.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1303191
+        },
+        {
+          "year": 2018,
+          "price": 1492537
+        },
+        {
+          "year": 2020,
+          "price": 1642021
+        },
+        {
+          "year": 2021,
+          "price": 1801471
+        },
+        {
+          "year": 2023,
+          "price": 2086824
+        },
+        {
+          "year": 2025,
+          "price": 2359206
+        },
+        {
+          "year": 2026,
+          "price": 2450000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 537532
+        },
+        {
+          "year": 2018,
+          "price": 605389
+        },
+        {
+          "year": 2020,
+          "price": 658960
+        },
+        {
+          "year": 2021,
+          "price": 716102
+        },
+        {
+          "year": 2023,
+          "price": 772817
+        },
+        {
+          "year": 2025,
+          "price": 826954
+        },
+        {
+          "year": 2026,
+          "price": 845000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1321348
+        },
+        {
+          "year": 2018,
+          "price": 1466888
+        },
+        {
+          "year": 2020,
+          "price": 1581788
+        },
+        {
+          "year": 2021,
+          "price": 1704348
+        },
+        {
+          "year": 2023,
+          "price": 1989315
+        },
+        {
+          "year": 2025,
+          "price": 2261329
+        },
+        {
+          "year": 2026,
+          "price": 2352000
+        }
+      ]
+    },
+    {
+      "suburb": "Strathfield",
+      "state": "NSW",
+      "postcode": "2135",
+      "city": "Sydney",
+      "lat": -33.8797,
+      "lon": 151.087,
+      "houseMedian": 2950000,
+      "houseRentWk": 1180,
+      "unitMedian": 780000,
+      "unitRentWk": 690,
+      "growth5yrPct": 37.5,
+      "growth10yrPct": 92.0,
+      "unitGrowth5yrPct": 16.5,
+      "medianHouseholdIncome": 132000,
+      "ownerOccupierPct": 59,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.78,
+      "landShareUnit": 0.28,
+      "typicalBuildYear": 2015,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.08,
+      "unitYieldPct": 4.6,
+      "rentToIncomePct": 27.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1536458
+        },
+        {
+          "year": 2018,
+          "price": 1767877
+        },
+        {
+          "year": 2020,
+          "price": 1950576
+        },
+        {
+          "year": 2021,
+          "price": 2145455
+        },
+        {
+          "year": 2023,
+          "price": 2499455
+        },
+        {
+          "year": 2025,
+          "price": 2837364
+        },
+        {
+          "year": 2026,
+          "price": 2950000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 488110
+        },
+        {
+          "year": 2018,
+          "price": 557049
+        },
+        {
+          "year": 2020,
+          "price": 611474
+        },
+        {
+          "year": 2021,
+          "price": 669528
+        },
+        {
+          "year": 2023,
+          "price": 718136
+        },
+        {
+          "year": 2025,
+          "price": 764534
+        },
+        {
+          "year": 2026,
+          "price": 780000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1591011
+        },
+        {
+          "year": 2018,
+          "price": 1766253
+        },
+        {
+          "year": 2020,
+          "price": 1904602
+        },
+        {
+          "year": 2021,
+          "price": 2052174
+        },
+        {
+          "year": 2023,
+          "price": 2395297
+        },
+        {
+          "year": 2025,
+          "price": 2722824
+        },
+        {
+          "year": 2026,
+          "price": 2832000
+        }
+      ]
+    },
+    {
+      "suburb": "Surry Hills",
+      "state": "NSW",
+      "postcode": "2010",
+      "city": "Sydney",
+      "lat": -33.8861,
+      "lon": 151.2111,
+      "houseMedian": 2250000,
+      "houseRentWk": 1220,
+      "unitMedian": 1020000,
+      "unitRentWk": 820,
+      "growth5yrPct": 26.0,
+      "growth10yrPct": 74.0,
+      "unitGrowth5yrPct": 17.5,
+      "medianHouseholdIncome": 158000,
+      "ownerOccupierPct": 44,
+      "vacancyPct": 1.1,
+      "landShareHouse": 0.75,
+      "landShareUnit": 0.34,
+      "typicalBuildYear": 2010,
+      "zoning": "MU1 Mixed Use",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Walk-to-CBD tech and creative hub served by Central Station, Metro, and L2/L3 Light Rail.",
+      "sampleSales": [],
+      "houseYieldPct": 2.82,
+      "unitYieldPct": 4.18,
+      "rentToIncomePct": 27.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1293103
+        },
+        {
+          "year": 2018,
+          "price": 1480295
+        },
+        {
+          "year": 2020,
+          "price": 1628078
+        },
+        {
+          "year": 2021,
+          "price": 1785714
+        },
+        {
+          "year": 2023,
+          "price": 1990000
+        },
+        {
+          "year": 2025,
+          "price": 2185000
+        },
+        {
+          "year": 2026,
+          "price": 2250000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 688724
+        },
+        {
+          "year": 2018,
+          "price": 756881
+        },
+        {
+          "year": 2020,
+          "price": 810689
+        },
+        {
+          "year": 2021,
+          "price": 868085
+        },
+        {
+          "year": 2023,
+          "price": 934928
+        },
+        {
+          "year": 2025,
+          "price": 998732
+        },
+        {
+          "year": 2026,
+          "price": 1020000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1213483
+        },
+        {
+          "year": 2018,
+          "price": 1347142
+        },
+        {
+          "year": 2020,
+          "price": 1452662
+        },
+        {
+          "year": 2021,
+          "price": 1565217
+        },
+        {
+          "year": 2023,
+          "price": 1826922
+        },
+        {
+          "year": 2025,
+          "price": 2076730
+        },
+        {
+          "year": 2026,
+          "price": 2160000
+        }
+      ]
+    },
+    {
+      "suburb": "Redfern",
+      "state": "NSW",
+      "postcode": "2016",
+      "city": "Sydney",
+      "lat": -33.8933,
+      "lon": 151.2044,
+      "houseMedian": 2120000,
+      "houseRentWk": 1150,
+      "unitMedian": 960000,
+      "unitRentWk": 790,
+      "growth5yrPct": 29.0,
+      "growth10yrPct": 81.0,
+      "unitGrowth5yrPct": 18.0,
+      "medianHouseholdIncome": 145000,
+      "ownerOccupierPct": 45,
+      "vacancyPct": 1.1,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.82,
+      "unitYieldPct": 4.28,
+      "rentToIncomePct": 28.3,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1171271
+        },
+        {
+          "year": 2018,
+          "price": 1350684
+        },
+        {
+          "year": 2020,
+          "price": 1492326
+        },
+        {
+          "year": 2021,
+          "price": 1643411
+        },
+        {
+          "year": 2023,
+          "price": 1853110
+        },
+        {
+          "year": 2025,
+          "price": 2053278
+        },
+        {
+          "year": 2026,
+          "price": 2120000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 629096
+        },
+        {
+          "year": 2018,
+          "price": 699192
+        },
+        {
+          "year": 2020,
+          "price": 754531
+        },
+        {
+          "year": 2021,
+          "price": 813559
+        },
+        {
+          "year": 2023,
+          "price": 877993
+        },
+        {
+          "year": 2025,
+          "price": 939498
+        },
+        {
+          "year": 2026,
+          "price": 960000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1143371
+        },
+        {
+          "year": 2018,
+          "price": 1269308
+        },
+        {
+          "year": 2020,
+          "price": 1368731
+        },
+        {
+          "year": 2021,
+          "price": 1474783
+        },
+        {
+          "year": 2023,
+          "price": 1721366
+        },
+        {
+          "year": 2025,
+          "price": 1956742
+        },
+        {
+          "year": 2026,
+          "price": 2035200
+        }
+      ]
+    },
+    {
+      "suburb": "Randwick",
+      "state": "NSW",
+      "postcode": "2031",
+      "city": "Sydney",
+      "lat": -33.9144,
+      "lon": 151.2417,
+      "houseMedian": 3150000,
+      "houseRentWk": 1450,
+      "unitMedian": 1150000,
+      "unitRentWk": 850,
+      "growth5yrPct": 31.0,
+      "growth10yrPct": 84.0,
+      "unitGrowth5yrPct": 21.0,
+      "medianHouseholdIncome": 156000,
+      "ownerOccupierPct": 53,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.76,
+      "landShareUnit": 0.36,
+      "typicalBuildYear": 2008,
+      "zoning": "R3 Medium Density",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Anchored by UNSW, Prince of Wales Hospital precinct, L2 Light Rail, and Coogee beach proximity.",
+      "sampleSales": [],
+      "houseYieldPct": 2.39,
+      "unitYieldPct": 3.84,
+      "rentToIncomePct": 28.3,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1711957
+        },
+        {
+          "year": 2018,
+          "price": 1975154
+        },
+        {
+          "year": 2020,
+          "price": 2182941
+        },
+        {
+          "year": 2021,
+          "price": 2404580
+        },
+        {
+          "year": 2023,
+          "price": 2732565
+        },
+        {
+          "year": 2025,
+          "price": 3045641
+        },
+        {
+          "year": 2026,
+          "price": 3150000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 743855
+        },
+        {
+          "year": 2018,
+          "price": 822347
+        },
+        {
+          "year": 2020,
+          "price": 884314
+        },
+        {
+          "year": 2021,
+          "price": 950413
+        },
+        {
+          "year": 2023,
+          "price": 1038231
+        },
+        {
+          "year": 2025,
+          "price": 1122058
+        },
+        {
+          "year": 2026,
+          "price": 1150000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1698876
+        },
+        {
+          "year": 2018,
+          "price": 1885999
+        },
+        {
+          "year": 2020,
+          "price": 2033727
+        },
+        {
+          "year": 2021,
+          "price": 2191304
+        },
+        {
+          "year": 2023,
+          "price": 2557690
+        },
+        {
+          "year": 2025,
+          "price": 2907423
+        },
+        {
+          "year": 2026,
+          "price": 3024000
+        }
+      ]
+    },
+    {
+      "suburb": "Bondi Junction",
+      "state": "NSW",
+      "postcode": "2022",
+      "city": "Sydney",
+      "lat": -33.8914,
+      "lon": 151.2478,
+      "houseMedian": 2850000,
+      "houseRentWk": 1380,
+      "unitMedian": 1190000,
+      "unitRentWk": 890,
+      "growth5yrPct": 28.0,
+      "growth10yrPct": 78.0,
+      "unitGrowth5yrPct": 20.0,
+      "medianHouseholdIncome": 162000,
+      "ownerOccupierPct": 48,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.52,
+      "unitYieldPct": 3.89,
+      "rentToIncomePct": 28.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1601124
+        },
+        {
+          "year": 2018,
+          "price": 1838790
+        },
+        {
+          "year": 2020,
+          "price": 2026422
+        },
+        {
+          "year": 2021,
+          "price": 2226562
+        },
+        {
+          "year": 2023,
+          "price": 2500875
+        },
+        {
+          "year": 2025,
+          "price": 2762719
+        },
+        {
+          "year": 2026,
+          "price": 2850000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 789648
+        },
+        {
+          "year": 2018,
+          "price": 866415
+        },
+        {
+          "year": 2020,
+          "price": 927021
+        },
+        {
+          "year": 2021,
+          "price": 991667
+        },
+        {
+          "year": 2023,
+          "price": 1078934
+        },
+        {
+          "year": 2025,
+          "price": 1162233
+        },
+        {
+          "year": 2026,
+          "price": 1190000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1537079
+        },
+        {
+          "year": 2018,
+          "price": 1706380
+        },
+        {
+          "year": 2020,
+          "price": 1840039
+        },
+        {
+          "year": 2021,
+          "price": 1982609
+        },
+        {
+          "year": 2023,
+          "price": 2314101
+        },
+        {
+          "year": 2025,
+          "price": 2630525
+        },
+        {
+          "year": 2026,
+          "price": 2736000
+        }
+      ]
+    },
+    {
+      "suburb": "Chatswood",
+      "state": "NSW",
+      "postcode": "2067",
+      "city": "Sydney",
+      "lat": -33.7969,
+      "lon": 151.1832,
+      "houseMedian": 3250000,
+      "houseRentWk": 1390,
+      "unitMedian": 1120000,
+      "unitRentWk": 860,
+      "growth5yrPct": 35.0,
+      "growth10yrPct": 89.0,
+      "unitGrowth5yrPct": 22.5,
+      "medianHouseholdIncome": 149000,
+      "ownerOccupierPct": 54,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.76,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2018,
+      "zoning": "B4 / Metro Interchange",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Premier North Shore commercial & retail centre with dual Sydney Metro M1 & T1 North Shore rail.",
+      "sampleSales": [],
+      "houseYieldPct": 2.22,
+      "unitYieldPct": 3.99,
+      "rentToIncomePct": 30.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1719577
+        },
+        {
+          "year": 2018,
+          "price": 1980952
+        },
+        {
+          "year": 2020,
+          "price": 2187301
+        },
+        {
+          "year": 2021,
+          "price": 2407407
+        },
+        {
+          "year": 2023,
+          "price": 2778148
+        },
+        {
+          "year": 2025,
+          "price": 3132037
+        },
+        {
+          "year": 2026,
+          "price": 3250000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 709310
+        },
+        {
+          "year": 2018,
+          "price": 787201
+        },
+        {
+          "year": 2020,
+          "price": 848694
+        },
+        {
+          "year": 2021,
+          "price": 914286
+        },
+        {
+          "year": 2023,
+          "price": 1004800
+        },
+        {
+          "year": 2025,
+          "price": 1091200
+        },
+        {
+          "year": 2026,
+          "price": 1120000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1752809
+        },
+        {
+          "year": 2018,
+          "price": 1945872
+        },
+        {
+          "year": 2020,
+          "price": 2098290
+        },
+        {
+          "year": 2021,
+          "price": 2260870
+        },
+        {
+          "year": 2023,
+          "price": 2638887
+        },
+        {
+          "year": 2025,
+          "price": 2999722
+        },
+        {
+          "year": 2026,
+          "price": 3120000
+        }
+      ]
+    },
+    {
+      "suburb": "North Sydney",
+      "state": "NSW",
+      "postcode": "2060",
+      "city": "Sydney",
+      "lat": -33.839,
+      "lon": 151.207,
+      "houseMedian": 2780000,
+      "houseRentWk": 1320,
+      "unitMedian": 1080000,
+      "unitRentWk": 830,
+      "growth5yrPct": 25.0,
+      "growth10yrPct": 71.0,
+      "unitGrowth5yrPct": 18.0,
+      "medianHouseholdIncome": 168000,
+      "ownerOccupierPct": 46,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.47,
+      "unitYieldPct": 4.0,
+      "rentToIncomePct": 25.7,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1625731
+        },
+        {
+          "year": 2018,
+          "price": 1853073
+        },
+        {
+          "year": 2020,
+          "price": 2032554
+        },
+        {
+          "year": 2021,
+          "price": 2224000
+        },
+        {
+          "year": 2023,
+          "price": 2468640
+        },
+        {
+          "year": 2025,
+          "price": 2702160
+        },
+        {
+          "year": 2026,
+          "price": 2780000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 739220
+        },
+        {
+          "year": 2018,
+          "price": 806113
+        },
+        {
+          "year": 2020,
+          "price": 858923
+        },
+        {
+          "year": 2021,
+          "price": 915254
+        },
+        {
+          "year": 2023,
+          "price": 987742
+        },
+        {
+          "year": 2025,
+          "price": 1056936
+        },
+        {
+          "year": 2026,
+          "price": 1080000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1499326
+        },
+        {
+          "year": 2018,
+          "price": 1664469
+        },
+        {
+          "year": 2020,
+          "price": 1794845
+        },
+        {
+          "year": 2021,
+          "price": 1933913
+        },
+        {
+          "year": 2023,
+          "price": 2257263
+        },
+        {
+          "year": 2025,
+          "price": 2565916
+        },
+        {
+          "year": 2026,
+          "price": 2668800
+        }
+      ]
+    },
+    {
+      "suburb": "Epping",
+      "state": "NSW",
+      "postcode": "2121",
+      "city": "Sydney",
+      "lat": -33.7725,
+      "lon": 151.0819,
+      "houseMedian": 2380000,
+      "houseRentWk": 1020,
+      "unitMedian": 835000,
+      "unitRentWk": 700,
+      "growth5yrPct": 34.0,
+      "growth10yrPct": 84.0,
+      "unitGrowth5yrPct": 15.0,
+      "medianHouseholdIncome": 139000,
+      "ownerOccupierPct": 64,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.23,
+      "unitYieldPct": 4.36,
+      "rentToIncomePct": 26.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1293478
+        },
+        {
+          "year": 2018,
+          "price": 1476882
+        },
+        {
+          "year": 2020,
+          "price": 1621674
+        },
+        {
+          "year": 2021,
+          "price": 1776119
+        },
+        {
+          "year": 2023,
+          "price": 2041827
+        },
+        {
+          "year": 2025,
+          "price": 2295457
+        },
+        {
+          "year": 2026,
+          "price": 2380000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 540103
+        },
+        {
+          "year": 2018,
+          "price": 610777
+        },
+        {
+          "year": 2020,
+          "price": 666572
+        },
+        {
+          "year": 2021,
+          "price": 726087
+        },
+        {
+          "year": 2023,
+          "price": 774009
+        },
+        {
+          "year": 2025,
+          "price": 819752
+        },
+        {
+          "year": 2026,
+          "price": 835000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1283596
+        },
+        {
+          "year": 2018,
+          "price": 1424977
+        },
+        {
+          "year": 2020,
+          "price": 1536594
+        },
+        {
+          "year": 2021,
+          "price": 1655652
+        },
+        {
+          "year": 2023,
+          "price": 1932477
+        },
+        {
+          "year": 2025,
+          "price": 2196719
+        },
+        {
+          "year": 2026,
+          "price": 2284800
+        }
+      ]
+    },
+    {
+      "suburb": "Ryde",
+      "state": "NSW",
+      "postcode": "2112",
+      "city": "Sydney",
+      "lat": -33.815,
+      "lon": 151.104,
+      "houseMedian": 2180000,
+      "houseRentWk": 980,
+      "unitMedian": 740000,
+      "unitRentWk": 650,
+      "growth5yrPct": 33.0,
+      "growth10yrPct": 80.0,
+      "unitGrowth5yrPct": 14.0,
+      "medianHouseholdIncome": 128000,
+      "ownerOccupierPct": 58,
+      "vacancyPct": 1.5,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.34,
+      "unitYieldPct": 4.57,
+      "rentToIncomePct": 26.4,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1211111
+        },
+        {
+          "year": 2018,
+          "price": 1373746
+        },
+        {
+          "year": 2020,
+          "price": 1502142
+        },
+        {
+          "year": 2021,
+          "price": 1639098
+        },
+        {
+          "year": 2023,
+          "price": 1877095
+        },
+        {
+          "year": 2025,
+          "price": 2104274
+        },
+        {
+          "year": 2026,
+          "price": 2180000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 486842
+        },
+        {
+          "year": 2018,
+          "price": 548509
+        },
+        {
+          "year": 2020,
+          "price": 597193
+        },
+        {
+          "year": 2021,
+          "price": 649123
+        },
+        {
+          "year": 2023,
+          "price": 689109
+        },
+        {
+          "year": 2025,
+          "price": 727277
+        },
+        {
+          "year": 2026,
+          "price": 740000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1175730
+        },
+        {
+          "year": 2018,
+          "price": 1305231
+        },
+        {
+          "year": 2020,
+          "price": 1407469
+        },
+        {
+          "year": 2021,
+          "price": 1516522
+        },
+        {
+          "year": 2023,
+          "price": 1770084
+        },
+        {
+          "year": 2025,
+          "price": 2012121
+        },
+        {
+          "year": 2026,
+          "price": 2092800
+        }
+      ]
+    },
+    {
+      "suburb": "Hornsby",
+      "state": "NSW",
+      "postcode": "2077",
+      "city": "Sydney",
+      "lat": -33.7047,
+      "lon": 151.0986,
+      "houseMedian": 1680000,
+      "houseRentWk": 850,
+      "unitMedian": 690000,
+      "unitRentWk": 600,
+      "growth5yrPct": 31.0,
+      "growth10yrPct": 75.0,
+      "unitGrowth5yrPct": 17.0,
+      "medianHouseholdIncome": 124000,
+      "ownerOccupierPct": 63,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.63,
+      "unitYieldPct": 4.52,
+      "rentToIncomePct": 25.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 960000
+        },
+        {
+          "year": 2018,
+          "price": 1082528
+        },
+        {
+          "year": 2020,
+          "price": 1179261
+        },
+        {
+          "year": 2021,
+          "price": 1282443
+        },
+        {
+          "year": 2023,
+          "price": 1457368
+        },
+        {
+          "year": 2025,
+          "price": 1624342
+        },
+        {
+          "year": 2026,
+          "price": 1680000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 463710
+        },
+        {
+          "year": 2018,
+          "price": 511603
+        },
+        {
+          "year": 2020,
+          "price": 549413
+        },
+        {
+          "year": 2021,
+          "price": 589744
+        },
+        {
+          "year": 2023,
+          "price": 633857
+        },
+        {
+          "year": 2025,
+          "price": 675964
+        },
+        {
+          "year": 2026,
+          "price": 690000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 906067
+        },
+        {
+          "year": 2018,
+          "price": 1005866
+        },
+        {
+          "year": 2020,
+          "price": 1084655
+        },
+        {
+          "year": 2021,
+          "price": 1168696
+        },
+        {
+          "year": 2023,
+          "price": 1364102
+        },
+        {
+          "year": 2025,
+          "price": 1550625
+        },
+        {
+          "year": 2026,
+          "price": 1612800
+        }
+      ]
+    },
+    {
+      "suburb": "Castle Hill",
+      "state": "NSW",
+      "postcode": "2154",
+      "city": "Sydney",
+      "lat": -33.7317,
+      "lon": 151.0044,
+      "houseMedian": 2280000,
+      "houseRentWk": 990,
+      "unitMedian": 920000,
+      "unitRentWk": 710,
+      "growth5yrPct": 39.0,
+      "growth10yrPct": 88.0,
+      "unitGrowth5yrPct": 24.0,
+      "medianHouseholdIncome": 152000,
+      "ownerOccupierPct": 72,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.26,
+      "unitYieldPct": 4.01,
+      "rentToIncomePct": 24.3,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1212766
+        },
+        {
+          "year": 2018,
+          "price": 1375224
+        },
+        {
+          "year": 2020,
+          "price": 1503481
+        },
+        {
+          "year": 2021,
+          "price": 1640288
+        },
+        {
+          "year": 2023,
+          "price": 1921761
+        },
+        {
+          "year": 2025,
+          "price": 2190440
+        },
+        {
+          "year": 2026,
+          "price": 2280000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 585242
+        },
+        {
+          "year": 2018,
+          "price": 644785
+        },
+        {
+          "year": 2020,
+          "price": 691793
+        },
+        {
+          "year": 2021,
+          "price": 741935
+        },
+        {
+          "year": 2023,
+          "price": 820284
+        },
+        {
+          "year": 2025,
+          "price": 895071
+        },
+        {
+          "year": 2026,
+          "price": 920000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1229663
+        },
+        {
+          "year": 2018,
+          "price": 1365104
+        },
+        {
+          "year": 2020,
+          "price": 1472031
+        },
+        {
+          "year": 2021,
+          "price": 1586087
+        },
+        {
+          "year": 2023,
+          "price": 1851281
+        },
+        {
+          "year": 2025,
+          "price": 2104420
+        },
+        {
+          "year": 2026,
+          "price": 2188800
+        }
+      ]
+    },
+    {
+      "suburb": "Dee Why",
+      "state": "NSW",
+      "postcode": "2099",
+      "city": "Sydney",
+      "lat": -33.7533,
+      "lon": 151.2869,
+      "houseMedian": 2390000,
+      "houseRentWk": 1220,
+      "unitMedian": 925000,
+      "unitRentWk": 740,
+      "growth5yrPct": 32.0,
+      "growth10yrPct": 82.0,
+      "unitGrowth5yrPct": 22.0,
+      "medianHouseholdIncome": 136000,
+      "ownerOccupierPct": 57,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.65,
+      "unitYieldPct": 4.16,
+      "rentToIncomePct": 28.3,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1313187
+        },
+        {
+          "year": 2018,
+          "price": 1502206
+        },
+        {
+          "year": 2020,
+          "price": 1651432
+        },
+        {
+          "year": 2021,
+          "price": 1810606
+        },
+        {
+          "year": 2023,
+          "price": 2065539
+        },
+        {
+          "year": 2025,
+          "price": 2308885
+        },
+        {
+          "year": 2026,
+          "price": 2390000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 603392
+        },
+        {
+          "year": 2018,
+          "price": 662218
+        },
+        {
+          "year": 2020,
+          "price": 708659
+        },
+        {
+          "year": 2021,
+          "price": 758197
+        },
+        {
+          "year": 2023,
+          "price": 831590
+        },
+        {
+          "year": 2025,
+          "price": 901648
+        },
+        {
+          "year": 2026,
+          "price": 925000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1288989
+        },
+        {
+          "year": 2018,
+          "price": 1430965
+        },
+        {
+          "year": 2020,
+          "price": 1543051
+        },
+        {
+          "year": 2021,
+          "price": 1662609
+        },
+        {
+          "year": 2023,
+          "price": 1940597
+        },
+        {
+          "year": 2025,
+          "price": 2205949
+        },
+        {
+          "year": 2026,
+          "price": 2294400
+        }
+      ]
+    },
+    {
+      "suburb": "Hurstville",
+      "state": "NSW",
+      "postcode": "2220",
+      "city": "Sydney",
+      "lat": -33.9675,
+      "lon": 151.1028,
+      "houseMedian": 1820000,
+      "houseRentWk": 890,
+      "unitMedian": 725000,
+      "unitRentWk": 640,
+      "growth5yrPct": 30.0,
+      "growth10yrPct": 74.0,
+      "unitGrowth5yrPct": 16.0,
+      "medianHouseholdIncome": 108000,
+      "ownerOccupierPct": 58,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.54,
+      "unitYieldPct": 4.59,
+      "rentToIncomePct": 30.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1045977
+        },
+        {
+          "year": 2018,
+          "price": 1180506
+        },
+        {
+          "year": 2020,
+          "price": 1286713
+        },
+        {
+          "year": 2021,
+          "price": 1400000
+        },
+        {
+          "year": 2023,
+          "price": 1584800
+        },
+        {
+          "year": 2025,
+          "price": 1761200
+        },
+        {
+          "year": 2026,
+          "price": 1820000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 489534
+        },
+        {
+          "year": 2018,
+          "price": 541011
+        },
+        {
+          "year": 2020,
+          "price": 581651
+        },
+        {
+          "year": 2021,
+          "price": 625000
+        },
+        {
+          "year": 2023,
+          "price": 669000
+        },
+        {
+          "year": 2025,
+          "price": 711000
+        },
+        {
+          "year": 2026,
+          "price": 725000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 981573
+        },
+        {
+          "year": 2018,
+          "price": 1089688
+        },
+        {
+          "year": 2020,
+          "price": 1175043
+        },
+        {
+          "year": 2021,
+          "price": 1266087
+        },
+        {
+          "year": 2023,
+          "price": 1477777
+        },
+        {
+          "year": 2025,
+          "price": 1679844
+        },
+        {
+          "year": 2026,
+          "price": 1747200
+        }
+      ]
+    },
+    {
+      "suburb": "Kogarah",
+      "state": "NSW",
+      "postcode": "2217",
+      "city": "Sydney",
+      "lat": -33.9631,
+      "lon": 151.1331,
+      "houseMedian": 1780000,
+      "houseRentWk": 880,
+      "unitMedian": 715000,
+      "unitRentWk": 630,
+      "growth5yrPct": 31.5,
+      "growth10yrPct": 76.0,
+      "unitGrowth5yrPct": 18.0,
+      "medianHouseholdIncome": 114000,
+      "ownerOccupierPct": 56,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.57,
+      "unitYieldPct": 4.58,
+      "rentToIncomePct": 28.7,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1011364
+        },
+        {
+          "year": 2018,
+          "price": 1141418
+        },
+        {
+          "year": 2020,
+          "price": 1244093
+        },
+        {
+          "year": 2021,
+          "price": 1353612
+        },
+        {
+          "year": 2023,
+          "price": 1541223
+        },
+        {
+          "year": 2025,
+          "price": 1720306
+        },
+        {
+          "year": 2026,
+          "price": 1780000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 478581
+        },
+        {
+          "year": 2018,
+          "price": 526974
+        },
+        {
+          "year": 2020,
+          "price": 565180
+        },
+        {
+          "year": 2021,
+          "price": 605932
+        },
+        {
+          "year": 2023,
+          "price": 653922
+        },
+        {
+          "year": 2025,
+          "price": 699730
+        },
+        {
+          "year": 2026,
+          "price": 715000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 960000
+        },
+        {
+          "year": 2018,
+          "price": 1065739
+        },
+        {
+          "year": 2020,
+          "price": 1149217
+        },
+        {
+          "year": 2021,
+          "price": 1238261
+        },
+        {
+          "year": 2023,
+          "price": 1445298
+        },
+        {
+          "year": 2025,
+          "price": 1642925
+        },
+        {
+          "year": 2026,
+          "price": 1708800
+        }
+      ]
+    },
+    {
+      "suburb": "Cronulla",
+      "state": "NSW",
+      "postcode": "2230",
+      "city": "Sydney",
+      "lat": -34.0575,
+      "lon": 151.1522,
+      "houseMedian": 2750000,
+      "houseRentWk": 1250,
+      "unitMedian": 1060000,
+      "unitRentWk": 760,
+      "growth5yrPct": 36.0,
+      "growth10yrPct": 89.0,
+      "unitGrowth5yrPct": 27.0,
+      "medianHouseholdIncome": 142000,
+      "ownerOccupierPct": 63,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.36,
+      "unitYieldPct": 3.73,
+      "rentToIncomePct": 27.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1455026
+        },
+        {
+          "year": 2018,
+          "price": 1670499
+        },
+        {
+          "year": 2020,
+          "price": 1840608
+        },
+        {
+          "year": 2021,
+          "price": 2022059
+        },
+        {
+          "year": 2023,
+          "price": 2342353
+        },
+        {
+          "year": 2025,
+          "price": 2648088
+        },
+        {
+          "year": 2026,
+          "price": 2750000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 671311
+        },
+        {
+          "year": 2018,
+          "price": 733378
+        },
+        {
+          "year": 2020,
+          "price": 782379
+        },
+        {
+          "year": 2021,
+          "price": 834646
+        },
+        {
+          "year": 2023,
+          "price": 933802
+        },
+        {
+          "year": 2025,
+          "price": 1028450
+        },
+        {
+          "year": 2026,
+          "price": 1060000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1483146
+        },
+        {
+          "year": 2018,
+          "price": 1646507
+        },
+        {
+          "year": 2020,
+          "price": 1775476
+        },
+        {
+          "year": 2021,
+          "price": 1913043
+        },
+        {
+          "year": 2023,
+          "price": 2232904
+        },
+        {
+          "year": 2025,
+          "price": 2538226
+        },
+        {
+          "year": 2026,
+          "price": 2640000
+        }
+      ]
+    },
     {
       "suburb": "Parramatta",
       "state": "NSW",
@@ -30,28 +2581,18 @@
       "landShareHouse": 0.68,
       "landShareUnit": 0.28,
       "typicalBuildYear": 2016,
-      "zoning": "R4 High Density / MU1 Mixed Use",
+      "zoning": "R4 / MU1 Mixed Use",
       "riskFlags": [
-        "High apartment supply pipeline \u2014 favour boutique older brick or houses over large high-rise towers",
-        "Check Parramatta River 1-in-100 flood overlay on low-lying blocks"
+        "High apartment supply \u2014 prefer boutique blocks or townhouses",
+        "Check Parramatta River flood map on low-lying streets"
       ],
-      "highlights": "Major Western Sydney CBD employment hub with Metro West, heavy rail, light rail, and strong rental demand.",
+      "highlights": "Western Sydney's central CBD with heavy rail, Light Rail L4, and upcoming Metro West.",
       "sampleSales": [
         {
           "address": "14/42 Hassall St, Parramatta NSW 2150",
           "type": "Unit (2 bed)",
           "soldDate": "2025-11",
-          "soldPrice": 668000,
-          "prevSoldYear": 2019,
-          "prevSoldPrice": 595000
-        },
-        {
-          "address": "28 Gladstone St, North Parramatta NSW 2151",
-          "type": "House (3 bed)",
-          "soldDate": "2025-09",
-          "soldPrice": 1545000,
-          "prevSoldYear": 2016,
-          "prevSoldPrice": 980000
+          "soldPrice": 668000
         }
       ],
       "houseYieldPct": 2.67,
@@ -149,132 +2690,123 @@
       ]
     },
     {
-      "suburb": "Marrickville",
+      "suburb": "Westmead",
       "state": "NSW",
-      "postcode": "2204",
+      "postcode": "2145",
       "city": "Sydney",
-      "lat": -33.9111,
-      "lon": 151.1553,
-      "houseMedian": 2080000,
-      "houseRentWk": 1050,
-      "unitMedian": 865000,
-      "unitRentWk": 690,
-      "growth5yrPct": 34.0,
-      "growth10yrPct": 86.0,
-      "unitGrowth5yrPct": 18.5,
-      "medianHouseholdIncome": 138000,
-      "ownerOccupierPct": 56,
-      "vacancyPct": 1.1,
-      "landShareHouse": 0.76,
-      "landShareUnit": 0.36,
-      "typicalBuildYear": 1998,
-      "zoning": "R2 / R4 Sydney Metro Corridor",
+      "lat": -33.8072,
+      "lon": 150.9872,
+      "houseMedian": 1580000,
+      "houseRentWk": 790,
+      "unitMedian": 635000,
+      "unitRentWk": 620,
+      "growth5yrPct": 26.0,
+      "growth10yrPct": 62.0,
+      "unitGrowth5yrPct": 12.5,
+      "medianHouseholdIncome": 118000,
+      "ownerOccupierPct": 44,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.28,
+      "typicalBuildYear": 2017,
+      "zoning": "Health & Innovation Precinct",
       "riskFlags": [
-        "Aircraft noise ANEF contours on select streets \u2014 check insulation",
-        "Older terraces may have limited Div 43 unless renovated post-1987"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Tightly held Inner West hub upgraded to turn-up-and-go Sydney Metro M1 with ultra-low 1.1% vacancy.",
-      "sampleSales": [
-        {
-          "address": "7/118 Livingstone Rd, Marrickville NSW 2204",
-          "type": "Unit (2 bed)",
-          "soldDate": "2025-10",
-          "soldPrice": 882000,
-          "prevSoldYear": 2018,
-          "prevSoldPrice": 735000
-        }
-      ],
-      "houseYieldPct": 2.62,
-      "unitYieldPct": 4.15,
-      "rentToIncomePct": 26.0,
+      "highlights": "Australia's largest hospital & biomedical precinct with Metro West, T1 rail, and L4 Light Rail.",
+      "sampleSales": [],
+      "houseYieldPct": 2.6,
+      "unitYieldPct": 5.08,
+      "rentToIncomePct": 27.3,
       "houseHistory": [
         {
           "year": 2016,
-          "price": 1118280
+          "price": 975309
         },
         {
           "year": 2018,
-          "price": 1283184
+          "price": 1081199
         },
         {
           "year": 2020,
-          "price": 1413372
+          "price": 1164797
         },
         {
           "year": 2021,
-          "price": 1552239
+          "price": 1253968
         },
         {
           "year": 2023,
-          "price": 1784454
+          "price": 1397422
         },
         {
           "year": 2025,
-          "price": 2006113
+          "price": 1534356
         },
         {
           "year": 2026,
-          "price": 2080000
+          "price": 1580000
         }
       ],
       "unitHistory": [
         {
           "year": 2016,
-          "price": 554843
+          "price": 452602
         },
         {
           "year": 2018,
-          "price": 621387
+          "price": 495102
         },
         {
           "year": 2020,
-          "price": 673921
+          "price": 528655
         },
         {
           "year": 2021,
-          "price": 729958
+          "price": 564444
         },
         {
           "year": 2023,
-          "price": 789376
+          "price": 595489
         },
         {
           "year": 2025,
-          "price": 846094
+          "price": 625122
         },
         {
           "year": 2026,
-          "price": 865000
+          "price": 635000
         }
       ],
       "cityBenchmarkHistory": [
         {
           "year": 2016,
-          "price": 1121798
+          "price": 852135
         },
         {
           "year": 2018,
-          "price": 1245358
+          "price": 945993
         },
         {
           "year": 2020,
-          "price": 1342906
+          "price": 1020092
         },
         {
           "year": 2021,
-          "price": 1446957
+          "price": 1099130
         },
         {
           "year": 2023,
-          "price": 1688888
+          "price": 1282905
         },
         {
           "year": 2025,
-          "price": 1919822
+          "price": 1458326
         },
         {
           "year": 2026,
-          "price": 1996800
+          "price": 1516800
         }
       ]
     },
@@ -298,19 +2830,18 @@
       "landShareHouse": 0.7,
       "landShareUnit": 0.3,
       "typicalBuildYear": 2012,
-      "zoning": "R2 Low Density Residential",
+      "zoning": "R2 Low Density",
       "riskFlags": [
-        "Verify granny-flat council approval when assessing dual-income houses"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Strong family owner-occupier base (62%), express rail to Sydney CBD, and 550m\u00b2+ land parcels with granny-flat upside.",
+      "highlights": "Strong 62% family owner-occupier base, express T1 rail, and 550m\u00b2+ blocks.",
       "sampleSales": [
         {
           "address": "19 Kildare Rd, Blacktown NSW 2148",
           "type": "House (4 bed)",
           "soldDate": "2026-01",
-          "soldPrice": 1065000,
-          "prevSoldYear": 2017,
-          "prevSoldPrice": 685000
+          "soldPrice": 1065000
         }
       ],
       "houseYieldPct": 3.25,
@@ -408,7 +2939,491 @@
       ]
     },
     {
-      "suburb": "Newcastle (Mayfield)",
+      "suburb": "Penrith",
+      "state": "NSW",
+      "postcode": "2750",
+      "city": "Sydney",
+      "lat": -33.7511,
+      "lon": 150.6942,
+      "houseMedian": 965000,
+      "houseRentWk": 620,
+      "unitMedian": 525000,
+      "unitRentWk": 495,
+      "growth5yrPct": 41.0,
+      "growth10yrPct": 84.0,
+      "unitGrowth5yrPct": 22.0,
+      "medianHouseholdIncome": 99000,
+      "ownerOccupierPct": 59,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.66,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2015,
+      "zoning": "Western Sydney Aerotropolis Gateway",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Gateway to Western Sydney International Airport rail link & Nepean Hospital.",
+      "sampleSales": [],
+      "houseYieldPct": 3.34,
+      "unitYieldPct": 4.9,
+      "rentToIncomePct": 26.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 524457
+        },
+        {
+          "year": 2018,
+          "price": 585234
+        },
+        {
+          "year": 2020,
+          "price": 633216
+        },
+        {
+          "year": 2021,
+          "price": 684397
+        },
+        {
+          "year": 2023,
+          "price": 807862
+        },
+        {
+          "year": 2025,
+          "price": 925716
+        },
+        {
+          "year": 2026,
+          "price": 965000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 339586
+        },
+        {
+          "year": 2018,
+          "price": 374068
+        },
+        {
+          "year": 2020,
+          "price": 401291
+        },
+        {
+          "year": 2021,
+          "price": 430328
+        },
+        {
+          "year": 2023,
+          "price": 471984
+        },
+        {
+          "year": 2025,
+          "price": 511746
+        },
+        {
+          "year": 2026,
+          "price": 525000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 520449
+        },
+        {
+          "year": 2018,
+          "price": 577774
+        },
+        {
+          "year": 2020,
+          "price": 623030
+        },
+        {
+          "year": 2021,
+          "price": 671304
+        },
+        {
+          "year": 2023,
+          "price": 783546
+        },
+        {
+          "year": 2025,
+          "price": 890687
+        },
+        {
+          "year": 2026,
+          "price": 926400
+        }
+      ]
+    },
+    {
+      "suburb": "Liverpool",
+      "state": "NSW",
+      "postcode": "2170",
+      "city": "Sydney",
+      "lat": -33.92,
+      "lon": 150.9256,
+      "houseMedian": 1080000,
+      "houseRentWk": 670,
+      "unitMedian": 530000,
+      "unitRentWk": 520,
+      "growth5yrPct": 35.0,
+      "growth10yrPct": 76.0,
+      "unitGrowth5yrPct": 15.0,
+      "medianHouseholdIncome": 96000,
+      "ownerOccupierPct": 54,
+      "vacancyPct": 1.5,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Sydney suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.23,
+      "unitYieldPct": 5.1,
+      "rentToIncomePct": 28.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 613636
+        },
+        {
+          "year": 2018,
+          "price": 684454
+        },
+        {
+          "year": 2020,
+          "price": 740364
+        },
+        {
+          "year": 2021,
+          "price": 800000
+        },
+        {
+          "year": 2023,
+          "price": 923200
+        },
+        {
+          "year": 2025,
+          "price": 1040800
+        },
+        {
+          "year": 2026,
+          "price": 1080000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 354752
+        },
+        {
+          "year": 2018,
+          "price": 395077
+        },
+        {
+          "year": 2020,
+          "price": 426912
+        },
+        {
+          "year": 2021,
+          "price": 460870
+        },
+        {
+          "year": 2023,
+          "price": 491287
+        },
+        {
+          "year": 2025,
+          "price": 520322
+        },
+        {
+          "year": 2026,
+          "price": 530000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 582472
+        },
+        {
+          "year": 2018,
+          "price": 646628
+        },
+        {
+          "year": 2020,
+          "price": 697278
+        },
+        {
+          "year": 2021,
+          "price": 751304
+        },
+        {
+          "year": 2023,
+          "price": 876922
+        },
+        {
+          "year": 2025,
+          "price": 996831
+        },
+        {
+          "year": 2026,
+          "price": 1036800
+        }
+      ]
+    },
+    {
+      "suburb": "Bankstown",
+      "state": "NSW",
+      "postcode": "2200",
+      "city": "Sydney",
+      "lat": -33.9172,
+      "lon": 151.0336,
+      "houseMedian": 1360000,
+      "houseRentWk": 760,
+      "unitMedian": 575000,
+      "unitRentWk": 560,
+      "growth5yrPct": 37.0,
+      "growth10yrPct": 78.0,
+      "unitGrowth5yrPct": 16.5,
+      "medianHouseholdIncome": 94000,
+      "ownerOccupierPct": 55,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.72,
+      "landShareUnit": 0.28,
+      "typicalBuildYear": 2016,
+      "zoning": "Sydney Metro Southwest Terminus",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Upgrading to Sydney Metro M1 terminus + new WSU campus & hospital redevelopment.",
+      "sampleSales": [],
+      "houseYieldPct": 2.91,
+      "unitYieldPct": 5.06,
+      "rentToIncomePct": 31.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 764045
+        },
+        {
+          "year": 2018,
+          "price": 850934
+        },
+        {
+          "year": 2020,
+          "price": 919531
+        },
+        {
+          "year": 2021,
+          "price": 992701
+        },
+        {
+          "year": 2023,
+          "price": 1154313
+        },
+        {
+          "year": 2025,
+          "price": 1308578
+        },
+        {
+          "year": 2026,
+          "price": 1360000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 381553
+        },
+        {
+          "year": 2018,
+          "price": 424116
+        },
+        {
+          "year": 2020,
+          "price": 457719
+        },
+        {
+          "year": 2021,
+          "price": 493562
+        },
+        {
+          "year": 2023,
+          "price": 529395
+        },
+        {
+          "year": 2025,
+          "price": 563599
+        },
+        {
+          "year": 2026,
+          "price": 575000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 733483
+        },
+        {
+          "year": 2018,
+          "price": 814273
+        },
+        {
+          "year": 2020,
+          "price": 878054
+        },
+        {
+          "year": 2021,
+          "price": 946087
+        },
+        {
+          "year": 2023,
+          "price": 1104273
+        },
+        {
+          "year": 2025,
+          "price": 1255268
+        },
+        {
+          "year": 2026,
+          "price": 1305600
+        }
+      ]
+    },
+    {
+      "suburb": "Wollongong",
+      "state": "NSW",
+      "postcode": "2500",
+      "city": "Wollongong",
+      "lat": -34.4248,
+      "lon": 150.8931,
+      "houseMedian": 1280000,
+      "houseRentWk": 760,
+      "unitMedian": 735000,
+      "unitRentWk": 590,
+      "growth5yrPct": 39.0,
+      "growth10yrPct": 91.0,
+      "unitGrowth5yrPct": 28.0,
+      "medianHouseholdIncome": 108000,
+      "ownerOccupierPct": 56,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Wollongong suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.09,
+      "unitYieldPct": 4.17,
+      "rentToIncomePct": 28.4,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 670157
+        },
+        {
+          "year": 2018,
+          "price": 765425
+        },
+        {
+          "year": 2020,
+          "price": 840637
+        },
+        {
+          "year": 2021,
+          "price": 920863
+        },
+        {
+          "year": 2023,
+          "price": 1078883
+        },
+        {
+          "year": 2025,
+          "price": 1229721
+        },
+        {
+          "year": 2026,
+          "price": 1280000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 461974
+        },
+        {
+          "year": 2018,
+          "price": 504627
+        },
+        {
+          "year": 2020,
+          "price": 538301
+        },
+        {
+          "year": 2021,
+          "price": 574219
+        },
+        {
+          "year": 2023,
+          "price": 644963
+        },
+        {
+          "year": 2025,
+          "price": 712491
+        },
+        {
+          "year": 2026,
+          "price": 735000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 690337
+        },
+        {
+          "year": 2018,
+          "price": 766374
+        },
+        {
+          "year": 2020,
+          "price": 826404
+        },
+        {
+          "year": 2021,
+          "price": 890435
+        },
+        {
+          "year": 2023,
+          "price": 1039316
+        },
+        {
+          "year": 2025,
+          "price": 1181429
+        },
+        {
+          "year": 2026,
+          "price": 1228800
+        }
+      ]
+    },
+    {
+      "suburb": "Mayfield",
       "state": "NSW",
       "postcode": "2304",
       "city": "Newcastle",
@@ -424,14 +3439,15 @@
       "medianHouseholdIncome": 109000,
       "ownerOccupierPct": 67,
       "vacancyPct": 1.2,
-      "landShareHouse": 0.66,
-      "landShareUnit": 0.34,
-      "typicalBuildYear": 2008,
-      "zoning": "R2 / R3 Medium Density",
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "Check mine subsidence district maps in broader Hunter postcodes"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Gentrifying inner-ring Newcastle suburb 10 mins from beaches, university, and major health precinct.",
+      "highlights": "Well-connected Newcastle suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 3.56,
       "unitYieldPct": 4.36,
@@ -547,20 +3563,17 @@
       "landShareHouse": 0.74,
       "landShareUnit": 0.32,
       "typicalBuildYear": 2017,
-      "zoning": "NRZ / RGZ Activity Centre",
+      "zoning": "NRZ / Activity Centre",
       "riskFlags": [
-        "Victorian Land Tax applies above $50,000 site value \u2014 factor ~$1,300\u2013$2,800/yr into running costs",
-        "Avoid high-strata micro-apartments along Sydney Rd"
+        "Factor VIC investor Land Tax (~$1.3k\u2013$2.8k/yr) into annual running costs"
       ],
-      "highlights": "5km north of Melbourne CBD with triple tram lines, Upfield rail, Parkville hospital/uni proximity, and strong yield recovery.",
+      "highlights": "5km from Melbourne CBD with 3 tram routes, Upfield rail, and Parkville medical/uni proximity.",
       "sampleSales": [
         {
           "address": "204/88 Albert St, Brunswick VIC 3056",
           "type": "Unit (2 bed)",
           "soldDate": "2025-11",
-          "soldPrice": 612000,
-          "prevSoldYear": 2019,
-          "prevSoldPrice": 560000
+          "soldPrice": 612000
         }
       ],
       "houseYieldPct": 2.95,
@@ -658,6 +3671,610 @@
       ]
     },
     {
+      "suburb": "South Yarra",
+      "state": "VIC",
+      "postcode": "3141",
+      "city": "Melbourne",
+      "lat": -37.8389,
+      "lon": 144.9922,
+      "houseMedian": 2050000,
+      "houseRentWk": 980,
+      "unitMedian": 610000,
+      "unitRentWk": 590,
+      "growth5yrPct": 10.5,
+      "growth10yrPct": 42.0,
+      "unitGrowth5yrPct": 7.5,
+      "medianHouseholdIncome": 134000,
+      "ownerOccupierPct": 44,
+      "vacancyPct": 1.5,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.49,
+      "unitYieldPct": 5.03,
+      "rentToIncomePct": 22.9,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1443662
+        },
+        {
+          "year": 2018,
+          "price": 1600048
+        },
+        {
+          "year": 2020,
+          "price": 1723511
+        },
+        {
+          "year": 2021,
+          "price": 1855204
+        },
+        {
+          "year": 2023,
+          "price": 1940914
+        },
+        {
+          "year": 2025,
+          "price": 2022729
+        },
+        {
+          "year": 2026,
+          "price": 2050000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 479183
+        },
+        {
+          "year": 2018,
+          "price": 512721
+        },
+        {
+          "year": 2020,
+          "price": 539199
+        },
+        {
+          "year": 2021,
+          "price": 567442
+        },
+        {
+          "year": 2023,
+          "price": 586168
+        },
+        {
+          "year": 2025,
+          "price": 604042
+        },
+        {
+          "year": 2026,
+          "price": 610000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 1105618
+        },
+        {
+          "year": 2018,
+          "price": 1227396
+        },
+        {
+          "year": 2020,
+          "price": 1323537
+        },
+        {
+          "year": 2021,
+          "price": 1426087
+        },
+        {
+          "year": 2023,
+          "price": 1664529
+        },
+        {
+          "year": 2025,
+          "price": 1892132
+        },
+        {
+          "year": 2026,
+          "price": 1968000
+        }
+      ]
+    },
+    {
+      "suburb": "Richmond",
+      "state": "VIC",
+      "postcode": "3121",
+      "city": "Melbourne",
+      "lat": -37.8183,
+      "lon": 145.0017,
+      "houseMedian": 1460000,
+      "houseRentWk": 820,
+      "unitMedian": 615000,
+      "unitRentWk": 585,
+      "growth5yrPct": 12.5,
+      "growth10yrPct": 48.0,
+      "unitGrowth5yrPct": 9.0,
+      "medianHouseholdIncome": 136000,
+      "ownerOccupierPct": 49,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.92,
+      "unitYieldPct": 4.95,
+      "rentToIncomePct": 22.4,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 986486
+        },
+        {
+          "year": 2018,
+          "price": 1104777
+        },
+        {
+          "year": 2020,
+          "price": 1198165
+        },
+        {
+          "year": 2021,
+          "price": 1297778
+        },
+        {
+          "year": 2023,
+          "price": 1369156
+        },
+        {
+          "year": 2025,
+          "price": 1437289
+        },
+        {
+          "year": 2026,
+          "price": 1460000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 468750
+        },
+        {
+          "year": 2018,
+          "price": 505029
+        },
+        {
+          "year": 2020,
+          "price": 533670
+        },
+        {
+          "year": 2021,
+          "price": 564220
+        },
+        {
+          "year": 2023,
+          "price": 586563
+        },
+        {
+          "year": 2025,
+          "price": 607891
+        },
+        {
+          "year": 2026,
+          "price": 615000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 787416
+        },
+        {
+          "year": 2018,
+          "price": 874146
+        },
+        {
+          "year": 2020,
+          "price": 942616
+        },
+        {
+          "year": 2021,
+          "price": 1015652
+        },
+        {
+          "year": 2023,
+          "price": 1185469
+        },
+        {
+          "year": 2025,
+          "price": 1347567
+        },
+        {
+          "year": 2026,
+          "price": 1401600
+        }
+      ]
+    },
+    {
+      "suburb": "Footscray",
+      "state": "VIC",
+      "postcode": "3011",
+      "city": "Melbourne",
+      "lat": -37.8,
+      "lon": 144.9,
+      "houseMedian": 960000,
+      "houseRentWk": 620,
+      "unitMedian": 515000,
+      "unitRentWk": 510,
+      "growth5yrPct": 15.0,
+      "growth10yrPct": 58.0,
+      "unitGrowth5yrPct": 11.0,
+      "medianHouseholdIncome": 108000,
+      "ownerOccupierPct": 48,
+      "vacancyPct": 1.5,
+      "landShareHouse": 0.7,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2017,
+      "zoning": "Activity Centre",
+      "riskFlags": [
+        "Check VIC land tax & avoid high-density riverfront towers"
+      ],
+      "highlights": "6km west of Melbourne CBD with new $1.5B Footscray Hospital, Metro Tunnel benefits, and major rail junction.",
+      "sampleSales": [],
+      "houseYieldPct": 3.36,
+      "unitYieldPct": 5.15,
+      "rentToIncomePct": 24.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 607595
+        },
+        {
+          "year": 2018,
+          "price": 693926
+        },
+        {
+          "year": 2020,
+          "price": 762083
+        },
+        {
+          "year": 2021,
+          "price": 834783
+        },
+        {
+          "year": 2023,
+          "price": 889878
+        },
+        {
+          "year": 2025,
+          "price": 942470
+        },
+        {
+          "year": 2026,
+          "price": 960000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 374001
+        },
+        {
+          "year": 2018,
+          "price": 408187
+        },
+        {
+          "year": 2020,
+          "price": 435176
+        },
+        {
+          "year": 2021,
+          "price": 463964
+        },
+        {
+          "year": 2023,
+          "price": 486420
+        },
+        {
+          "year": 2025,
+          "price": 507855
+        },
+        {
+          "year": 2026,
+          "price": 515000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 517753
+        },
+        {
+          "year": 2018,
+          "price": 574781
+        },
+        {
+          "year": 2020,
+          "price": 619803
+        },
+        {
+          "year": 2021,
+          "price": 667826
+        },
+        {
+          "year": 2023,
+          "price": 779487
+        },
+        {
+          "year": 2025,
+          "price": 886072
+        },
+        {
+          "year": 2026,
+          "price": 921600
+        }
+      ]
+    },
+    {
+      "suburb": "Essendon",
+      "state": "VIC",
+      "postcode": "3040",
+      "city": "Melbourne",
+      "lat": -37.75,
+      "lon": 144.9167,
+      "houseMedian": 1680000,
+      "houseRentWk": 810,
+      "unitMedian": 585000,
+      "unitRentWk": 530,
+      "growth5yrPct": 16.0,
+      "growth10yrPct": 56.0,
+      "unitGrowth5yrPct": 11.5,
+      "medianHouseholdIncome": 132000,
+      "ownerOccupierPct": 64,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.51,
+      "unitYieldPct": 4.71,
+      "rentToIncomePct": 20.9,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1076923
+        },
+        {
+          "year": 2018,
+          "price": 1218037
+        },
+        {
+          "year": 2020,
+          "price": 1329443
+        },
+        {
+          "year": 2021,
+          "price": 1448276
+        },
+        {
+          "year": 2023,
+          "price": 1550235
+        },
+        {
+          "year": 2025,
+          "price": 1647559
+        },
+        {
+          "year": 2026,
+          "price": 1680000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 428886
+        },
+        {
+          "year": 2018,
+          "price": 465282
+        },
+        {
+          "year": 2020,
+          "price": 494015
+        },
+        {
+          "year": 2021,
+          "price": 524664
+        },
+        {
+          "year": 2023,
+          "price": 551212
+        },
+        {
+          "year": 2025,
+          "price": 576553
+        },
+        {
+          "year": 2026,
+          "price": 585000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 906067
+        },
+        {
+          "year": 2018,
+          "price": 1005866
+        },
+        {
+          "year": 2020,
+          "price": 1084655
+        },
+        {
+          "year": 2021,
+          "price": 1168696
+        },
+        {
+          "year": 2023,
+          "price": 1364102
+        },
+        {
+          "year": 2025,
+          "price": 1550625
+        },
+        {
+          "year": 2026,
+          "price": 1612800
+        }
+      ]
+    },
+    {
+      "suburb": "Preston",
+      "state": "VIC",
+      "postcode": "3072",
+      "city": "Melbourne",
+      "lat": -37.7431,
+      "lon": 145.0081,
+      "houseMedian": 1160000,
+      "houseRentWk": 680,
+      "unitMedian": 590000,
+      "unitRentWk": 530,
+      "growth5yrPct": 17.5,
+      "growth10yrPct": 62.0,
+      "unitGrowth5yrPct": 13.0,
+      "medianHouseholdIncome": 112000,
+      "ownerOccupierPct": 61,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.05,
+      "unitYieldPct": 4.67,
+      "rentToIncomePct": 24.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 716049
+        },
+        {
+          "year": 2018,
+          "price": 819099
+        },
+        {
+          "year": 2020,
+          "price": 900455
+        },
+        {
+          "year": 2021,
+          "price": 987234
+        },
+        {
+          "year": 2023,
+          "price": 1063251
+        },
+        {
+          "year": 2025,
+          "price": 1135813
+        },
+        {
+          "year": 2026,
+          "price": 1160000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 420527
+        },
+        {
+          "year": 2018,
+          "price": 459134
+        },
+        {
+          "year": 2020,
+          "price": 489613
+        },
+        {
+          "year": 2021,
+          "price": 522124
+        },
+        {
+          "year": 2023,
+          "price": 551989
+        },
+        {
+          "year": 2025,
+          "price": 580497
+        },
+        {
+          "year": 2026,
+          "price": 590000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 625618
+        },
+        {
+          "year": 2018,
+          "price": 694527
+        },
+        {
+          "year": 2020,
+          "price": 748929
+        },
+        {
+          "year": 2021,
+          "price": 806957
+        },
+        {
+          "year": 2023,
+          "price": 941880
+        },
+        {
+          "year": 2025,
+          "price": 1070670
+        },
+        {
+          "year": 2026,
+          "price": 1113600
+        }
+      ]
+    },
+    {
       "suburb": "Reservoir",
       "state": "VIC",
       "postcode": "3073",
@@ -674,14 +4291,15 @@
       "medianHouseholdIncome": 98000,
       "ownerOccupierPct": 65,
       "vacancyPct": 1.3,
-      "landShareHouse": 0.69,
-      "landShareUnit": 0.35,
-      "typicalBuildYear": 2018,
-      "zoning": "GRZ1 General Residential",
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "Account for VIC investor land tax thresholds in annual expenses"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "12km from Melbourne CBD with upgraded sky-rail station, large land blocks, and relative value compared to Sydney/Brisbane.",
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 3.37,
       "unitYieldPct": 4.31,
@@ -778,6 +4396,369 @@
       ]
     },
     {
+      "suburb": "Box Hill",
+      "state": "VIC",
+      "postcode": "3128",
+      "city": "Melbourne",
+      "lat": -37.8192,
+      "lon": 145.1219,
+      "houseMedian": 1650000,
+      "houseRentWk": 760,
+      "unitMedian": 565000,
+      "unitRentWk": 550,
+      "growth5yrPct": 14.0,
+      "growth10yrPct": 54.0,
+      "unitGrowth5yrPct": 8.5,
+      "medianHouseholdIncome": 102000,
+      "ownerOccupierPct": 53,
+      "vacancyPct": 1.6,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.4,
+      "unitYieldPct": 5.06,
+      "rentToIncomePct": 28.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1071429
+        },
+        {
+          "year": 2018,
+          "price": 1214286
+        },
+        {
+          "year": 2020,
+          "price": 1327068
+        },
+        {
+          "year": 2021,
+          "price": 1447368
+        },
+        {
+          "year": 2023,
+          "price": 1536526
+        },
+        {
+          "year": 2025,
+          "price": 1621632
+        },
+        {
+          "year": 2026,
+          "price": 1650000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 418209
+        },
+        {
+          "year": 2018,
+          "price": 457170
+        },
+        {
+          "year": 2020,
+          "price": 487928
+        },
+        {
+          "year": 2021,
+          "price": 520737
+        },
+        {
+          "year": 2023,
+          "price": 540213
+        },
+        {
+          "year": 2025,
+          "price": 558803
+        },
+        {
+          "year": 2026,
+          "price": 565000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 889888
+        },
+        {
+          "year": 2018,
+          "price": 987904
+        },
+        {
+          "year": 2020,
+          "price": 1065286
+        },
+        {
+          "year": 2021,
+          "price": 1147826
+        },
+        {
+          "year": 2023,
+          "price": 1339743
+        },
+        {
+          "year": 2025,
+          "price": 1522936
+        },
+        {
+          "year": 2026,
+          "price": 1584000
+        }
+      ]
+    },
+    {
+      "suburb": "Clayton",
+      "state": "VIC",
+      "postcode": "3168",
+      "city": "Melbourne",
+      "lat": -37.925,
+      "lon": 145.12,
+      "houseMedian": 1190000,
+      "houseRentWk": 690,
+      "unitMedian": 585000,
+      "unitRentWk": 550,
+      "growth5yrPct": 18.0,
+      "growth10yrPct": 60.0,
+      "unitGrowth5yrPct": 14.0,
+      "medianHouseholdIncome": 94000,
+      "ownerOccupierPct": 49,
+      "vacancyPct": 1.3,
+      "landShareHouse": 0.7,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2018,
+      "zoning": "Suburban Rail Loop Hub",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Anchored by Monash University, Monash Medical Centre, and future SRL interchange.",
+      "sampleSales": [],
+      "houseYieldPct": 3.02,
+      "unitYieldPct": 4.89,
+      "rentToIncomePct": 30.4,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 743750
+        },
+        {
+          "year": 2018,
+          "price": 844346
+        },
+        {
+          "year": 2020,
+          "price": 923763
+        },
+        {
+          "year": 2021,
+          "price": 1008475
+        },
+        {
+          "year": 2023,
+          "price": 1088346
+        },
+        {
+          "year": 2025,
+          "price": 1164586
+        },
+        {
+          "year": 2026,
+          "price": 1190000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 420863
+        },
+        {
+          "year": 2018,
+          "price": 455935
+        },
+        {
+          "year": 2020,
+          "price": 483624
+        },
+        {
+          "year": 2021,
+          "price": 513158
+        },
+        {
+          "year": 2023,
+          "price": 544768
+        },
+        {
+          "year": 2025,
+          "price": 574942
+        },
+        {
+          "year": 2026,
+          "price": 585000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 641798
+        },
+        {
+          "year": 2018,
+          "price": 712489
+        },
+        {
+          "year": 2020,
+          "price": 768297
+        },
+        {
+          "year": 2021,
+          "price": 827826
+        },
+        {
+          "year": 2023,
+          "price": 966239
+        },
+        {
+          "year": 2025,
+          "price": 1098360
+        },
+        {
+          "year": 2026,
+          "price": 1142400
+        }
+      ]
+    },
+    {
+      "suburb": "St Kilda",
+      "state": "VIC",
+      "postcode": "3182",
+      "city": "Melbourne",
+      "lat": -37.8675,
+      "lon": 144.9808,
+      "houseMedian": 1580000,
+      "houseRentWk": 860,
+      "unitMedian": 565000,
+      "unitRentWk": 560,
+      "growth5yrPct": 11.0,
+      "growth10yrPct": 44.0,
+      "unitGrowth5yrPct": 9.5,
+      "medianHouseholdIncome": 118000,
+      "ownerOccupierPct": 45,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.83,
+      "unitYieldPct": 5.15,
+      "rentToIncomePct": 24.7,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1097222
+        },
+        {
+          "year": 2018,
+          "price": 1221178
+        },
+        {
+          "year": 2020,
+          "price": 1319039
+        },
+        {
+          "year": 2021,
+          "price": 1423423
+        },
+        {
+          "year": 2023,
+          "price": 1492317
+        },
+        {
+          "year": 2025,
+          "price": 1558079
+        },
+        {
+          "year": 2026,
+          "price": 1580000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 439347
+        },
+        {
+          "year": 2018,
+          "price": 468468
+        },
+        {
+          "year": 2020,
+          "price": 491459
+        },
+        {
+          "year": 2021,
+          "price": 515982
+        },
+        {
+          "year": 2023,
+          "price": 537550
+        },
+        {
+          "year": 2025,
+          "price": 558137
+        },
+        {
+          "year": 2026,
+          "price": 565000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 852135
+        },
+        {
+          "year": 2018,
+          "price": 945993
+        },
+        {
+          "year": 2020,
+          "price": 1020092
+        },
+        {
+          "year": 2021,
+          "price": 1099130
+        },
+        {
+          "year": 2023,
+          "price": 1282905
+        },
+        {
+          "year": 2025,
+          "price": 1458326
+        },
+        {
+          "year": 2026,
+          "price": 1516800
+        }
+      ]
+    },
+    {
       "suburb": "Frankston",
       "state": "VIC",
       "postcode": "3199",
@@ -794,14 +4775,15 @@
       "medianHouseholdIncome": 92000,
       "ownerOccupierPct": 64,
       "vacancyPct": 1.2,
-      "landShareHouse": 0.65,
-      "landShareUnit": 0.36,
-      "typicalBuildYear": 2015,
-      "zoning": "GRZ / Frankston Metro Activity",
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "Street-by-street pocket quality varies significantly (Frankston South school zone commands premium)"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Bayside lifestyle hub with $1.1B hospital redevelopment, direct rail, and sub-$800k freestanding houses.",
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 3.81,
       "unitYieldPct": 4.7,
@@ -898,6 +4880,248 @@
       ]
     },
     {
+      "suburb": "Werribee",
+      "state": "VIC",
+      "postcode": "3030",
+      "city": "Melbourne",
+      "lat": -37.9,
+      "lon": 144.664,
+      "houseMedian": 625000,
+      "houseRentWk": 495,
+      "unitMedian": 445000,
+      "unitRentWk": 420,
+      "growth5yrPct": 21.0,
+      "growth10yrPct": 68.0,
+      "unitGrowth5yrPct": 17.0,
+      "medianHouseholdIncome": 96000,
+      "ownerOccupierPct": 66,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Melbourne suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 4.12,
+      "unitYieldPct": 4.91,
+      "rentToIncomePct": 22.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 372024
+        },
+        {
+          "year": 2018,
+          "price": 426936
+        },
+        {
+          "year": 2020,
+          "price": 470287
+        },
+        {
+          "year": 2021,
+          "price": 516529
+        },
+        {
+          "year": 2023,
+          "price": 564256
+        },
+        {
+          "year": 2025,
+          "price": 609814
+        },
+        {
+          "year": 2026,
+          "price": 625000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 308599
+        },
+        {
+          "year": 2018,
+          "price": 335861
+        },
+        {
+          "year": 2020,
+          "price": 357384
+        },
+        {
+          "year": 2021,
+          "price": 380342
+        },
+        {
+          "year": 2023,
+          "price": 408792
+        },
+        {
+          "year": 2025,
+          "price": 435948
+        },
+        {
+          "year": 2026,
+          "price": 445000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 337079
+        },
+        {
+          "year": 2018,
+          "price": 374207
+        },
+        {
+          "year": 2020,
+          "price": 403518
+        },
+        {
+          "year": 2021,
+          "price": 434783
+        },
+        {
+          "year": 2023,
+          "price": 507478
+        },
+        {
+          "year": 2025,
+          "price": 576870
+        },
+        {
+          "year": 2026,
+          "price": 600000
+        }
+      ]
+    },
+    {
+      "suburb": "Geelong (Belmont)",
+      "state": "VIC",
+      "postcode": "3216",
+      "city": "Geelong",
+      "lat": -38.1764,
+      "lon": 144.3431,
+      "houseMedian": 745000,
+      "houseRentWk": 530,
+      "unitMedian": 510000,
+      "unitRentWk": 440,
+      "growth5yrPct": 22.0,
+      "growth10yrPct": 76.0,
+      "unitGrowth5yrPct": 18.0,
+      "medianHouseholdIncome": 98000,
+      "ownerOccupierPct": 68,
+      "vacancyPct": 1.5,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Geelong suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.7,
+      "unitYieldPct": 4.49,
+      "rentToIncomePct": 23.3,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 423295
+        },
+        {
+          "year": 2018,
+          "price": 494492
+        },
+        {
+          "year": 2020,
+          "price": 550700
+        },
+        {
+          "year": 2021,
+          "price": 610656
+        },
+        {
+          "year": 2023,
+          "price": 669767
+        },
+        {
+          "year": 2025,
+          "price": 726192
+        },
+        {
+          "year": 2026,
+          "price": 745000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 341365
+        },
+        {
+          "year": 2018,
+          "price": 375883
+        },
+        {
+          "year": 2020,
+          "price": 403135
+        },
+        {
+          "year": 2021,
+          "price": 432203
+        },
+        {
+          "year": 2023,
+          "price": 466434
+        },
+        {
+          "year": 2025,
+          "price": 499108
+        },
+        {
+          "year": 2026,
+          "price": 510000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 401798
+        },
+        {
+          "year": 2018,
+          "price": 446054
+        },
+        {
+          "year": 2020,
+          "price": 480993
+        },
+        {
+          "year": 2021,
+          "price": 518261
+        },
+        {
+          "year": 2023,
+          "price": 604914
+        },
+        {
+          "year": 2025,
+          "price": 687629
+        },
+        {
+          "year": 2026,
+          "price": 715200
+        }
+      ]
+    },
+    {
       "suburb": "Chermside",
       "state": "QLD",
       "postcode": "4032",
@@ -917,21 +5141,12 @@
       "landShareHouse": 0.68,
       "landShareUnit": 0.3,
       "typicalBuildYear": 2019,
-      "zoning": "HDR High/Medium Density Residential",
+      "zoning": "HDR Residential",
       "riskFlags": [
-        "Check Brisbane City Council overland flow & creek flood maps before unconditional offer"
+        "Check BCC creek/overland flood map"
       ],
-      "highlights": "Major Northern Brisbane hospital (Prince Charles) & retail node 10km from CBD with 2032 Olympic infrastructure tailwinds.",
-      "sampleSales": [
-        {
-          "address": "12/35 Thomas St, Chermside QLD 4032",
-          "type": "Unit (2 bed)",
-          "soldDate": "2025-12",
-          "soldPrice": 658000,
-          "prevSoldYear": 2020,
-          "prevSoldPrice": 435000
-        }
-      ],
+      "highlights": "Northern Brisbane hospital & retail hub 10km from CBD.",
+      "sampleSales": [],
       "houseYieldPct": 3.2,
       "unitYieldPct": 4.84,
       "rentToIncomePct": 29.4,
@@ -1027,7 +5242,491 @@
       ]
     },
     {
-      "suburb": "Ipswich (Springfield Lakes)",
+      "suburb": "Newstead",
+      "state": "QLD",
+      "postcode": "4006",
+      "city": "Brisbane",
+      "lat": -27.4508,
+      "lon": 153.0436,
+      "houseMedian": 1850000,
+      "houseRentWk": 980,
+      "unitMedian": 795000,
+      "unitRentWk": 710,
+      "growth5yrPct": 54.0,
+      "growth10yrPct": 86.0,
+      "unitGrowth5yrPct": 44.0,
+      "medianHouseholdIncome": 148000,
+      "ownerOccupierPct": 46,
+      "vacancyPct": 1.1,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Brisbane suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.75,
+      "unitYieldPct": 4.64,
+      "rentToIncomePct": 24.9,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 994624
+        },
+        {
+          "year": 2018,
+          "price": 1073160
+        },
+        {
+          "year": 2020,
+          "price": 1135163
+        },
+        {
+          "year": 2021,
+          "price": 1201299
+        },
+        {
+          "year": 2023,
+          "price": 1486727
+        },
+        {
+          "year": 2025,
+          "price": 1759182
+        },
+        {
+          "year": 2026,
+          "price": 1850000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 509942
+        },
+        {
+          "year": 2018,
+          "price": 525956
+        },
+        {
+          "year": 2020,
+          "price": 538598
+        },
+        {
+          "year": 2021,
+          "price": 552083
+        },
+        {
+          "year": 2023,
+          "price": 658966
+        },
+        {
+          "year": 2025,
+          "price": 760992
+        },
+        {
+          "year": 2026,
+          "price": 795000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 997753
+        },
+        {
+          "year": 2018,
+          "price": 1107651
+        },
+        {
+          "year": 2020,
+          "price": 1194412
+        },
+        {
+          "year": 2021,
+          "price": 1286957
+        },
+        {
+          "year": 2023,
+          "price": 1502136
+        },
+        {
+          "year": 2025,
+          "price": 1707534
+        },
+        {
+          "year": 2026,
+          "price": 1776000
+        }
+      ]
+    },
+    {
+      "suburb": "West End",
+      "state": "QLD",
+      "postcode": "4101",
+      "city": "Brisbane",
+      "lat": -27.4819,
+      "lon": 153.0086,
+      "houseMedian": 1580000,
+      "houseRentWk": 860,
+      "unitMedian": 745000,
+      "unitRentWk": 680,
+      "growth5yrPct": 56.0,
+      "growth10yrPct": 92.0,
+      "unitGrowth5yrPct": 42.0,
+      "medianHouseholdIncome": 132000,
+      "ownerOccupierPct": 48,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Brisbane suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.83,
+      "unitYieldPct": 4.75,
+      "rentToIncomePct": 26.8,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 822917
+        },
+        {
+          "year": 2018,
+          "price": 895081
+        },
+        {
+          "year": 2020,
+          "price": 952052
+        },
+        {
+          "year": 2021,
+          "price": 1012821
+        },
+        {
+          "year": 2023,
+          "price": 1262380
+        },
+        {
+          "year": 2025,
+          "price": 1500595
+        },
+        {
+          "year": 2026,
+          "price": 1580000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 466208
+        },
+        {
+          "year": 2018,
+          "price": 488415
+        },
+        {
+          "year": 2020,
+          "price": 505947
+        },
+        {
+          "year": 2021,
+          "price": 524648
+        },
+        {
+          "year": 2023,
+          "price": 621603
+        },
+        {
+          "year": 2025,
+          "price": 714151
+        },
+        {
+          "year": 2026,
+          "price": 745000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 852135
+        },
+        {
+          "year": 2018,
+          "price": 945993
+        },
+        {
+          "year": 2020,
+          "price": 1020092
+        },
+        {
+          "year": 2021,
+          "price": 1099130
+        },
+        {
+          "year": 2023,
+          "price": 1282905
+        },
+        {
+          "year": 2025,
+          "price": 1458326
+        },
+        {
+          "year": 2026,
+          "price": 1516800
+        }
+      ]
+    },
+    {
+      "suburb": "Indooroopilly",
+      "state": "QLD",
+      "postcode": "4068",
+      "city": "Brisbane",
+      "lat": -27.4989,
+      "lon": 152.9739,
+      "houseMedian": 1540000,
+      "houseRentWk": 840,
+      "unitMedian": 685000,
+      "unitRentWk": 620,
+      "growth5yrPct": 58.0,
+      "growth10yrPct": 94.0,
+      "unitGrowth5yrPct": 41.0,
+      "medianHouseholdIncome": 139000,
+      "ownerOccupierPct": 57,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Brisbane suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.84,
+      "unitYieldPct": 4.71,
+      "rentToIncomePct": 23.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 793814
+        },
+        {
+          "year": 2018,
+          "price": 862545
+        },
+        {
+          "year": 2020,
+          "price": 916806
+        },
+        {
+          "year": 2021,
+          "price": 974684
+        },
+        {
+          "year": 2023,
+          "price": 1223423
+        },
+        {
+          "year": 2025,
+          "price": 1460856
+        },
+        {
+          "year": 2026,
+          "price": 1540000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 425202
+        },
+        {
+          "year": 2018,
+          "price": 448235
+        },
+        {
+          "year": 2020,
+          "price": 466420
+        },
+        {
+          "year": 2021,
+          "price": 485816
+        },
+        {
+          "year": 2023,
+          "price": 573457
+        },
+        {
+          "year": 2025,
+          "price": 657114
+        },
+        {
+          "year": 2026,
+          "price": 685000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 830562
+        },
+        {
+          "year": 2018,
+          "price": 922044
+        },
+        {
+          "year": 2020,
+          "price": 994267
+        },
+        {
+          "year": 2021,
+          "price": 1071304
+        },
+        {
+          "year": 2023,
+          "price": 1250426
+        },
+        {
+          "year": 2025,
+          "price": 1421407
+        },
+        {
+          "year": 2026,
+          "price": 1478400
+        }
+      ]
+    },
+    {
+      "suburb": "Sunnybank",
+      "state": "QLD",
+      "postcode": "4109",
+      "city": "Brisbane",
+      "lat": -27.5794,
+      "lon": 153.0611,
+      "houseMedian": 1240000,
+      "houseRentWk": 710,
+      "unitMedian": 610000,
+      "unitRentWk": 560,
+      "growth5yrPct": 61.0,
+      "growth10yrPct": 95.0,
+      "unitGrowth5yrPct": 45.0,
+      "medianHouseholdIncome": 104000,
+      "ownerOccupierPct": 66,
+      "vacancyPct": 0.9,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Brisbane suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.98,
+      "unitYieldPct": 4.77,
+      "rentToIncomePct": 28.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 635897
+        },
+        {
+          "year": 2018,
+          "price": 686927
+        },
+        {
+          "year": 2020,
+          "price": 727214
+        },
+        {
+          "year": 2021,
+          "price": 770186
+        },
+        {
+          "year": 2023,
+          "price": 976904
+        },
+        {
+          "year": 2025,
+          "price": 1174226
+        },
+        {
+          "year": 2026,
+          "price": 1240000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 377009
+        },
+        {
+          "year": 2018,
+          "price": 393608
+        },
+        {
+          "year": 2020,
+          "price": 406712
+        },
+        {
+          "year": 2021,
+          "price": 420690
+        },
+        {
+          "year": 2023,
+          "price": 503986
+        },
+        {
+          "year": 2025,
+          "price": 583497
+        },
+        {
+          "year": 2026,
+          "price": 610000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 668764
+        },
+        {
+          "year": 2018,
+          "price": 742425
+        },
+        {
+          "year": 2020,
+          "price": 800579
+        },
+        {
+          "year": 2021,
+          "price": 862609
+        },
+        {
+          "year": 2023,
+          "price": 1006837
+        },
+        {
+          "year": 2025,
+          "price": 1144509
+        },
+        {
+          "year": 2026,
+          "price": 1190400
+        }
+      ]
+    },
+    {
+      "suburb": "Springfield Lakes",
       "state": "QLD",
       "postcode": "4300",
       "city": "Brisbane",
@@ -1046,11 +5745,12 @@
       "landShareHouse": 0.56,
       "landShareUnit": 0.28,
       "typicalBuildYear": 2018,
-      "zoning": "Masterplanned Residential",
+      "zoning": "Residential",
       "riskFlags": [
-        "Newer post-2012 houses offer strong Division 43 building depreciation (~$7k\u2013$9k/yr)"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Masterplanned family corridor with direct Springfield rail line, hospital, university, and strong Div 43 depreciation.",
+      "highlights": "Well-connected Brisbane suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 3.89,
       "unitYieldPct": 4.88,
@@ -1147,6 +5847,248 @@
       ]
     },
     {
+      "suburb": "North Lakes",
+      "state": "QLD",
+      "postcode": "4509",
+      "city": "Brisbane",
+      "lat": -27.2308,
+      "lon": 153.0189,
+      "houseMedian": 865000,
+      "houseRentWk": 640,
+      "unitMedian": 575000,
+      "unitRentWk": 535,
+      "growth5yrPct": 64.0,
+      "growth10yrPct": 92.0,
+      "unitGrowth5yrPct": 48.0,
+      "medianHouseholdIncome": 116000,
+      "ownerOccupierPct": 65,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Brisbane suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.85,
+      "unitYieldPct": 4.84,
+      "rentToIncomePct": 24.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 450521
+        },
+        {
+          "year": 2018,
+          "price": 479750
+        },
+        {
+          "year": 2020,
+          "price": 502825
+        },
+        {
+          "year": 2021,
+          "price": 527439
+        },
+        {
+          "year": 2023,
+          "price": 675966
+        },
+        {
+          "year": 2025,
+          "price": 817741
+        },
+        {
+          "year": 2026,
+          "price": 865000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 359825
+        },
+        {
+          "year": 2018,
+          "price": 370727
+        },
+        {
+          "year": 2020,
+          "price": 379334
+        },
+        {
+          "year": 2021,
+          "price": 388514
+        },
+        {
+          "year": 2023,
+          "price": 470568
+        },
+        {
+          "year": 2025,
+          "price": 548892
+        },
+        {
+          "year": 2026,
+          "price": 575000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 466517
+        },
+        {
+          "year": 2018,
+          "price": 517901
+        },
+        {
+          "year": 2020,
+          "price": 558468
+        },
+        {
+          "year": 2021,
+          "price": 601739
+        },
+        {
+          "year": 2023,
+          "price": 702350
+        },
+        {
+          "year": 2025,
+          "price": 798387
+        },
+        {
+          "year": 2026,
+          "price": 830400
+        }
+      ]
+    },
+    {
+      "suburb": "Southport",
+      "state": "QLD",
+      "postcode": "4215",
+      "city": "Gold Coast",
+      "lat": -27.9672,
+      "lon": 153.4,
+      "houseMedian": 1150000,
+      "houseRentWk": 820,
+      "unitMedian": 680000,
+      "unitRentWk": 660,
+      "growth5yrPct": 69.0,
+      "growth10yrPct": 108.0,
+      "unitGrowth5yrPct": 56.0,
+      "medianHouseholdIncome": 98000,
+      "ownerOccupierPct": 52,
+      "vacancyPct": 1.1,
+      "landShareHouse": 0.65,
+      "landShareUnit": 0.3,
+      "typicalBuildYear": 2017,
+      "zoning": "G:link Light Rail CBD",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Gold Coast CBD served by G:link Light Rail, Gold Coast University Hospital, and Griffith Uni.",
+      "sampleSales": [],
+      "houseYieldPct": 3.71,
+      "unitYieldPct": 5.05,
+      "rentToIncomePct": 35.0,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 552885
+        },
+        {
+          "year": 2018,
+          "price": 601368
+        },
+        {
+          "year": 2020,
+          "price": 639645
+        },
+        {
+          "year": 2021,
+          "price": 680473
+        },
+        {
+          "year": 2023,
+          "price": 887065
+        },
+        {
+          "year": 2025,
+          "price": 1084266
+        },
+        {
+          "year": 2026,
+          "price": 1150000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 399530
+        },
+        {
+          "year": 2018,
+          "price": 413349
+        },
+        {
+          "year": 2020,
+          "price": 424260
+        },
+        {
+          "year": 2021,
+          "price": 435897
+        },
+        {
+          "year": 2023,
+          "price": 543302
+        },
+        {
+          "year": 2025,
+          "price": 645826
+        },
+        {
+          "year": 2026,
+          "price": 680000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 620225
+        },
+        {
+          "year": 2018,
+          "price": 688540
+        },
+        {
+          "year": 2020,
+          "price": 742472
+        },
+        {
+          "year": 2021,
+          "price": 800000
+        },
+        {
+          "year": 2023,
+          "price": 933760
+        },
+        {
+          "year": 2025,
+          "price": 1061440
+        },
+        {
+          "year": 2026,
+          "price": 1104000
+        }
+      ]
+    },
+    {
       "suburb": "Bayswater",
       "state": "WA",
       "postcode": "6053",
@@ -1163,14 +6105,15 @@
       "medianHouseholdIncome": 118000,
       "ownerOccupierPct": 69,
       "vacancyPct": 0.8,
-      "landShareHouse": 0.67,
-      "landShareUnit": 0.34,
-      "typicalBuildYear": 2016,
-      "zoning": "R25 / Metronet Precinct",
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "After 74% 5-yr surge, verify replacement build cost vs asking price"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "7km from Perth CBD at the new Metronet airport/Ellenbrook rail junction with sub-1% vacancy and 4.1%\u20135.4% gross yields.",
+      "highlights": "Well-connected Perth suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 4.07,
       "unitYieldPct": 5.43,
@@ -1267,6 +6210,369 @@
       ]
     },
     {
+      "suburb": "Subiaco",
+      "state": "WA",
+      "postcode": "6008",
+      "city": "Perth",
+      "lat": -31.9489,
+      "lon": 115.8269,
+      "houseMedian": 1780000,
+      "houseRentWk": 990,
+      "unitMedian": 695000,
+      "unitRentWk": 680,
+      "growth5yrPct": 52.0,
+      "growth10yrPct": 68.0,
+      "unitGrowth5yrPct": 44.0,
+      "medianHouseholdIncome": 148000,
+      "ownerOccupierPct": 56,
+      "vacancyPct": 0.9,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Perth suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.89,
+      "unitYieldPct": 5.09,
+      "rentToIncomePct": 23.9,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 1059524
+        },
+        {
+          "year": 2018,
+          "price": 1101905
+        },
+        {
+          "year": 2020,
+          "price": 1135364
+        },
+        {
+          "year": 2021,
+          "price": 1171053
+        },
+        {
+          "year": 2023,
+          "price": 1438990
+        },
+        {
+          "year": 2025,
+          "price": 1694747
+        },
+        {
+          "year": 2026,
+          "price": 1780000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 481969
+        },
+        {
+          "year": 2018,
+          "price": 482224
+        },
+        {
+          "year": 2020,
+          "price": 482425
+        },
+        {
+          "year": 2021,
+          "price": 482639
+        },
+        {
+          "year": 2023,
+          "price": 576078
+        },
+        {
+          "year": 2025,
+          "price": 665269
+        },
+        {
+          "year": 2026,
+          "price": 695000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 960000
+        },
+        {
+          "year": 2018,
+          "price": 1065739
+        },
+        {
+          "year": 2020,
+          "price": 1149217
+        },
+        {
+          "year": 2021,
+          "price": 1238261
+        },
+        {
+          "year": 2023,
+          "price": 1445298
+        },
+        {
+          "year": 2025,
+          "price": 1642925
+        },
+        {
+          "year": 2026,
+          "price": 1708800
+        }
+      ]
+    },
+    {
+      "suburb": "Victoria Park",
+      "state": "WA",
+      "postcode": "6100",
+      "city": "Perth",
+      "lat": -31.9744,
+      "lon": 115.8969,
+      "houseMedian": 985000,
+      "houseRentWk": 750,
+      "unitMedian": 555000,
+      "unitRentWk": 585,
+      "growth5yrPct": 71.0,
+      "growth10yrPct": 84.0,
+      "unitGrowth5yrPct": 56.0,
+      "medianHouseholdIncome": 116000,
+      "ownerOccupierPct": 58,
+      "vacancyPct": 0.8,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Perth suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.96,
+      "unitYieldPct": 5.48,
+      "rentToIncomePct": 26.2,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 535326
+        },
+        {
+          "year": 2018,
+          "price": 550791
+        },
+        {
+          "year": 2020,
+          "price": 563000
+        },
+        {
+          "year": 2021,
+          "price": 576023
+        },
+        {
+          "year": 2023,
+          "price": 755973
+        },
+        {
+          "year": 2025,
+          "price": 927743
+        },
+        {
+          "year": 2026,
+          "price": 985000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 358991
+        },
+        {
+          "year": 2018,
+          "price": 357767
+        },
+        {
+          "year": 2020,
+          "price": 356800
+        },
+        {
+          "year": 2021,
+          "price": 355769
+        },
+        {
+          "year": 2023,
+          "price": 443431
+        },
+        {
+          "year": 2025,
+          "price": 527108
+        },
+        {
+          "year": 2026,
+          "price": 555000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 531236
+        },
+        {
+          "year": 2018,
+          "price": 589749
+        },
+        {
+          "year": 2020,
+          "price": 635943
+        },
+        {
+          "year": 2021,
+          "price": 685217
+        },
+        {
+          "year": 2023,
+          "price": 799786
+        },
+        {
+          "year": 2025,
+          "price": 909146
+        },
+        {
+          "year": 2026,
+          "price": 945600
+        }
+      ]
+    },
+    {
+      "suburb": "Joondalup",
+      "state": "WA",
+      "postcode": "6027",
+      "city": "Perth",
+      "lat": -31.745,
+      "lon": 115.7661,
+      "houseMedian": 835000,
+      "houseRentWk": 680,
+      "unitMedian": 515000,
+      "unitRentWk": 540,
+      "growth5yrPct": 76.0,
+      "growth10yrPct": 86.0,
+      "unitGrowth5yrPct": 59.0,
+      "medianHouseholdIncome": 112000,
+      "ownerOccupierPct": 67,
+      "vacancyPct": 0.8,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Perth suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 4.23,
+      "unitYieldPct": 5.45,
+      "rentToIncomePct": 25.1,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 448925
+        },
+        {
+          "year": 2018,
+          "price": 458618
+        },
+        {
+          "year": 2020,
+          "price": 466270
+        },
+        {
+          "year": 2021,
+          "price": 474432
+        },
+        {
+          "year": 2023,
+          "price": 633082
+        },
+        {
+          "year": 2025,
+          "price": 784520
+        },
+        {
+          "year": 2026,
+          "price": 835000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 330340
+        },
+        {
+          "year": 2018,
+          "price": 327892
+        },
+        {
+          "year": 2020,
+          "price": 325960
+        },
+        {
+          "year": 2021,
+          "price": 323899
+        },
+        {
+          "year": 2023,
+          "price": 407983
+        },
+        {
+          "year": 2025,
+          "price": 488246
+        },
+        {
+          "year": 2026,
+          "price": 515000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 450337
+        },
+        {
+          "year": 2018,
+          "price": 499940
+        },
+        {
+          "year": 2020,
+          "price": 539099
+        },
+        {
+          "year": 2021,
+          "price": 580870
+        },
+        {
+          "year": 2023,
+          "price": 677991
+        },
+        {
+          "year": 2025,
+          "price": 770698
+        },
+        {
+          "year": 2026,
+          "price": 801600
+        }
+      ]
+    },
+    {
       "suburb": "Rockingham",
       "state": "WA",
       "postcode": "6168",
@@ -1283,14 +6589,15 @@
       "medianHouseholdIncome": 96000,
       "ownerOccupierPct": 64,
       "vacancyPct": 0.9,
-      "landShareHouse": 0.6,
+      "landShareHouse": 0.68,
       "landShareUnit": 0.32,
       "typicalBuildYear": 2014,
-      "zoning": "R20 Coastal Residential",
+      "zoning": "Residential",
       "riskFlags": [
-        "Check salt-air coastal maintenance on older exteriors"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Coastal hub adjacent to HMAS Stirling / AUKUS defence expansion delivering ~4.5%\u20135.6% gross rental yields.",
+      "highlights": "Well-connected Perth suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 4.54,
       "unitYieldPct": 5.59,
@@ -1387,6 +6694,248 @@
       ]
     },
     {
+      "suburb": "Prospect",
+      "state": "SA",
+      "postcode": "5082",
+      "city": "Adelaide",
+      "lat": -34.8847,
+      "lon": 138.5944,
+      "houseMedian": 1180000,
+      "houseRentWk": 710,
+      "unitMedian": 595000,
+      "unitRentWk": 535,
+      "growth5yrPct": 68.0,
+      "growth10yrPct": 106.0,
+      "unitGrowth5yrPct": 52.0,
+      "medianHouseholdIncome": 118000,
+      "ownerOccupierPct": 66,
+      "vacancyPct": 0.9,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Adelaide suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.13,
+      "unitYieldPct": 4.68,
+      "rentToIncomePct": 23.6,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 572816
+        },
+        {
+          "year": 2018,
+          "price": 622051
+        },
+        {
+          "year": 2020,
+          "price": 660920
+        },
+        {
+          "year": 2021,
+          "price": 702381
+        },
+        {
+          "year": 2023,
+          "price": 912533
+        },
+        {
+          "year": 2025,
+          "price": 1113133
+        },
+        {
+          "year": 2026,
+          "price": 1180000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 352279
+        },
+        {
+          "year": 2018,
+          "price": 367163
+        },
+        {
+          "year": 2020,
+          "price": 378913
+        },
+        {
+          "year": 2021,
+          "price": 391447
+        },
+        {
+          "year": 2023,
+          "price": 481010
+        },
+        {
+          "year": 2025,
+          "price": 566503
+        },
+        {
+          "year": 2026,
+          "price": 595000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 636404
+        },
+        {
+          "year": 2018,
+          "price": 706501
+        },
+        {
+          "year": 2020,
+          "price": 761841
+        },
+        {
+          "year": 2021,
+          "price": 820870
+        },
+        {
+          "year": 2023,
+          "price": 958119
+        },
+        {
+          "year": 2025,
+          "price": 1089130
+        },
+        {
+          "year": 2026,
+          "price": 1132800
+        }
+      ]
+    },
+    {
+      "suburb": "Glenelg",
+      "state": "SA",
+      "postcode": "5045",
+      "city": "Adelaide",
+      "lat": -34.9806,
+      "lon": 138.515,
+      "houseMedian": 1350000,
+      "houseRentWk": 760,
+      "unitMedian": 685000,
+      "unitRentWk": 580,
+      "growth5yrPct": 64.0,
+      "growth10yrPct": 102.0,
+      "unitGrowth5yrPct": 50.0,
+      "medianHouseholdIncome": 114000,
+      "ownerOccupierPct": 60,
+      "vacancyPct": 1.0,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Adelaide suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 2.93,
+      "unitYieldPct": 4.4,
+      "rentToIncomePct": 26.5,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 668317
+        },
+        {
+          "year": 2018,
+          "price": 727162
+        },
+        {
+          "year": 2020,
+          "price": 773618
+        },
+        {
+          "year": 2021,
+          "price": 823171
+        },
+        {
+          "year": 2023,
+          "price": 1054976
+        },
+        {
+          "year": 2025,
+          "price": 1276244
+        },
+        {
+          "year": 2026,
+          "price": 1350000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 411906
+        },
+        {
+          "year": 2018,
+          "price": 428915
+        },
+        {
+          "year": 2020,
+          "price": 442343
+        },
+        {
+          "year": 2021,
+          "price": 456667
+        },
+        {
+          "year": 2023,
+          "price": 557134
+        },
+        {
+          "year": 2025,
+          "price": 653033
+        },
+        {
+          "year": 2026,
+          "price": 685000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 728090
+        },
+        {
+          "year": 2018,
+          "price": 808285
+        },
+        {
+          "year": 2020,
+          "price": 871597
+        },
+        {
+          "year": 2021,
+          "price": 939130
+        },
+        {
+          "year": 2023,
+          "price": 1096153
+        },
+        {
+          "year": 2025,
+          "price": 1246038
+        },
+        {
+          "year": 2026,
+          "price": 1296000
+        }
+      ]
+    },
+    {
       "suburb": "Salisbury",
       "state": "SA",
       "postcode": "5108",
@@ -1403,14 +6952,15 @@
       "medianHouseholdIncome": 86000,
       "ownerOccupierPct": 63,
       "vacancyPct": 0.9,
-      "landShareHouse": 0.64,
+      "landShareHouse": 0.68,
       "landShareUnit": 0.32,
-      "typicalBuildYear": 2015,
-      "zoning": "General Neighbourhood",
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "Rent-to-income ratio (~34.5%) approaching affordability ceiling \u2014 be conservative on future rent spikes"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "Northern Adelaide rail & defence/manufacturing corridor with low entry price and strong yields.",
+      "highlights": "Well-connected Adelaide suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 4.15,
       "unitYieldPct": 4.99,
@@ -1523,14 +7073,15 @@
       "medianHouseholdIncome": 142000,
       "ownerOccupierPct": 55,
       "vacancyPct": 1.5,
-      "landShareHouse": 0.62,
-      "landShareUnit": 0.26,
-      "typicalBuildYear": 2019,
-      "zoning": "CZ / RZ4 Town Centre",
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "ACT has higher annual general rates & land tax on investment units \u2014 allow +$2,500/yr in running costs"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "High-income public-service & university tenant base with healthy 20.5% rent-to-income affordability.",
+      "highlights": "Well-connected Canberra suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 3.82,
       "unitYieldPct": 5.34,
@@ -1627,6 +7178,127 @@
       ]
     },
     {
+      "suburb": "Braddon",
+      "state": "ACT",
+      "postcode": "2612",
+      "city": "Canberra",
+      "lat": -35.2722,
+      "lon": 149.1328,
+      "houseMedian": 1380000,
+      "houseRentWk": 820,
+      "unitMedian": 615000,
+      "unitRentWk": 620,
+      "growth5yrPct": 19.0,
+      "growth10yrPct": 58.0,
+      "unitGrowth5yrPct": 13.0,
+      "medianHouseholdIncome": 146000,
+      "ownerOccupierPct": 43,
+      "vacancyPct": 1.4,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Canberra suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.09,
+      "unitYieldPct": 5.24,
+      "rentToIncomePct": 22.1,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 873418
+        },
+        {
+          "year": 2018,
+          "price": 982191
+        },
+        {
+          "year": 2020,
+          "price": 1068065
+        },
+        {
+          "year": 2021,
+          "price": 1159664
+        },
+        {
+          "year": 2023,
+          "price": 1256612
+        },
+        {
+          "year": 2025,
+          "price": 1349153
+        },
+        {
+          "year": 2026,
+          "price": 1380000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 446623
+        },
+        {
+          "year": 2018,
+          "price": 483720
+        },
+        {
+          "year": 2020,
+          "price": 513008
+        },
+        {
+          "year": 2021,
+          "price": 544248
+        },
+        {
+          "year": 2023,
+          "price": 575379
+        },
+        {
+          "year": 2025,
+          "price": 605095
+        },
+        {
+          "year": 2026,
+          "price": 615000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 744270
+        },
+        {
+          "year": 2018,
+          "price": 826247
+        },
+        {
+          "year": 2020,
+          "price": 890966
+        },
+        {
+          "year": 2021,
+          "price": 960000
+        },
+        {
+          "year": 2023,
+          "price": 1120512
+        },
+        {
+          "year": 2025,
+          "price": 1273728
+        },
+        {
+          "year": 2026,
+          "price": 1324800
+        }
+      ]
+    },
+    {
       "suburb": "Glenorchy",
       "state": "TAS",
       "postcode": "7010",
@@ -1643,14 +7315,15 @@
       "medianHouseholdIncome": 88000,
       "ownerOccupierPct": 66,
       "vacancyPct": 1.3,
-      "landShareHouse": 0.6,
-      "landShareUnit": 0.34,
-      "typicalBuildYear": 2012,
-      "zoning": "General Residential",
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
       "riskFlags": [
-        "Smaller regional market \u2014 prioritise walkability to Main Rd transit corridor"
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
       ],
-      "highlights": "10 mins north of Hobart CBD offering sub-$650k freestanding houses with 4.5%\u20135.0% yields.",
+      "highlights": "Well-connected Hobart suburb with established public transport, schools, and local village amenities.",
       "sampleSales": [],
       "houseYieldPct": 4.49,
       "unitYieldPct": 5.03,
@@ -1743,6 +7416,127 @@
         {
           "year": 2026,
           "price": 600000
+        }
+      ]
+    },
+    {
+      "suburb": "Sandy Bay",
+      "state": "TAS",
+      "postcode": "7005",
+      "city": "Hobart",
+      "lat": -42.9,
+      "lon": 147.3286,
+      "houseMedian": 1280000,
+      "houseRentWk": 740,
+      "unitMedian": 645000,
+      "unitRentWk": 545,
+      "growth5yrPct": 18.0,
+      "growth10yrPct": 84.0,
+      "unitGrowth5yrPct": 15.0,
+      "medianHouseholdIncome": 124000,
+      "ownerOccupierPct": 64,
+      "vacancyPct": 1.2,
+      "landShareHouse": 0.68,
+      "landShareUnit": 0.32,
+      "typicalBuildYear": 2014,
+      "zoning": "Residential",
+      "riskFlags": [
+        "Check strata levies & capital works fund on apartments",
+        "Verify local council heritage or overland flow overlays"
+      ],
+      "highlights": "Well-connected Hobart suburb with established public transport, schools, and local village amenities.",
+      "sampleSales": [],
+      "houseYieldPct": 3.01,
+      "unitYieldPct": 4.39,
+      "rentToIncomePct": 22.9,
+      "houseHistory": [
+        {
+          "year": 2016,
+          "price": 695652
+        },
+        {
+          "year": 2018,
+          "price": 843508
+        },
+        {
+          "year": 2020,
+          "price": 960236
+        },
+        {
+          "year": 2021,
+          "price": 1084746
+        },
+        {
+          "year": 2023,
+          "price": 1170658
+        },
+        {
+          "year": 2025,
+          "price": 1252664
+        },
+        {
+          "year": 2026,
+          "price": 1280000
+        }
+      ],
+      "unitHistory": [
+        {
+          "year": 2016,
+          "price": 417206
+        },
+        {
+          "year": 2018,
+          "price": 471798
+        },
+        {
+          "year": 2020,
+          "price": 514898
+        },
+        {
+          "year": 2021,
+          "price": 560870
+        },
+        {
+          "year": 2023,
+          "price": 597887
+        },
+        {
+          "year": 2025,
+          "price": 633222
+        },
+        {
+          "year": 2026,
+          "price": 645000
+        }
+      ],
+      "cityBenchmarkHistory": [
+        {
+          "year": 2016,
+          "price": 690337
+        },
+        {
+          "year": 2018,
+          "price": 766374
+        },
+        {
+          "year": 2020,
+          "price": 826404
+        },
+        {
+          "year": 2021,
+          "price": 890435
+        },
+        {
+          "year": 2023,
+          "price": 1039316
+        },
+        {
+          "year": 2025,
+          "price": 1181429
+        },
+        {
+          "year": 2026,
+          "price": 1228800
         }
       ]
     }

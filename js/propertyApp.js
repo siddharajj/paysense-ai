@@ -226,21 +226,19 @@ function renderPropertyForm() {
         </div>
       </div>
 
-      <div class="two-col-fields">
-        <div class="sub-field">
-          <label class="sub-label" for="prop-loan-input">Loan (${currentImpact.summaryMetrics.lvrPct.toFixed(0)}% LVR)</label>
-          <div class="input-combo compact">
-            <span class="input-prefix">${escapeHtml(c.symbol)}</span>
-            <input type="number" id="prop-loan-input" class="num-input" min="0" step="10000" value="${propState.loanAmount}" />
-          </div>
-        </div>
-        <div class="sub-field">
-          <label class="sub-label" for="prop-rate-input">Interest (%)</label>
-          <input type="number" id="prop-rate-input" class="text-input" min="0" max="20" step="0.1" value="${propState.interestRatePct}" />
+      <div class="setup-block">
+        <label class="sub-label" for="prop-loan-input">Mortgage Loan (${currentImpact.summaryMetrics.lvrPct.toFixed(0)}% LVR)</label>
+        <div class="input-combo compact">
+          <span class="input-prefix">${escapeHtml(c.symbol)}</span>
+          <input type="number" id="prop-loan-input" class="num-input" min="0" step="10000" value="${propState.loanAmount}" />
         </div>
       </div>
 
       <div class="two-col-fields">
+        <div class="sub-field">
+          <label class="sub-label" for="prop-rate-input">Interest Rate (%)</label>
+          <input type="number" id="prop-rate-input" class="text-input" min="0" max="20" step="0.1" value="${propState.interestRatePct}" />
+        </div>
         <div class="sub-field">
           <label class="sub-label" for="prop-rent-input">Weekly Rent</label>
           <div class="input-combo compact">
@@ -248,12 +246,14 @@ function renderPropertyForm() {
             <input type="number" id="prop-rent-input" class="num-input" min="0" step="20" value="${propState.weeklyRent}" />
           </div>
         </div>
-        <div class="sub-field">
-          <label class="sub-label" for="prop-expenses-input">Costs / Yr</label>
-          <div class="input-combo compact">
-            <span class="input-prefix">${escapeHtml(c.symbol)}</span>
-            <input type="number" id="prop-expenses-input" class="num-input" min="0" step="500" value="${propState.annualExpenses}" />
-          </div>
+      </div>
+
+      <div class="setup-block">
+        <label class="sub-label" for="prop-expenses-input">Annual Running Costs (Rates, Strata, Ins.)</label>
+        <div class="input-combo compact">
+          <span class="input-prefix">${escapeHtml(c.symbol)}</span>
+          <input type="number" id="prop-expenses-input" class="num-input" min="0" step="500" value="${propState.annualExpenses}" />
+          <span class="input-suffix">/ yr</span>
         </div>
       </div>
 
@@ -419,25 +419,37 @@ function renderAddressInsightsStage(fmt, year1, withoutPropertyCalc) {
 
       <div class="sub-panel-box">
         <div class="card-title-row" style="margin-bottom:8px;">
-          <h4 class="mini-section-title" style="margin:0;">1km Walkability &amp; Due-Diligence Risks</h4>
-          <span class="tax-year-pill">${amenities.isLive ? '🟢 Live OSM Scan' : 'Suburb Baseline'}</span>
+          <h4 class="mini-section-title" style="margin:0;">Public Transport (PT) &amp; Local Checks</h4>
+          <span class="tax-year-pill">${amenities.isLive ? '🟢 Live OSM PT Scan' : 'Suburb Baseline'}</span>
         </div>
 
         <div class="amenity-pills-grid">
-          <div class="amenity-pill">🚆 <strong>${amenities.transit}</strong> Transit stops</div>
-          <div class="amenity-pill">🏫 <strong>${amenities.schools}</strong> Schools</div>
-          <div class="amenity-pill">🛒 <strong>${amenities.supermarkets}</strong> Supermarkets</div>
-          <div class="amenity-pill">🌳 <strong>${amenities.parks}</strong> Parks &amp; reserves</div>
+          <div class="amenity-pill">🚆 <strong>${amenities.railCount ?? amenities.transit}</strong> Train / Metro</div>
+          <div class="amenity-pill">🚊 <strong>${amenities.tramCount ?? 0}</strong> Light Rail / Tram</div>
+          <div class="amenity-pill">🚌 <strong>${amenities.busStops ?? 0}</strong> Bus stops (&lt;650m)</div>
+          <div class="amenity-pill">🏫 <strong>${amenities.schools}</strong> Schools · 🌳 <strong>${amenities.parks}</strong> Parks</div>
         </div>
 
-        ${
-          amenities.namedHighlights?.length
-            ? `<div class="muted" style="font-size:0.78rem; margin-top:8px;">Nearby: ${amenities.namedHighlights.map(escapeHtml).join(' · ')}</div>`
-            : ''
-        }
+        <div class="pt-stops-detail">
+          ${
+            amenities.railList?.length
+              ? `<div class="pt-stop-line">🚆 <strong>Rail/Metro:</strong> ${amenities.railList.map(escapeHtml).join(' · ')}</div>`
+              : ''
+          }
+          ${
+            amenities.tramList?.length
+              ? `<div class="pt-stop-line">🚊 <strong>Light Rail/Tram:</strong> ${amenities.tramList.map(escapeHtml).join(' · ')}</div>`
+              : ''
+          }
+          ${
+            amenities.schoolList?.length
+              ? `<div class="pt-stop-line">🏫 <strong>Schools:</strong> ${amenities.schoolList.map(escapeHtml).join(' · ')}</div>`
+              : ''
+          }
+        </div>
 
         <div class="risk-flags-list">
-          <div class="sub-label" style="margin:10px 0 4px;">Zoning (${escapeHtml(area.zoning)}) &amp; Local Checks:</div>
+          <div class="sub-label" style="margin:10px 0 4px;">Zoning (${escapeHtml(area.zoning)}) &amp; Due-Diligence Risks:</div>
           ${(area.riskFlags || [])
             .map((rf) => `<div class="risk-flag-item">⚠️ ${escapeHtml(rf)}</div>`)
             .join('')}
@@ -493,7 +505,7 @@ function renderGrowthTimelineSvg(suburbSeries = [], citySeries = [], fmt, suburb
   return `
     <svg viewBox="0 0 ${w} ${h}" class="growth-svg" role="img" aria-label="10-year historical price trend">
       ${cityPts ? `<polyline fill="none" stroke="var(--border)" stroke-width="2" stroke-dasharray="4 3" points="${cityPts}" />` : ''}
-      <polyline fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${suburbPts}" />
+      <polyline fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="${subPts}" />
       ${dots}
       ${yearLabels}
     </svg>
